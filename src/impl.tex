@@ -1,0 +1,359 @@
+\chapter{Implementation and Optimizations}
+\label{ch:implementation_and_optimizations}
+
+Discuss the state-of-the art and other related work.
+Depending on how much related work exists and how central the comparison to it is in your thesis (discuss this with your advisors), the introduction may contain sufficient related work and this chapter can be omitted.
+
+\section{SuiteSparse implementation of RCM and Minimum Degree}
+
+The Reverse Cuthill-McKee (RCM) algorithm in SuiteSparse provides bandwidth reduction for symmetric sparse matrices through a breadth-first search strategy combined with degree-based ordering heuristics. The implementation processes disconnected components separately and employs pseudo-peripheral vertex selection to minimize profile and bandwidth.
+
+\begin{algorithm}
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{RCMOrder}{RCM\_ORDER}
+    \SetKwFunction{FindPseudoPeripheral}{FindPseudoPeripheral}
+    \SetKwFunction{BFS}{BFS}
+    
+    \Input{Symmetric matrix $A$ ($n \times n$)}
+    \Output{Permutation $P$ for bandwidth reduction}
+    \BlankLine
+    
+    \emph{Initialize:}\;
+    Compute $\text{degree}[i] = |\text{adj}(i)|$ for all vertices $i$\;
+    Find connected components $R_1, R_2, \ldots, R_k$ using DFS\;
+    Initialize $\text{visited}[i] = \text{false}$ for all $i$\;
+    Set $\text{perm\_index} = 0$\;
+    \BlankLine
+    
+    \emph{Process each component:}\;
+    \ForEach{connected component $R_j$}{
+        \emph{Find pseudo-peripheral start vertex:}\;
+        $\text{start} = \FindPseudoPeripheral(R_j)$\;
+        \tcp{Select vertex with minimum degree among maximum-distance vertices}
+        
+        \emph{Cuthill-McKee BFS traversal:}\;
+        Initialize queue $Q = \{\text{start}\}$\;
+        Set $\text{visited}[\text{start}] = \text{true}$\;
+        Initialize $\text{CM\_order} = [\text{start}]$\;
+        
+        \While{$Q \neq \emptyset$}{
+            $u = \text{dequeue}(Q)$\;
+            $\text{neighbors} = \text{sort}(\text{unvisited\_adj}(u), \text{by\_degree\_ascending})$\;
+            \ForEach{$v \in \text{neighbors}$}{
+                \If{$\neg \text{visited}[v]$}{
+                    Set $\text{visited}[v] = \text{true}$\;
+                    $\text{enqueue}(Q, v)$\;
+                    Append $v$ to $\text{CM\_order}$\;
+                }
+            }
+        }
+        
+        \emph{Apply reverse ordering (RCM):}\;
+        \For{$i = 0$ \KwTo $|\text{CM\_order}| - 1$}{
+            $P[\text{perm\_index} + i] = \text{CM\_order}[|\text{CM\_order}| - 1 - i]$\;
+        }
+        $\text{perm\_index} \gets \text{perm\_index} + |\text{CM\_order}|$\;
+    }
+    
+    \Return{$P$}\;
+    
+    \caption{SuiteSparse RCM Algorithm}
+    \label{alg:rcm}
+\end{algorithm}
+
+The SuiteSparse RCM implementation incorporates several refinements over the basic algorithm. The pseudo-peripheral vertex selection uses multiple BFS traversals to identify vertices that are approximately diametrically opposite, which typically results in better bandwidth reduction than arbitrary starting points. The degree-based sorting of neighbors during BFS traversal helps create a more systematic ordering that tends to group low-degree vertices together, further improving the resulting bandwidth.
+
+The algorithm's effectiveness stems from its ability to produce orderings where vertices with similar connectivity patterns are placed close together in the permutation. This locality property translates directly into reduced bandwidth and improved cache performance during matrix operations, making RCM particularly valuable for iterative solvers and direct factorization methods that benefit from band structure preservation.
+
+\subsection{AMD Algorithm Overview}
+
+The Approximate Minimum Degree (AMD) algorithm implemented in SuiteSparse follows a refined elimination-based approach that balances computational efficiency with fill-in minimization. The algorithm operates on a quotient graph representation and incorporates several key optimizations including aggressive absorption, approximate degree updates, and dense row detection.
+
+\begin{algorithm}
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{AMDOrder}{AMD\_ORDER}
+    \SetKwFunction{FindCompress}{FindCompress}
+    
+    \Input{Symmetric matrix $A$ ($n \times n$), Control parameters}
+    \Output{Permutation $P$, Info statistics}
+    \BlankLine
+    
+    \emph{Initialize:}\;
+    Convert $A$ to $A + A^T$ pattern if unsymmetric\;
+    Build quotient graph $G = (V, E)$ from $A$\;
+    Initialize degree lists $\text{Head}[d]$ for $d = 0$ to $n$\;
+    Set $\text{degree}[v] = |\text{adj}(v)|$ for all vertices $v$\;
+    Place each vertex in appropriate degree list\;
+    \BlankLine
+    
+    \emph{Main elimination loop:}\;
+    \For{$k = 1$ \KwTo $n$}{
+        \emph{Select pivot:}\;
+        Find minimum degree $d$ with non-empty $\text{Head}[d]$\;
+        Select pivot $p$ from $\text{Head}[d]$\;
+        Remove $p$ from degree list\;
+        
+        Set $P[k] = p$ (add to elimination ordering)\;
+        
+        \emph{Element absorption:}\;
+        \ForEach{element $e$ adjacent to $p$}{
+            \If{$|L_e \cap L_p| = |L_e|$}{
+                Absorb $e$ into $p$ (aggressive absorption)\;
+            }
+        }
+        
+        \emph{Form new element $e_p$:}\;
+        $L_{e_p} = \text{adj}(p) \setminus \{\text{absorbed elements}\}$\;
+        Mark $e_p$ as new element\;
+        
+        \emph{Update degrees (approximate):}\;
+        \ForEach{uneliminated vertex $v \in L_{e_p}$}{
+            $\text{external\_degree}[v] = |\text{adj}(v) \cap \text{uneliminated}|$\;
+            $\text{bound} = |L_{e_p}| - |L_{e_p} \cap \text{adj}(v)|$\;
+            $\text{degree}[v] \approx \text{external\_degree}[v] + \text{bound}$\;
+            Move $v$ to new degree list\;
+        }
+        
+        \emph{Dense row detection:}\;
+        \If{$|L_{e_p}| > \max(\alpha\sqrt{n}, 16)$}{
+            Mark $e_p$ as dense element\;
+            Move dense variables to end of ordering\;
+        }
+    }
+    
+    \emph{Post-processing:}\;
+    Apply elimination tree post-ordering\;
+    Compute final permutation statistics\;
+    \Return{$P$ and Info}\;
+    
+    \caption{SuiteSparse AMD Algorithm}
+    \label{alg:amd}
+\end{algorithm}
+
+The key innovation in SuiteSparse's AMD implementation lies in its aggressive absorption strategy and approximate degree computation. The aggressive absorption phase identifies elements that can be completely absorbed into the current pivot, reducing the size of the quotient graph and improving cache locality. The approximate degree updates provide a computationally efficient method to maintain ordering decisions without exact degree computation, which becomes prohibitively expensive as elimination progresses.
+
+The dense row detection mechanism addresses a common pathology in minimum degree algorithms where elimination of high-degree vertices can lead to excessive fill-in. When the algorithm detects that a newly formed element exceeds a threshold based on the matrix size, it defers elimination of the associated variables, effectively implementing a hybrid strategy that combines minimum degree with nested dissection principles.
+
+\subsection{COLAMD Algorithm Overview}
+
+The Column Approximate Minimum Degree (COLAMD) algorithm in SuiteSparse extends the minimum degree concept to rectangular matrices by operating on a bipartite graph representation. Unlike AMD which works on the symmetric structure $A^T A$, COLAMD directly processes the rectangular matrix $A$ to produce a column ordering that minimizes fill-in during factorization.
+
+\begin{algorithm}
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{COLAMDOrder}{COLAMD\_ORDER}
+    
+    \Input{Matrix $A$ ($m \times n$) in CSC format, Control parameters}
+    \Output{Column permutation $P$, Info statistics}
+    \BlankLine
+    
+    \emph{Initialize:}\;
+    Treat $A$ as bipartite graph $G = (R \cup C, E)$\;
+    Set $\text{col\_degree}[j] = $ nonzeros in column $j$, place in degree list\;
+    Detect dense rows: if $\text{row\_degree}[i] > \text{threshold}$, mark dense\;
+    \BlankLine
+    
+    \emph{Main elimination loop:}\;
+    \For{$k = 1$ \KwTo $n$}{
+        Select minimum degree column $c$ (tie-break by density)\;
+        Set $P[k] = c$\;
+        
+        \emph{Update degrees:}\;
+        \ForEach{row $i$ connected to $c$}{
+            \ForEach{uneliminated column $j$ in row $i$}{
+                $\text{fill\_count} = |R(c) \cap R(j)|$\;
+                $\text{new\_degree} = \text{col\_degree}[j] + |R(c)| - \text{fill\_count} - 1$\;
+                Apply dense penalty if row $i$ is dense\;
+                Move $j$ to $\text{Head}[\text{new\_degree}]$\;
+            }
+        }
+        Mark eliminated rows and handle supernode formation\;
+    }
+    
+    Place remaining dense columns at end of ordering\;
+    \Return{$P$ and Info}\;
+    
+    \caption{SuiteSparse COLAMD Algorithm}
+    \label{alg:colamd}
+\end{algorithm}
+
+The COLAMD algorithm addresses the unique challenges of rectangular matrix ordering by maintaining both row and column degree information throughout the elimination process. The bipartite graph formulation allows the algorithm to track how column eliminations affect the sparsity structure without explicitly forming the potentially much denser $A^T A$ matrix. The dense row detection mechanism prevents pathological behavior when processing matrices with highly dense rows, which could otherwise lead to excessive fill-in during factorization.
+
+The degree update strategy in COLAMD carefully accounts for the fill-in patterns specific to rectangular matrices, where eliminating a column affects all other columns that share nonzero entries in the same rows. The algorithm's ability to handle supernodes (groups of columns with identical sparsity patterns) further enhances its effectiveness for structured matrices commonly arising in finite element applications.
+
+\newpage
+
+\section{Nested Dissection using METIS and SCOTCH}
+
+Nested dissection represents a divide-and-conquer approach to matrix ordering that recursively partitions the graph using small vertex separators, ordering the separated components before the separator vertices. METIS and SCOTCH implement sophisticated multilevel nested dissection algorithms that combine graph coarsening, separator finding, and refinement techniques to produce high-quality orderings for large sparse matrices.
+
+The multilevel nested dissection approach in METIS provides superior ordering quality compared to single-level methods by operating at multiple scales. The coarsening phase creates a hierarchy of increasingly smaller graphs while preserving essential structural properties through heavy edge matching. This matching strategy prioritizes edges with large weights, which in the context of matrix ordering typically correspond to strong structural connections that should be preserved during coarsening.
+
+The separator computation on the coarsest level benefits from reduced problem size while maintaining global structural awareness. The refinement phase during projection ensures that separators remain high-quality as they are mapped back to finer graph levels. The recursive application of this process creates a natural hierarchy where large components are isolated first, followed by progressively smaller substructures, resulting in elimination orderings with excellent fill-in characteristics for sparse direct solvers.
+
+% \begin{algorithm}
+%     \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+%     \SetKwFunction{NestedDissection}{NestedDissection}
+%     \SetKwFunction{ComputeSeparator}{ComputeSeparator}
+%     \SetKwFunction{MinimumDegree}{MinimumDegree}
+    
+%     \Input{Graph $G = (V, E)$ from sparse matrix structure}
+%     \Output{Permutation $P$ minimizing fill-in}
+%     \BlankLine
+    
+%     \If{$|V| \leq$ threshold}{
+%         \Return{\MinimumDegree{$(G)$}}\;
+%     }
+    
+%     Apply multilevel coarsening to create graph hierarchy\;
+%     $S = \ComputeSeparator(\text{coarsest graph})$\;
+%     Project and refine $S$ through all graph levels\;
+    
+%     Partition $G$ into components $A$, $B$ using separator $S$\;
+%     $P_A = \NestedDissection(A)$\;
+%     $P_B = \NestedDissection(B)$\;
+    
+%     \Return{Concatenate($P_A$, $P_B$, $S$)}\;
+    
+%     \caption{METIS Nested Dissection}
+%     \label{alg:metis_nested_dissection}
+% \end{algorithm}
+
+\begin{algorithm}
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{HeavyEdgeMatching}{HeavyEdgeMatching}
+    \SetKwFunction{ContractEdges}{ContractEdges}
+    \SetKwFunction{SortByWeight}{SortByWeight}
+    
+    \Input{Graph $G = (V, E)$}
+    \Output{Hierarchy of progressively coarser graphs}
+    \BlankLine
+    
+    $\text{Hierarchy} = [G]$ \tcp{Start with original graph}
+    $\text{CurrentGraph} = G$\;
+    \BlankLine
+    
+    \While{$|V(\text{CurrentGraph})| > \text{COARSENING\_THRESHOLD}$}{
+        \emph{Find heavy edge matching to preserve graph structure}\;
+        $\text{Matching} = \HeavyEdgeMatching(\text{CurrentGraph})$\;
+        
+        \emph{Contract matched edges to create coarser graph}\;
+        $\text{CoarserGraph} = \ContractEdges(\text{CurrentGraph}, \text{Matching})$\;
+        
+        \emph{Add to hierarchy}\;
+        $\text{Hierarchy.append}(\text{CoarserGraph})$\;
+        $\text{CurrentGraph} = \text{CoarserGraph}$\;
+    }
+    
+    \Return{$\text{Hierarchy}$}\;
+    
+    \caption{Multilevel Graph Coarsening}
+    \label{alg:multilevel_coarsening}
+\end{algorithm}
+
+\begin{algorithm}
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    
+    \Input{Graph $G$ with edge weights}
+    \Output{Maximal matching favoring heavy edges}
+    \BlankLine
+    
+    $\text{Matching} = \{\}$\;
+    $\text{Matched} = \{\}$ \tcp{Track matched vertices}
+    \BlankLine
+    
+    \emph{Sort edges by weight (descending) for better matching quality}\;
+    $\text{SortedEdges} = \SortByWeight(E(G), \text{descending} = \text{true})$\;
+    \BlankLine
+    
+    \ForEach{edge $(u,v)$ in $\text{SortedEdges}$}{
+        \If{$u \notin \text{Matched}$ \textbf{and} $v \notin \text{Matched}$}{
+            $\text{Matching.add}((u,v))$\;
+            $\text{Matched.add}(u)$\;
+            $\text{Matched.add}(v)$\;
+        }
+    }
+    
+    \Return{$\text{Matching}$}\;
+    
+    \caption{Heavy Edge Matching Algorithm}
+    \label{alg:heavy_edge_matching}
+\end{algorithm}
+
+
+
+\newpage
+\section{Parallel-Nested Dissection}
+
+\newpage
+\section{Parallelizing minimum degree}
+
+\begin{algorithm}
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{ParallelAMD}{PARALLEL\_AMD}
+    \SetKwFunction{InitializeQuotientGraph}{initialize\_quotient\_graph}
+    \SetKwFunction{InitializeDegreeList}{initialize\_degree\_list}
+    \SetKwFunction{FindGlobalMinDegree}{find\_global\_minimum\_degree}
+    \SetKwFunction{DistanceTwoIndepSet}{distance\_2\_independent\_set}
+    \SetKwFunction{EliminatePivot}{eliminate\_pivot}
+    \SetKwFunction{GetThreadId}{get\_thread\_id}
+    
+    \Input{Matrix $A$ ($n \times n$), parameters $\text{mult}$, $\text{lim}$}
+    \Output{Elimination ordering}
+    \BlankLine
+    
+    \emph{Preprocessing:}\;
+    $G \gets \InitializeQuotientGraph(A + A^T)$ \tcp{Compute symmetric pattern}
+    \BlankLine
+    
+    \emph{Initialize degree lists for each thread:}\;
+    \lForAll{$\text{tid} = 0$ \KwTo $\text{num\_threads} - 1$ \textbf{in parallel}}{
+        $\InitializeDegreeList(\text{tid})$
+    }
+    \BlankLine
+    
+    \emph{Main elimination loop:}\;
+    \While{$|V| > 0$}{
+        \emph{Find minimum approximate degree across all threads:}\;
+        $\text{amd} \gets \FindGlobalMinDegree()$\;
+        \BlankLine
+        
+        \emph{Select distance-2 independent set of pivots:}\;
+        $D \gets \DistanceTwoIndepSet(\text{amd}, \text{mult}, \text{lim})$\;
+        \BlankLine
+        
+        \If{$|D| = 0$}{
+            \textbf{break} \tcp{No more valid pivots}
+        }
+        \BlankLine
+        
+        \emph{Eliminate pivots in parallel:}\;
+        \lForAll{pivot $p \in D$ \textbf{in parallel}}{
+            $\text{tid} \gets \GetThreadId()$\;
+            $\EliminatePivot(\text{tid}, p)$\;
+        }
+        \BlankLine
+        
+        \emph{Barrier synchronization}\;
+        \textbf{barrier()}\;
+    }
+    
+    \Return{elimination ordering}\;
+    
+    \caption{Parallel AMD Algorithm}
+    \label{alg:parallel_amd}
+\end{algorithm}
+
+\newpage
+\section{New Coarsening approaches in Nested Dissection}
+
+\section{GPU Implementation of RCM}
+
+GPU Implementation of RCM is basically a parallel implementation of the breadth-first search (BFS) algorithm. Much research is available on parallel BFS, and the implementation in this thesis is based on the NVIDIA work on GPU-accelerated BFS in \cite{merrill_scalable_nodate}.
+
+This GPU breadth-first search implementation uses a level-synchronous algorithm that processes the graph one depth level at a time, maintaining two key data structures: a vertex frontier (vertices to be explored in the current iteration) and an edge frontier (all neighbors of vertices in the current frontier). The algorithm begins with a single source vertex and alternates between two fundamental operations across BFS levels.
+
+Each BFS iteration follows a two-phase process. In the expansion phase, the algorithm takes the current vertex frontier and performs parallel neighbor gathering to create the edge frontier. Multiple threads cooperatively read the adjacency lists of frontier vertices from the compressed sparse row (CSR) representation, collecting all outgoing edges. In the contraction phase, the algorithm filters this edge frontier by checking each neighbor's visitation status, removing already-visited vertices and duplicates to produce the vertex frontier for the next iteration. This process continues until the vertex frontier becomes empty, indicating the traversal is complete.
+
+The expansion phase uses a multi-granularity approach to handle the irregular degree distributions common in real graphs. For vertices with small adjacency lists, the algorithm employs scan-based gathering where threads use prefix sum to compute scatter offsets, creating a perfectly packed array of neighbors that allows all threads to participate in memory reads without SIMD lane waste. For medium-sized adjacency lists, warp-based gathering assigns entire 32-thread warps to cooperatively process single vertices, with threads strip-mining through the adjacency list in parallel. For very large adjacency lists, CTA-based gathering enlists entire thread blocks (hundreds of threads) to process individual high-degree vertices. This hybrid strategy automatically adapts to the workload characteristics and ensures efficient GPU utilization regardless of degree distribution.
+
+I took an already existing implementation of the parallel BFS algorithm from the NVIDIA CUDA SDK \cite{kaleta_kaletapbfs-cuda-gpu_2025} and adapted it for reordering the graph using RCM.

@@ -1,0 +1,336 @@
+\glsdefs@newdocentry{asic}%
+{%
+name={\acronymfont {\glsentryshort {asic}}},%
+sort={ASIC},%
+type={acronym},%
+first={ASIC},%
+firstplural={ASICs},%
+text={ASIC},%
+plural={ASICs},%
+description={application-specific integrated circuit},%
+descriptionplural={application-specific integrated circuit},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={application-specific integrated circuit},%
+longplural={application-specific integrated circuits},%
+short={ASIC},%
+shortplural={ASICs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{dft}%
+{%
+name={\acronymfont {\glsentryshort {dft}}},%
+sort={DFT},%
+type={acronym},%
+first={DFT},%
+firstplural={DFTs},%
+text={DFT},%
+plural={DFTs},%
+description={design for testability},%
+descriptionplural={design for testability},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={design for testability},%
+longplural={design for testabilitys},%
+short={DFT},%
+shortplural={DFTs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{dz}%
+{%
+name={\acronymfont {\glsentryshort {dz}}},%
+sort={DZ},%
+type={acronym},%
+first={DZ},%
+firstplural={DZs},%
+text={DZ},%
+plural={DZs},%
+description={Microelectronics Design Center at ETH Zurich},%
+descriptionplural={Microelectronics Design Center at ETH Zurich},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Microelectronics Design Center at ETH Zurich},%
+longplural={Microelectronics Design Center at ETH Zurichs},%
+short={DZ},%
+shortplural={DZs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{fpga}%
+{%
+name={\acronymfont {\glsentryshort {fpga}}},%
+sort={FPGA},%
+type={acronym},%
+first={FPGA},%
+firstplural={FPGAs},%
+text={FPGA},%
+plural={FPGAs},%
+description={field-programmable gate array},%
+descriptionplural={field-programmable gate array},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={field-programmable gate array},%
+longplural={field-programmable gate arrays},%
+short={FPGA},%
+shortplural={FPGAs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{ic}%
+{%
+name={\acronymfont {\glsentryshort {ic}}},%
+sort={IC},%
+type={acronym},%
+first={IC},%
+firstplural={ICs},%
+text={IC},%
+plural={ICs},%
+description={integrated circuit},%
+descriptionplural={integrated circuit},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={integrated circuit},%
+longplural={integrated circuits},%
+short={IC},%
+shortplural={ICs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{iis}%
+{%
+name={\acronymfont {\glsentryshort {iis}}},%
+sort={IIS},%
+type={acronym},%
+first={IIS},%
+firstplural={IISs},%
+text={IIS},%
+plural={IISs},%
+description={Integrated Systems Laboratory},%
+descriptionplural={Integrated Systems Laboratory},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Integrated Systems Laboratory},%
+longplural={Integrated Systems Laboratorys},%
+short={IIS},%
+shortplural={IISs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{snr}%
+{%
+name={\acronymfont {\glsentryshort {snr}}},%
+sort={SNR},%
+type={acronym},%
+first={SNR},%
+firstplural={SNRs},%
+text={SNR},%
+plural={SNRs},%
+description={signal-to-noise ratio},%
+descriptionplural={signal-to-noise ratio},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={signal-to-noise ratio},%
+longplural={signal-to-noise ratios},%
+short={SNR},%
+shortplural={SNRs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{pdf}%
+{%
+name={\acronymfont {\glsentryshort {pdf}}},%
+sort={PDF},%
+type={acronym},%
+first={PDF},%
+firstplural={PDFs},%
+text={PDF},%
+plural={PDFs},%
+description={Portable Document Format},%
+descriptionplural={Portable Document Format},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Portable Document Format},%
+longplural={Portable Document Formats},%
+short={PDF},%
+shortplural={PDFs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{spse}%
+{%
+name={\acronymfont {\glsentryshort {spse}}},%
+sort={SPSE},%
+type={acronym},%
+first={SPSE},%
+firstplural={SPSEs},%
+text={SPSE},%
+plural={SPSEs},%
+description={Situation-Problem-Solution-Evaluation},%
+descriptionplural={Situation-Problem-Solution-Evaluation},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Situation-Problem-Solution-Evaluation},%
+longplural={Situation-Problem-Solution-Evaluations},%
+short={SPSE},%
+shortplural={SPSEs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{svg}%
+{%
+name={\acronymfont {\glsentryshort {svg}}},%
+sort={SVG},%
+type={acronym},%
+first={SVG},%
+firstplural={SVGs},%
+text={SVG},%
+plural={SVGs},%
+description={scalable vector graphics},%
+descriptionplural={scalable vector graphics},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={scalable vector graphics},%
+longplural={scalable vector graphicss},%
+short={SVG},%
+shortplural={SVGs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{vcs}%
+{%
+name={\acronymfont {\glsentryshort {vcs}}},%
+sort={VCS},%
+type={acronym},%
+first={VCS},%
+firstplural={VCSs},%
+text={VCS},%
+plural={VCSs},%
+description={version control system},%
+descriptionplural={version control system},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={version control system},%
+longplural={version control systems},%
+short={VCS},%
+shortplural={VCSs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{wysiwyg}%
+{%
+name={\acronymfont {\glsentryshort {wysiwyg}}},%
+sort={WYSIWYG},%
+type={acronym},%
+first={WYSIWYG},%
+firstplural={WYSIWYGs},%
+text={WYSIWYG},%
+plural={WYSIWYGs},%
+description={``what you see is what you get''},%
+descriptionplural={``what you see is what you get''},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={``what you see is what you get''},%
+longplural={``what you see is what you get''s},%
+short={WYSIWYG},%
+shortplural={WYSIWYGs},%
+counter={page},%
+parent={},%
+%
+}%
+

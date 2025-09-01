@@ -140,6 +140,8 @@
 % `etoolbox` provides some programming tools used in this class.
 \RequirePackage{etoolbox}
 
+\RequirePackage{subcaption}
+
 % `algorithm2e` provides the `algorithm` environment for typesetting algorithms.
 \RequirePackage[ruled, linesnumbered]{algorithm2e}
 

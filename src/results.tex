@@ -1,20 +1,53 @@
 \chapter{Results}
 \label{ch:results}
 
-In this chapter, you want to show that your implementation meets the objectives.
-Start by briefly describing the type of results you have collected and how these results relate to the objectives.
+In this chapter, we first describe our evaluation setup, which consists of the HPC cluster used for our experiments, the matrix datasets, and the algorithmic implementations evaluated. We then present a detailed analysis of various performance metrics, including execution time, memory usage, parallelization and matrix fill-in reduction. 
+
+
+% In this chapter, you want to show that your implementation meets the objectives.
+% Start by briefly describing the type of results you have collected and how these results relate to the objectives.
 
 \section{Evaluation setup}
 
-Precisely describe your measurement/evaluation setup in a top-down manner.
-For example:
-\begin{itemize}
-  \item If you used a development platform, which one and how was it configured?
-  \item Which tools did you use?
-  \item What input data set / program / signals / \ldots{} did you use?
-    If your data set is very large, you should fully define and describe it in an appendix chapter and refer to that definition here using simple labels.
-  \item If your implementation is configurable, which configuration(s) did you evaluate?
-\end{itemize}
+Everything that is evaluated is ran on Fritz, a high-performance computing cluster at NHR@FAU.
+
+\subsection{Hardware Infrastructure}
+
+Fritz is a parallel CPU cluster operated by NHR@FAU, featuring Intel Ice Lake and Sapphire Rapids processors with an InfiniBand (IB) network and a Lustre-based parallel filesystem accessible under \texttt{\$FASTTMP}. The cluster configuration consists of:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Nodes} & \textbf{CPUs and Cores} & \textbf{Memory} & \textbf{Slurm Partition} \\
+\hline
+992 & 2 × Intel Xeon Platinum 8360Y (Ice Lake) & 256 GB & singlenode, multinode \\
+  & 2 × 36 cores @2.4 GHz & & \\
+\hline
+48 & 2 × Intel Xeon Platinum 8470 (Sapphire Rapids) & 1 TB & spr1tb \\
+   & 2 × 52 cores @2.0 GHz & & \\
+\hline
+16 & 2 × Intel Xeon Platinum 8470 (Sapphire Rapids) & 2 TB & spr2tb \\
+   & 2 × 52 cores @2.0 GHz & & \\
+\hline
+\end{tabular}
+\caption{Fritz cluster node configuration}
+\label{tab:fritz-nodes}
+\end{table}
+
+The login nodes fritz[1-4] are equipped with 2 × Intel Xeon Platinum 8360Y (Ice Lake) processors and 512 GB main memory. Additionally, the remote visualization node fviz1 features 2 × Intel Xeon Platinum 8360Y processors with 1 TB main memory, one Nvidia A16 GPU, and 30 TB of local NVMe SSD storage.
+
+
+
+% Precisely describe your measurement/evaluation setup in a top-down manner.
+% For example:
+% \begin{itemize}
+%   \item If you used a development platform, which one and how was it configured?
+%   \item Which tools did you use?
+%   \item What input data set / program / signals / \ldots{} did you use?
+%     If your data set is very large, you should fully define and describe it in an appendix chapter and refer to that definition here using simple labels.
+%   \item If your implementation is configurable, which configuration(s) did you evaluate?
+% \end{itemize}
 
 The information given here (with references to external work) should be sufficient to reproduce the setup you used for your measurements.
 

@@ -4,14 +4,15 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Fritz cluster node configuration}}{19}{table.caption.12}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {B.1}{\ignorespaces Different font faces.}}{30}{table.B.1}%
-\contentsline {table}{\numberline {B.2}{\ignorespaces Different font sizes.}}{30}{table.B.2}%
-\contentsline {table}{\numberline {B.3}{\ignorespaces Simple example table with some values in different number systems.}}{37}{table.B.3}%
-\contentsline {table}{\numberline {B.4}{\ignorespaces Simple example table with different row and cell colors.}}{39}{table.B.4}%
-\contentsline {table}{\numberline {B.5}{\ignorespaces Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}. }}{39}{table.B.5}%
+\contentsline {table}{\numberline {B.1}{\ignorespaces Different font faces.}}{29}{table.caption.20}%
+\contentsline {table}{\numberline {B.2}{\ignorespaces Different font sizes.}}{29}{table.caption.21}%
+\contentsline {table}{\numberline {B.3}{\ignorespaces Simple example table with some values in different number systems.}}{36}{table.caption.24}%
+\contentsline {table}{\numberline {B.4}{\ignorespaces Simple example table with different row and cell colors.}}{38}{table.caption.25}%
+\contentsline {table}{\numberline {B.5}{\ignorespaces Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}. }}{38}{table.caption.26}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -20,14 +20,6 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{Hoey83}
-M.~Hoey, \emph{On the Surface of Discourse}.\hskip 1em plus 0.5em minus 0.4em\relax Allen and Unwin, 1983.
-
-\bibitem{MP12}
-\BIBentryALTinterwordspacing
-T.~Miller and D.~Parker, ``Writing for the reader: A problem-solution approach,'' \emph{English Teacher Forum}, no.~3, pp. 21--27, 2012. [Online]. Available: \url{http://files.eric.ed.gov/fulltext/EJ997525.pdf}
-\BIBentrySTDinterwordspacing
-
 \bibitem{lipton_generalized_1979}
 \BIBentryALTinterwordspacing
 R.~J. Lipton, D.~J. Rose, and R.~E. Tarjan, ``Generalized {Nested} {Dissection},'' \emph{SIAM Journal on Numerical Analysis}, vol.~16, no.~2, pp. 346--358, Apr. 1979, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/0716027}
@@ -120,5 +112,13 @@ Wikipedia, ``{Isaac Newton},'' accessed October 1, 2012. [Online]. Available: \u
 \BIBentryALTinterwordspacing
 J.~Wright, \emph{siunitx: A comprehensive (SI) units package}, Aug. 2017. [Online]. Available: \url{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}
 \BIBentrySTDinterwordspacing
+
+\bibitem{MP12}
+\BIBentryALTinterwordspacing
+T.~Miller and D.~Parker, ``Writing for the reader: A problem-solution approach,'' \emph{English Teacher Forum}, no.~3, pp. 21--27, 2012. [Online]. Available: \url{http://files.eric.ed.gov/fulltext/EJ997525.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Hoey83}
+M.~Hoey, \emph{On the Surface of Discourse}.\hskip 1em plus 0.5em minus 0.4em\relax Allen and Unwin, 1983.
 
 \end{thebibliography}

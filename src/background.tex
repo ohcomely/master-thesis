@@ -1,3 +1,5 @@
+
+
 \chapter{Background}
 \label{ch:background}
 
@@ -230,6 +232,27 @@ Variants of the minimum degree algorithm include:
 
 Nested dissection is a divide and conquer heuristic for the solution of sparse symmetric systems of linear equations based on graph partitioning. Nested dissection can be viewed as a recursive divide-and-conquer algorithm on an undirected graph; it uses separators in the graph, which are small sets of vertices whose removal divides the graph approximately in half  \cite{lipton_generalized_1979}.
 
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fig/background/nd-1.png}
+        \caption{Original graph before separator identification}
+        \label{fig:nd-original}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fig/background/nd-2.png}
+        \caption{Graph after separator removal showing partitioned subgraphs}
+        \label{fig:nd-separated}
+    \end{subfigure}
+    \caption{Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}
+    \label{fig:nested-dissection}
+\end{figure}
+
 Nested dissection consists of the following steps: Form an undirected graph in which the vertices represent rows and columns of the system of linear equations, and an edge represents a nonzero entry in the sparse matrix representing the system. Recursively partition the graph into subgraphs using separators, small subsets of vertices the removal of which allows the graph to be partitioned into subgraphs with at most a constant fraction of the number of vertices. Perform Cholesky decomposition (a variant of Gaussian elimination for symmetric matrices), ordering the elimination of the variables by the recursive structure of the partition: each of the two subgraphs formed by removing the separator is eliminated first, and then the separator vertices are eliminated \cite{george_nested_1973}. 
 
 All the sequential algorithms for determining the elimination ordering of a graph G can be described by the following general algorithm: Generate the tree of separators for G and perform a tree traversal on the separator tree to order the vertices, where this traversal must visit a node before any of its parents.
+
+

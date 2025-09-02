@@ -105,6 +105,8 @@
 % Slightly advanced mathematical utilities, includes the fundamental `amsmath` package.
 \RequirePackage{mathtools}
 
+\RequirePackage{bchart}
+
 % Theorems, lemmas, corollaries, proofs, and definitions
 \RequirePackage{amsthm}
 %

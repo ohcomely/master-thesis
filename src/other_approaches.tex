@@ -1,0 +1,31 @@
+\chapter{Other Approaches}
+\label{ch:other_approaches}
+
+In this chapter, we explore alternative and promising approaches to the sparse matrix reordering problem beyond traditional heuristic methods. These methods were found by myself to be either computationally difficult to scale for large matrices or were found to have some bottlenecks, but nevertheless represent interesting directions for future work. 
+
+\section{Graph Reinforcement Learning Methods}
+
+As we know that sparse symmetric matrices can be represented as undirected graphs, it seems promising that this representation allows GNNs to naturally capture the local neighborhood relationships that classical ordering heuristics rely on, such as node degree and clustering patterns.
+
+Traditional heuristics like minimum degree ordering make greedy decisions based on limited local information. GNNs, however, can propagate information across multiple hops in the graph, enabling each node to consider not just its immediate neighbors but also the broader structural context. This multi-hop reasoning capability allows the network to anticipate how eliminating one node will affect distant parts of the matrix, potentially leading to more effective ordering decisions.
+
+The message-passing architecture of GNNs naturally models the fill-in process during matrix factorization. When a node is eliminated, it creates new connections between its neighbors, which GNNs can represent through their aggregation and update mechanisms. The network can learn to predict these fill-in patterns and make elimination choices that minimize overall structural complexity.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{bchart}[step=20,max=100,unit=\%]
+        \bcbar[color=blue!70]{9.8}
+        \bclabel{vs RCM}
+        \bcbar[text=ash85, color=red!70]{81.4}
+        \bclabel{vs MinDeg}
+        \smallskip
+        \bcbar[, color=blue!70]{28.4}
+        \bcbar[text=bcsstk22, color=red!70]{51.0}
+    \end{bchart}
+    \caption{GNN-based method with RCM and MinDegree}
+    \label{fig:graphrl_small}
+\end{figure}
+
+The model shows.
+
+\section{GPU Accelerated Nested Dissection}

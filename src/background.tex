@@ -112,18 +112,38 @@ Initialize $\text{parent}[1 \ldots n] \leftarrow 0$ \tcp*{0 represents null pare
 
 This algorithm requires $O(|A|)$ time, where $|A|$ denotes the number of nonzero entries in matrix $A$. The space complexity is $O(n)$ for storing the parent array. While simple to understand and implement, this direct approach does not exploit the structural properties of elimination trees for potential efficiency improvements.
 
-\subsection{Symbolic Factorization Theory and Algorithms}
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fig/background/etree-1.png}
+        \caption{Sparse matrix structure}
+        \label{fig:etree-matrix}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \vspace{0.5cm}
+        \includegraphics[width=1\textwidth]{fig/background/etree-2.png}
+        \caption{Corresponding elimination tree}
+        \label{fig:etree-visualization}
+    \end{subfigure}
+    \caption{Illustration of elimination tree construction for the given sparse symmetric matrix. The sparsity is denoted by filled black circles and the fill-in induced is denoted by hollow red circles.}
+    \label{fig:elimination-tree-example}
+\end{figure}
 
-\subsubsection{Conceptual Framework for Structure Prediction}
-Symbolic factorization addresses the fundamental question: "Given the sparsity pattern of matrix $A$, what will be the sparsity pattern of the Cholesky factor $L$?" The elimination tree provides the theoretical framework for answering this question efficiently.
+
+\subsection{Symbolic Factorization}
+
+Symbolic factorization determines the sparsity pattern of the Cholesky factor $L$ from the sparsity pattern of matrix $A$ using the elimination tree. It does not involve any numerical computations and relies solely on the structure of the original matrix.
 
 The key insight is that the sparsity structure of each column in $L$ can be computed by analyzing how structural information propagates through the elimination tree. Each column inherits structure from two sources: the original matrix $A$ and the previously computed columns corresponding to its children in the elimination tree.
 
 \begin{definition}[Column Structure Inheritance]
 For column $j$ of the Cholesky factor $L$, the nonzero pattern is determined by:
 \begin{itemize}
-    \item \textbf{Direct inheritance:} All nonzero entries from column $j$ of the original matrix $A$ that lie on or below the diagonal
-    \item \textbf{Indirect inheritance:} All entries from the union of nonzero patterns of columns corresponding to children of $j$ in the elimination tree, restricted to rows numbered greater than $j$
+    \item Direct inheritance: All nonzero entries from column $j$ of the original matrix $A$ that lie on or below the diagonal
+    \item Indirect inheritance: All entries from the union of nonzero patterns of columns corresponding to children of $j$ in the elimination tree, restricted to rows numbered greater than $j$
 \end{itemize}
 \end{definition}
 

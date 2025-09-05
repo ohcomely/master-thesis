@@ -10,14 +10,14 @@
 % As this and the following chapters are likely longer than a few pages, consider structuring them into sections (but avoid fragmentation by overly fine-grained sectioning).
 % Use the \verb|\..section{}| command family as illustrated below:
 
-Before we look into the algorithms and theory behind reordering techniques, we first take a dive into the factorization process which produces further non-zeroes, which in this and the entire thesis' context, is called as fill-ins. Fill-ins depends only on the structure of the matrix, ie. the positions where the initial non-zero entries are placed. It may be trivial but important to note, that if some numerical arithmetic results to a zero in the factored matrix, it is usually still considered as a fill-in. 
+Before we look into the algorithms and theory behind reordering techniques, we first take a dive into the factorization process that produces further non-zeroes, which in this and the entire thesis's context, are called fill-ins. Fill-ins depends only on the structure of the matrix, i.e., the positions where the initial non-zero entries are placed. It may be trivial but important to note, that if some numerical arithmetic results in a zero in the factored matrix, it is usually still considered as a fill-in. 
 
 Suppose the set of set of \textit{n} equations that are to be solved are
 \begin{equation}
     Ax = b
 \end{equation}
 where \(A\) is a sparse matrix, \(x\) is the vector of unknowns. The sparsity, or the number of non-zero entries in \(A\) determines the fill-in of it's Cholesky factor when it is employed to solve the aforementioned set of equations. 
-Suppose the Cholesky factorization of \(A\) is given by \(LL^T\), where \(L\) is a lower triangular matrix (with a positive diagonal) and \(L^T\) is the transpose of \(L\). The efficiency of solving this set of equations is dependent on the number of non-zero entries in \(L\). It has been shown (George and Liu) that we can facotr and solve the set of equations in space proportional to  \(\sum_j d_j\) and time complexity is  \(\sum_j {d_j}^2\), where \(d_j\) is the number of non-zeroes in the \(j\)th column of \(L\).
+Suppose the Cholesky factorization of \(A\) is given by \(LL^T\), where \(L\) is a lower triangular matrix (with a positive diagonal) and \(L^T\) is the transpose of \(L\). The efficiency of solving this set of equations is dependent on the number of non-zero entries in \(L\). It has been shown (George and Liu) that we can factor and solve the set of equations in space proportional to  \(\sum_j d_j\) and time complexity \(\sum_j {d_j}^2\), where \(d_j\) is the number of non-zeroes in the \(j\)th column of \(L\).
 %TODO how to do sum?
 
 

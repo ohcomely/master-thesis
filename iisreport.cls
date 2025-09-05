@@ -41,12 +41,12 @@
 \ExecuteOptions{noprint}
 \ProcessOptions\relax
 
-% Make underscore a printable character.  Use `\sb{}` for subscripts.  (For reasons of symmetry,
-% you should use `\sp{}` for superscripts.)
-\if@oldsubscript
-\else
- \catcode`_=12
-\fi
+% % Make underscore a printable character.  Use `\sb{}` for subscripts.  (For reasons of symmetry,
+% % you should use `\sp{}` for superscripts.)
+% \if@oldsubscript
+% \else
+%  \catcode`_=12
+% \fi
 
 % The underlying base class is `scrbook`.
 \LoadClass[%

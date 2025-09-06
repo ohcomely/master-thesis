@@ -6,16 +6,16 @@
 \contentsline {table}{\numberline {4.1}{\ignorespaces Fritz cluster node configuration}}{20}{table.caption.21}%
 \contentsline {table}{\numberline {4.2}{\ignorespaces SuiteSparse matrix dataset used for evaluation}}{21}{table.caption.22}%
 \contentsline {table}{\numberline {4.3}{\ignorespaces Quantum Transport matrix dataset used for evaluation}}{22}{table.caption.23}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}}{26}{table.caption.24}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}}{25}{table.caption.24}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {B.1}{\ignorespaces Different font faces.}}{37}{table.caption.33}%
-\contentsline {table}{\numberline {B.2}{\ignorespaces Different font sizes.}}{37}{table.caption.34}%
-\contentsline {table}{\numberline {B.3}{\ignorespaces Simple example table with some values in different number systems.}}{44}{table.caption.37}%
-\contentsline {table}{\numberline {B.4}{\ignorespaces Simple example table with different row and cell colors.}}{46}{table.caption.38}%
-\contentsline {table}{\numberline {B.5}{\ignorespaces Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}. }}{46}{table.caption.39}%
+\contentsline {table}{\numberline {B.1}{\ignorespaces Different font faces.}}{36}{table.caption.33}%
+\contentsline {table}{\numberline {B.2}{\ignorespaces Different font sizes.}}{36}{table.caption.34}%
+\contentsline {table}{\numberline {B.3}{\ignorespaces Simple example table with some values in different number systems.}}{43}{table.caption.37}%
+\contentsline {table}{\numberline {B.4}{\ignorespaces Simple example table with different row and cell colors.}}{45}{table.caption.38}%
+\contentsline {table}{\numberline {B.5}{\ignorespaces Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}. }}{45}{table.caption.39}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

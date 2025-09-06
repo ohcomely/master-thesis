@@ -171,9 +171,9 @@ All experiments are executed on the Fritz cluster to ensure consistent hardware 
 
 In this section, we present the results of our experimental evaluation, focusing on the key metrics outlined in the previous section. 
 
-\subsection{Fill-in Analysis}
+% \subsection{Fill-in Analysis}
 
-Table~\ref{tab:fillin-results} presents the fill-in results for all evaluated reordering algorithms across our matrix dataset. Fill-in represents the number of additional non-zero entries introduced during Cholesky factorization, which directly impacts both memory requirements and computational complexity.
+% Table~\ref{tab:fillin-results} presents the fill-in results for all evaluated reordering algorithms across our matrix dataset. Fill-in represents the number of additional non-zero entries introduced during Cholesky factorization, which directly impacts both memory requirements and computational complexity.
 
 \begin{table}[h]
 \centering
@@ -214,11 +214,11 @@ wave & 121700000 & 121700000 & 85080000 & 61300000 & 61410000 & 66910000 & 59710
 \end{table}
 
 
-The results reveal several key insights about the effectiveness of different reordering strategies. The natural ordering consistently produces the highest fill-in, often by orders of magnitude compared to optimized reorderings, demonstrating the critical importance of matrix reordering for sparse factorization. Among the classical methods, AMD and COLAMD show identical performance, which is expected since COLAMD reduces to AMD for symmetric matrices.
+% The results reveal several key insights about the effectiveness of different reordering strategies. The natural ordering consistently produces the highest fill-in, often by orders of magnitude compared to optimized reorderings, demonstrating the critical importance of matrix reordering for sparse factorization. Among the classical methods, AMD and COLAMD show identical performance, which is expected since COLAMD reduces to AMD for symmetric matrices.
 
-The graph partitioning methods (METIS, SCOTCH, and METIS+IC) generally outperform classical approaches, with METIS+IC often achieving the best results. The hypergraph-based methods show variable performance depending on the block size, with HG-2 frequently providing the most aggressive fill-in reduction, though at potentially higher computational cost for the reordering itself.
+% The graph partitioning methods (METIS, SCOTCH, and METIS+IC) generally outperform classical approaches, with METIS+IC often achieving the best results. The hypergraph-based methods show variable performance depending on the block size, with HG-2 frequently providing the most aggressive fill-in reduction, though at potentially higher computational cost for the reordering itself.
 
-Notably, some algorithms failed to complete on certain large matrices (indicated by dashes), highlighting scalability limitations that become apparent when dealing with very large or numerically challenging problems.
+% Notably, some algorithms failed to complete on certain large matrices (indicated by dashes), highlighting scalability limitations that become apparent when dealing with very large or numerically challenging problems.
 
 
 

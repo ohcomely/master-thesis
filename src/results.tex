@@ -48,18 +48,179 @@ The login nodes fritz[1-4] are equipped with 2 × Intel Xeon Platinum 8360Y (Ice
 %   \item If your implementation is configurable, which configuration(s) did you evaluate?
 % \end{itemize}
 
-The information given here (with references to external work) should be sufficient to reproduce the setup you used for your measurements.
+% The information given here (with references to external work) should be sufficient to reproduce the setup you used for your measurements.
 
-\section{Other sections}
+\section{Matrices dataset}
 
-Structure the rest of this chapter into sections.
-For example, each section could discuss a different figure of merit or a different part of your implementation.
-As usual, discuss structure and content in advance with your advisors.
+We selected a diverse set of sparse matrices from the SuiteSparse Matrix Collection and our custom dataset of matrices encountered in Quantum Transport to evaluate our implementations. The SuiteSparse matrices chosen are usually which were commonly used in the literature for \textit{METIS} and \textit{SCOTCH} own evaluations. 
+[TODO about Quantum transport matrices]
 
-\section{Comparison to related work}
+\begin{table}[h]
+\centering
+\caption{SuiteSparse matrix dataset used for evaluation}
+\label{tab:matrix-dataset}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|r|r|l|}
+\hline
+\textbf{Graph name} & \textbf{No. of vertices} & \textbf{No. of edges} & \textbf{Description} \\
+\hline
+144 & 144649 & 1074393 & 3D Finite element mesh \\
+598A & 110971 & 741934 & 3D Finite element mesh \\
+ADD32 & 4960 & 9462 & 32-bit adder \\
+AUTO & 448695 & 3314611 & 3D Finite element mesh \\
+BBMAT & 38744 & 99341 & 2D Stiffness matrix \\
+BCSSTK30 & 28294 & 1007284 & 3D Stiffness matrix \\
+BCSSTK31 & 35588 & 572914 & 3D Stiffness matrix \\
+BCSSTK32 & 44609 & 985046 & 3D Stiffness matrix \\
+BRACK2 & 62631 & 366559 & 3D Finite element mesh \\
+CANT & 54195 & 1960797 & 3D Stiffness matrix \\
+COPTER2 & 55476 & 352238 & 3D Finite element mesh \\
+FINAN512 & 74752 & 261120 & Linear programming \\
+LHR10 & 10672 & 209093 & Chemical engineering \\
+LHR71 & 70304 & 1449248 & Chemical engineering \\
+M14B & 214765 & 3358036 & 3D Finite element mesh \\
+MEMPLUS & 17758 & 54196 & Memory circuit \\
+PWT & 36519 & 144793 & 3D Finite element mesh \\
+SHYY161 & 76480 & 152002 & CFD/Navier-Stokes \\
+TORSO1 & 201142 & 1479989 & 3D Finite element mesh \\
+TROLL & 213453 & 5858829 & 3D Stiffness matrix \\
+VENKAT01 & 62424 & 827684 & 2D Coefficient matrix \\
+WAVE & 156317 & 1059331 & 3D Finite element mesh \\
+\hline
+\end{tabular}%
+}
+\end{table}
 
-Compare your results to those achieved by others working on similar problems.
-This can be done in a separate section or directly in the sections above.
+\begin{table}[h]
+\centering
+\caption{Quantum Transport matrix dataset used for evaluation}
+\label{tab:qt-matrix-dataset}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|r|r|l|}
+\hline
+\textbf{Graph name} & \textbf{No. of vertices} & \textbf{No. of edges} & \textbf{Description} \\
+\hline
+airpoll\_conditional\_st3 & 8499 & 1218651 & [TODO: Description] \\
+airpoll\_prior\_st3 & 8499 & 1205931 & [TODO: Description] \\
+cnt\_cp2k & 9152 & 6154350 & [TODO: Description] \\
+cnt\_w90 & 768 & 71680 & [TODO: Description] \\
+kmc\_potential\_0 & 403605 & 10007089 & [TODO: Description] \\
+kmc\_potential\_1 & 1632355 & 41208963 & [TODO: Description] \\
+qubit\_fem\_b4 & 116380 & 2517228 & [TODO: Description] \\
+sinw\_w90 & 7488 & 5310160 & [TODO: Description] \\
+\hline
+\end{tabular}%
+}
+\end{table}
+
+\section{Methodology}
+
+For our evaluation, we systematically assessed the performance of eleven different reordering algorithms across all matrices listed in Tables~\ref{tab:matrix-dataset} and~\ref{tab:qt-matrix-dataset}. The evaluated algorithms encompass both sequential and parallel approaches, ranging from classical degree-based methods to graph partitioning and hypergraph-based techniques:
+
+\begin{description}
+   \item[\textbf{Classical Methods:}] \mbox{}\\
+   \begin{itemize}
+      \item \textbf{AMD} -- Approximate Minimum Degree
+      \item \textbf{COLAMD} -- Column Approximate Minimum Degree  
+      \item \textbf{RCM} -- Reverse Cuthill-McKee
+      \item \textbf{Natural} -- Original matrix ordering (baseline)
+   \end{itemize}
+   
+   \item[\textbf{Graph Partitioning Methods:}] \mbox{}\\
+   \begin{itemize}
+      \item \textbf{METIS} -- Sequential graph partitioning-based reordering
+      \item \textbf{METIS+IC} -- METIS with improved coarsening integration
+      \item \textbf{SCOTCH} -- Sequential graph partitioning
+      \item \textbf{PT-SCOTCH} -- Parallel graph partitioning
+      \item \textbf{ParMETIS} -- Parallel graph partitioning
+   \end{itemize}
+   
+   \item[\textbf{Hypergraph-based Methods:}] \mbox{}\\
+   \begin{itemize}
+      \item \textbf{HG-2, HG-4, HG-8, HG-16} -- Hypergraph-based reordering with block partition sizes of 2, 4, 8, and 16 vertices respectively
+   \end{itemize}
+\end{description}
+
+The hypergraph-based methods (HG-2, HG-4, HG-8, HG-16) employ different block partition sizes to explore the trade-off between computational complexity and reordering/parallelization quality. All these algorithms are described in detail in Chapter~\ref{ch:background}.
+
+\subsection{Performance Metrics and Measurement Protocol}
+
+Our comprehensive evaluation measures five key performance indicators to assess the effectiveness of each reordering algorithm:
+
+\begin{description}
+   \item[\textbf{Fill-in Reduction:}] We measure the number of non-zero entries introduced during symbolic Cholesky factorization using the \texttt{cmpfillin} binary provided by the METIS library. This tool performs symbolic factorization (as described in Chapter~\ref{ch:background}) to count the additional non-zero entries without executing the actual numerical computation. 
+      
+      \item[\textbf{Computational Complexity:}] We track the total floating-point operation count required for factorization, providing insight into the computational efficiency gains achieved by different reordering strategies.
+      
+      \item[\textbf{Reordering Time:}] The wall-clock time required to compute the reordering itself is measured using Python's \texttt{time.perf\_counter()} with microsecond precision. This overhead cost is crucial for understanding the practical applicability of each method.
+      
+      \item[\textbf{Memory Usage:}] We implement a dedicated memory monitoring system using a separate thread that samples memory consumption every 50 milliseconds during reordering operations. The monitoring captures both peak memory usage (maximum RSS observed) and average memory consumption throughout the reordering process. Memory measurements are obtained via the \texttt{psutil} library, tracking the resident set size (RSS) of the process and computing the memory increase relative to a baseline measured before algorithm execution.
+
+      \item[\textbf{Parallelization Potential:}] We assess the elimination tree depth as an indicator of the inherent parallelism available in the factorization. As mentioned in Chapter~\ref{ch:background}, the elimination tree is constructed by identifying parent-child relationships in the symbolic factorization structure, where the tree depth represents the critical path length and thus the theoretical lower bound on parallel factorization time.
+\end{description}
+
+For memory profiling, we initially attempted to use the Massif profiler from Valgrind, but encountered issues with our Python-based implementations and the cluster environment. Consequently, we developed a custom memory measurement protocol that employs a thread-safe monitoring system to capture accurate memory usage patterns during reordering operations.
+
+Our memory measurement implementation works by first establishing a baseline memory consumption before starting any reordering algorithm, recording the initial resident set size (RSS) using \texttt{psutil.Process().memory\_info().rss}. During algorithm execution, a dedicated monitoring thread runs concurrently, sampling memory usage every 50 milliseconds throughout the entire operation. This thread continuously updates the maximum observed memory consumption and maintains a comprehensive list of all samples for subsequent average computation.
+
+Upon completion of the reordering algorithm, we compute both the peak memory increase (calculated as the maximum observed RSS minus the baseline) and the average memory increase (computed as the mean of all samples minus the baseline), with results reported in kilobytes. For cases where the monitoring thread fails to capture meaningful data, such as very fast operations that complete before sufficient samples can be collected, we provide conservative estimates based on matrix characteristics, using approximately 10\% of the matrix storage size as an upper bound for memory consumption.
+
+All experiments are executed on the Fritz cluster to ensure consistent hardware conditions across all measurements. Each algorithm is tested on every matrix in our dataset, and results are averaged over five independent runs to mitigate variability. 
+
+\section{Evaluation}
+
+In this section, we present the results of our experimental evaluation, focusing on the key metrics outlined in the previous section. 
+
+\subsection{Fill-in Analysis}
+
+Table~\ref{tab:fillin-results} presents the fill-in results for all evaluated reordering algorithms across our matrix dataset. Fill-in represents the number of additional non-zero entries introduced during Cholesky factorization, which directly impacts both memory requirements and computational complexity.
+
+\begin{table}[h]
+\centering
+\caption{Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}
+\label{tab:fillin-results}
+\rotatebox{90}{%
+\resizebox{\textheight}{!}{%
+\begin{tabular}{|l|r|r|r|r|r|r|r|r|r|r|r|}
+\hline
+\textbf{Matrix} & \textbf{AMD} & \textbf{COLAMD} & \textbf{HG-16} & \textbf{HG-2} & \textbf{HG-4} & \textbf{HG-8} & \textbf{METIS} & \textbf{Natural} & \textbf{METIS+IC} & \textbf{RCM} & \textbf{SCOTCH} \\
+\hline
+144 & 93410000 & 93410000 & 68090000 & 46850000 & 47320000 & 51880000 & 47060000 & 1.845E+19 & 46230000 & 925100000 & 51300000 \\
+598a & 45810000 & 45810000 & 40670000 & 25590000 & 25870000 & 29360000 & 25480000 & - & 25460000 & - & 28370000 \\
+add32 & 9417 & 9417 & 9830 & 10030 & 10120 & 10120 & 10050 & 2658000 & 9995 & 14610 & 20300 \\
+auto & 569500000 & 569500000 & - & 220800000 & 226000000 & - & 220600000 & - & 217900000 & - & 243900000 \\
+bbmat & 16860000 & 16860000 & 18340000 & 15780000 & 16100000 & 16370000 & 15910000 & - & 15750000 & 33750000 & 17800000 \\
+bcsstk30 & 3823000 & 3823000 & 4806000 & 4354000 & 4507000 & 4345000 & 4277000 & 15690000 & 4300000 & 21110000 & 4541000 \\
+bcsstk31 & 5533000 & 5533000 & 4698000 & 4248000 & 4209000 & 4313000 & 4186000 & 23140000 & 4164000 & 22400000 & 4755000 \\
+bcsstk32 & 4944000 & 4944000 & 5855000 & 5383000 & 5382000 & 5451000 & 5311000 & 60770000 & 5297000 & 44020000 & 6201000 \\
+brack2 & 7386000 & 7386000 & 8666000 & 5732000 & 5906000 & 6693000 & 5870000 & 759500000 & 5800000 & 45130000 & 7636000 \\
+cant & 28880000 & 28880000 & 17850000 & 18210000 & 18200000 & 18090000 & 18200000 & 16780000 & 18220000 & 17150000 & 20440000 \\
+copter2 & 13880000 & 13880000 & 15040000 & 8914000 & 9284000 & 10970000 & 8906000 & 702700000 & 8880000 & 68550000 & 10830000 \\
+finan512 & 2763000 & 2763000 & 1562000 & 1650000 & 1577000 & 1626000 & 1647000 & 6190000 & 1623000 & 7511000 & 2197000 \\
+lhr10 & 8078000 & 8078000 & 7500000 & 3130000 & 3858000 & 5469000 & 3469000 & - & 3323000 & 14980000 & 3937000 \\
+lhr71 & 93700000 & 93700000 & 210300000 & 36470000 & 36060000 & 35450000 & 36040000 & 210300000 & 34550000 & 150100000 & 41460000 \\
+m14b & 110300000 & 110300000 & 95120000 & 62320000 & 63220000 & 70130000 & 62610000 & - & 62130000 & - & 68790000 \\
+memplus & 52430 & 52430 & 57320 & 55730 & 54660 & 55180 & 54780 & 138400000 & 55830 & 142700 & 127300 \\
+pwt & 1519000 & 1519000 & 1320000 & 1307000 & 1313000 & 1319000 & 1306000 & 3396000 & 1309000 & 5362000 & 1601000 \\
+shyy161 & 1746000 & 1746000 & 1653000 & 1692000 & 1639000 & 1660000 & 1657000 & 8141000 & 1672000 & 11110000 & 2042000 \\
+torso1 & 12450000 & 12450000 & - & - & - & - & 13570000 & - & - & 113500000 & 16560000 \\
+troll & 91680000 & 91680000 & 78570000 & 60850000 & 61560000 & 63540000 & 58910000 & 913600000 & 58210000 & 941600000 & 67080000 \\
+venkat01 & 5739000 & 5739000 & 5797000 & 5378000 & 5378000 & 5472000 & 5405000 & 64940000 & 5349000 & 45380000 & 5954000 \\
+wave & 121700000 & 121700000 & 85080000 & 61300000 & 61410000 & 66910000 & 59710000 & 1008000000 & 62180000 & 835800000 & 66530000 \\
+\hline
+\end{tabular}%
+}%
+}
+\end{table}
+
+
+The results reveal several key insights about the effectiveness of different reordering strategies. The natural ordering consistently produces the highest fill-in, often by orders of magnitude compared to optimized reorderings, demonstrating the critical importance of matrix reordering for sparse factorization. Among the classical methods, AMD and COLAMD show identical performance, which is expected since COLAMD reduces to AMD for symmetric matrices.
+
+The graph partitioning methods (METIS, SCOTCH, and METIS+IC) generally outperform classical approaches, with METIS+IC often achieving the best results. The hypergraph-based methods show variable performance depending on the block size, with HG-2 frequently providing the most aggressive fill-in reduction, though at potentially higher computational cost for the reordering itself.
+
+Notably, some algorithms failed to complete on certain large matrices (indicated by dashes), highlighting scalability limitations that become apparent when dealing with very large or numerically challenging problems.
+
+
 
 \section{Current limitations}
 

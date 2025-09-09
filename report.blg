@@ -16,45 +16,45 @@ Warning--empty journal in merrill_scalable_nodate
 Warning--empty year in merrill_scalable_nodate
 
 Done.
-You've used 25 entries,
+You've used 27 entries,
             4087 wiz_defined-function locations,
-            970 strings with 10883 characters,
-and the built_in function-call counts, 11980 in all, are:
-= -- 958
-> -- 196
-< -- 50
-+ -- 104
-- -- 38
-* -- 515
-:= -- 2077
-add.period$ -- 46
-call.type$ -- 25
-change.case$ -- 16
-chr.to.int$ -- 114
-cite$ -- 27
-duplicate$ -- 901
-empty$ -- 1110
-format.name$ -- 44
-if$ -- 2711
+            981 strings with 11294 characters,
+and the built_in function-call counts, 13284 in all, are:
+= -- 1075
+> -- 219
+< -- 59
++ -- 116
+- -- 42
+* -- 580
+:= -- 2302
+add.period$ -- 50
+call.type$ -- 27
+change.case$ -- 19
+chr.to.int$ -- 132
+cite$ -- 29
+duplicate$ -- 995
+empty$ -- 1207
+format.name$ -- 49
+if$ -- 3004
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 181
-newline$ -- 124
-num.names$ -- 25
-pop$ -- 435
+int.to.str$ -- 27
+missing$ -- 199
+newline$ -- 134
+num.names$ -- 27
+pop$ -- 473
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 957
+skip$ -- 1057
 stack$ -- 0
-substring$ -- 286
-swap$ -- 636
-text.length$ -- 12
+substring$ -- 332
+swap$ -- 713
+text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 25
+type$ -- 27
 warning$ -- 2
-while$ -- 45
-width$ -- 27
-write$ -- 260
+while$ -- 51
+width$ -- 29
+write$ -- 285
 (There were 2 warnings)

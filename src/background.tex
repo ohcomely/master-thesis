@@ -178,8 +178,25 @@ The postorder traversal ensures that each column is processed only after all its
 Algorithm~\ref{alg:symbolic_factorization} correctly computes the sparsity pattern of the Cholesky factor $L$ in $O(|L|)$ time, where $|L|$ denotes the number of nonzero entries in $L$.
 \end{theorem}
 
+\newpage
+
 
 \section{Minimum fill-in and NP-completeness}
+
+When performing Cholesky factorization on a sparse symmetric matrix, we want to minimize fill-in - the new nonzero entries that appear during elimination. This translates to a graph theory problem: given a graph representing the matrix's sparsity pattern, find an elimination order that creates the fewest new edges. Yannakakis \cite{yannakakis_computing_1981} proved this optimization problem is NP-complete, meaning no polynomial-time algorithm can solve it optimally in general (unless P = NP).
+
+The key insight connecting linear algebra to graph theory is that chordal graphs are special. A graph is chordal if every cycle of length $\geq 4$ has a chord (an edge connecting non-consecutive vertices). The fundamental theorem states that a graph has perfect elimination (zero fill-in) if and only if it's chordal, and any elimination process on any graph produces a chordal result. Therefore, the minimum fill-in problem becomes: What's the smallest number of edges we must add to make our graph chordal?
+
+Yannakakis uses a three-step reduction to prove NP-completeness. First, he considers bipartite graphs and their special case, chain graphs. A bipartite graph has vertices split into two independent sets $P$ and $Q$, and it's a chain graph when neighborhoods form a nested sequence: $\Gamma(v_1) \subseteq \Gamma(v_2) \subseteq \ldots \subseteq \Gamma(v_k)$. The key property is that a bipartite graph is a chain graph if and only if it contains no pair of independent edges.
+
+Second, for any bipartite graph $G = (P, Q, E)$, he constructs $C(G)$ by making $P$ into a complete clique (all vertices in $P$ connected), making $Q$ into a complete clique (all vertices in $Q$ connected), and keeping original edges between $P$ and $Q$. The crucial lemma states that $C(G)$ is chordal if and only if $G$ is a chain graph. This works because if $G$ has independent edges, they create a 4-cycle in $C(G)$ with no chord. Conversely, if $G$ is a chain graph, $C(G)$ has a perfect elimination order.
+
+Third, the reduction uses the Optimal Linear Arrangement Problem, which asks: given a graph, arrange vertices on a line to minimize the sum of distances between adjacent vertices. This problem is known to be NP-complete. Yannakakis constructs an ingenious transformation where, given graph $G$ with $n$ vertices and $m$ edges, he creates bipartite graph $G'$ where part $P$ has one vertex for each vertex in $G$, and part $Q$ has an elaborate gadget structure with $2m + n^2 - d(v)$ vertices, with connections that encode the linear arrangement constraints. The mathematical relationship is:
+\begin{equation}
+\text{Minimum fill-in of } G' = \text{Optimal arrangement cost of } G + \frac{n^2(n-1)}{2} - 2m
+\end{equation}
+
+This result has profound practical implications. No perfect algorithm exists, as any algorithm guaranteeing optimal fill-in will require exponential time in the worst case. This explains why practical sparse matrix software uses heuristics like minimum degree ordering, nested dissection, and approximate minimum degree (AMD).
 
 \section{Heuristics classification}
 \label{sec:heuristics}

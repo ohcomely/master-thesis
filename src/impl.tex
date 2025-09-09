@@ -287,6 +287,17 @@ The separator computation on the coarsest level benefits from reduced problem si
 \newpage
 \section{Parallelizing minimum degree}
 
+There haven't been many attempts to parallelize the minimum degree algorithm due to its inherently sequential nature. The only known approximate parallel implementation of the minimum degree algorithm is the ParAMD algorithm proposed by Chang et al. in \cite{chang2025parallelizingapproximateminimumdegree}. 
+
+The sequential AMD algorithm has inherent bottlenecks that make parallelization difficult. Each elimination step requires selecting a pivot with minimum approximate degree, after which the degrees of neighboring variables must be updated. These steps are inherently sequential since you cannot select the next pivot until all updates from the previous elimination are complete.
+
+Instead of eliminating one pivot at a time, the algorithm selects multiple pivots simultaneously using "distance-2 independent sets" - pivots that are at least 2 steps apart in the graph. This ensures no overlap in pivot neighborhoods, eliminating contention between parallel threads.
+
+The algorithm allows selection of pivots whose degrees are within a multiplicative factor (\texttt{mult}) of the minimum degree. This relaxation increases the pool of available pivots for parallel processing while balancing against ordering quality - too much relaxation degrades the solution.
+
+
+
+
 \begin{algorithm}
     \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
     \SetKwFunction{ParallelAMD}{PARALLEL\_AMD}
@@ -343,8 +354,13 @@ The separator computation on the coarsest level benefits from reduced problem si
     \label{alg:parallel_amd}
 \end{algorithm}
 
-\newpage
+The ParAMD algorithm employs concurrent connection updates by pre-allocating 1.5x the original graph storage to avoid dynamic memory allocation. Each thread claims space atomically after collecting all updates, eliminating garbage collection synchronization bottlenecks.
+
+For degree management, each thread maintains its own degree lists instead of sharing a global structure. The algorithm uses an affinity array to track which thread has the most current information for each variable, with lazy cleanup of stale entries during traversal.
+
 \section{New Coarsening approaches in Nested Dissection}
+
+\section{Hypergraph Based Ordering}
 
 \section{GPU Implementation of RCM}
 

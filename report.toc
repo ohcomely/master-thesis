@@ -11,67 +11,68 @@
 \contentsline {subsubsection}{\nonumberline Postorder Properties and Structural Invariants}{5}{subsubsection*.10}%
 \contentsline {subsection}{\numberline {2.1.3}Algorithmic Construction of Elimination Trees}{6}{subsection.2.1.3}%
 \contentsline {subsection}{\numberline {2.1.4}Symbolic Factorization}{6}{subsection.2.1.4}%
-\contentsline {section}{\numberline {2.2}Minimum fill-in and NP-completeness}{7}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Heuristics classification}{7}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Bandwidth Minimization}{8}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Minimum Degree}{8}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Nested Dissection}{9}{subsection.2.3.3}%
-\contentsline {chapter}{\numberline {3}Implementation and Optimizations}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}SuiteSparse implementation of RCM and Minimum Degree}{11}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}AMD Algorithm Overview}{11}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}COLAMD Algorithm Overview}{13}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Nested Dissection using METIS and SCOTCH}{16}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Parallel-Nested Dissection}{17}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Parallelizing minimum degree}{18}{section.3.4}%
+\contentsline {section}{\numberline {2.2}Minimum fill-in and NP-completeness}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Heuristics classification}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Bandwidth Minimization}{9}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Minimum Degree}{10}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Nested Dissection}{10}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}Implementation and Optimizations}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}SuiteSparse implementation of RCM and Minimum Degree}{12}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}AMD Algorithm Overview}{12}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}COLAMD Algorithm Overview}{14}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Nested Dissection using METIS and SCOTCH}{17}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Parallel-Nested Dissection}{18}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Parallelizing minimum degree}{19}{section.3.4}%
 \contentsline {section}{\numberline {3.5}New Coarsening approaches in Nested Dissection}{19}{section.3.5}%
-\contentsline {section}{\numberline {3.6}GPU Implementation of RCM}{19}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Results}{20}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Evaluation setup}{20}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Hardware Infrastructure}{20}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Matrices dataset}{21}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Methodology}{22}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Performance Metrics and Measurement Protocol}{23}{subsection.4.3.1}%
-\contentsline {section}{\numberline {4.4}Evaluation}{24}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Current limitations}{24}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Other Approaches}{26}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{26}{section.5.1}%
-\contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{26}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{28}{chapter.6}%
-\contentsline {chapter}{\numberline {A}Topic-Specific Guidelines}{29}{appendix.A}%
-\contentsline {section}{\numberline {A.1}IC design (ASIC or FPGA) projects}{29}{section.A.1}%
-\contentsline {subsection}{\numberline {A.1.1}Hardware architecture}{29}{subsection.A.1.1}%
-\contentsline {subsection}{\numberline {A.1.2}Design implementation}{29}{subsection.A.1.2}%
-\contentsline {subsubsection}{\nonumberline Functional verification}{29}{subsubsection*.27}%
-\contentsline {subsubsection}{\nonumberline Back-end implementation}{30}{subsubsection*.30}%
-\contentsline {subsection}{\numberline {A.1.3}Results}{30}{subsection.A.1.3}%
-\contentsline {subsection}{\numberline {A.1.4}Data sheet}{30}{subsection.A.1.4}%
-\contentsline {chapter}{\numberline {B}Compact Guide to \LaTeX {} and the \textit {iisreport} Class}{34}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Building the document}{34}{section.B.1}%
-\contentsline {section}{\numberline {B.2}Text editing and spacing}{34}{section.B.2}%
-\contentsline {subsection}{\numberline {B.2.1}Special characters}{35}{subsection.B.2.1}%
-\contentsline {subsection}{\numberline {B.2.2}Font faces and emphasis}{35}{subsection.B.2.2}%
-\contentsline {subsection}{\numberline {B.2.3}Font sizes}{36}{subsection.B.2.3}%
-\contentsline {subsection}{\numberline {B.2.4}Coloring text}{37}{subsection.B.2.4}%
-\contentsline {section}{\numberline {B.3}Debugging}{37}{section.B.3}%
-\contentsline {section}{\numberline {B.4}Math mode}{38}{section.B.4}%
-\contentsline {subsection}{\numberline {B.4.1}Delimiters: Parentheses, brackets, bars, and intervals}{39}{subsection.B.4.1}%
-\contentsline {subsection}{\numberline {B.4.2}Differential and derivative operators}{39}{subsection.B.4.2}%
-\contentsline {subsection}{\numberline {B.4.3}Vectors, matrices, and distinction of cases}{40}{subsection.B.4.3}%
-\contentsline {subsection}{\numberline {B.4.4}Multi-line equations}{40}{subsection.B.4.4}%
-\contentsline {subsection}{\numberline {B.4.5}Definitions, theorems, lemmas, and proofs}{41}{subsection.B.4.5}%
-\contentsline {section}{\numberline {B.5}Quantities with SI units}{41}{section.B.5}%
-\contentsline {section}{\numberline {B.6}Enumerations and itemizations}{42}{section.B.6}%
-\contentsline {section}{\numberline {B.7}Floats: figures and tables}{42}{section.B.7}%
-\contentsline {subsection}{\numberline {B.7.1}Figures}{43}{subsection.B.7.1}%
-\contentsline {subsection}{\numberline {B.7.2}Tables}{43}{subsection.B.7.2}%
-\contentsline {section}{\numberline {B.8}Algorithms and source code listings}{43}{section.B.8}%
-\contentsline {section}{\numberline {B.9}Citing and referencing}{45}{section.B.9}%
-\contentsline {section}{\numberline {B.10}Printing and binding}{46}{section.B.10}%
-\contentsline {section}{\numberline {B.11}Further reading}{46}{section.B.11}%
-\contentsline {section}{\numberline {B.12}\textit {iisreport} options quick reference}{46}{section.B.12}%
-\contentsline {chapter}{\numberline {C}Task Description}{47}{appendix.C}%
-\contentsline {chapter}{List of Acronyms}{48}{section*.41}%
-\contentsline {chapter}{\nonumberline List of Figures}{49}{section*.41}%
-\contentsline {chapter}{\nonumberline List of Tables}{50}{section*.41}%
-\contentsline {chapter}{\nonumberline Bibliography}{51}{chapter*.42}%
+\contentsline {section}{\numberline {3.6}Hypergraph Based Ordering}{19}{section.3.6}%
+\contentsline {section}{\numberline {3.7}GPU Implementation of RCM}{19}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Results}{22}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Evaluation setup}{22}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Hardware Infrastructure}{22}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Matrices dataset}{23}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Methodology}{24}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Performance Metrics and Measurement Protocol}{25}{subsection.4.3.1}%
+\contentsline {section}{\numberline {4.4}Evaluation}{26}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Current limitations}{26}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Other Approaches}{28}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{28}{section.5.1}%
+\contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{28}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{30}{chapter.6}%
+\contentsline {chapter}{\numberline {A}Topic-Specific Guidelines}{31}{appendix.A}%
+\contentsline {section}{\numberline {A.1}IC design (ASIC or FPGA) projects}{31}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Hardware architecture}{31}{subsection.A.1.1}%
+\contentsline {subsection}{\numberline {A.1.2}Design implementation}{31}{subsection.A.1.2}%
+\contentsline {subsubsection}{\nonumberline Functional verification}{31}{subsubsection*.27}%
+\contentsline {subsubsection}{\nonumberline Back-end implementation}{32}{subsubsection*.30}%
+\contentsline {subsection}{\numberline {A.1.3}Results}{32}{subsection.A.1.3}%
+\contentsline {subsection}{\numberline {A.1.4}Data sheet}{32}{subsection.A.1.4}%
+\contentsline {chapter}{\numberline {B}Compact Guide to \LaTeX {} and the \textit {iisreport} Class}{36}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Building the document}{36}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Text editing and spacing}{36}{section.B.2}%
+\contentsline {subsection}{\numberline {B.2.1}Special characters}{37}{subsection.B.2.1}%
+\contentsline {subsection}{\numberline {B.2.2}Font faces and emphasis}{37}{subsection.B.2.2}%
+\contentsline {subsection}{\numberline {B.2.3}Font sizes}{38}{subsection.B.2.3}%
+\contentsline {subsection}{\numberline {B.2.4}Coloring text}{39}{subsection.B.2.4}%
+\contentsline {section}{\numberline {B.3}Debugging}{39}{section.B.3}%
+\contentsline {section}{\numberline {B.4}Math mode}{40}{section.B.4}%
+\contentsline {subsection}{\numberline {B.4.1}Delimiters: Parentheses, brackets, bars, and intervals}{41}{subsection.B.4.1}%
+\contentsline {subsection}{\numberline {B.4.2}Differential and derivative operators}{41}{subsection.B.4.2}%
+\contentsline {subsection}{\numberline {B.4.3}Vectors, matrices, and distinction of cases}{42}{subsection.B.4.3}%
+\contentsline {subsection}{\numberline {B.4.4}Multi-line equations}{42}{subsection.B.4.4}%
+\contentsline {subsection}{\numberline {B.4.5}Definitions, theorems, lemmas, and proofs}{43}{subsection.B.4.5}%
+\contentsline {section}{\numberline {B.5}Quantities with SI units}{43}{section.B.5}%
+\contentsline {section}{\numberline {B.6}Enumerations and itemizations}{44}{section.B.6}%
+\contentsline {section}{\numberline {B.7}Floats: figures and tables}{44}{section.B.7}%
+\contentsline {subsection}{\numberline {B.7.1}Figures}{45}{subsection.B.7.1}%
+\contentsline {subsection}{\numberline {B.7.2}Tables}{45}{subsection.B.7.2}%
+\contentsline {section}{\numberline {B.8}Algorithms and source code listings}{45}{section.B.8}%
+\contentsline {section}{\numberline {B.9}Citing and referencing}{47}{section.B.9}%
+\contentsline {section}{\numberline {B.10}Printing and binding}{48}{section.B.10}%
+\contentsline {section}{\numberline {B.11}Further reading}{48}{section.B.11}%
+\contentsline {section}{\numberline {B.12}\textit {iisreport} options quick reference}{48}{section.B.12}%
+\contentsline {chapter}{\numberline {C}Task Description}{49}{appendix.C}%
+\contentsline {chapter}{List of Acronyms}{50}{section*.41}%
+\contentsline {chapter}{\nonumberline List of Figures}{51}{section*.41}%
+\contentsline {chapter}{\nonumberline List of Tables}{52}{section*.41}%
+\contentsline {chapter}{\nonumberline Bibliography}{53}{chapter*.42}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

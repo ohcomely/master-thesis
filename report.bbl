@@ -20,6 +20,11 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{yannakakis_computing_1981}
+\BIBentryALTinterwordspacing
+M.~Yannakakis, ``Computing the {Minimum} {Fill}-{In} is {NP}-{Complete},'' \emph{SIAM Journal on Algebraic Discrete Methods}, vol.~2, no.~1, pp. 77--79, Mar. 1981, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/0602010}
+\BIBentrySTDinterwordspacing
+
 \bibitem{lipton_generalized_1979}
 \BIBentryALTinterwordspacing
 R.~J. Lipton, D.~J. Rose, and R.~E. Tarjan, ``Generalized {Nested} {Dissection},'' \emph{SIAM Journal on Numerical Analysis}, vol.~16, no.~2, pp. 346--358, Apr. 1979, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/0716027}
@@ -28,6 +33,11 @@ R.~J. Lipton, D.~J. Rose, and R.~E. Tarjan, ``Generalized {Nested} {Dissection},
 \bibitem{george_nested_1973}
 \BIBentryALTinterwordspacing
 A.~George, ``Nested {Dissection} of a {Regular} {Finite} {Element} {Mesh},'' \emph{SIAM Journal on Numerical Analysis}, vol.~10, no.~2, pp. 345--363, Apr. 1973, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/0710032}
+\BIBentrySTDinterwordspacing
+
+\bibitem{chang2025parallelizingapproximateminimumdegree}
+\BIBentryALTinterwordspacing
+Y.-H. Chang, A.~Buluç, and J.~Demmel, ``Parallelizing the approximate minimum degree ordering algorithm: Strategies and evaluation,'' 2025. [Online]. Available: \url{https://arxiv.org/abs/2504.17097}
 \BIBentrySTDinterwordspacing
 
 \bibitem{merrill_scalable_nodate}

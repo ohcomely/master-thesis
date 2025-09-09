@@ -2,19 +2,19 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Illustration of elimination tree construction for the given sparse symmetric matrix. The sparsity is denoted by filled black circles and the fill-in induced is denoted by hollow red circles.}}{7}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}}{10}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}}{11}{figure.caption.14}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces GNN-based method with RCM and MinDegree}}{27}{figure.caption.25}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces GNN-based method with RCM and MinDegree}}{29}{figure.caption.25}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Testbench used for functional verification.}}{30}{figure.caption.28}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Standard bonding diagram for QFN56 UMC 180\,nm mini@sics.}}{32}{figure.caption.31}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Pinout for \textsc {MyFancyChip}.}}{33}{figure.caption.32}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Testbench used for functional verification.}}{32}{figure.caption.28}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Standard bonding diagram for QFN56 UMC 180\,nm mini@sics.}}{34}{figure.caption.31}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Pinout for \textsc {MyFancyChip}.}}{35}{figure.caption.32}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Selected predefined colors, sorted by hue.}}{37}{figure.caption.35}%
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Example figure.}}{43}{figure.caption.36}%
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Selected predefined colors, sorted by hue.}}{39}{figure.caption.35}%
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Example figure.}}{45}{figure.caption.36}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

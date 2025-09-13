@@ -35,6 +35,16 @@ R.~J. Lipton, D.~J. Rose, and R.~E. Tarjan, ``Generalized {Nested} {Dissection},
 A.~George, ``Nested {Dissection} of a {Regular} {Finite} {Element} {Mesh},'' \emph{SIAM Journal on Numerical Analysis}, vol.~10, no.~2, pp. 345--363, Apr. 1973, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/0710032}
 \BIBentrySTDinterwordspacing
 
+\bibitem{catalyurek_hypergraph_2011}
+\BIBentryALTinterwordspacing
+U.~V. \c{C}ataly\"urek, C.~Aykanat, and E.~Kayaaslan, ``Hypergraph {Partitioning}-{Based} {Fill}-{Reducing} {Ordering} for {Symmetric} {Matrices},'' \emph{SIAM Journal on Scientific Computing}, vol.~33, no.~4, pp. 1996--2023, Jan. 2011, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/090757575}
+\BIBentrySTDinterwordspacing
+
+\bibitem{dasgupta_alpha_2023}
+\BIBentryALTinterwordspacing
+A.~Dasgupta and P.~Kumar, ``Alpha {Elimination}: {Using} {Deep} {Reinforcement} {Learning} to {Reduce} {Fill}-{In} {During} {Sparse} {Matrix} {Decomposition},'' in \emph{Machine {Learning} and {Knowledge} {Discovery} in {Databases}: {Research} {Track}: {European} {Conference}, {ECML} {PKDD} 2023, {Turin}, {Italy}, {September} 18–22, 2023, {Proceedings}, {Part} {IV}}.\hskip 1em plus 0.5em minus 0.4em\relax Berlin, Heidelberg: Springer-Verlag, Sep. 2023, pp. 472--488. [Online]. Available: \url{https://doi.org/10.1007/978-3-031-43421-1_28}
+\BIBentrySTDinterwordspacing
+
 \bibitem{chang2025parallelizingapproximateminimumdegree}
 \BIBentryALTinterwordspacing
 Y.-H. Chang, A.~Buluç, and J.~Demmel, ``Parallelizing the approximate minimum degree ordering algorithm: Strategies and evaluation,'' 2025. [Online]. Available: \url{https://arxiv.org/abs/2504.17097}

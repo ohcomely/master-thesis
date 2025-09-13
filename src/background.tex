@@ -1,5 +1,3 @@
-
-
 \chapter{Background}
 \label{ch:background}
 
@@ -185,18 +183,18 @@ Algorithm~\ref{alg:symbolic_factorization} correctly computes the sparsity patte
 
 When performing Cholesky factorization on a sparse symmetric matrix, we want to minimize fill-in - the new nonzero entries that appear during elimination. This translates to a graph theory problem: given a graph representing the matrix's sparsity pattern, find an elimination order that creates the fewest new edges. Yannakakis \cite{yannakakis_computing_1981} proved this optimization problem is NP-complete, meaning no polynomial-time algorithm can solve it optimally in general (unless P = NP).
 
-The key insight connecting linear algebra to graph theory is that chordal graphs are special. A graph is chordal if every cycle of length $\geq 4$ has a chord (an edge connecting non-consecutive vertices). The fundamental theorem states that a graph has perfect elimination (zero fill-in) if and only if it's chordal, and any elimination process on any graph produces a chordal result. Therefore, the minimum fill-in problem becomes: What's the smallest number of edges we must add to make our graph chordal?
+The key insight connecting linear algebra to graph theory is that chordal graphs is essential in proving as such. A graph is chordal if every cycle of length $\geq 4$ has a chord (an edge connecting non-consecutive vertices). The fundamental theorem states that a graph has perfect elimination (zero fill-in) if and only if it's chordal, and any elimination process on any graph produces a chordal result. Therefore, the minimum fill-in problem becomes: What's the smallest number of edges we must add to make our graph chordal?
 
-Yannakakis uses a three-step reduction to prove NP-completeness. First, he considers bipartite graphs and their special case, chain graphs. A bipartite graph has vertices split into two independent sets $P$ and $Q$, and it's a chain graph when neighborhoods form a nested sequence: $\Gamma(v_1) \subseteq \Gamma(v_2) \subseteq \ldots \subseteq \Gamma(v_k)$. The key property is that a bipartite graph is a chain graph if and only if it contains no pair of independent edges.
+The proof uses a three-step reduction to prove NP-completeness. First, we consider a bipartite graphs and their special case, chain graphs. A bipartite graph has vertices split into two independent sets $P$ and $Q$, and it's a chain graph when neighborhoods form a nested sequence: $\Gamma(v_1) \subseteq \Gamma(v_2) \subseteq \ldots \subseteq \Gamma(v_k)$. The key property is that a bipartite graph is a chain graph if and only if it contains no pair of independent edges.
 
-Second, for any bipartite graph $G = (P, Q, E)$, he constructs $C(G)$ by making $P$ into a complete clique (all vertices in $P$ connected), making $Q$ into a complete clique (all vertices in $Q$ connected), and keeping original edges between $P$ and $Q$. The crucial lemma states that $C(G)$ is chordal if and only if $G$ is a chain graph. This works because if $G$ has independent edges, they create a 4-cycle in $C(G)$ with no chord. Conversely, if $G$ is a chain graph, $C(G)$ has a perfect elimination order.
+Second, for any bipartite graph $G = (P, Q, E)$, we construct $C(G)$ by making $P$ into a complete clique (all vertices in $P$ connected), making $Q$ into a complete clique (all vertices in $Q$ connected), and keeping original edges between $P$ and $Q$. The crucial lemma states that $C(G)$ is chordal if and only if $G$ is a chain graph. This works because if $G$ has independent edges, they create a 4-cycle in $C(G)$ with no chord. Conversely, if $G$ is a chain graph, $C(G)$ has a perfect elimination order.
 
-Third, the reduction uses the Optimal Linear Arrangement Problem, which asks: given a graph, arrange vertices on a line to minimize the sum of distances between adjacent vertices. This problem is known to be NP-complete. Yannakakis constructs an ingenious transformation where, given graph $G$ with $n$ vertices and $m$ edges, he creates bipartite graph $G'$ where part $P$ has one vertex for each vertex in $G$, and part $Q$ has an elaborate gadget structure with $2m + n^2 - d(v)$ vertices, with connections that encode the linear arrangement constraints. The mathematical relationship is:
+Third, the reduction uses the Optimal Linear Arrangement Problem, which asks: given a graph, arrange vertices on a line to minimize the sum of distances between adjacent vertices. This problem is known to be NP-complete. Yannakakis constructs an transformation where, given graph $G$ with $n$ vertices and $m$ edges, he creates bipartite graph $G'$ where part $P$ has one vertex for each vertex in $G$, and part $Q$ has an elaborate gadget structure with $2m + n^2 - d(v)$ vertices, with connections that encode the linear arrangement constraints. The mathematical relationship is:
 \begin{equation}
 \text{Minimum fill-in of } G' = \text{Optimal arrangement cost of } G + \frac{n^2(n-1)}{2} - 2m
 \end{equation}
 
-This result has profound practical implications. No perfect algorithm exists, as any algorithm guaranteeing optimal fill-in will require exponential time in the worst case. This explains why practical sparse matrix software uses heuristics like minimum degree ordering, nested dissection, and approximate minimum degree (AMD).
+This result has practical implications that no perfect algorithm exists, as any algorithm guaranteeing optimal fill-in will require exponential time in the worst case. This explains why practical sparse matrix software uses heuristics like minimum degree ordering, nested dissection and such.
 
 \section{Heuristics classification}
 \label{sec:heuristics}
@@ -265,4 +263,9 @@ Nested dissection consists of the following steps: Form an undirected graph in w
 
 All the sequential algorithms for determining the elimination ordering of a graph G can be described by the following general algorithm: Generate the tree of separators for G and perform a tree traversal on the separator tree to order the vertices, where this traversal must visit a node before any of its parents.
 
+\subsection{Hypergraph partitioning and other methods}
+
+In recent years, hypergraph partitioning methods \cite{catalyurek_hypergraph_2011} have been proposed to reduce fill-in during sparse matrix factorization. Hypergraphs generalize graphs by allowing edges (hyperedges) to connect more than two vertices, making them well-suited for modeling complex relationships in sparse matrices. In this paper we explore another Hypergraph based reordering method, 
+
+Other methods include machine learning approaches that learn optimal ordering strategies using reinforcement learning. One such approach is Alpha Elimination \cite{dasgupta_alpha_2023} which uses Convolutional Neural Networks (CNNs) and reinforcement learning to predict the next node to eliminate based on the current state of the graph. We have explored a more flexible architecture but fails with scalability, which we discuss in Chapter \ref{ch:other_approaches}.
 

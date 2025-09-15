@@ -213,6 +213,21 @@ wave & 121700000 & 121700000 & 85080000 & 61300000 & 61410000 & 66910000 & 59710
 }
 \end{table}
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{fig/res/144_sparsity_patterns.png}
+\caption{Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}
+\label{fig:144-sparsity-patterns}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{fig/res/copter2_sparsity_patterns.png}
+\caption{Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}
+\label{fig:copter2-sparsity-patterns}
+\end{figure}
+
+The sparsity pattern visualization in Figure~\ref{fig:144-sparsity-patterns} provides intuitive insight into how different reordering algorithms restructure the matrix 144. The natural ordering shows a scattered, unstructured pattern that leads to extensive fill-in during factorization. In contrast, the optimized reorderings demonstrate clear improvements in matrix structure, with methods like METIS and the hypergraph-based approaches creating more clustered patterns that minimize fill-in.
 
 % The results reveal several key insights about the effectiveness of different reordering strategies. The natural ordering consistently produces the highest fill-in, often by orders of magnitude compared to optimized reorderings, demonstrating the critical importance of matrix reordering for sparse factorization. Among the classical methods, AMD and COLAMD show identical performance, which is expected since COLAMD reduces to AMD for symmetric matrices.
 

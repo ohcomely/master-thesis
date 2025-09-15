@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex report"] 1757934625.20036 "report.aux" "report.bbl" "report" 1757934631.85186 0
+["bibtex report"] 1757978080.31943 "report.aux" "report.bbl" "report" 1757978087.79262 0
   "./bib/latex_and_writing.bib" 1751959538 3341 a696d27318d6dd81fca89d8e4587653c ""
   "./bib/main.bib" 1757609781.36107 11531 3f01582f13b7a72a302e140ce99d07fd ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "report.aux" 1757934631.29212 53526 c2c8baa1c8efe0fc40ff2b81f105c939 "pdflatex"
+  "report.aux" 1757978087.36683 54947 6b02d379ec706c1bfc739521a6dc974f "pdflatex"
   (generated)
   "report.bbl"
   "report.blg"
   (rewritten before read)
-["cusdep acn acr report"] 1757934611.30711 "report.acn" "report.acr" "report" 1757934631.85209 0
-  "report.acn" 1757934631.29993 4076 276637498c607079cd968faff0b950e4 "pdflatex"
+["cusdep acn acr report"] 1757977663.11299 "report.acn" "report.acr" "report" 1757978087.79298 0
+  "report.acn" 1757978087.37383 4076 0ae0f5891120d8862ce2b08d0c958dcf "pdflatex"
   (generated)
   "report.acr"
   (rewritten before read)
-["pdflatex"] 1757934625.30032 "/home/ranjan/ETHZ/thesis/report/master_thesis/report/report.tex" "report.pdf" "report" 1757934631.85214 0
+["pdflatex"] 1757978080.43888 "/home/ranjan/ETHZ/thesis/report/master_thesis/report/report.tex" "report.pdf" "report" 1757978087.79304 0
   "/etc/texmf/web2c/texmf.cnf" 1751844220.85407 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/ranjan/ETHZ/thesis/report/master_thesis/report/report.tex" 1756820174.43554 1270 5492e9af956d8af7327a539056f3274e ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -355,17 +355,20 @@
   "fig/qfn56_180_std.pdf" 1751959538 27031 4f355b56fbe241ae10a4f951a1364839 ""
   "fig/res/144_sparsity_patterns.png" 1757934285.27826 1881838 b09c2ecc3b5580f7d47e04abd67e167b ""
   "fig/res/copter2_sparsity_patterns.png" 1757934285.28384 2041303 9a68f75b73a4d588c8e972b839d761f4 ""
+  "fig/res/elimination_tree_depth_comparison.png" 1757964959.67399 228910 602e01d6d97e56d8681fcdaf078a2776 ""
+  "fig/res/fillin_method_comparison.png" 1757950779.59337 221812 754c6c2d4617b025c89563d01986c454 ""
+  "fig/res/reorder_time_vs_size.png" 1757977595.45079 200384 38524aac45cff76c3bcc06f0eaeb8029 ""
   "fig/titlepage_logo.pdf" 1751959538 5456 8ee5c13e99f3141cf8f21a375b732dd4 ""
   "iisreport.cls" 1757607920.48318 10246 3ed4e0b89250b99407a6b01ef6cd7381 ""
-  "report.acr" 1757934611.40082 2532 29a6d3c546f51f7e55bf41570054d081 "cusdep acn acr report"
-  "report.aux" 1757934631.29212 53526 c2c8baa1c8efe0fc40ff2b81f105c939 "pdflatex"
-  "report.bbl" 1757934625.29287 8337 a62892a00873b707da74299ef1de8954 "bibtex report"
-  "report.glsdefs" 1757934631.28993 6401 efc33f38ed3b6da6a04f98afe2b112a2 "pdflatex"
-  "report.lof" 1757934631.29993 1973 ee7b93f3667a4f989eebbbd28c70d60e "pdflatex"
-  "report.lot" 1757934631.29993 1654 ad81897378ce2baecbba8d680fcb3454 "pdflatex"
-  "report.out" 1757934626.68441 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "report.acr" 1757977663.19319 2532 9e228395f951eca9b49c4fd546e86fbb "cusdep acn acr report"
+  "report.aux" 1757978087.36683 54947 6b02d379ec706c1bfc739521a6dc974f "pdflatex"
+  "report.bbl" 1757978080.43297 8337 a62892a00873b707da74299ef1de8954 "bibtex report"
+  "report.glsdefs" 1757978087.36483 6401 efc33f38ed3b6da6a04f98afe2b112a2 "pdflatex"
+  "report.lof" 1757978087.37483 2725 80074b97330e73078fafc48c15dbdc7a "pdflatex"
+  "report.lot" 1757978087.37483 1654 419dfd97acf0340812faa679a1852db8 "pdflatex"
+  "report.out" 1757978081.90284 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "report.tex" 1756820174.43554 1270 5492e9af956d8af7327a539056f3274e ""
-  "report.toc" 1757934631.29993 7087 985b787027909c87727650a731c8229d "pdflatex"
+  "report.toc" 1757978087.37483 7007 ccd360489e449bfd16ed4b358d46afe6 "pdflatex"
   "src/abstract.tex" 1751959538 1562 61ee6554695697601299d581abba3965 ""
   "src/acknowledgments.tex" 1751959538 129 5ff98edd6e0e2fe4fa56b3077e43da58 ""
   "src/appendices/latex_guide.tex" 1751959538 35768 0313b76931e9edd76aa78102eb317e98 ""
@@ -377,7 +380,7 @@
   "src/impl.tex" 1757447780.22014 20864 47ed16ff99fd3ac12e21eddb138e11e6 ""
   "src/introduction.tex" 1757075514.80361 7396 06b6a2bcdf2ad21e411e36b445b99683 ""
   "src/other_approaches.tex" 1757076451.3341 2124 65347180bf7709753478a88013a8df76 ""
-  "src/results.tex" 1757934617.9612 17124 bdd5e210ac01b72628d60cb92feb9bb0 ""
+  "src/results.tex" 1757978072.6646 18729 29d0fed58773392bfcda58bbb9ea5d51 ""
   (generated)
   "report.acn"
   "report.aux"

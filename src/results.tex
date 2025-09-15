@@ -169,7 +169,39 @@ All experiments are executed on the Fritz cluster to ensure consistent hardware 
 
 \section{Evaluation}
 
-In this section, we present the results of our experimental evaluation, focusing on the key metrics outlined in the previous section. 
+For each matrix in our dataset with different reordering algorithms applied, we have collected all the aforementioned metrics, and these can be found in our appendix/supplementary material. Here, we present aggregated results and visualizations for our underlying metrics.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{fig/res/fillin_method_comparison.png}
+\caption{Fill-in comparison across different reordering algorithms with AMD as baseline. The geometric mean of fill-in ratios shows the relative performance of each method, where values below 1.0 indicate better performance than AMD.}
+\label{fig:fillin-comparison}
+\end{figure}
+
+The sparsity pattern visualization in Figure~\ref{fig:144-sparsity-patterns} provides intuitive insight into how different reordering algorithms restructure the matrix 144. The natural ordering shows a scattered, unstructured pattern that leads to extensive fill-in during factorization. In contrast, the optimized reorderings demonstrate clear improvements in matrix structure, with methods like METIS and the hypergraph-based approaches creating more clustered patterns that minimize fill-in. Similarly, the results for matrix copter2 in Figure~\ref{fig:copter2-sparsity-patterns} reveal comparable trends.
+
+We compare the fill-in results with different reordering algorithms by taking geometric means across all matrices, as shown in Figure~\ref{fig:fillin-comparison}. 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{fig/res/elimination_tree_depth_comparison.png}
+\caption{Elimination tree depth comparison across different reordering algorithms. The geometric mean shows the relative parallelization potential, where lower depths indicate better parallel scalability for factorization.}
+\label{fig:elimination-tree-depth}
+\end{figure}
+
+The elimination tree depth analysis in Figure~\ref{fig:elimination-tree-depth} reveals the parallelization potential of each reordering method. Lower elimination tree depths indicate greater opportunities for parallel factorization, as they represent shorter critical paths in the dependency graph. 
+
+Reordering time is another practical consideration regarding computational overhead, particularly how execution time scales with matrix size. Figure~\ref{fig:reordering-time-vs-size} illustrates the relationship between matrix size (number of vertices) and reordering time for different algorithms across our entire dataset.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/res/reorder_time_vs_size.png}
+\caption{Reordering time as a function of matrix size for different algorithms}
+\label{fig:reordering-time-vs-size}
+\end{figure}
+
+The performance analysis reveals distinct computational overhead characteristics across different algorithm categories. AMD and RCM are the fastest methods, benefiting from their simple computational kernels. Among nested dissection approaches, METIS is the fastest, while ParMETIS and PT-SCOTCH are slower, likely due to parallelization overhead that outweighs benefits for our matrix sizes. The hypergraph methods (HG-2, HG-4, HG-8, HG-16) were considerably the slowest by far, due to the inherent complexity of hypergraph partitioning algorithms involving multiple coarsening, partitioning, and refinement phases.
 
 % \subsection{Fill-in Analysis}
 
@@ -227,18 +259,10 @@ wave & 121700000 & 121700000 & 85080000 & 61300000 & 61410000 & 66910000 & 59710
 \label{fig:copter2-sparsity-patterns}
 \end{figure}
 
-The sparsity pattern visualization in Figure~\ref{fig:144-sparsity-patterns} provides intuitive insight into how different reordering algorithms restructure the matrix 144. The natural ordering shows a scattered, unstructured pattern that leads to extensive fill-in during factorization. In contrast, the optimized reorderings demonstrate clear improvements in matrix structure, with methods like METIS and the hypergraph-based approaches creating more clustered patterns that minimize fill-in.
-
-% The results reveal several key insights about the effectiveness of different reordering strategies. The natural ordering consistently produces the highest fill-in, often by orders of magnitude compared to optimized reorderings, demonstrating the critical importance of matrix reordering for sparse factorization. Among the classical methods, AMD and COLAMD show identical performance, which is expected since COLAMD reduces to AMD for symmetric matrices.
-
-% The graph partitioning methods (METIS, SCOTCH, and METIS+IC) generally outperform classical approaches, with METIS+IC often achieving the best results. The hypergraph-based methods show variable performance depending on the block size, with HG-2 frequently providing the most aggressive fill-in reduction, though at potentially higher computational cost for the reordering itself.
-
-% Notably, some algorithms failed to complete on certain large matrices (indicated by dashes), highlighting scalability limitations that become apparent when dealing with very large or numerically challenging problems.
 
 
+% \section{Current limitations}
 
-\section{Current limitations}
-
-Demonstrating that your implementation meets the objectives is usually done by showing a lower bound on a given figure of merit.
-Conversely, you should also illuminate the limitations of your implementation by showing upper bounds on these (or other appropriate) figures of merit.
-Critically examining your ideas and their implementation trying to find their limits is also part of your work!
+% Demonstrating that your implementation meets the objectives is usually done by showing a lower bound on a given figure of merit.
+% Conversely, you should also illuminate the limitations of your implementation by showing upper bounds on these (or other appropriate) figures of merit.
+% Critically examining your ideas and their implementation trying to find their limits is also part of your work!

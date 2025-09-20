@@ -1,25 +1,24 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces The bcsstk32 matrix from automotive chassis analysis. This 28,924 × 28,924 symmetric matrix represents an automobile chassis structure analyzed using finite element modeling.}}{1}{figure.caption.1}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Sparse matrix structure from a quantum transport device. The block-tridiagonal pattern reflects local physical interactions between neighboring spatial layers.}}{2}{figure.caption.2}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Illustration of elimination tree construction for the given sparse symmetric matrix. The sparsity is denoted by filled black circles and the fill-in induced is denoted by hollow red circles.}}{7}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}}{11}{figure.caption.14}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Fill-in comparison across different reordering algorithms with AMD as baseline. The geometric mean of fill-in ratios shows the relative performance of each method, where values below 1.0 indicate better performance than AMD.}}{26}{figure.caption.24}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Elimination tree depth comparison across different reordering algorithms. The geometric mean shows the relative parallelization potential, where lower depths indicate better parallel scalability for factorization.}}{27}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Reordering time as a function of matrix size for different algorithms}}{28}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{30}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{31}{figure.caption.29}%
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces GNN-based method with RCM and MinDegree}}{33}{figure.caption.30}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Illustration of elimination tree construction for the given sparse symmetric matrix. The sparsity is denoted by filled black circles and the fill-in induced is denoted by hollow red circles.}}{7}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}}{11}{figure.caption.16}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Testbench used for functional verification.}}{36}{figure.caption.33}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Standard bonding diagram for QFN56 UMC 180\,nm mini@sics.}}{38}{figure.caption.36}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Pinout for \textsc {MyFancyChip}.}}{39}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Fill-in reduction comparison across reordering algorithms for selected matrices. Results are shown as percentages relative to AMD performance. Methods with exceptionally high fill-in (RCM, Natural ordering) are excluded for clarity. ParMETIS results represent the 2-processor variant.}}{27}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Elimination tree depth comparison across different reordering algorithms. The geometric mean shows the relative parallelization potential, where lower depths indicate better parallel scalability for factorization.}}{28}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Reordering time as a function of matrix size for different algorithms}}{29}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{31}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{32}{figure.caption.31}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Selected predefined colors, sorted by hue.}}{43}{figure.caption.40}%
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Example figure.}}{49}{figure.caption.41}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces GNN-based method with RCM and MinDegree}}{34}{figure.caption.32}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Selected predefined colors, sorted by hue.}}{41}{figure.caption.36}%
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Example figure.}}{47}{figure.caption.37}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

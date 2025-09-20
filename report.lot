@@ -3,19 +3,20 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Fritz cluster node configuration}}{22}{table.caption.21}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces SuiteSparse matrix dataset used for evaluation}}{23}{table.caption.22}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Quantum Transport matrix dataset used for evaluation}}{24}{table.caption.23}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}}{29}{table.caption.27}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Fritz cluster node configuration}}{22}{table.caption.23}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces SuiteSparse matrix dataset used for evaluation}}{23}{table.caption.24}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Quantum Transport matrix dataset used for evaluation}}{24}{table.caption.25}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}}{30}{table.caption.29}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}}{37}{table.caption.33}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {B.1}{\ignorespaces Different font faces.}}{42}{table.caption.38}%
-\contentsline {table}{\numberline {B.2}{\ignorespaces Different font sizes.}}{42}{table.caption.39}%
-\contentsline {table}{\numberline {B.3}{\ignorespaces Simple example table with some values in different number systems.}}{49}{table.caption.42}%
-\contentsline {table}{\numberline {B.4}{\ignorespaces Simple example table with different row and cell colors.}}{51}{table.caption.43}%
-\contentsline {table}{\numberline {B.5}{\ignorespaces Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}. }}{51}{table.caption.44}%
+\contentsline {table}{\numberline {B.1}{\ignorespaces Different font faces.}}{40}{table.caption.34}%
+\contentsline {table}{\numberline {B.2}{\ignorespaces Different font sizes.}}{40}{table.caption.35}%
+\contentsline {table}{\numberline {B.3}{\ignorespaces Simple example table with some values in different number systems.}}{47}{table.caption.38}%
+\contentsline {table}{\numberline {B.4}{\ignorespaces Simple example table with different row and cell colors.}}{49}{table.caption.39}%
+\contentsline {table}{\numberline {B.5}{\ignorespaces Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}. }}{49}{table.caption.40}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

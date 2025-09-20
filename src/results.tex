@@ -100,14 +100,14 @@ WAVE & 156317 & 1059331 & 3D Finite element mesh \\
 \hline
 \textbf{Graph name} & \textbf{No. of vertices} & \textbf{No. of edges} & \textbf{Description} \\
 \hline
-airpoll\_conditional\_st3 & 8499 & 1218651 & [TODO: Description] \\
-airpoll\_prior\_st3 & 8499 & 1205931 & [TODO: Description] \\
-cnt\_cp2k & 9152 & 6154350 & [TODO: Description] \\
-cnt\_w90 & 768 & 71680 & [TODO: Description] \\
-kmc\_potential\_0 & 403605 & 10007089 & [TODO: Description] \\
-kmc\_potential\_1 & 1632355 & 41208963 & [TODO: Description] \\
-qubit\_fem\_b4 & 116380 & 2517228 & [TODO: Description] \\
-sinw\_w90 & 7488 & 5310160 & [TODO: Description] \\
+airpoll\_conditional\_st3 & 8499 & 1218651 & Spatio-temporal statistical Modelling \\
+airpoll\_prior\_st3 & 8499 & 1205931 & Spatio-temporal statistical Modelling \\
+cnt\_cp2k & 9152 & 6154350 & DFT Hamiltonian of Carbon Nanotube \\
+cnt\_w90 & 768 & 71680 & DFT Hamiltonian of Carbon Nanotube \\
+kmc\_potential\_0 & 403605 & 10007089 & Kinetic Monte Carlo for Device Modelling \\
+kmc\_potential\_1 & 1632355 & 41208963 & Kinetic Monte Carlo for Device Modelling \\
+qubit\_fem\_b4 & 116380 & 2517228 & FEM Matrix for Qubit \\
+sinw\_w90 & 7488 & 5310160 & DFT Hamiltonian of Silicon Nanowire \\
 \hline
 \end{tabular}%
 }
@@ -169,18 +169,17 @@ All experiments are executed on the Fritz cluster to ensure consistent hardware 
 
 \section{Evaluation}
 
-For each matrix in our dataset with different reordering algorithms applied, we have collected all the aforementioned metrics, and these can be found in our appendix/supplementary material. Here, we present aggregated results and visualizations for our underlying metrics.
+For each matrix in our dataset with different reordering algorithms applied, we have collected all the aforementioned metrics, and these can be found in our appendix/supplementary material \ref{app:experimental_results}. Here, we present results and visualizations for our underlying metrics for some of them.
 
-\begin{figure}[h]
+Figure~\ref{fig:fill-in-comparison} presents a comparative analysis of fill-in reduction performance across our key reordering algorithms for a representative subset of matrices from our dataset. The results are normalized relative to AMD performance to facilitate direct comparison across different matrix types and sizes.
+\begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{fig/res/fillin_method_comparison.png}
-\caption{Fill-in comparison across different reordering algorithms with AMD as baseline. The geometric mean of fill-in ratios shows the relative performance of each method, where values below 1.0 indicate better performance than AMD.}
-\label{fig:fillin-comparison}
+\includegraphics[width=\textwidth]{fig/res/fill-in-comp.png}
+\caption{Fill-in reduction comparison across reordering algorithms for selected matrices. Results are shown as percentages relative to AMD performance. Methods with exceptionally high fill-in (RCM, Natural ordering) are excluded for clarity. ParMETIS results represent the 2-processor variant.}
+\label{fig:fill-in-comparison}
 \end{figure}
 
 The sparsity pattern visualization in Figure~\ref{fig:144-sparsity-patterns} provides intuitive insight into how different reordering algorithms restructure the matrix 144. The natural ordering shows a scattered, unstructured pattern that leads to extensive fill-in during factorization. In contrast, the optimized reorderings demonstrate clear improvements in matrix structure, with methods like METIS and the hypergraph-based approaches creating more clustered patterns that minimize fill-in. Similarly, the results for matrix copter2 in Figure~\ref{fig:copter2-sparsity-patterns} reveal comparable trends.
-
-We compare the fill-in results with different reordering algorithms by taking geometric means across all matrices, as shown in Figure~\ref{fig:fillin-comparison}. 
 
 
 \begin{figure}[h]

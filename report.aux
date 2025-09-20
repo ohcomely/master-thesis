@@ -24,6 +24,21 @@
 \@writefile{loa}{\addvspace {10\p@ }}
 \newlabel{ch:introduction}{{1}{1}{Introduction}{chapter.1}{}}
 \newlabel{ch:introduction@cref}{{[chapter][1][]1}{[1][1][]1}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:bcsstk32-matrix}{{1.1a}{1}{Sparsity pattern of the bcsstk32 matrix}{figure.caption.1}{}}
+\newlabel{fig:bcsstk32-matrix@cref}{{[subfigure][1][1,1]1.1a}{[1][1][]1}}
+\newlabel{sub@fig:bcsstk32-matrix}{{a}{1}{Sparsity pattern of the bcsstk32 matrix}{figure.caption.1}{}}
+\newlabel{sub@fig:bcsstk32-matrix@cref}{{[subfigure][1][1,1]1.1a}{[1][1][]1}}
+\newlabel{fig:bcsstk32-graph}{{1.1b}{1}{Graph representation}{figure.caption.1}{}}
+\newlabel{fig:bcsstk32-graph@cref}{{[subfigure][2][1,1]1.1b}{[1][1][]1}}
+\newlabel{sub@fig:bcsstk32-graph}{{b}{1}{Graph representation}{figure.caption.1}{}}
+\newlabel{sub@fig:bcsstk32-graph@cref}{{[subfigure][2][1,1]1.1b}{[1][1][]1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces The bcsstk32 matrix from automotive chassis analysis. This 28,924 × 28,924 symmetric matrix represents an automobile chassis structure analyzed using finite element modeling.}}{1}{figure.caption.1}\protected@file@percent }
+\newlabel{fig:bcsstk32-example}{{1.1}{1}{The bcsstk32 matrix from automotive chassis analysis. This 28,924 × 28,924 symmetric matrix represents an automobile chassis structure analyzed using finite element modeling}{figure.caption.1}{}}
+\newlabel{fig:bcsstk32-example@cref}{{[figure][1][1]1.1}{[1][1][]1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Sparse matrix structure from a quantum transport device. The block-tridiagonal pattern reflects local physical interactions between neighboring spatial layers.}}{2}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:sparse-matrix-example}{{1.2}{2}{Sparse matrix structure from a quantum transport device. The block-tridiagonal pattern reflects local physical interactions between neighboring spatial layers}{figure.caption.2}{}}
+\newlabel{fig:sparse-matrix-example@cref}{{[figure][2][1]1.2}{[1][2][]2}}
 \BKM@entry{id=2,dest={636861707465722E32},srcline={1}}{5C3337365C3337375C303030425C303030615C303030635C3030306B5C303030675C303030725C3030306F5C303030755C3030306E5C30303064}
 \BKM@entry{id=3,dest={73656374696F6E2E322E31},srcline={22}}{5C3337365C3337375C303030455C3030306C5C303030695C3030306D5C303030695C3030306E5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030545C303030725C303030655C303030655C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030535C303030795C3030306D5C303030625C3030306F5C3030306C5C303030695C303030635C3030305C3034305C303030465C303030615C303030635C303030745C3030306F5C303030725C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E}
 \BKM@entry{id=4,dest={73756273656374696F6E2E322E312E31},srcline={25}}{5C3337365C3337375C3030304D5C303030615C303030745C303030685C303030655C3030306D5C303030615C303030745C303030695C303030635C303030615C3030306C5C3030305C3034305C303030465C3030306F5C303030755C3030306E5C303030645C303030615C303030745C303030695C3030306F5C3030306E5C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030505C303030725C3030306F5C303030625C3030306C5C303030655C3030306D5C3030305C3034305C303030465C3030306F5C303030725C3030306D5C303030755C3030306C5C303030615C303030745C303030695C3030306F5C3030306E}
@@ -38,31 +53,30 @@
 \newlabel{sec:elim_tree}{{2.1}{3}{Elimination Trees and Symbolic Factorization}{section.2.1}{}}
 \newlabel{sec:elim_tree@cref}{{[section][1][2]2.1}{[1][3][]3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Mathematical Foundations and Problem Formulation}{3}{subsection.2.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Sparse Matrix Factorization Context}{3}{subsubsection*.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Graph-Theoretic Representation of Sparse Matrices}{4}{subsubsection*.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Formal Definition of Elimination Trees}{4}{subsubsection*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Sparse Matrix Factorization Context}{3}{subsubsection*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Graph-Theoretic Representation of Sparse Matrices}{4}{subsubsection*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Formal Definition of Elimination Trees}{4}{subsubsection*.8}\protected@file@percent }
 \BKM@entry{id=5,dest={73756273656374696F6E2E322E312E32},srcline={62}}{5C3337365C3337375C303030535C303030745C303030725C303030755C303030635C303030745C303030755C303030725C303030615C3030306C5C3030305C3034305C303030505C303030725C3030306F5C303030705C303030655C303030725C303030745C303030695C303030655C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030545C303030685C303030655C3030306F5C303030725C303030655C303030745C303030695C303030635C303030615C3030306C5C3030305C3034305C303030435C303030685C303030615C303030725C303030615C303030635C303030745C303030655C303030725C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Structural Properties and Theoretical Characterizations}{5}{subsection.2.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Fill-in Characterization Through Path Analysis}{5}{subsubsection*.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Postorder Properties and Structural Invariants}{5}{subsubsection*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Fill-in Characterization Through Path Analysis}{5}{subsubsection*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Postorder Properties and Structural Invariants}{5}{subsubsection*.12}\protected@file@percent }
 \BKM@entry{id=6,dest={73756273656374696F6E2E322E312E33},srcline={88}}{5C3337365C3337375C303030415C3030306C5C303030675C3030306F5C303030725C303030695C303030745C303030685C3030306D5C303030695C303030635C3030305C3034305C303030435C3030306F5C3030306E5C303030735C303030745C303030725C303030755C303030635C303030745C303030695C3030306F5C3030306E5C3030305C3034305C3030306F5C303030665C3030305C3034305C303030455C3030306C5C303030695C3030306D5C303030695C3030306E5C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030545C303030725C303030655C303030655C30303073}
 \BKM@entry{id=7,dest={73756273656374696F6E2E322E312E34},srcline={134}}{5C3337365C3337375C303030535C303030795C3030306D5C303030625C3030306F5C3030306C5C303030695C303030635C3030305C3034305C303030465C303030615C303030635C303030745C3030306F5C303030725C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.3}Algorithmic Construction of Elimination Trees}{6}{subsection.2.1.3}\protected@file@percent }
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Direct Construction Method}}{6}{algocf.1}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{alg:direct_elimination_tree}{{1}{6}{Algorithmic Construction of Elimination Trees}{algocf.1}{}}
 \newlabel{alg:direct_elimination_tree@cref}{{[algorithm][1][]1}{[1][6][]6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.4}Symbolic Factorization}{6}{subsection.2.1.4}\protected@file@percent }
-\newlabel{fig:etree-matrix}{{2.1a}{7}{Sparse matrix structure}{figure.caption.12}{}}
+\newlabel{fig:etree-matrix}{{2.1a}{7}{Sparse matrix structure}{figure.caption.14}{}}
 \newlabel{fig:etree-matrix@cref}{{[subfigure][1][2,1]2.1a}{[1][6][]7}}
-\newlabel{sub@fig:etree-matrix}{{a}{7}{Sparse matrix structure}{figure.caption.12}{}}
+\newlabel{sub@fig:etree-matrix}{{a}{7}{Sparse matrix structure}{figure.caption.14}{}}
 \newlabel{sub@fig:etree-matrix@cref}{{[subfigure][1][2,1]2.1a}{[1][6][]7}}
-\newlabel{fig:etree-visualization}{{2.1b}{7}{Corresponding elimination tree}{figure.caption.12}{}}
+\newlabel{fig:etree-visualization}{{2.1b}{7}{Corresponding elimination tree}{figure.caption.14}{}}
 \newlabel{fig:etree-visualization@cref}{{[subfigure][2][2,1]2.1b}{[1][6][]7}}
-\newlabel{sub@fig:etree-visualization}{{b}{7}{Corresponding elimination tree}{figure.caption.12}{}}
+\newlabel{sub@fig:etree-visualization}{{b}{7}{Corresponding elimination tree}{figure.caption.14}{}}
 \newlabel{sub@fig:etree-visualization@cref}{{[subfigure][2][2,1]2.1b}{[1][6][]7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Illustration of elimination tree construction for the given sparse symmetric matrix. The sparsity is denoted by filled black circles and the fill-in induced is denoted by hollow red circles.}}{7}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:elimination-tree-example}{{2.1}{7}{Illustration of elimination tree construction for the given sparse symmetric matrix. The sparsity is denoted by filled black circles and the fill-in induced is denoted by hollow red circles}{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Illustration of elimination tree construction for the given sparse symmetric matrix. The sparsity is denoted by filled black circles and the fill-in induced is denoted by hollow red circles.}}{7}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:elimination-tree-example}{{2.1}{7}{Illustration of elimination tree construction for the given sparse symmetric matrix. The sparsity is denoted by filled black circles and the fill-in induced is denoted by hollow red circles}{figure.caption.14}{}}
 \newlabel{fig:elimination-tree-example@cref}{{[figure][1][2]2.1}{[1][6][]7}}
 \BKM@entry{id=8,dest={73656374696F6E2E322E32},srcline={182}}{5C3337365C3337375C3030304D5C303030695C3030306E5C303030695C3030306D5C303030755C3030306D5C3030305C3034305C303030665C303030695C3030306C5C3030306C5C3030302D5C303030695C3030306E5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C3030304E5C303030505C3030302D5C303030635C3030306F5C3030306D5C303030705C3030306C5C303030655C303030745C303030655C3030306E5C303030655C303030735C30303073}
 \citation{yannakakis_computing_1981}
@@ -85,16 +99,16 @@
 \BKM@entry{id=13,dest={73756273656374696F6E2E322E332E34},srcline={266}}{5C3337365C3337375C303030485C303030795C303030705C303030655C303030725C303030675C303030725C303030615C303030705C303030685C3030305C3034305C303030705C303030615C303030725C303030745C303030695C303030745C303030695C3030306F5C3030306E5C303030695C3030306E5C303030675C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C3030306F5C303030745C303030685C303030655C303030725C3030305C3034305C3030306D5C303030655C303030745C303030685C3030306F5C303030645C30303073}
 \citation{catalyurek_hypergraph_2011}
 \citation{dasgupta_alpha_2023}
-\newlabel{fig:nd-original}{{2.2a}{11}{Original graph before separator identification}{figure.caption.14}{}}
+\newlabel{fig:nd-original}{{2.2a}{11}{Original graph before separator identification}{figure.caption.16}{}}
 \newlabel{fig:nd-original@cref}{{[subfigure][1][2,2]2.2a}{[1][10][]11}}
-\newlabel{sub@fig:nd-original}{{a}{11}{Original graph before separator identification}{figure.caption.14}{}}
+\newlabel{sub@fig:nd-original}{{a}{11}{Original graph before separator identification}{figure.caption.16}{}}
 \newlabel{sub@fig:nd-original@cref}{{[subfigure][1][2,2]2.2a}{[1][10][]11}}
-\newlabel{fig:nd-separated}{{2.2b}{11}{Graph after separator removal showing partitioned subgraphs}{figure.caption.14}{}}
+\newlabel{fig:nd-separated}{{2.2b}{11}{Graph after separator removal showing partitioned subgraphs}{figure.caption.16}{}}
 \newlabel{fig:nd-separated@cref}{{[subfigure][2][2,2]2.2b}{[1][10][]11}}
-\newlabel{sub@fig:nd-separated}{{b}{11}{Graph after separator removal showing partitioned subgraphs}{figure.caption.14}{}}
+\newlabel{sub@fig:nd-separated}{{b}{11}{Graph after separator removal showing partitioned subgraphs}{figure.caption.16}{}}
 \newlabel{sub@fig:nd-separated@cref}{{[subfigure][2][2,2]2.2b}{[1][10][]11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}}{11}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:nested-dissection}{{2.2}{11}{Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}}{11}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:nested-dissection}{{2.2}{11}{Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}{figure.caption.16}{}}
 \newlabel{fig:nested-dissection@cref}{{[figure][2][2]2.2}{[1][10][]11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Hypergraph partitioning and other methods}{11}{subsection.2.3.4}\protected@file@percent }
 \BKM@entry{id=14,dest={636861707465722E33},srcline={1}}{5C3337365C3337375C303030495C3030306D5C303030705C3030306C5C303030655C3030306D5C303030655C3030306E5C303030745C303030615C303030745C303030695C3030306F5C3030306E5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C3030304F5C303030705C303030745C303030695C3030306D5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
@@ -156,189 +170,173 @@
 \newlabel{ch:results@cref}{{[chapter][4][]4}{[1][22][]22}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Evaluation setup}{22}{section.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Hardware Infrastructure}{22}{subsection.4.1.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Fritz cluster node configuration}}{22}{table.caption.21}\protected@file@percent }
-\newlabel{tab:fritz-nodes}{{4.1}{22}{Fritz cluster node configuration}{table.caption.21}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Fritz cluster node configuration}}{22}{table.caption.23}\protected@file@percent }
+\newlabel{tab:fritz-nodes}{{4.1}{22}{Fritz cluster node configuration}{table.caption.23}{}}
 \newlabel{tab:fritz-nodes@cref}{{[table][1][4]4.1}{[1][22][]22}}
 \BKM@entry{id=27,dest={73656374696F6E2E342E32},srcline={53}}{5C3337365C3337375C3030304D5C303030615C303030745C303030725C303030695C303030635C303030655C303030735C3030305C3034305C303030645C303030615C303030745C303030615C303030735C303030655C30303074}
 \BKM@entry{id=28,dest={73656374696F6E2E342E33},srcline={116}}{5C3337365C3337375C3030304D5C303030655C303030745C303030685C3030306F5C303030645C3030306F5C3030306C5C3030306F5C303030675C30303079}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Matrices dataset}{23}{section.4.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces SuiteSparse matrix dataset used for evaluation}}{23}{table.caption.22}\protected@file@percent }
-\newlabel{tab:matrix-dataset}{{4.2}{23}{SuiteSparse matrix dataset used for evaluation}{table.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces SuiteSparse matrix dataset used for evaluation}}{23}{table.caption.24}\protected@file@percent }
+\newlabel{tab:matrix-dataset}{{4.2}{23}{SuiteSparse matrix dataset used for evaluation}{table.caption.24}{}}
 \newlabel{tab:matrix-dataset@cref}{{[table][2][4]4.2}{[1][23][]23}}
 \BKM@entry{id=29,dest={73756273656374696F6E2E342E332E31},srcline={146}}{5C3337365C3337375C303030505C303030655C303030725C303030665C3030306F5C303030725C3030306D5C303030615C3030306E5C303030635C303030655C3030305C3034305C3030304D5C303030655C303030745C303030725C303030695C303030635C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C3030304D5C303030655C303030615C303030735C303030755C303030725C303030655C3030306D5C303030655C3030306E5C303030745C3030305C3034305C303030505C303030725C3030306F5C303030745C3030306F5C303030635C3030306F5C3030306C}
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Quantum Transport matrix dataset used for evaluation}}{24}{table.caption.23}\protected@file@percent }
-\newlabel{tab:qt-matrix-dataset}{{4.3}{24}{Quantum Transport matrix dataset used for evaluation}{table.caption.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Quantum Transport matrix dataset used for evaluation}}{24}{table.caption.25}\protected@file@percent }
+\newlabel{tab:qt-matrix-dataset}{{4.3}{24}{Quantum Transport matrix dataset used for evaluation}{table.caption.25}{}}
 \newlabel{tab:qt-matrix-dataset@cref}{{[table][3][4]4.3}{[1][23][]24}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Methodology}{24}{section.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Performance Metrics and Measurement Protocol}{25}{subsection.4.3.1}\protected@file@percent }
 \BKM@entry{id=30,dest={73656374696F6E2E342E34},srcline={170}}{5C3337365C3337375C303030455C303030765C303030615C3030306C5C303030755C303030615C303030745C303030695C3030306F5C3030306E}
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Evaluation}{26}{section.4.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Fill-in comparison across different reordering algorithms with AMD as baseline. The geometric mean of fill-in ratios shows the relative performance of each method, where values below 1.0 indicate better performance than AMD.}}{26}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:fillin-comparison}{{4.1}{26}{Fill-in comparison across different reordering algorithms with AMD as baseline. The geometric mean of fill-in ratios shows the relative performance of each method, where values below 1.0 indicate better performance than AMD}{figure.caption.24}{}}
-\newlabel{fig:fillin-comparison@cref}{{[figure][1][4]4.1}{[1][26][]26}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Elimination tree depth comparison across different reordering algorithms. The geometric mean shows the relative parallelization potential, where lower depths indicate better parallel scalability for factorization.}}{27}{figure.caption.25}\protected@file@percent }
-\newlabel{fig:elimination-tree-depth}{{4.2}{27}{Elimination tree depth comparison across different reordering algorithms. The geometric mean shows the relative parallelization potential, where lower depths indicate better parallel scalability for factorization}{figure.caption.25}{}}
-\newlabel{fig:elimination-tree-depth@cref}{{[figure][2][4]4.2}{[1][27][]27}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Reordering time as a function of matrix size for different algorithms}}{28}{figure.caption.26}\protected@file@percent }
-\newlabel{fig:reordering-time-vs-size}{{4.3}{28}{Reordering time as a function of matrix size for different algorithms}{figure.caption.26}{}}
-\newlabel{fig:reordering-time-vs-size@cref}{{[figure][3][4]4.3}{[1][27][]28}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}}{29}{table.caption.27}\protected@file@percent }
-\newlabel{tab:fillin-results}{{4.4}{29}{Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}{table.caption.27}{}}
-\newlabel{tab:fillin-results@cref}{{[table][4][4]4.4}{[1][28][]29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{30}{figure.caption.28}\protected@file@percent }
-\newlabel{fig:144-sparsity-patterns}{{4.4}{30}{Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures}{figure.caption.28}{}}
-\newlabel{fig:144-sparsity-patterns@cref}{{[figure][4][4]4.4}{[1][28][]30}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{31}{figure.caption.29}\protected@file@percent }
-\newlabel{fig:copter2-sparsity-patterns}{{4.5}{31}{Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied}{figure.caption.29}{}}
-\newlabel{fig:copter2-sparsity-patterns@cref}{{[figure][5][4]4.5}{[1][28][]31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Fill-in reduction comparison across reordering algorithms for selected matrices. Results are shown as percentages relative to AMD performance. Methods with exceptionally high fill-in (RCM, Natural ordering) are excluded for clarity. ParMETIS results represent the 2-processor variant.}}{27}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:fill-in-comparison}{{4.1}{27}{Fill-in reduction comparison across reordering algorithms for selected matrices. Results are shown as percentages relative to AMD performance. Methods with exceptionally high fill-in (RCM, Natural ordering) are excluded for clarity. ParMETIS results represent the 2-processor variant}{figure.caption.26}{}}
+\newlabel{fig:fill-in-comparison@cref}{{[figure][1][4]4.1}{[1][26][]27}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Elimination tree depth comparison across different reordering algorithms. The geometric mean shows the relative parallelization potential, where lower depths indicate better parallel scalability for factorization.}}{28}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:elimination-tree-depth}{{4.2}{28}{Elimination tree depth comparison across different reordering algorithms. The geometric mean shows the relative parallelization potential, where lower depths indicate better parallel scalability for factorization}{figure.caption.27}{}}
+\newlabel{fig:elimination-tree-depth@cref}{{[figure][2][4]4.2}{[1][28][]28}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Reordering time as a function of matrix size for different algorithms}}{29}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:reordering-time-vs-size}{{4.3}{29}{Reordering time as a function of matrix size for different algorithms}{figure.caption.28}{}}
+\newlabel{fig:reordering-time-vs-size@cref}{{[figure][3][4]4.3}{[1][28][]29}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}}{30}{table.caption.29}\protected@file@percent }
+\newlabel{tab:fillin-results}{{4.4}{30}{Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}{table.caption.29}{}}
+\newlabel{tab:fillin-results@cref}{{[table][4][4]4.4}{[1][29][]30}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{31}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:144-sparsity-patterns}{{4.4}{31}{Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures}{figure.caption.30}{}}
+\newlabel{fig:144-sparsity-patterns@cref}{{[figure][4][4]4.4}{[1][29][]31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{32}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:copter2-sparsity-patterns}{{4.5}{32}{Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied}{figure.caption.31}{}}
+\newlabel{fig:copter2-sparsity-patterns@cref}{{[figure][5][4]4.5}{[1][29][]32}}
 \BKM@entry{id=31,dest={636861707465722E35},srcline={1}}{5C3337365C3337375C3030304F5C303030745C303030685C303030655C303030725C3030305C3034305C303030415C303030705C303030705C303030725C3030306F5C303030615C303030635C303030685C303030655C30303073}
 \BKM@entry{id=32,dest={73656374696F6E2E352E31},srcline={6}}{5C3337365C3337375C303030475C303030725C303030615C303030705C303030685C3030305C3034305C303030525C303030655C303030695C3030306E5C303030665C3030306F5C303030725C303030635C303030655C3030306D5C303030655C3030306E5C303030745C3030305C3034305C3030304C5C303030655C303030615C303030725C3030306E5C303030695C3030306E5C303030675C3030305C3034305C303030665C3030306F5C303030725C3030305C3034305C303030525C303030655C3030306F5C303030725C303030645C303030655C303030725C303030695C3030306E5C30303067}
 \BKM@entry{id=33,dest={73656374696F6E2E352E32},srcline={31}}{5C3337365C3337375C303030475C303030505C303030555C3030305C3034305C303030415C303030635C303030635C303030655C3030306C5C303030655C303030725C303030615C303030745C303030655C303030645C3030305C3034305C3030304E5C303030655C303030735C303030745C303030655C303030645C3030305C3034305C303030445C303030695C303030735C303030735C303030655C303030635C303030745C303030695C3030306F5C3030306E}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Other Approaches}{32}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Other Approaches}{33}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{ch:other_approaches}{{5}{32}{Other Approaches}{chapter.5}{}}
-\newlabel{ch:other_approaches@cref}{{[chapter][5][]5}{[1][32][]32}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{32}{section.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{32}{section.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces GNN-based method with RCM and MinDegree}}{33}{figure.caption.30}\protected@file@percent }
-\newlabel{fig:graphrl_small}{{5.1}{33}{GNN-based method with RCM and MinDegree}{figure.caption.30}{}}
-\newlabel{fig:graphrl_small@cref}{{[figure][1][5]5.1}{[1][32][]33}}
+\newlabel{ch:other_approaches}{{5}{33}{Other Approaches}{chapter.5}{}}
+\newlabel{ch:other_approaches@cref}{{[chapter][5][]5}{[1][33][]33}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{33}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{33}{section.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces GNN-based method with RCM and MinDegree}}{34}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:graphrl_small}{{5.1}{34}{GNN-based method with RCM and MinDegree}{figure.caption.32}{}}
+\newlabel{fig:graphrl_small@cref}{{[figure][1][5]5.1}{[1][33][]34}}
 \BKM@entry{id=34,dest={636861707465722E36},srcline={1}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030635C3030306C5C303030755C303030735C303030695C3030306F5C3030306E5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030465C303030755C303030745C303030755C303030725C303030655C3030305C3034305C303030575C3030306F5C303030725C3030306B}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{34}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{35}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{ch:conclusion}{{6}{34}{Conclusion and Future Work}{chapter.6}{}}
-\newlabel{ch:conclusion@cref}{{[chapter][6][]6}{[1][34][]34}}
-\BKM@entry{id=35,dest={617070656E6469782E41},srcline={1}}{5C3337365C3337375C303030545C3030306F5C303030705C303030695C303030635C3030302D5C303030535C303030705C303030655C303030635C303030695C303030665C303030695C303030635C3030305C3034305C303030475C303030755C303030695C303030645C303030655C3030306C5C303030695C3030306E5C303030655C30303073}
-\BKM@entry{id=36,dest={73656374696F6E2E412E31},srcline={4}}{5C3337365C3337375C303030495C303030435C3030305C3034305C303030645C303030655C303030735C303030695C303030675C3030306E5C3030305C3034305C3030305C3035305C303030415C303030535C303030495C303030435C3030305C3034305C3030306F5C303030725C3030305C3034305C303030465C303030505C303030475C303030415C3030305C3035315C3030305C3034305C303030705C303030725C3030306F5C3030306A5C303030655C303030635C303030745C30303073}
-\BKM@entry{id=37,dest={73756273656374696F6E2E412E312E31},srcline={8}}{5C3337365C3337375C303030485C303030615C303030725C303030645C303030775C303030615C303030725C303030655C3030305C3034305C303030615C303030725C303030635C303030685C303030695C303030745C303030655C303030635C303030745C303030755C303030725C30303065}
-\BKM@entry{id=38,dest={73756273656374696F6E2E412E312E32},srcline={14}}{5C3337365C3337375C303030445C303030655C303030735C303030695C303030675C3030306E5C3030305C3034305C303030695C3030306D5C303030705C3030306C5C303030655C3030306D5C303030655C3030306E5C303030745C303030615C303030745C303030695C3030306F5C3030306E}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Topic-Specific Guidelines}{35}{appendix.A}\protected@file@percent }
+\newlabel{ch:conclusion}{{6}{35}{Conclusion and Future Work}{chapter.6}{}}
+\newlabel{ch:conclusion@cref}{{[chapter][6][]6}{[1][35][]35}}
+\BKM@entry{id=35,dest={617070656E6469782E41},srcline={1}}{5C3337365C3337375C303030455C303030785C303030705C303030655C303030725C303030695C3030306D5C303030655C3030306E5C303030745C303030615C3030306C5C3030305C3034305C303030525C303030655C303030735C303030755C3030306C5C303030745C30303073}
+\BKM@entry{id=36,dest={73656374696F6E2E412E31},srcline={6}}{5C3337365C3337375C303030465C303030695C3030306C5C3030306C5C3030302D5C303030695C3030306E}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Experimental Results}{36}{appendix.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{app:topic-specific_guidelines}{{A}{35}{Topic-Specific Guidelines}{appendix.A}{}}
-\newlabel{app:topic-specific_guidelines@cref}{{[appendix][1][2147483647]A}{[1][35][]35}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}IC design (ASIC or FPGA) projects}{35}{section.A.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.1}Hardware architecture}{35}{subsection.A.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.2}Design implementation}{35}{subsection.A.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Functional verification}{35}{subsubsection*.32}\protected@file@percent }
-\BKM@entry{id=39,dest={73756273656374696F6E2E412E312E33},srcline={40}}{5C3337365C3337375C303030525C303030655C303030735C303030755C3030306C5C303030745C30303073}
-\BKM@entry{id=40,dest={73756273656374696F6E2E412E312E34},srcline={45}}{5C3337365C3337375C303030445C303030615C303030745C303030615C3030305C3034305C303030735C303030685C303030655C303030655C30303074}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Testbench used for functional verification.}}{36}{figure.caption.33}\protected@file@percent }
-\newlabel{fig:functional_verification_tb}{{A.1}{36}{Testbench used for functional verification}{figure.caption.33}{}}
-\newlabel{fig:functional_verification_tb@cref}{{[figure][1][2147483647,1]A.1}{[1][35][]36}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Back-end implementation}{36}{subsubsection*.35}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.3}Results}{36}{subsection.A.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.4}Data sheet}{36}{subsection.A.1.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces Standard bonding diagram for QFN56 UMC 180\,nm mini@sics.}}{38}{figure.caption.36}\protected@file@percent }
-\newlabel{fig:bonding_diagram}{{A.2}{38}{Standard bonding diagram for QFN56 UMC 180\,nm mini@sics}{figure.caption.36}{}}
-\newlabel{fig:bonding_diagram@cref}{{[figure][2][2147483647,1]A.2}{[1][37][]38}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces Pinout for \textsc  {MyFancyChip}.}}{39}{figure.caption.37}\protected@file@percent }
-\newlabel{fig:asic_pinout}{{A.3}{39}{Pinout for \textsc {MyFancyChip}}{figure.caption.37}{}}
-\newlabel{fig:asic_pinout@cref}{{[figure][3][2147483647,1]A.3}{[1][37][]39}}
-\BKM@entry{id=41,dest={617070656E6469782E42},srcline={1}}{5C3337365C3337375C303030435C3030306F5C3030306D5C303030705C303030615C303030635C303030745C3030305C3034305C303030475C303030755C303030695C303030645C303030655C3030305C3034305C303030745C3030306F5C3030305C3034305C3030304C5C303030615C303030545C303030655C303030585C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030745C303030685C303030655C3030305C3034305C303030695C303030695C303030735C303030725C303030655C303030705C3030306F5C303030725C303030745C3030305C3034305C303030435C3030306C5C303030615C303030735C30303073}
-\BKM@entry{id=42,dest={73656374696F6E2E422E31},srcline={10}}{5C3337365C3337375C303030425C303030755C303030695C3030306C5C303030645C303030695C3030306E5C303030675C3030305C3034305C303030745C303030685C303030655C3030305C3034305C303030645C3030306F5C303030635C303030755C3030306D5C303030655C3030306E5C30303074}
-\BKM@entry{id=43,dest={73656374696F6E2E422E32},srcline={16}}{5C3337365C3337375C303030545C303030655C303030785C303030745C3030305C3034305C303030655C303030645C303030695C303030745C303030695C3030306E5C303030675C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030735C303030705C303030615C303030635C303030695C3030306E5C30303067}
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}Compact Guide to \LaTeX  {} and the \textit  {iisreport} Class}{40}{appendix.B}\protected@file@percent }
+\newlabel{app:experimental_results}{{A}{36}{Experimental Results}{appendix.A}{}}
+\newlabel{app:experimental_results@cref}{{[appendix][1][2147483647]A}{[1][36][]36}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Fill-in}{36}{section.A.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}}{37}{table.caption.33}\protected@file@percent }
+\newlabel{tab:fillin-results}{{A.1}{37}{Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}{table.caption.33}{}}
+\newlabel{tab:fillin-results@cref}{{[table][1][2147483647,1]A.1}{[1][36][]37}}
+\BKM@entry{id=37,dest={617070656E6469782E42},srcline={1}}{5C3337365C3337375C303030435C3030306F5C3030306D5C303030705C303030615C303030635C303030745C3030305C3034305C303030475C303030755C303030695C303030645C303030655C3030305C3034305C303030745C3030306F5C3030305C3034305C3030304C5C303030615C303030545C303030655C303030585C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030745C303030685C303030655C3030305C3034305C303030695C303030695C303030735C303030725C303030655C303030705C3030306F5C303030725C303030745C3030305C3034305C303030435C3030306C5C303030615C303030735C30303073}
+\BKM@entry{id=38,dest={73656374696F6E2E422E31},srcline={10}}{5C3337365C3337375C303030425C303030755C303030695C3030306C5C303030645C303030695C3030306E5C303030675C3030305C3034305C303030745C303030685C303030655C3030305C3034305C303030645C3030306F5C303030635C303030755C3030306D5C303030655C3030306E5C30303074}
+\BKM@entry{id=39,dest={73656374696F6E2E422E32},srcline={16}}{5C3337365C3337375C303030545C303030655C303030785C303030745C3030305C3034305C303030655C303030645C303030695C303030745C303030695C3030306E5C303030675C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030735C303030705C303030615C303030635C303030695C3030306E5C30303067}
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}Compact Guide to \LaTeX  {} and the \textit  {iisreport} Class}{38}{appendix.B}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{app:LaTeX_guide}{{B}{40}{Compact Guide to \LaTeX {} and the \textit {iisreport} Class}{appendix.B}{}}
-\newlabel{app:LaTeX_guide@cref}{{[appendix][2][2147483647]B}{[1][40][]40}}
-\@writefile{toc}{\contentsline {section}{\numberline {B.1}Building the document}{40}{section.B.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.2}Text editing and spacing}{40}{section.B.2}\protected@file@percent }
-\BKM@entry{id=44,dest={73756273656374696F6E2E422E322E31},srcline={38}}{5C3337365C3337375C303030535C303030705C303030655C303030635C303030695C303030615C3030306C5C3030305C3034305C303030635C303030685C303030615C303030725C303030615C303030635C303030745C303030655C303030725C30303073}
+\newlabel{app:LaTeX_guide}{{B}{38}{Compact Guide to \LaTeX {} and the \textit {iisreport} Class}{appendix.B}{}}
+\newlabel{app:LaTeX_guide@cref}{{[appendix][2][2147483647]B}{[1][38][]38}}
+\@writefile{toc}{\contentsline {section}{\numberline {B.1}Building the document}{38}{section.B.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.2}Text editing and spacing}{38}{section.B.2}\protected@file@percent }
+\BKM@entry{id=40,dest={73756273656374696F6E2E422E322E31},srcline={38}}{5C3337365C3337375C303030535C303030705C303030655C303030635C303030695C303030615C3030306C5C3030305C3034305C303030635C303030685C303030615C303030725C303030615C303030635C303030745C303030655C303030725C30303073}
 \citation{LaTeXSymbols}
 \citation{Knuth84}
-\BKM@entry{id=45,dest={73756273656374696F6E2E422E322E32},srcline={56}}{5C3337365C3337375C303030465C3030306F5C3030306E5C303030745C3030305C3034305C303030665C303030615C303030635C303030655C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030655C3030306D5C303030705C303030685C303030615C303030735C303030695C30303073}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.2.1}Special characters}{41}{subsection.B.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.2.2}Font faces and emphasis}{41}{subsection.B.2.2}\protected@file@percent }
-\BKM@entry{id=46,dest={73756273656374696F6E2E422E322E33},srcline={87}}{5C3337365C3337375C303030465C3030306F5C3030306E5C303030745C3030305C3034305C303030735C303030695C3030307A5C303030655C30303073}
-\BKM@entry{id=47,dest={73756273656374696F6E2E422E322E34},srcline={115}}{5C3337365C3337375C303030435C3030306F5C3030306C5C3030306F5C303030725C303030695C3030306E5C303030675C3030305C3034305C303030745C303030655C303030785C30303074}
-\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces Different font faces.}}{42}{table.caption.38}\protected@file@percent }
-\newlabel{tbl:font_face_commands}{{B.1}{42}{Different font faces}{table.caption.38}{}}
-\newlabel{tbl:font_face_commands@cref}{{[table][1][2147483647,2]B.1}{[1][41][]42}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.2}{\ignorespaces Different font sizes.}}{42}{table.caption.39}\protected@file@percent }
-\newlabel{tbl:font_sizes}{{B.2}{42}{Different font sizes}{table.caption.39}{}}
-\newlabel{tbl:font_sizes@cref}{{[table][2][2147483647,2]B.2}{[1][42][]42}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.2.3}Font sizes}{42}{subsection.B.2.3}\protected@file@percent }
+\BKM@entry{id=41,dest={73756273656374696F6E2E422E322E32},srcline={56}}{5C3337365C3337375C303030465C3030306F5C3030306E5C303030745C3030305C3034305C303030665C303030615C303030635C303030655C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030655C3030306D5C303030705C303030685C303030615C303030735C303030695C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2.1}Special characters}{39}{subsection.B.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2.2}Font faces and emphasis}{39}{subsection.B.2.2}\protected@file@percent }
+\BKM@entry{id=42,dest={73756273656374696F6E2E422E322E33},srcline={87}}{5C3337365C3337375C303030465C3030306F5C3030306E5C303030745C3030305C3034305C303030735C303030695C3030307A5C303030655C30303073}
+\BKM@entry{id=43,dest={73756273656374696F6E2E422E322E34},srcline={115}}{5C3337365C3337375C303030435C3030306F5C3030306C5C3030306F5C303030725C303030695C3030306E5C303030675C3030305C3034305C303030745C303030655C303030785C30303074}
+\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces Different font faces.}}{40}{table.caption.34}\protected@file@percent }
+\newlabel{tbl:font_face_commands}{{B.1}{40}{Different font faces}{table.caption.34}{}}
+\newlabel{tbl:font_face_commands@cref}{{[table][1][2147483647,2]B.1}{[1][39][]40}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.2}{\ignorespaces Different font sizes.}}{40}{table.caption.35}\protected@file@percent }
+\newlabel{tbl:font_sizes}{{B.2}{40}{Different font sizes}{table.caption.35}{}}
+\newlabel{tbl:font_sizes@cref}{{[table][2][2147483647,2]B.2}{[1][40][]40}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2.3}Font sizes}{40}{subsection.B.2.3}\protected@file@percent }
 \citation{xcolor}
-\BKM@entry{id=48,dest={73656374696F6E2E422E33},srcline={214}}{5C3337365C3337375C303030445C303030655C303030625C303030755C303030675C303030675C303030695C3030306E5C30303067}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.1}{\ignorespaces Selected predefined colors, sorted by hue.}}{43}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:selected_colors}{{B.1}{43}{Selected predefined colors, sorted by hue}{figure.caption.40}{}}
-\newlabel{fig:selected_colors@cref}{{[figure][1][2147483647,2]B.1}{[1][42][]43}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.2.4}Coloring text}{43}{subsection.B.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.3}Debugging}{43}{section.B.3}\protected@file@percent }
-\BKM@entry{id=49,dest={73656374696F6E2E422E34},srcline={230}}{5C3337365C3337375C3030304D5C303030615C303030745C303030685C3030305C3034305C3030306D5C3030306F5C303030645C30303065}
-\@writefile{toc}{\contentsline {section}{\numberline {B.4}Math mode}{44}{section.B.4}\protected@file@percent }
-\BKM@entry{id=50,dest={73756273656374696F6E2E422E342E31},srcline={278}}{5C3337365C3337375C303030445C303030655C3030306C5C303030695C3030306D5C303030695C303030745C303030655C303030725C303030735C3030303A5C3030305C3034305C303030505C303030615C303030725C303030655C3030306E5C303030745C303030685C303030655C303030735C303030655C303030735C3030302C5C3030305C3034305C303030625C303030725C303030615C303030635C3030306B5C303030655C303030745C303030735C3030302C5C3030305C3034305C303030625C303030615C303030725C303030735C3030302C5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030695C3030306E5C303030745C303030655C303030725C303030765C303030615C3030306C5C30303073}
-\BKM@entry{id=51,dest={73756273656374696F6E2E422E342E32},srcline={304}}{5C3337365C3337375C303030445C303030695C303030665C303030665C303030655C303030725C303030655C3030306E5C303030745C303030695C303030615C3030306C5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030645C303030655C303030725C303030695C303030765C303030615C303030745C303030695C303030765C303030655C3030305C3034305C3030306F5C303030705C303030655C303030725C303030615C303030745C3030306F5C303030725C30303073}
-\BKM@entry{id=52,dest={73756273656374696F6E2E422E342E33},srcline={314}}{5C3337365C3337375C303030565C303030655C303030635C303030745C3030306F5C303030725C303030735C3030302C5C3030305C3034305C3030306D5C303030615C303030745C303030725C303030695C303030635C303030655C303030735C3030302C5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030645C303030695C303030735C303030745C303030695C3030306E5C303030635C303030745C303030695C3030306F5C3030306E5C3030305C3034305C3030306F5C303030665C3030305C3034305C303030635C303030615C303030735C303030655C30303073}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.4.1}Delimiters: Parentheses, brackets, bars, and intervals}{45}{subsection.B.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.4.2}Differential and derivative operators}{45}{subsection.B.4.2}\protected@file@percent }
-\BKM@entry{id=53,dest={73756273656374696F6E2E422E342E34},srcline={355}}{5C3337365C3337375C3030304D5C303030755C3030306C5C303030745C303030695C3030302D5C3030306C5C303030695C3030306E5C303030655C3030305C3034305C303030655C303030715C303030755C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.4.3}Vectors, matrices, and distinction of cases}{46}{subsection.B.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.4.4}Multi-line equations}{46}{subsection.B.4.4}\protected@file@percent }
+\BKM@entry{id=44,dest={73656374696F6E2E422E33},srcline={214}}{5C3337365C3337375C303030445C303030655C303030625C303030755C303030675C303030675C303030695C3030306E5C30303067}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.1}{\ignorespaces Selected predefined colors, sorted by hue.}}{41}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:selected_colors}{{B.1}{41}{Selected predefined colors, sorted by hue}{figure.caption.36}{}}
+\newlabel{fig:selected_colors@cref}{{[figure][1][2147483647,2]B.1}{[1][40][]41}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2.4}Coloring text}{41}{subsection.B.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.3}Debugging}{41}{section.B.3}\protected@file@percent }
+\BKM@entry{id=45,dest={73656374696F6E2E422E34},srcline={230}}{5C3337365C3337375C3030304D5C303030615C303030745C303030685C3030305C3034305C3030306D5C3030306F5C303030645C30303065}
+\@writefile{toc}{\contentsline {section}{\numberline {B.4}Math mode}{42}{section.B.4}\protected@file@percent }
+\BKM@entry{id=46,dest={73756273656374696F6E2E422E342E31},srcline={278}}{5C3337365C3337375C303030445C303030655C3030306C5C303030695C3030306D5C303030695C303030745C303030655C303030725C303030735C3030303A5C3030305C3034305C303030505C303030615C303030725C303030655C3030306E5C303030745C303030685C303030655C303030735C303030655C303030735C3030302C5C3030305C3034305C303030625C303030725C303030615C303030635C3030306B5C303030655C303030745C303030735C3030302C5C3030305C3034305C303030625C303030615C303030725C303030735C3030302C5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030695C3030306E5C303030745C303030655C303030725C303030765C303030615C3030306C5C30303073}
+\BKM@entry{id=47,dest={73756273656374696F6E2E422E342E32},srcline={304}}{5C3337365C3337375C303030445C303030695C303030665C303030665C303030655C303030725C303030655C3030306E5C303030745C303030695C303030615C3030306C5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030645C303030655C303030725C303030695C303030765C303030615C303030745C303030695C303030765C303030655C3030305C3034305C3030306F5C303030705C303030655C303030725C303030615C303030745C3030306F5C303030725C30303073}
+\BKM@entry{id=48,dest={73756273656374696F6E2E422E342E33},srcline={314}}{5C3337365C3337375C303030565C303030655C303030635C303030745C3030306F5C303030725C303030735C3030302C5C3030305C3034305C3030306D5C303030615C303030745C303030725C303030695C303030635C303030655C303030735C3030302C5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030645C303030695C303030735C303030745C303030695C3030306E5C303030635C303030745C303030695C3030306F5C3030306E5C3030305C3034305C3030306F5C303030665C3030305C3034305C303030635C303030615C303030735C303030655C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.4.1}Delimiters: Parentheses, brackets, bars, and intervals}{43}{subsection.B.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.4.2}Differential and derivative operators}{43}{subsection.B.4.2}\protected@file@percent }
+\BKM@entry{id=49,dest={73756273656374696F6E2E422E342E34},srcline={355}}{5C3337365C3337375C3030304D5C303030755C3030306C5C303030745C303030695C3030302D5C3030306C5C303030695C3030306E5C303030655C3030305C3034305C303030655C303030715C303030755C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.4.3}Vectors, matrices, and distinction of cases}{44}{subsection.B.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.4.4}Multi-line equations}{44}{subsection.B.4.4}\protected@file@percent }
 \citation{LaTeXEquations}
-\BKM@entry{id=54,dest={73756273656374696F6E2E422E342E35},srcline={381}}{5C3337365C3337375C303030445C303030655C303030665C303030695C3030306E5C303030695C303030745C303030695C3030306F5C3030306E5C303030735C3030302C5C3030305C3034305C303030745C303030685C303030655C3030306F5C303030725C303030655C3030306D5C303030735C3030302C5C3030305C3034305C3030306C5C303030655C3030306D5C3030306D5C303030615C303030735C3030302C5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030705C303030725C3030306F5C3030306F5C303030665C30303073}
-\BKM@entry{id=55,dest={73656374696F6E2E422E35},srcline={422}}{5C3337365C3337375C303030515C303030755C303030615C3030306E5C303030745C303030695C303030745C303030695C303030655C303030735C3030305C3034305C303030775C303030695C303030745C303030685C3030305C3034305C303030535C303030495C3030305C3034305C303030755C3030306E5C303030695C303030745C30303073}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.4.5}Definitions, theorems, lemmas, and proofs}{47}{subsection.B.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.5}Quantities with SI units}{47}{section.B.5}\protected@file@percent }
-\BKM@entry{id=56,dest={73656374696F6E2E422E36},srcline={434}}{5C3337365C3337375C303030455C3030306E5C303030755C3030306D5C303030655C303030725C303030615C303030745C303030695C3030306F5C3030306E5C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030695C303030745C303030655C3030306D5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
-\BKM@entry{id=57,dest={73656374696F6E2E422E37},srcline={461}}{5C3337365C3337375C303030465C3030306C5C3030306F5C303030615C303030745C303030735C3030303A5C3030305C3034305C303030665C303030695C303030675C303030755C303030725C303030655C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030745C303030615C303030625C3030306C5C303030655C30303073}
+\BKM@entry{id=50,dest={73756273656374696F6E2E422E342E35},srcline={381}}{5C3337365C3337375C303030445C303030655C303030665C303030695C3030306E5C303030695C303030745C303030695C3030306F5C3030306E5C303030735C3030302C5C3030305C3034305C303030745C303030685C303030655C3030306F5C303030725C303030655C3030306D5C303030735C3030302C5C3030305C3034305C3030306C5C303030655C3030306D5C3030306D5C303030615C303030735C3030302C5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030705C303030725C3030306F5C3030306F5C303030665C30303073}
+\BKM@entry{id=51,dest={73656374696F6E2E422E35},srcline={422}}{5C3337365C3337375C303030515C303030755C303030615C3030306E5C303030745C303030695C303030745C303030695C303030655C303030735C3030305C3034305C303030775C303030695C303030745C303030685C3030305C3034305C303030535C303030495C3030305C3034305C303030755C3030306E5C303030695C303030745C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.4.5}Definitions, theorems, lemmas, and proofs}{45}{subsection.B.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.5}Quantities with SI units}{45}{section.B.5}\protected@file@percent }
+\BKM@entry{id=52,dest={73656374696F6E2E422E36},srcline={434}}{5C3337365C3337375C303030455C3030306E5C303030755C3030306D5C303030655C303030725C303030615C303030745C303030695C3030306F5C3030306E5C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030695C303030745C303030655C3030306D5C303030695C3030307A5C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
+\BKM@entry{id=53,dest={73656374696F6E2E422E37},srcline={461}}{5C3337365C3337375C303030465C3030306C5C3030306F5C303030615C303030745C303030735C3030303A5C3030305C3034305C303030665C303030695C303030675C303030755C303030725C303030655C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030745C303030615C303030625C3030306C5C303030655C30303073}
 \citation{LaTeXFloatPlacement}
-\BKM@entry{id=58,dest={73756273656374696F6E2E422E372E31},srcline={474}}{5C3337365C3337375C303030465C303030695C303030675C303030755C303030725C303030655C30303073}
-\@writefile{toc}{\contentsline {section}{\numberline {B.6}Enumerations and itemizations}{48}{section.B.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.7}Floats: figures and tables}{48}{section.B.7}\protected@file@percent }
-\newlabel{sec:LaTeX_figures}{{B.7}{48}{Floats: figures and tables}{section.B.7}{}}
-\newlabel{sec:LaTeX_figures@cref}{{[subappendix][7][2147483647,2]B.7}{[1][48][]48}}
-\BKM@entry{id=59,dest={73756273656374696F6E2E422E372E32},srcline={502}}{5C3337365C3337375C303030545C303030615C303030625C3030306C5C303030655C30303073}
-\BKM@entry{id=60,dest={73656374696F6E2E422E38},srcline={551}}{5C3337365C3337375C303030415C3030306C5C303030675C3030306F5C303030725C303030695C303030745C303030685C3030306D5C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030735C3030306F5C303030755C303030725C303030635C303030655C3030305C3034305C303030635C3030306F5C303030645C303030655C3030305C3034305C3030306C5C303030695C303030735C303030745C303030695C3030306E5C303030675C30303073}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.2}{\ignorespaces Example figure.}}{49}{figure.caption.41}\protected@file@percent }
-\newlabel{fig:example_figure}{{B.2}{49}{Example figure}{figure.caption.41}{}}
-\newlabel{fig:example_figure@cref}{{[figure][2][2147483647,2]B.2}{[1][49][]49}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.3}{\ignorespaces Simple example table with some values in different number systems.}}{49}{table.caption.42}\protected@file@percent }
-\newlabel{tbl:sample_number_systems}{{B.3}{49}{Simple example table with some values in different number systems}{table.caption.42}{}}
-\newlabel{tbl:sample_number_systems@cref}{{[table][3][2147483647,2]B.3}{[1][49][]49}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.7.1}Figures}{49}{subsection.B.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.7.2}Tables}{49}{subsection.B.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.8}Algorithms and source code listings}{49}{section.B.8}\protected@file@percent }
-\newlabel{forins}{{4}{50}{Algorithms and source code listings}{AlgoLine.9.4}{}}
-\newlabel{forins@cref}{{[line][4][]4}{[1][49][]50}}
-\newlabel{lt}{{8}{50}{Algorithms and source code listings}{AlgoLine.9.8}{}}
-\newlabel{lt@cref}{{[line][8][]8}{[1][49][]50}}
-\newlabel{ut}{{12}{50}{Algorithms and source code listings}{AlgoLine.9.12}{}}
-\newlabel{ut@cref}{{[line][12][]12}{[1][49][]50}}
-\newlabel{cmt}{{13}{50}{Algorithms and source code listings}{AlgoLine.9.13}{}}
-\newlabel{cmt@cref}{{[line][13][]13}{[1][49][]50}}
-\newlabel{lelse}{{14}{50}{Algorithms and source code listings}{AlgoLine.9.14}{}}
-\newlabel{lelse@cref}{{[line][14][]14}{[1][49][]50}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {9}{\ignorespaces Disjoint decomposition.}}{50}{algocf.9}\protected@file@percent }
-\newlabel{alg:disjoint_decomposition}{{9}{50}{Algorithms and source code listings}{algocf.9}{}}
-\newlabel{alg:disjoint_decomposition@cref}{{[algorithm][9][2147483647]9}{[1][49][]50}}
-\BKM@entry{id=61,dest={73656374696F6E2E422E39},srcline={600}}{5C3337365C3337375C303030435C303030695C303030745C303030695C3030306E5C303030675C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030725C303030655C303030665C303030655C303030725C303030655C3030306E5C303030635C303030695C3030306E5C30303067}
-\BKM@entry{id=62,dest={73656374696F6E2E422E3130},srcline={607}}{5C3337365C3337375C303030505C303030725C303030695C3030306E5C303030745C303030695C3030306E5C303030675C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030625C303030695C3030306E5C303030645C303030695C3030306E5C30303067}
-\@writefile{lot}{\contentsline {table}{\numberline {B.4}{\ignorespaces Simple example table with different row and cell colors.}}{51}{table.caption.43}\protected@file@percent }
-\newlabel{tbl:sample_colors}{{B.4}{51}{Simple example table with different row and cell colors}{table.caption.43}{}}
-\newlabel{tbl:sample_colors@cref}{{[table][4][2147483647,2]B.4}{[1][49][]51}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.5}{\ignorespaces Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href  {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}. }}{51}{table.caption.44}\protected@file@percent }
-\newlabel{tbl:fixed_width_columns}{{B.5}{51}{Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}}{table.caption.44}{}}
-\newlabel{tbl:fixed_width_columns@cref}{{[table][5][2147483647,2]B.5}{[1][49][]51}}
-\newlabel{lst:simple_C}{{B.1}{51}{Simple C code snippet}{lstlisting.B.1}{}}
-\newlabel{lst:simple_C@cref}{{[listing][1][2147483647,2]B.1}{[1][51][]51}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {B.1}{\ignorespaces Simple C code snippet.}}{51}{lstlisting.B.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.9}Citing and referencing}{51}{section.B.9}\protected@file@percent }
-\newlabel{sec:cite_and_reference}{{B.9}{51}{Citing and referencing}{section.B.9}{}}
-\newlabel{sec:cite_and_reference@cref}{{[subappendix][9][2147483647,2]B.9}{[1][51][]51}}
-\BKM@entry{id=63,dest={73656374696F6E2E422E3131},srcline={612}}{5C3337365C3337375C303030465C303030755C303030725C303030745C303030685C303030655C303030725C3030305C3034305C303030725C303030655C303030615C303030645C303030695C3030306E5C30303067}
+\BKM@entry{id=54,dest={73756273656374696F6E2E422E372E31},srcline={474}}{5C3337365C3337375C303030465C303030695C303030675C303030755C303030725C303030655C30303073}
+\@writefile{toc}{\contentsline {section}{\numberline {B.6}Enumerations and itemizations}{46}{section.B.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.7}Floats: figures and tables}{46}{section.B.7}\protected@file@percent }
+\newlabel{sec:LaTeX_figures}{{B.7}{46}{Floats: figures and tables}{section.B.7}{}}
+\newlabel{sec:LaTeX_figures@cref}{{[subappendix][7][2147483647,2]B.7}{[1][46][]46}}
+\BKM@entry{id=55,dest={73756273656374696F6E2E422E372E32},srcline={502}}{5C3337365C3337375C303030545C303030615C303030625C3030306C5C303030655C30303073}
+\BKM@entry{id=56,dest={73656374696F6E2E422E38},srcline={551}}{5C3337365C3337375C303030415C3030306C5C303030675C3030306F5C303030725C303030695C303030745C303030685C3030306D5C303030735C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030735C3030306F5C303030755C303030725C303030635C303030655C3030305C3034305C303030635C3030306F5C303030645C303030655C3030305C3034305C3030306C5C303030695C303030735C303030745C303030695C3030306E5C303030675C30303073}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.2}{\ignorespaces Example figure.}}{47}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:example_figure}{{B.2}{47}{Example figure}{figure.caption.37}{}}
+\newlabel{fig:example_figure@cref}{{[figure][2][2147483647,2]B.2}{[1][47][]47}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.3}{\ignorespaces Simple example table with some values in different number systems.}}{47}{table.caption.38}\protected@file@percent }
+\newlabel{tbl:sample_number_systems}{{B.3}{47}{Simple example table with some values in different number systems}{table.caption.38}{}}
+\newlabel{tbl:sample_number_systems@cref}{{[table][3][2147483647,2]B.3}{[1][47][]47}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.7.1}Figures}{47}{subsection.B.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.7.2}Tables}{47}{subsection.B.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.8}Algorithms and source code listings}{47}{section.B.8}\protected@file@percent }
+\newlabel{forins}{{4}{48}{Algorithms and source code listings}{AlgoLine.9.4}{}}
+\newlabel{forins@cref}{{[line][4][]4}{[1][47][]48}}
+\newlabel{lt}{{8}{48}{Algorithms and source code listings}{AlgoLine.9.8}{}}
+\newlabel{lt@cref}{{[line][8][]8}{[1][47][]48}}
+\newlabel{ut}{{12}{48}{Algorithms and source code listings}{AlgoLine.9.12}{}}
+\newlabel{ut@cref}{{[line][12][]12}{[1][47][]48}}
+\newlabel{cmt}{{13}{48}{Algorithms and source code listings}{AlgoLine.9.13}{}}
+\newlabel{cmt@cref}{{[line][13][]13}{[1][47][]48}}
+\newlabel{lelse}{{14}{48}{Algorithms and source code listings}{AlgoLine.9.14}{}}
+\newlabel{lelse@cref}{{[line][14][]14}{[1][47][]48}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {9}{\ignorespaces Disjoint decomposition.}}{48}{algocf.9}\protected@file@percent }
+\newlabel{alg:disjoint_decomposition}{{9}{48}{Algorithms and source code listings}{algocf.9}{}}
+\newlabel{alg:disjoint_decomposition@cref}{{[algorithm][9][2147483647]9}{[1][47][]48}}
+\BKM@entry{id=57,dest={73656374696F6E2E422E39},srcline={600}}{5C3337365C3337375C303030435C303030695C303030745C303030695C3030306E5C303030675C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030725C303030655C303030665C303030655C303030725C303030655C3030306E5C303030635C303030695C3030306E5C30303067}
+\BKM@entry{id=58,dest={73656374696F6E2E422E3130},srcline={607}}{5C3337365C3337375C303030505C303030725C303030695C3030306E5C303030745C303030695C3030306E5C303030675C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030625C303030695C3030306E5C303030645C303030695C3030306E5C30303067}
+\@writefile{lot}{\contentsline {table}{\numberline {B.4}{\ignorespaces Simple example table with different row and cell colors.}}{49}{table.caption.39}\protected@file@percent }
+\newlabel{tbl:sample_colors}{{B.4}{49}{Simple example table with different row and cell colors}{table.caption.39}{}}
+\newlabel{tbl:sample_colors@cref}{{[table][4][2147483647,2]B.4}{[1][47][]49}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.5}{\ignorespaces Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href  {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}. }}{49}{table.caption.40}\protected@file@percent }
+\newlabel{tbl:fixed_width_columns}{{B.5}{49}{Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}}{table.caption.40}{}}
+\newlabel{tbl:fixed_width_columns@cref}{{[table][5][2147483647,2]B.5}{[1][47][]49}}
+\newlabel{lst:simple_C}{{B.1}{49}{Simple C code snippet}{lstlisting.B.1}{}}
+\newlabel{lst:simple_C@cref}{{[listing][1][2147483647,2]B.1}{[1][49][]49}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {B.1}{\ignorespaces Simple C code snippet.}}{49}{lstlisting.B.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.9}Citing and referencing}{49}{section.B.9}\protected@file@percent }
+\newlabel{sec:cite_and_reference}{{B.9}{49}{Citing and referencing}{section.B.9}{}}
+\newlabel{sec:cite_and_reference@cref}{{[subappendix][9][2147483647,2]B.9}{[1][49][]49}}
+\BKM@entry{id=59,dest={73656374696F6E2E422E3131},srcline={612}}{5C3337365C3337375C303030465C303030755C303030725C303030745C303030685C303030655C303030725C3030305C3034305C303030725C303030655C303030615C303030645C303030695C3030306E5C30303067}
 \citation{Turabian13}
 \citation{Strunk12}
 \citation{ChicagoManualOfStyle}
@@ -346,24 +344,24 @@
 \citation{Graetzer16}
 \citation{Mittelbach04}
 \citation{Knuth84}
-\BKM@entry{id=64,dest={73656374696F6E2E422E3132},srcline={628}}{5C3337365C3337375C303030695C303030695C303030735C303030725C303030655C303030705C3030306F5C303030725C303030745C3030305C3034305C3030306F5C303030705C303030745C303030695C3030306F5C3030306E5C303030735C3030305C3034305C303030715C303030755C303030695C303030635C3030306B5C3030305C3034305C303030725C303030655C303030665C303030655C303030725C303030655C3030306E5C303030635C30303065}
-\@writefile{toc}{\contentsline {section}{\numberline {B.10}Printing and binding}{52}{section.B.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.11}Further reading}{52}{section.B.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.12}\textit  {iisreport} options quick reference}{52}{section.B.12}\protected@file@percent }
-\BKM@entry{id=65,dest={617070656E6469782E43},srcline={1}}{5C3337365C3337375C303030545C303030615C303030735C3030306B5C3030305C3034305C303030445C303030655C303030735C303030635C303030725C303030695C303030705C303030745C303030695C3030306F5C3030306E}
-\@writefile{toc}{\contentsline {chapter}{\numberline {C}Task Description}{53}{appendix.C}\protected@file@percent }
+\BKM@entry{id=60,dest={73656374696F6E2E422E3132},srcline={628}}{5C3337365C3337375C303030695C303030695C303030735C303030725C303030655C303030705C3030306F5C303030725C303030745C3030305C3034305C3030306F5C303030705C303030745C303030695C3030306F5C3030306E5C303030735C3030305C3034305C303030715C303030755C303030695C303030635C3030306B5C3030305C3034305C303030725C303030655C303030665C303030655C303030725C303030655C3030306E5C303030635C30303065}
+\@writefile{toc}{\contentsline {section}{\numberline {B.10}Printing and binding}{50}{section.B.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.11}Further reading}{50}{section.B.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.12}\textit  {iisreport} options quick reference}{50}{section.B.12}\protected@file@percent }
+\BKM@entry{id=61,dest={617070656E6469782E43},srcline={1}}{5C3337365C3337375C303030545C303030615C303030735C3030306B5C3030305C3034305C303030445C303030655C303030735C303030635C303030725C303030695C303030705C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {chapter}{\numberline {C}Task Description}{51}{appendix.C}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\BKM@entry{id=66,dest={73656374696F6E2A2E3436},srcline={1}}{5C3337365C3337375C3030304C5C303030695C303030735C303030745C3030305C3034305C3030306F5C303030665C3030305C3034305C303030415C303030635C303030725C3030306F5C3030306E5C303030795C3030306D5C30303073}
-\@writefile{toc}{\contentsline {chapter}{List of Acronyms}{54}{section*.46}\protected@file@percent }
-\BKM@entry{id=67,dest={73656374696F6E2A2E3436},srcline={50}}{5C3337365C3337375C3030304C5C303030695C303030735C303030745C3030305C3034305C3030306F5C303030665C3030305C3034305C303030465C303030695C303030675C303030755C303030725C303030655C30303073}
-\@writefile{toc}{\contentsline {chapter}{\nonumberline List of Figures}{55}{section*.46}\protected@file@percent }
-\BKM@entry{id=68,dest={73656374696F6E2A2E3436},srcline={51}}{5C3337365C3337375C3030304C5C303030695C303030735C303030745C3030305C3034305C3030306F5C303030665C3030305C3034305C303030545C303030615C303030625C3030306C5C303030655C30303073}
+\BKM@entry{id=62,dest={73656374696F6E2A2E3432},srcline={1}}{5C3337365C3337375C3030304C5C303030695C303030735C303030745C3030305C3034305C3030306F5C303030665C3030305C3034305C303030415C303030635C303030725C3030306F5C3030306E5C303030795C3030306D5C30303073}
+\@writefile{toc}{\contentsline {chapter}{List of Acronyms}{52}{section*.42}\protected@file@percent }
+\BKM@entry{id=63,dest={73656374696F6E2A2E3432},srcline={50}}{5C3337365C3337375C3030304C5C303030695C303030735C303030745C3030305C3034305C3030306F5C303030665C3030305C3034305C303030465C303030695C303030675C303030755C303030725C303030655C30303073}
+\@writefile{toc}{\contentsline {chapter}{\nonumberline List of Figures}{53}{section*.42}\protected@file@percent }
+\BKM@entry{id=64,dest={73656374696F6E2A2E3432},srcline={51}}{5C3337365C3337375C3030304C5C303030695C303030735C303030745C3030305C3034305C3030306F5C303030665C3030305C3034305C303030545C303030615C303030625C3030306C5C303030655C30303073}
 \bibdata{./bib/main,./bib/latex_and_writing}
-\@writefile{toc}{\contentsline {chapter}{\nonumberline List of Tables}{56}{section*.46}\protected@file@percent }
-\BKM@entry{id=69,dest={636861707465722A2E3437},srcline={2}}{5C3337365C3337375C303030425C303030695C303030625C3030306C5C303030695C3030306F5C303030675C303030725C303030615C303030705C303030685C30303079}
+\@writefile{toc}{\contentsline {chapter}{\nonumberline List of Tables}{55}{section*.42}\protected@file@percent }
+\BKM@entry{id=65,dest={636861707465722A2E3433},srcline={2}}{5C3337365C3337375C303030425C303030695C303030625C3030306C5C303030695C3030306F5C303030675C303030725C303030615C303030705C303030685C30303079}
 \bibcite{yannakakis_computing_1981}{1}
 \bibcite{lipton_generalized_1979}{2}
 \bibcite{george_nested_1973}{3}
@@ -373,7 +371,7 @@
 \bibcite{merrill_scalable_nodate}{7}
 \bibcite{kaleta_kaletapbfs-cuda-gpu_2025}{8}
 \bibcite{LaTeXSymbols}{9}
-\@writefile{toc}{\contentsline {chapter}{\nonumberline Bibliography}{57}{chapter*.47}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\nonumberline Bibliography}{56}{chapter*.43}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
@@ -402,10 +400,10 @@
 \global\csname @altsecnumformattrue\endcsname
 \global\@namedef{scr@dte@chapter@lastmaxnumwidth}{15.6364pt}
 \global\@namedef{scr@dte@section@lastmaxnumwidth}{27.49532pt}
-\global\@namedef{scr@dte@subsection@lastmaxnumwidth}{32.06136pt}
-\global\@namedef{scr@dte@table@lastmaxnumwidth}{22.02032pt}
-\global\@namedef{scr@dte@figure@lastmaxnumwidth}{23.84888pt}
+\global\@namedef{scr@dte@subsection@lastmaxnumwidth}{30.2328pt}
+\global\@namedef{scr@dte@table@lastmaxnumwidth}{23.84888pt}
+\global\@namedef{scr@dte@figure@lastmaxnumwidth}{22.02032pt}
 \@writefile{toc}{\providecommand\tocbasic@end@toc@file{}\tocbasic@end@toc@file}
 \@writefile{lof}{\providecommand\tocbasic@end@toc@file{}\tocbasic@end@toc@file}
 \@writefile{lot}{\providecommand\tocbasic@end@toc@file{}\tocbasic@end@toc@file}
-\gdef \@abspage@last{66}
+\gdef \@abspage@last{65}

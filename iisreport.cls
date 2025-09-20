@@ -106,6 +106,7 @@
 \RequirePackage{mathtools}
 
 \RequirePackage{bchart}
+\RequirePackage{float}
 
 % Theorems, lemmas, corollaries, proofs, and definitions
 \RequirePackage{amsthm}

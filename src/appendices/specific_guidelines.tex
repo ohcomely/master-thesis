@@ -1,86 +1,45 @@
-\chapter{Topic-Specific Guidelines}
-\label{app:topic-specific_guidelines}
+\chapter{Experimental Results}
+\label{app:experimental_results}
 
-\section{IC design (ASIC or FPGA) projects}
+In this appendix, we present additional experimental results that complement the findings discussed in the results \ref{ch:results}. These results provide insights into how each reordering method performs across aforementioned metrics and matrices.
 
-    For \gls{ic} design projects, the part of the report where you present your main contributions (the \textsl{Implementation} chapter in this template) usually consists of two chapters: \textsl{Hardware Architecture} and \textsl{Design Implementation}.
+\section{Fill-in}
 
-  \subsection{Hardware architecture}
 
-    In the Hardware Architecture chapter, you should describe the architecture and decisions that led to it.
-    Block diagrams and descriptions of control flow, data flow, and interfaces go there.
-    The described architecture can be more general than what you actually implemented, e.g., through parameters.
-
-  \subsection{Design implementation}
-
-    The Design Implementation chapter is about the architecture variant you actually implemented.
-    It can be meaningful to merge this chapter with the Results chapter to relate central figures of merit directly to implementation choices and tradeoffs; discuss this with your advisors.
-
-    \subsubsection{Functional verification}
-
-      Describe how you verified the design implementation functionally.
-      For example, describe how your testbench interfaced the golden model and your circuit.
-      \Cref{fig:functional_verification_tb} illustrates a sample setup.
-
-      \begin{figure}
-        \centering
-        \includegraphics[width=\textwidth]{functional_verification_tb}
-        \caption{Testbench used for functional verification.}%
-        \label{fig:functional_verification_tb}
-      \end{figure}
-
-      Reference a ReadMe file that describes how the testbench can be launched.
-
-    \subsubsection{Back-end implementation}
-
-      In \gls{asic} projects, remember to discuss both front- and back-end implementation.
-      That is, if you took special measures for floorplanning, \gls{dft}, or clock or power distribution, you will want to mention it here.
-      In this case, make sure to add results that show the impact of your measures.
-
-  \subsection{Results}
-
-    Typical application-specific figures of merit of your hardware design are \gls{snr}, throughput, and memory/interface bandwidth.
-    Moreover, you should also specify technology-specific figures such as area (for \glspl{asic}) or resource (for \glspl{fpga}) requirements, timing constraints, and power and energy consumption.
-
-  \subsection{Data sheet}
-
-    If your \gls{asic} is getting fabricated, you need to write a data sheet for it.
-    You should put this data sheet into the appendix of your report.
-    You are free to write the data sheet in a standalone document and include a \gls{pdf} file here or to write it in the source files of your report.
-
-    Sections of a typical \gls{ic} data sheet are:
-    \begin{itemize}
-      \item Features
-      \item Applications
-      \item Packaging
-      \item Bonding diagram like the one in \cref{fig:bonding_diagram}.
-      \item Pinout diagram like the one in \cref{fig:asic_pinout}.
-      \item Interface description
-      \item Register map
-      \item Operation modes:
-      \begin{itemize}
-        \item Functional modes
-        \item Test modes
-      \end{itemize}
-      \item Electrical specifications
-      \begin{itemize}
-        \item Recommended operating regions
-        \item Absolute maximum ratings
-      \end{itemize}
-    \end{itemize}
-
-    \begin{figure}
-      \centering
-      \includegraphics[width=.75\textwidth]{qfn56_180_std}
-      \caption{Standard bonding diagram for QFN56 UMC 180\,nm mini@sics.}%
-      \label{fig:bonding_diagram}
-    \end{figure}
-
-    \begin{figure}
-      \centering
-      \includegraphics[width=.75\textwidth]{asic_pinout}
-      \caption{Pinout for \textsc{MyFancyChip}.}%
-      \label{fig:asic_pinout}
-    \end{figure}
-
-    For more information, up-to-date bonding diagrams, and other technology-specific data ask the \gls{dz}.
+\begin{table}[h]
+\centering
+\caption{Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}
+\label{tab:fillin-results}
+\rotatebox{90}{%
+\resizebox{\textheight}{!}{%
+\begin{tabular}{|l|r|r|r|r|r|r|r|r|r|r|r|}
+\hline
+\textbf{Matrix} & \textbf{AMD} & \textbf{COLAMD} & \textbf{HG-16} & \textbf{HG-2} & \textbf{HG-4} & \textbf{HG-8} & \textbf{METIS} & \textbf{Natural} & \textbf{METIS+IC} & \textbf{RCM} & \textbf{SCOTCH} \\
+\hline
+144 & 93410000 & 93410000 & 68090000 & 46850000 & 47320000 & 51880000 & 47060000 & 1.845E+19 & 46230000 & 925100000 & 51300000 \\
+598a & 45810000 & 45810000 & 40670000 & 25590000 & 25870000 & 29360000 & 25480000 & - & 25460000 & - & 28370000 \\
+add32 & 9417 & 9417 & 9830 & 10030 & 10120 & 10120 & 10050 & 2658000 & 9995 & 14610 & 20300 \\
+auto & 569500000 & 569500000 & - & 220800000 & 226000000 & - & 220600000 & - & 217900000 & - & 243900000 \\
+bbmat & 16860000 & 16860000 & 18340000 & 15780000 & 16100000 & 16370000 & 15910000 & - & 15750000 & 33750000 & 17800000 \\
+bcsstk30 & 3823000 & 3823000 & 4806000 & 4354000 & 4507000 & 4345000 & 4277000 & 15690000 & 4300000 & 21110000 & 4541000 \\
+bcsstk31 & 5533000 & 5533000 & 4698000 & 4248000 & 4209000 & 4313000 & 4186000 & 23140000 & 4164000 & 22400000 & 4755000 \\
+bcsstk32 & 4944000 & 4944000 & 5855000 & 5383000 & 5382000 & 5451000 & 5311000 & 60770000 & 5297000 & 44020000 & 6201000 \\
+brack2 & 7386000 & 7386000 & 8666000 & 5732000 & 5906000 & 6693000 & 5870000 & 759500000 & 5800000 & 45130000 & 7636000 \\
+cant & 28880000 & 28880000 & 17850000 & 18210000 & 18200000 & 18090000 & 18200000 & 16780000 & 18220000 & 17150000 & 20440000 \\
+copter2 & 13880000 & 13880000 & 15040000 & 8914000 & 9284000 & 10970000 & 8906000 & 702700000 & 8880000 & 68550000 & 10830000 \\
+finan512 & 2763000 & 2763000 & 1562000 & 1650000 & 1577000 & 1626000 & 1647000 & 6190000 & 1623000 & 7511000 & 2197000 \\
+lhr10 & 8078000 & 8078000 & 7500000 & 3130000 & 3858000 & 5469000 & 3469000 & - & 3323000 & 14980000 & 3937000 \\
+lhr71 & 93700000 & 93700000 & 210300000 & 36470000 & 36060000 & 35450000 & 36040000 & 210300000 & 34550000 & 150100000 & 41460000 \\
+m14b & 110300000 & 110300000 & 95120000 & 62320000 & 63220000 & 70130000 & 62610000 & - & 62130000 & - & 68790000 \\
+memplus & 52430 & 52430 & 57320 & 55730 & 54660 & 55180 & 54780 & 138400000 & 55830 & 142700 & 127300 \\
+pwt & 1519000 & 1519000 & 1320000 & 1307000 & 1313000 & 1319000 & 1306000 & 3396000 & 1309000 & 5362000 & 1601000 \\
+shyy161 & 1746000 & 1746000 & 1653000 & 1692000 & 1639000 & 1660000 & 1657000 & 8141000 & 1672000 & 11110000 & 2042000 \\
+torso1 & 12450000 & 12450000 & - & - & - & - & 13570000 & - & - & 113500000 & 16560000 \\
+troll & 91680000 & 91680000 & 78570000 & 60850000 & 61560000 & 63540000 & 58910000 & 913600000 & 58210000 & 941600000 & 67080000 \\
+venkat01 & 5739000 & 5739000 & 5797000 & 5378000 & 5378000 & 5472000 & 5405000 & 64940000 & 5349000 & 45380000 & 5954000 \\
+wave & 121700000 & 121700000 & 85080000 & 61300000 & 61410000 & 66910000 & 59710000 & 1008000000 & 62180000 & 835800000 & 66530000 \\
+\hline
+\end{tabular}%
+}%
+}
+\end{table}

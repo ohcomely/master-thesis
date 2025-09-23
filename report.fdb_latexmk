@@ -1,21 +1,21 @@
 # Fdb version 4
-["bibtex report"] 1758396630.47096 "report.aux" "report.bbl" "report" 1758397015.66433 0
+["bibtex report"] 1758396630.47096 "report.aux" "report.bbl" "report" 1758652390.25491 0
   "./bib/latex_and_writing.bib" 1751959538 3341 a696d27318d6dd81fca89d8e4587653c ""
   "./bib/main.bib" 1757609781.36107 11531 3f01582f13b7a72a302e140ce99d07fd ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "report.aux" 1758397014.89466 54175 c5cebf469442572c64a5a1f5a0a9ebad "pdflatex"
+  "report.aux" 1758652389.62975 54175 c5cebf469442572c64a5a1f5a0a9ebad "pdflatex"
   (generated)
   "report.bbl"
   "report.blg"
   (rewritten before read)
-["cusdep acn acr report"] 1758396630.58592 "report.acn" "report.acr" "report" 1758397015.6646 0
-  "report.acn" 1758397014.90666 3254 2100b51c0525b3dd626bd99a91817d2c "pdflatex"
+["cusdep acn acr report"] 1758396630.58592 "report.acn" "report.acr" "report" 1758652390.25545 0
+  "report.acn" 1758652389.64075 3254 2100b51c0525b3dd626bd99a91817d2c "pdflatex"
   (generated)
   "report.acr"
   (rewritten before read)
-["pdflatex"] 1758397006.18445 "/home/ranjan/ETHZ/thesis/report/master_thesis/report/report.tex" "report.pdf" "report" 1758397015.66467 0
+["pdflatex"] 1758652375.57488 "/home/ranjan/ETHZ/thesis/report/master_thesis/report/report.tex" "report.pdf" "report" 1758652390.25562 0
   "/etc/texmf/web2c/texmf.cnf" 1751844220.85407 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/ranjan/ETHZ/thesis/report/master_thesis/report/report.tex" 1756820174.43554 1270 5492e9af956d8af7327a539056f3274e ""
+  "/home/ranjan/ETHZ/thesis/report/master_thesis/report/report.tex" 1758652375.23295 1301 102a8407343bf693824d9e628d911117 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvr7t.tfm" 1136768653 2520 53e01eef820ca829e42c1333c3fd02b9 ""
@@ -354,22 +354,22 @@
   "fig/intro/bcsstk32.png" 1758394731.24369 3782 1e8b52a4aab59017592453bb2e0fe37f ""
   "fig/intro/bcsstk32_graph.png" 1758395115.38895 17287 7ab2c8c12b7b7015094b24d45ea887ec ""
   "fig/intro/matrix.png" 1758385814.25013 131004 5a684697b3678b20404017fdbe5d50f4 ""
+  "fig/jazz_strip.png" 1758652269.49941 4059115 81ee4380505860c32c0635ba83a8e7a7 ""
   "fig/res/144_sparsity_patterns.png" 1757934285.27826 1881838 b09c2ecc3b5580f7d47e04abd67e167b ""
   "fig/res/copter2_sparsity_patterns.png" 1757934285.28384 2041303 9a68f75b73a4d588c8e972b839d761f4 ""
   "fig/res/elimination_tree_depth_comparison.png" 1757964959.67399 228910 602e01d6d97e56d8681fcdaf078a2776 ""
   "fig/res/fill-in-comp.png" 1758230343.97508 571880 cddadabb33295f9e40a05fdbda56ca7d ""
   "fig/res/reorder_time_vs_size.png" 1757977595.45079 200384 38524aac45cff76c3bcc06f0eaeb8029 ""
-  "fig/titlepage_logo.pdf" 1751959538 5456 8ee5c13e99f3141cf8f21a375b732dd4 ""
   "iisreport.cls" 1758232290.18871 10269 0d2f81aeb11f30a5bdfcd6e0ebf64e52 ""
   "report.acr" 1758396630.75091 2137 da4a956c99aedc1293e6e14879012c0f "cusdep acn acr report"
-  "report.aux" 1758397014.89466 54175 c5cebf469442572c64a5a1f5a0a9ebad "pdflatex"
+  "report.aux" 1758652389.62975 54175 c5cebf469442572c64a5a1f5a0a9ebad "pdflatex"
   "report.bbl" 1758396630.58291 8337 a62892a00873b707da74299ef1de8954 "bibtex report"
-  "report.glsdefs" 1758397014.89266 6401 efc33f38ed3b6da6a04f98afe2b112a2 "pdflatex"
-  "report.lof" 1758397014.90666 2900 c0c25df9444218638eb598ac4b0259a0 "pdflatex"
-  "report.lot" 1758397014.90666 1836 ef8a0bb29a6e9b2d29aca29e2bd80117 "pdflatex"
-  "report.out" 1758397008.02104 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "report.tex" 1756820174.43554 1270 5492e9af956d8af7327a539056f3274e ""
-  "report.toc" 1758397014.90666 6448 dfad637fb756d366ee1311873258521a "pdflatex"
+  "report.glsdefs" 1758652389.62775 6401 efc33f38ed3b6da6a04f98afe2b112a2 "pdflatex"
+  "report.lof" 1758652389.64075 2900 c0c25df9444218638eb598ac4b0259a0 "pdflatex"
+  "report.lot" 1758652389.64075 1836 ef8a0bb29a6e9b2d29aca29e2bd80117 "pdflatex"
+  "report.out" 1758652377.68655 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "report.tex" 1758652375.23295 1301 102a8407343bf693824d9e628d911117 ""
+  "report.toc" 1758652389.64075 6448 dfad637fb756d366ee1311873258521a "pdflatex"
   "src/abstract.tex" 1751959538 1562 61ee6554695697601299d581abba3965 ""
   "src/acknowledgments.tex" 1751959538 129 5ff98edd6e0e2fe4fa56b3077e43da58 ""
   "src/appendices/latex_guide.tex" 1751959538 35768 0313b76931e9edd76aa78102eb317e98 ""
@@ -379,7 +379,7 @@
   "src/background.tex" 1757760076.06883 23138 805a681327a90d525d951b82d53c7547 ""
   "src/conclusion.tex" 1751959538 595 27e2398cfb7650090d2f725884c6ae65 ""
   "src/impl.tex" 1758151778.40696 20875 831e7d878f13923ca8ab47f5272f85ff ""
-  "src/introduction.tex" 1758397005.89559 9422 9ea7ad95d4fd6d1eae4dc510ee5407c3 ""
+  "src/introduction.tex" 1758539986.1581 9422 9ea7ad95d4fd6d1eae4dc510ee5407c3 ""
   "src/other_approaches.tex" 1757076451.3341 2124 65347180bf7709753478a88013a8df76 ""
   "src/results.tex" 1758233607.82157 19099 0ba3cf32294bb757f03e82b6d232d06c ""
   (generated)

@@ -108,6 +108,7 @@
 \RequirePackage{bchart}
 \RequirePackage{float}
 \RequirePackage{wrapfig}
+\RequirePackage{placeins}
 
 % Theorems, lemmas, corollaries, proofs, and definitions
 \RequirePackage{amsthm}

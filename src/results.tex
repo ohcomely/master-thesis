@@ -249,9 +249,19 @@ The hypergraph partitioning methods (DB variants) show variable performance for 
 \label{fig:elimination-tree-depth}
 \end{figure}
 
+\FloatBarrier
 
+\subsection*{GPU-accelerated RCM}
 
-% \section{Current limitations}
+In this section, we present the performance of our GPU-accelerated implementation of the Reverse Cuthill-McKee (RCM) algorithm compared to a traditional CPU-based implementation. We measure only the runtime of the RCM algorithm and not the fill-in, as the quality of the ordering produced by both implementations is identical. 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{fig/res/gpu_rcm_speedups_clean.png}
+   \caption{Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 10K nodes).}
+   \label{fig:gpu-rcm-speedups}
+\end{figure}
+
+\section{Current limitations}
 
 % Demonstrating that your implementation meets the objectives is usually done by showing a lower bound on a given figure of merit.
 % Conversely, you should also illuminate the limitations of your implementation by showing upper bounds on these (or other appropriate) figures of merit.

@@ -58,6 +58,14 @@ D.~Merrill, ``\BIBforeignlanguage{en}{Scalable {GPU} {Graph} {Traversal}}.''
 P.~Kaleta, ``kaletap/bfs-cuda-gpu,'' May 2025, original-date: 2019-11-14T12:55:50Z. [Online]. Available: \url{https://github.com/kaletap/bfs-cuda-gpu}
 \BIBentrySTDinterwordspacing
 
+\bibitem{yuan_fast_nodate}
+C.~Yuan, ``\BIBforeignlanguage{en}{Fast {Sparse} {Matrix} {Reordering} on {GPU} for {Cholesky} {Based} {Solvers}}.''
+
+\bibitem{gilbert_jet_2024}
+\BIBentryALTinterwordspacing
+M.~S. Gilbert, K.~Madduri, E.~G. Boman, and S.~Rajamanickam, ``Jet: {Multilevel} {Graph} {Partitioning} on {Graphics} {Processing} {Units},'' \emph{SIAM Journal on Scientific Computing}, vol.~46, no.~5, pp. B700--B724, Oct. 2024, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/23M1559129}
+\BIBentrySTDinterwordspacing
+
 \bibitem{LaTeXSymbols}
 \BIBentryALTinterwordspacing
 S.~Pakin, \emph{The Comprehensive {LaTeX} Symbol List}, Jan. 2017. [Online]. Available: \url{http://mirrors.ctan.org/info/symbols/comprehensive/symbols-a4.pdf}

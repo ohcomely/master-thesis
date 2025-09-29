@@ -7,17 +7,18 @@
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}}{11}{figure.caption.16}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Fill-in ratio (fill-in/original nnz) comparison across different matrix categories}}{28}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Fill-in ratio (fill-in/original nnz) comparison across different matrix categories}}{27}{figure.caption.25}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Reordering time scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and computational time for various reordering methods.}}{29}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{30}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{31}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{31}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{32}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential.}}{33}{figure.caption.29}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces GNN-based method with RCM and MinDegree}}{33}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Recursive calls in nested dissection}}{35}{figure.caption.31}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Selected predefined colors, sorted by hue.}}{40}{figure.caption.33}%
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Example figure.}}{46}{figure.caption.34}%
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Selected predefined colors, sorted by hue.}}{42}{figure.caption.35}%
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Example figure.}}{48}{figure.caption.36}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -34,39 +34,39 @@
 \contentsline {section}{\numberline {4.3}Methodology}{24}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Performance Metrics and Measurement Protocol}{25}{subsection.4.3.1}%
 \contentsline {section}{\numberline {4.4}Evaluation}{26}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Other Approaches}{32}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{32}{section.5.1}%
-\contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{32}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{34}{chapter.6}%
-\contentsline {chapter}{\numberline {A}Experimental Results}{35}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Fill-in}{35}{section.A.1}%
-\contentsline {chapter}{\numberline {B}Compact Guide to \LaTeX {} and the \textit {iisreport} Class}{37}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Building the document}{37}{section.B.1}%
-\contentsline {section}{\numberline {B.2}Text editing and spacing}{37}{section.B.2}%
-\contentsline {subsection}{\numberline {B.2.1}Special characters}{38}{subsection.B.2.1}%
-\contentsline {subsection}{\numberline {B.2.2}Font faces and emphasis}{38}{subsection.B.2.2}%
-\contentsline {subsection}{\numberline {B.2.3}Font sizes}{39}{subsection.B.2.3}%
-\contentsline {subsection}{\numberline {B.2.4}Coloring text}{40}{subsection.B.2.4}%
-\contentsline {section}{\numberline {B.3}Debugging}{40}{section.B.3}%
-\contentsline {section}{\numberline {B.4}Math mode}{41}{section.B.4}%
-\contentsline {subsection}{\numberline {B.4.1}Delimiters: Parentheses, brackets, bars, and intervals}{42}{subsection.B.4.1}%
-\contentsline {subsection}{\numberline {B.4.2}Differential and derivative operators}{42}{subsection.B.4.2}%
-\contentsline {subsection}{\numberline {B.4.3}Vectors, matrices, and distinction of cases}{43}{subsection.B.4.3}%
-\contentsline {subsection}{\numberline {B.4.4}Multi-line equations}{43}{subsection.B.4.4}%
-\contentsline {subsection}{\numberline {B.4.5}Definitions, theorems, lemmas, and proofs}{44}{subsection.B.4.5}%
-\contentsline {section}{\numberline {B.5}Quantities with SI units}{44}{section.B.5}%
-\contentsline {section}{\numberline {B.6}Enumerations and itemizations}{45}{section.B.6}%
-\contentsline {section}{\numberline {B.7}Floats: figures and tables}{45}{section.B.7}%
-\contentsline {subsection}{\numberline {B.7.1}Figures}{46}{subsection.B.7.1}%
-\contentsline {subsection}{\numberline {B.7.2}Tables}{46}{subsection.B.7.2}%
-\contentsline {section}{\numberline {B.8}Algorithms and source code listings}{46}{section.B.8}%
-\contentsline {section}{\numberline {B.9}Citing and referencing}{48}{section.B.9}%
-\contentsline {section}{\numberline {B.10}Printing and binding}{49}{section.B.10}%
-\contentsline {section}{\numberline {B.11}Further reading}{49}{section.B.11}%
-\contentsline {section}{\numberline {B.12}\textit {iisreport} options quick reference}{49}{section.B.12}%
-\contentsline {chapter}{\numberline {C}Task Description}{50}{appendix.C}%
-\contentsline {chapter}{List of Acronyms}{51}{section*.39}%
-\contentsline {chapter}{\nonumberline List of Figures}{52}{section*.39}%
-\contentsline {chapter}{\nonumberline List of Tables}{53}{section*.39}%
-\contentsline {chapter}{\nonumberline Bibliography}{54}{chapter*.40}%
+\contentsline {chapter}{\numberline {5}Other Approaches}{34}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{34}{section.5.1}%
+\contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{35}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{36}{chapter.6}%
+\contentsline {chapter}{\numberline {A}Experimental Results}{37}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Fill-in}{37}{section.A.1}%
+\contentsline {chapter}{\numberline {B}Compact Guide to \LaTeX {} and the \textit {iisreport} Class}{39}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Building the document}{39}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Text editing and spacing}{39}{section.B.2}%
+\contentsline {subsection}{\numberline {B.2.1}Special characters}{40}{subsection.B.2.1}%
+\contentsline {subsection}{\numberline {B.2.2}Font faces and emphasis}{40}{subsection.B.2.2}%
+\contentsline {subsection}{\numberline {B.2.3}Font sizes}{41}{subsection.B.2.3}%
+\contentsline {subsection}{\numberline {B.2.4}Coloring text}{42}{subsection.B.2.4}%
+\contentsline {section}{\numberline {B.3}Debugging}{42}{section.B.3}%
+\contentsline {section}{\numberline {B.4}Math mode}{43}{section.B.4}%
+\contentsline {subsection}{\numberline {B.4.1}Delimiters: Parentheses, brackets, bars, and intervals}{44}{subsection.B.4.1}%
+\contentsline {subsection}{\numberline {B.4.2}Differential and derivative operators}{44}{subsection.B.4.2}%
+\contentsline {subsection}{\numberline {B.4.3}Vectors, matrices, and distinction of cases}{45}{subsection.B.4.3}%
+\contentsline {subsection}{\numberline {B.4.4}Multi-line equations}{45}{subsection.B.4.4}%
+\contentsline {subsection}{\numberline {B.4.5}Definitions, theorems, lemmas, and proofs}{46}{subsection.B.4.5}%
+\contentsline {section}{\numberline {B.5}Quantities with SI units}{46}{section.B.5}%
+\contentsline {section}{\numberline {B.6}Enumerations and itemizations}{47}{section.B.6}%
+\contentsline {section}{\numberline {B.7}Floats: figures and tables}{47}{section.B.7}%
+\contentsline {subsection}{\numberline {B.7.1}Figures}{48}{subsection.B.7.1}%
+\contentsline {subsection}{\numberline {B.7.2}Tables}{48}{subsection.B.7.2}%
+\contentsline {section}{\numberline {B.8}Algorithms and source code listings}{48}{section.B.8}%
+\contentsline {section}{\numberline {B.9}Citing and referencing}{50}{section.B.9}%
+\contentsline {section}{\numberline {B.10}Printing and binding}{51}{section.B.10}%
+\contentsline {section}{\numberline {B.11}Further reading}{51}{section.B.11}%
+\contentsline {section}{\numberline {B.12}\textit {iisreport} options quick reference}{51}{section.B.12}%
+\contentsline {chapter}{\numberline {C}Task Description}{52}{appendix.C}%
+\contentsline {chapter}{List of Acronyms}{53}{section*.41}%
+\contentsline {chapter}{\nonumberline List of Figures}{54}{section*.41}%
+\contentsline {chapter}{\nonumberline List of Tables}{56}{section*.41}%
+\contentsline {chapter}{\nonumberline Bibliography}{57}{chapter*.42}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

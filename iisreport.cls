@@ -107,6 +107,7 @@
 
 \RequirePackage{bchart}
 \RequirePackage{float}
+\RequirePackage{wrapfig}
 
 % Theorems, lemmas, corollaries, proofs, and definitions
 \RequirePackage{amsthm}

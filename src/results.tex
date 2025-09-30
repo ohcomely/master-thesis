@@ -242,10 +242,11 @@ Sequential methods show mixed results for parallelization potential. AMD typical
 
 The hypergraph partitioning methods (DB variants) show variable performance for parallelization, with tree depths ranging from 19-301 depending on the number of partitions used. DB-2 often produces deeper trees (49-603), while DB-16 tends toward moderate depths (66-830), though the relationship between partition count and tree depth is not always consistent. Natural ordering predictably produces very deep trees (often 200-800+), confirming the necessity of reordering for parallel factorization. The results indicate that while parallel reordering methods require more computational time, they provide substantial benefits for subsequent parallel factorization phases through significantly reduced elimination tree depths.
 
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{fig/res/elimination_tree_depth_all_categories.png}
-\caption{Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential.}
+\includegraphics[width=1\textwidth]{fig/res/elimination_tree_depth_all_categories.png}
+\caption{Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse).}
 \label{fig:elimination-tree-depth}
 \end{figure}
 
@@ -253,7 +254,8 @@ The hypergraph partitioning methods (DB variants) show variable performance for 
 
 \subsection*{GPU-accelerated RCM}
 
-In this section, we present the performance of our GPU-accelerated implementation of the Reverse Cuthill-McKee (RCM) algorithm compared to a traditional CPU-based implementation. We measure only the runtime of the RCM algorithm and not the fill-in, as the quality of the ordering produced by both implementations is identical. 
+In this section, we present the performance of our GPU-accelerated implementation of the Reverse Cuthill-McKee (RCM) algorithm compared to a traditional CPU-based implementation. We measure only the runtime of the RCM algorithm and not the fill-in, as the quality of the ordering produced by both implementations is identical.
+
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.9\textwidth]{fig/res/gpu_rcm_speedups_clean.png}
@@ -262,6 +264,11 @@ In this section, we present the performance of our GPU-accelerated implementatio
 \end{figure}
 
 \section{Current limitations}
+
+Our evaluation has important limitations that should be acknowledged. First, our analysis is not exhaustive—we evaluated only a subset of available sparse matrix reordering algorithms and libraries, focusing on the most commonly used and representative methods. Additionally, our memory measurement system faced significant challenges: the monitoring thread frequently failed to capture meaningful data for fast-completing algorithms or when external binaries changed process IDs (particularly with hypergraph methods). For several large matrices, symbolic factorization failed due to memory constraints, preventing complete evaluation of all methods across our entire dataset.
+
+The practical applicability of some methods is also limited by performance constraints. Hypergraph-based methods, while sometimes producing high-quality reorderings, proved computationally expensive and impractical for large matrices. Furthermore, our GPU acceleration efforts were limited to the RCM algorithm—we did not implement GPU versions of other reordering methods, which represents a significant opportunity for future performance improvements across the entire algorithm suite.
+
 
 % Demonstrating that your implementation meets the objectives is usually done by showing a lower bound on a given figure of merit.
 % Conversely, you should also illuminate the limitations of your implementation by showing upper bounds on these (or other appropriate) figures of merit.

@@ -11,7 +11,7 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Reordering time scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and computational time for various reordering methods.}}{29}{figure.caption.26}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{31}{figure.caption.27}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{32}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential.}}{33}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse).}}{33}{figure.caption.29}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 10K nodes).}}{34}{figure.caption.31}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Recursive calls in nested dissection}}{36}{figure.caption.33}%

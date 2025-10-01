@@ -39,35 +39,10 @@
 \contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{35}{section.5.1}%
 \contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{36}{section.5.2}%
 \contentsline {chapter}{\numberline {6}Conclusion and Future Work}{37}{chapter.6}%
-\contentsline {chapter}{\numberline {A}Experimental Results}{38}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Fill-in}{38}{section.A.1}%
-\contentsline {chapter}{\numberline {B}Compact Guide to \LaTeX {} and the \textit {iisreport} Class}{40}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Building the document}{40}{section.B.1}%
-\contentsline {section}{\numberline {B.2}Text editing and spacing}{40}{section.B.2}%
-\contentsline {subsection}{\numberline {B.2.1}Special characters}{41}{subsection.B.2.1}%
-\contentsline {subsection}{\numberline {B.2.2}Font faces and emphasis}{41}{subsection.B.2.2}%
-\contentsline {subsection}{\numberline {B.2.3}Font sizes}{42}{subsection.B.2.3}%
-\contentsline {subsection}{\numberline {B.2.4}Coloring text}{43}{subsection.B.2.4}%
-\contentsline {section}{\numberline {B.3}Debugging}{43}{section.B.3}%
-\contentsline {section}{\numberline {B.4}Math mode}{44}{section.B.4}%
-\contentsline {subsection}{\numberline {B.4.1}Delimiters: Parentheses, brackets, bars, and intervals}{45}{subsection.B.4.1}%
-\contentsline {subsection}{\numberline {B.4.2}Differential and derivative operators}{45}{subsection.B.4.2}%
-\contentsline {subsection}{\numberline {B.4.3}Vectors, matrices, and distinction of cases}{46}{subsection.B.4.3}%
-\contentsline {subsection}{\numberline {B.4.4}Multi-line equations}{46}{subsection.B.4.4}%
-\contentsline {subsection}{\numberline {B.4.5}Definitions, theorems, lemmas, and proofs}{47}{subsection.B.4.5}%
-\contentsline {section}{\numberline {B.5}Quantities with SI units}{47}{section.B.5}%
-\contentsline {section}{\numberline {B.6}Enumerations and itemizations}{48}{section.B.6}%
-\contentsline {section}{\numberline {B.7}Floats: figures and tables}{48}{section.B.7}%
-\contentsline {subsection}{\numberline {B.7.1}Figures}{49}{subsection.B.7.1}%
-\contentsline {subsection}{\numberline {B.7.2}Tables}{49}{subsection.B.7.2}%
-\contentsline {section}{\numberline {B.8}Algorithms and source code listings}{49}{section.B.8}%
-\contentsline {section}{\numberline {B.9}Citing and referencing}{51}{section.B.9}%
-\contentsline {section}{\numberline {B.10}Printing and binding}{52}{section.B.10}%
-\contentsline {section}{\numberline {B.11}Further reading}{52}{section.B.11}%
-\contentsline {section}{\numberline {B.12}\textit {iisreport} options quick reference}{52}{section.B.12}%
-\contentsline {chapter}{\numberline {C}Task Description}{53}{appendix.C}%
-\contentsline {chapter}{List of Acronyms}{54}{section*.43}%
-\contentsline {chapter}{\nonumberline List of Figures}{55}{section*.43}%
-\contentsline {chapter}{\nonumberline List of Tables}{57}{section*.43}%
-\contentsline {chapter}{\nonumberline Bibliography}{58}{chapter*.44}%
+\contentsline {chapter}{\numberline {A}Experimental Results}{39}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Task Description}{45}{appendix.B}%
+\contentsline {chapter}{List of Acronyms}{46}{section*.39}%
+\contentsline {chapter}{\nonumberline List of Figures}{47}{section*.39}%
+\contentsline {chapter}{\nonumberline List of Tables}{49}{section*.39}%
+\contentsline {chapter}{\nonumberline Bibliography}{50}{chapter*.40}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

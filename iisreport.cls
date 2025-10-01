@@ -109,6 +109,8 @@
 \RequirePackage{float}
 \RequirePackage{wrapfig}
 \RequirePackage{placeins}
+\RequirePackage{pdflscape}
+\RequirePackage{rotating}
 
 % Theorems, lemmas, corollaries, proofs, and definitions
 \RequirePackage{amsthm}

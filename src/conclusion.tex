@@ -1,11 +1,12 @@
 \chapter{Conclusion and Future Work}
 \label{ch:conclusion}
 
-Draw your conclusions from the results and summarize your contributions.
-Point out aspects that need to be investigated further.
+This thesis presented a comprehensive evaluation of sparse symmetric matrix reordering algorithms across diverse matrix structures and application domains. Through systematic benchmarking on the Fritz HPC cluster, we assessed many reordering algorithms, ranging from classical degree-based methods to newer graph partitioning and hypergraph-based techniques, across multiple performance metrics including fill-in reduction, computational efficiency, memory consumption, and parallelization potential.
 
-The conclusion can be structured inversely to the introduction:
-Summarize how the \emph{evaluation} backs the \emph{solution}, which solves the \emph{problem}.
-Describe how your contributions improve the \emph{situation} and what other (potentially newly discovered) problems have to be solved in the future.
+Our evaluation reveals that advanced methods such as METIS, SCOTCH, and hypergraph based approaches consistently outperform classical algorithms like AMD and RCM in terms of fill-in reduction, achieving 30-60\% fewer fill-ins across most domains. Among the hypergraph methods, smaller partition sizes (HG-2 and HG-4) demonstrate superior effectiveness. Our custom METIS implementation with improved coarsening (METIS+IC) validates the benefits of enhanced coarsening strategies, producing results competitive with the best hypergraph methods. However, this improvement comes at a computational cost. Hypergraph methods require significantly more time (up to 270 seconds), while simpler methods like RCM complete in under one second.
 
-Be concise: the conclusion normally fits on a single page and is rarely longer than two pages.
+In the course of this work, we implemented several efficient variants of existing algorithms. Our GPU-accelerated RCM implementation demonstrates substantial speedups over CPU-based versions for large matrices. The METIS+IC variant, incorporating refined coarsening strategies, achieves fill-in quality comparable to more complex hypergraph methods while maintaining reasonable execution times. We also explored hypergraph-based reordering methods that exploit block structures in matrices, showing promise particularly for circuit and graph problems.
+
+% \section*{Future Work}
+
+Several promising directions remain for future investigation. Machine learning approaches, particularly graph neural networks (GNNs), show encouraging results on small matrices but require techniques like coarsening or hierarchical representations to scale to larger problems. Reordering algorithms for emerging architectures also warrant further research, while we implemented GPU-accelerated RCM, extending GPU implementations to nested dissection, minimum degree variants, and hypergraph methods could yield significant performance improvements. Finally, our evaluation reveals that algorithm effectiveness varies significantly across matrix domains, suggesting that adaptive schemes which automatically select or tune algorithms based on matrix characteristics could improve performance across diverse applications.

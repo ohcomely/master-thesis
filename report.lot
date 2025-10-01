@@ -10,13 +10,11 @@
 \contentsline {table}{\numberline {5.1}{\ignorespaces GNN-based method performance comparison with RCM and MinDegree}}{36}{table.caption.32}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Fill-in results for different reordering algorithms (number of non-zeros after symbolic factorization)}}{39}{table.caption.34}%
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {B.1}{\ignorespaces Different font faces.}}{42}{table.caption.35}%
-\contentsline {table}{\numberline {B.2}{\ignorespaces Different font sizes.}}{42}{table.caption.36}%
-\contentsline {table}{\numberline {B.3}{\ignorespaces Simple example table with some values in different number systems.}}{49}{table.caption.39}%
-\contentsline {table}{\numberline {B.4}{\ignorespaces Simple example table with different row and cell colors.}}{51}{table.caption.40}%
-\contentsline {table}{\numberline {B.5}{\ignorespaces Example table with fixed column widths: \SI {1.5}{\centi \meter } for columns two and three, \SI {7}{\centi \meter } for column four. Content adopted from \href {https://en.wikibooks.org/wiki/LaTeX/Tables\#Text_wrapping_in_tables}{Wikibooks}. }}{51}{table.caption.41}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Fill-in (number of nonzeros after factorization) for each matrix and reordering algorithm.}}{40}{table.caption.34}%
+\contentsline {table}{\numberline {A.2}{\ignorespaces Reordering time (seconds) for each matrix and reordering algorithm.}}{41}{table.caption.35}%
+\contentsline {table}{\numberline {A.3}{\ignorespaces Maximum memory usage (KB) during reordering for each matrix and algorithm.}}{42}{table.caption.36}%
+\contentsline {table}{\numberline {A.4}{\ignorespaces Average memory usage (KB) during reordering for each matrix and algorithm.}}{43}{table.caption.37}%
+\contentsline {table}{\numberline {A.5}{\ignorespaces Elimination tree depth for each matrix and reordering algorithm.}}{44}{table.caption.38}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

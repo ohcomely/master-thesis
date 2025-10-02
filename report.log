@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.7.8)  2 OCT 2025 14:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.7.8)  2 OCT 2025 15:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1852,7 +1852,7 @@ Class scrbook Warning: Redefinition of \@makechapterhead detected.
 (scrbook)              that will remove this deprecated code.
 
 
-LaTeX Warning: Float too large for page by 1.88316pt on input line 128.
+LaTeX Warning: Float too large for page by 1.88316pt on input line 131.
 
 [12
 
@@ -1937,13 +1937,13 @@ LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
 (Font)              using `T1/cmss/bx/n' instead on input line 178.
 
 [27]
-<fig/res/fillin_all_categories.png, id=607, 1127.1711pt x 1495.989pt>
+<fig/res/fillin_all_categories.png, id=612, 1127.1711pt x 1495.989pt>
 File: fig/res/fillin_all_categories.png Graphic file (type png)
 <use fig/res/fillin_all_categories.png>
 Package pdftex.def Info: fig/res/fillin_all_categories.png  used on input line 197.
 (pdftex.def)             Requested size: 376.42744pt x 499.59007pt.
  [28] [29 <./fig/res/fillin_all_categories.png>]
-<fig/res/reorder_time_scaling.png, id=619, 1078.0275pt x 1152.7065pt>
+<fig/res/reorder_time_scaling.png, id=625, 1078.0275pt x 1152.7065pt>
 File: fig/res/reorder_time_scaling.png Graphic file (type png)
 <use fig/res/reorder_time_scaling.png>
 Package pdftex.def Info: fig/res/reorder_time_scaling.png  used on input line 217.
@@ -1952,7 +1952,7 @@ Package pdftex.def Info: fig/res/reorder_time_scaling.png  used on input line 21
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<fig/res/144_sparsity_patterns.png, id=620, 1065.9825pt x 1333.3815pt>
+<fig/res/144_sparsity_patterns.png, id=626, 1065.9825pt x 1333.3815pt>
 File: fig/res/144_sparsity_patterns.png Graphic file (type png)
 <use fig/res/144_sparsity_patterns.png>
 Package pdftex.def Info: fig/res/144_sparsity_patterns.png  used on input line 225.
@@ -1960,7 +1960,7 @@ Package pdftex.def Info: fig/res/144_sparsity_patterns.png  used on input line 2
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<fig/res/copter2_sparsity_patterns.png, id=621, 1047.6741pt x 1333.3815pt>
+<fig/res/copter2_sparsity_patterns.png, id=627, 1047.6741pt x 1333.3815pt>
 File: fig/res/copter2_sparsity_patterns.png Graphic file (type png)
 <use fig/res/copter2_sparsity_patterns.png>
 Package pdftex.def Info: fig/res/copter2_sparsity_patterns.png  used on input line 232.
@@ -1969,7 +1969,7 @@ Package pdftex.def Info: fig/res/copter2_sparsity_patterns.png  used on input li
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [30] [31 <./fig/res/reorder_time_scaling.png>]
-<fig/res/elimination_tree_depth_all_categories.png, id=634, 1006.4802pt x 863.8674pt>
+<fig/res/elimination_tree_depth_all_categories.png, id=639, 1006.4802pt x 863.8674pt>
 File: fig/res/elimination_tree_depth_all_categories.png Graphic file (type png)
 <use fig/res/elimination_tree_depth_all_categories.png>
 Package pdftex.def Info: fig/res/elimination_tree_depth_all_categories.png  used on input line 248.
@@ -1979,7 +1979,7 @@ Package pdftex.def Info: fig/res/elimination_tree_depth_all_categories.png  used
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [32] [33 <./fig/res/144_sparsity_patterns.png>] [34 <./fig/res/copter2_sparsity_patterns.png>] [35 <./fig/res/elimination_tree_depth_all_categories.png>]
-<fig/res/gpu_rcm_speedups_clean.png, id=657, 714.0276pt x 426.1521pt>
+<fig/res/gpu_rcm_speedups_clean.png, id=662, 714.0276pt x 426.1521pt>
 File: fig/res/gpu_rcm_speedups_clean.png Graphic file (type png)
 <use fig/res/gpu_rcm_speedups_clean.png>
 Package pdftex.def Info: fig/res/gpu_rcm_speedups_clean.png  used on input line 261.
@@ -2003,7 +2003,7 @@ Class scrbook Warning: Redefinition of \@makechapterhead detected.
 
 
 ]
-<fig/background/nested_dissection.png, id=674, 1115.16624pt x 654.445pt>
+<fig/background/nested_dissection.png, id=679, 1115.16624pt x 654.445pt>
 File: fig/background/nested_dissection.png Graphic file (type png)
 <use fig/background/nested_dissection.png>
 Package pdftex.def Info: fig/background/nested_dissection.png  used on input line 37.
@@ -2196,18 +2196,18 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 49044 strings out of 474222
- 969474 string characters out of 5748734
+ 49054 strings out of 474222
+ 969685 string characters out of 5748734
  2010975 words of memory out of 5000000
- 69678 multiletter control sequences out of 15000+600000
+ 69688 multiletter control sequences out of 15000+600000
  630031 words of font info for 367 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  122i,25n,121p,10955b,1185s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpsyc.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on report.pdf (60 pages, 8866372 bytes).
+Output written on report.pdf (60 pages, 8866720 bytes).
 PDF statistics:
- 1127 PDF objects out of 1200 (max. 8388607)
- 975 compressed objects within 10 object streams
+ 1132 PDF objects out of 1200 (max. 8388607)
+ 980 compressed objects within 10 object streams
  410 named destinations out of 1000 (max. 500000)
  93601 words of extra memory for PDF output out of 106986 (max. 10000000)
 

@@ -1,7 +1,10 @@
 \chapter{Implementation and Optimizations}
 \label{ch:implementation_and_optimizations}
 
+This chapter describes both the existing state-of-the-art implementations that form the baseline for comparison (Sections~\ref{sec:suitesparse} and~\ref{sec:metis_scotch}), as well as the new algorithms and implementations developed in this thesis (Sections~\ref{sec:new_coarsening}, \ref{sec:hypergraph_ordering}, and~\ref{sec:gpu_rcm}).
+
 \section{SuiteSparse implementation of RCM and Minimum Degree}
+\label{sec:suitesparse}
 
 The Reverse Cuthill-McKee (RCM) algorithm in SuiteSparse provides bandwidth reduction for symmetric sparse matrices through a breadth-first search strategy combined with degree-based ordering heuristics. The implementation processes disconnected components separately and employs pseudo-peripheral vertex selection to minimize profile and bandwidth.
 
@@ -132,6 +135,7 @@ The key innovation in SuiteSparse's AMD implementation lies in its aggressive ab
 The dense row detection mechanism addresses a common pathology in minimum degree algorithms where elimination of high-degree vertices can lead to excessive fill-in. When the algorithm detects that a newly formed element exceeds a threshold based on the matrix size, it defers elimination of the associated variables, effectively implementing a hybrid strategy that combines minimum degree with nested dissection principles.
 
 \section{Nested Dissection using METIS and SCOTCH}
+\label{sec:metis_scotch}
 
 Nested dissection represents a divide-and-conquer approach to matrix ordering that recursively partitions the graph using small vertex separators, ordering the separated components before the separator vertices. METIS and SCOTCH implement sophisticated multilevel nested dissection algorithms that combine graph coarsening, separator finding, and refinement techniques to produce high-quality orderings for large sparse matrices.
 
@@ -307,7 +311,10 @@ The separator computation on the coarsest level benefits from reduced problem si
 
 % For degree management, each thread maintains its own degree lists instead of sharing a global structure. The algorithm uses an affinity array to track which thread has the most current information for each variable, with lazy cleanup of stale entries during traversal.
 
-\section{New Coarsening approaches in Nested Dissection}
+\section{New Coarsening Approaches in Nested Dissection}
+\label{sec:new_coarsening}
+
+This section presents a new coarsening algorithm developed in this thesis that improves upon the standard METIS approach.
 
 The standard METIS coarsening approach uses heavy edge matching (SHEM) to create progressively smaller graphs while preserving structural properties. This work introduces a separator-aware heavy edge matching (SAHEM) algorithm that modifies the coarsening phase to better preserve separator structure during the multilevel nested dissection process.
 
@@ -416,8 +423,9 @@ This approach aims to avoid matching vertices that are likely to be separators w
 \end{algorithm}
 
 \section{Hypergraph Based Ordering}
+\label{sec:hypergraph_ordering}
 
-This implementation is heavily inspired by the work of \cite{catalyurek_hypergraph_2011} and \cite{selvitopi_effect_2020}. The latter describes a work to convert a symmetric matrix into a Doubly-Bordered Block-Diagonal Form (DB) using hypergraph partitioning. We use this similar base approach with efficient method to find edge-clique cover and further ordering within the blocks. 
+This section presents a hypergraph-based ordering implementation developed in this thesis. The approach is inspired by the work of \cite{catalyurek_hypergraph_2011} and \cite{selvitopi_effect_2020}, which describe converting a symmetric matrix into Doubly-Bordered Block-Diagonal Form (DB) using hypergraph partitioning. This implementation extends their approach with an efficient method to find edge-clique cover and applies further ordering within the diagonal blocks. 
 
 The algorithm begins by constructing a standard graph representation of the symmetric matrix, where vertices correspond to matrix rows/columns and edges represent nonzero entries. From this graph, the algorithm computes an edge-clique cover, which identifies a set of cliques that collectively cover all edges in the graph. Each clique represents a group of vertices that are mutually connected.
 
@@ -575,8 +583,9 @@ The final permutation places all vertices from diagonal block 1, followed by dia
 \end{algorithm}
 
 \section{GPU Implementation of RCM}
+\label{sec:gpu_rcm}
 
-GPU Implementation of RCM is basically a parallel implementation of the breadth-first search (BFS) algorithm. Much research is available on parallel BFS, and the implementation in this thesis is based on the NVIDIA work on GPU-accelerated BFS in \cite{merrill_scalable_nodate}.
+This section describes the GPU implementation of RCM developed in this thesis. The implementation adapts parallel breadth-first search (BFS) techniques for the RCM algorithm, building upon the NVIDIA work on GPU-accelerated BFS described in \cite{merrill_scalable_nodate}.
 
 This GPU breadth-first search implementation uses a level-synchronous algorithm that processes the graph one depth level at a time, maintaining two key data structures: a vertex frontier (vertices to be explored in the current iteration) and an edge frontier (all neighbors of vertices in the current frontier). The algorithm begins with a single source vertex and alternates between two fundamental operations across BFS levels.
 

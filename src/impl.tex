@@ -1,9 +1,6 @@
 \chapter{Implementation and Optimizations}
 \label{ch:implementation_and_optimizations}
 
-Discuss the state-of-the art and other related work.
-Depending on how much related work exists and how central the comparison to it is in your thesis (discuss this with your advisors), the introduction may contain sufficient related work and this chapter can be omitted.
-
 \section{SuiteSparse implementation of RCM and Minimum Degree}
 
 The Reverse Cuthill-McKee (RCM) algorithm in SuiteSparse provides bandwidth reduction for symmetric sparse matrices through a breadth-first search strategy combined with degree-based ordering heuristics. The implementation processes disconnected components separately and employs pseudo-peripheral vertex selection to minimize profile and bandwidth.
@@ -134,54 +131,6 @@ The key innovation in SuiteSparse's AMD implementation lies in its aggressive ab
 
 The dense row detection mechanism addresses a common pathology in minimum degree algorithms where elimination of high-degree vertices can lead to excessive fill-in. When the algorithm detects that a newly formed element exceeds a threshold based on the matrix size, it defers elimination of the associated variables, effectively implementing a hybrid strategy that combines minimum degree with nested dissection principles.
 
-\subsection{COLAMD Algorithm Overview}
-
-The Column Approximate Minimum Degree (COLAMD) algorithm in SuiteSparse extends the minimum degree concept to rectangular matrices by operating on a bipartite graph representation. Unlike AMD which works on the symmetric structure $A^T A$, COLAMD directly processes the rectangular matrix $A$ to produce a column ordering that minimizes fill-in during factorization.
-
-\begin{algorithm}
-    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
-    \SetKwFunction{COLAMDOrder}{COLAMD\_ORDER}
-    
-    \Input{Matrix $A$ ($m \times n$) in CSC format, Control parameters}
-    \Output{Column permutation $P$, Info statistics}
-    \BlankLine
-    
-    \emph{Initialize:}\;
-    Treat $A$ as bipartite graph $G = (R \cup C, E)$\;
-    Set $\text{col\_degree}[j] = $ nonzeros in column $j$, place in degree list\;
-    Detect dense rows: if $\text{row\_degree}[i] > \text{threshold}$, mark dense\;
-    \BlankLine
-    
-    \emph{Main elimination loop:}\;
-    \For{$k = 1$ \KwTo $n$}{
-        Select minimum degree column $c$ (tie-break by density)\;
-        Set $P[k] = c$\;
-        
-        \emph{Update degrees:}\;
-        \ForEach{row $i$ connected to $c$}{
-            \ForEach{uneliminated column $j$ in row $i$}{
-                $\text{fill\_count} = |R(c) \cap R(j)|$\;
-                $\text{new\_degree} = \text{col\_degree}[j] + |R(c)| - \text{fill\_count} - 1$\;
-                Apply dense penalty if row $i$ is dense\;
-                Move $j$ to $\text{Head}[\text{new\_degree}]$\;
-            }
-        }
-        Mark eliminated rows and handle supernode formation\;
-    }
-    
-    Place remaining dense columns at end of ordering\;
-    \Return{$P$ and Info}\;
-    
-    \caption{SuiteSparse COLAMD Algorithm}
-    \label{alg:colamd}
-\end{algorithm}
-
-The COLAMD algorithm addresses the unique challenges of rectangular matrix ordering by maintaining both row and column degree information throughout the elimination process. The bipartite graph formulation allows the algorithm to track how column eliminations affect the sparsity structure without explicitly forming the potentially much denser $A^T A$ matrix. The dense row detection mechanism prevents pathological behavior when processing matrices with highly dense rows, which could otherwise lead to excessive fill-in during factorization.
-
-The degree update strategy in COLAMD carefully accounts for the fill-in patterns specific to rectangular matrices, where eliminating a column affects all other columns that share nonzero entries in the same rows. The algorithm's ability to handle supernodes (groups of columns with identical sparsity patterns) further enhances its effectiveness for structured matrices commonly arising in finite element applications.
-
-\newpage
-
 \section{Nested Dissection using METIS and SCOTCH}
 
 Nested dissection represents a divide-and-conquer approach to matrix ordering that recursively partitions the graph using small vertex separators, ordering the separated components before the separator vertices. METIS and SCOTCH implement sophisticated multilevel nested dissection algorithms that combine graph coarsening, separator finding, and refinement techniques to produce high-quality orderings for large sparse matrices.
@@ -218,7 +167,7 @@ The separator computation on the coarsest level benefits from reduced problem si
 %     \label{alg:metis_nested_dissection}
 % \end{algorithm}
 
-\begin{algorithm}
+\begin{algorithm}[H]
     \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
     \SetKwFunction{HeavyEdgeMatching}{HeavyEdgeMatching}
     \SetKwFunction{ContractEdges}{ContractEdges}
@@ -250,7 +199,7 @@ The separator computation on the coarsest level benefits from reduced problem si
     \label{alg:multilevel_coarsening}
 \end{algorithm}
 
-\begin{algorithm}
+\begin{algorithm}[H]
     \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
     
     \Input{Graph $G$ with edge weights}
@@ -281,86 +230,349 @@ The separator computation on the coarsest level benefits from reduced problem si
 
 
 
-\newpage
-\section{Parallel-Nested Dissection}
+% \newpage
+% \section{Parallel-Nested Dissection}
 
-\newpage
-\section{Parallelizing minimum degree}
+% \newpage
+% \section{Parallelizing minimum degree}
 
-There haven't been many attempts to parallelize the minimum degree algorithm due to its inherently sequential nature. The only known approximate parallel implementation of the minimum degree algorithm is the ParAMD algorithm proposed by Chang et al. in \cite{chang2025parallelizingapproximateminimumdegree}. 
+% There haven't been many attempts to parallelize the minimum degree algorithm due to its inherently sequential nature. The only known approximate parallel implementation of the minimum degree algorithm is the ParAMD algorithm proposed by Chang et al. in \cite{chang2025parallelizingapproximateminimumdegree}. 
 
-The sequential AMD algorithm has inherent bottlenecks that make parallelization difficult. Each elimination step requires selecting a pivot with minimum approximate degree, after which the degrees of neighboring variables must be updated. These steps are inherently sequential since you cannot select the next pivot until all updates from the previous elimination are complete.
+% The sequential AMD algorithm has inherent bottlenecks that make parallelization difficult. Each elimination step requires selecting a pivot with minimum approximate degree, after which the degrees of neighboring variables must be updated. These steps are inherently sequential since you cannot select the next pivot until all updates from the previous elimination are complete.
 
-Instead of eliminating one pivot at a time, the algorithm selects multiple pivots simultaneously using "distance-2 independent sets" - pivots that are at least 2 steps apart in the graph. This ensures no overlap in pivot neighborhoods, eliminating contention between parallel threads.
+% Instead of eliminating one pivot at a time, the algorithm selects multiple pivots simultaneously using "distance-2 independent sets" - pivots that are at least 2 steps apart in the graph. This ensures no overlap in pivot neighborhoods, eliminating contention between parallel threads.
 
-The algorithm allows selection of pivots whose degrees are within a multiplicative factor (\texttt{mult}) of the minimum degree. This relaxation increases the pool of available pivots for parallel processing while balancing against ordering quality - too much relaxation degrades the solution.
-
-
+% The algorithm allows selection of pivots whose degrees are within a multiplicative factor (\texttt{mult}) of the minimum degree. This relaxation increases the pool of available pivots for parallel processing while balancing against ordering quality - too much relaxation degrades the solution.
 
 
-\begin{algorithm}
-    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
-    \SetKwFunction{ParallelAMD}{PARALLEL\_AMD}
-    \SetKwFunction{InitializeQuotientGraph}{initialize\_quotient\_graph}
-    \SetKwFunction{InitializeDegreeList}{initialize\_degree\_list}
-    \SetKwFunction{FindGlobalMinDegree}{find\_global\_minimum\_degree}
-    \SetKwFunction{DistanceTwoIndepSet}{distance\_2\_independent\_set}
-    \SetKwFunction{EliminatePivot}{eliminate\_pivot}
-    \SetKwFunction{GetThreadId}{get\_thread\_id}
+
+
+% \begin{algorithm}
+%     \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+%     \SetKwFunction{ParallelAMD}{PARALLEL\_AMD}
+%     \SetKwFunction{InitializeQuotientGraph}{initialize\_quotient\_graph}
+%     \SetKwFunction{InitializeDegreeList}{initialize\_degree\_list}
+%     \SetKwFunction{FindGlobalMinDegree}{find\_global\_minimum\_degree}
+%     \SetKwFunction{DistanceTwoIndepSet}{distance\_2\_independent\_set}
+%     \SetKwFunction{EliminatePivot}{eliminate\_pivot}
+%     \SetKwFunction{GetThreadId}{get\_thread\_id}
     
-    \Input{Matrix $A$ ($n \times n$), parameters $\text{mult}$, $\text{lim}$}
-    \Output{Elimination ordering}
-    \BlankLine
+%     \Input{Matrix $A$ ($n \times n$), parameters $\text{mult}$, $\text{lim}$}
+%     \Output{Elimination ordering}
+%     \BlankLine
     
-    \emph{Preprocessing:}\;
-    $G \gets \InitializeQuotientGraph(A + A^T)$ \tcp{Compute symmetric pattern}
-    \BlankLine
+%     \emph{Preprocessing:}\;
+%     $G \gets \InitializeQuotientGraph(A + A^T)$ \tcp{Compute symmetric pattern}
+%     \BlankLine
     
-    \emph{Initialize degree lists for each thread:}\;
-    \lForAll{$\text{tid} = 0$ \KwTo $\text{num\_threads} - 1$ \textbf{in parallel}}{
-        $\InitializeDegreeList(\text{tid})$
-    }
-    \BlankLine
+%     \emph{Initialize degree lists for each thread:}\;
+%     \lForAll{$\text{tid} = 0$ \KwTo $\text{num\_threads} - 1$ \textbf{in parallel}}{
+%         $\InitializeDegreeList(\text{tid})$
+%     }
+%     \BlankLine
     
-    \emph{Main elimination loop:}\;
-    \While{$|V| > 0$}{
-        \emph{Find minimum approximate degree across all threads:}\;
-        $\text{amd} \gets \FindGlobalMinDegree()$\;
-        \BlankLine
+%     \emph{Main elimination loop:}\;
+%     \While{$|V| > 0$}{
+%         \emph{Find minimum approximate degree across all threads:}\;
+%         $\text{amd} \gets \FindGlobalMinDegree()$\;
+%         \BlankLine
         
-        \emph{Select distance-2 independent set of pivots:}\;
-        $D \gets \DistanceTwoIndepSet(\text{amd}, \text{mult}, \text{lim})$\;
-        \BlankLine
+%         \emph{Select distance-2 independent set of pivots:}\;
+%         $D \gets \DistanceTwoIndepSet(\text{amd}, \text{mult}, \text{lim})$\;
+%         \BlankLine
         
-        \If{$|D| = 0$}{
-            \textbf{break} \tcp{No more valid pivots}
-        }
-        \BlankLine
+%         \If{$|D| = 0$}{
+%             \textbf{break} \tcp{No more valid pivots}
+%         }
+%         \BlankLine
         
-        \emph{Eliminate pivots in parallel:}\;
-        \lForAll{pivot $p \in D$ \textbf{in parallel}}{
-            $\text{tid} \gets \GetThreadId()$\;
-            $\EliminatePivot(\text{tid}, p)$\;
-        }
-        \BlankLine
+%         \emph{Eliminate pivots in parallel:}\;
+%         \lForAll{pivot $p \in D$ \textbf{in parallel}}{
+%             $\text{tid} \gets \GetThreadId()$\;
+%             $\EliminatePivot(\text{tid}, p)$\;
+%         }
+%         \BlankLine
         
-        \emph{Barrier synchronization}\;
-        \textbf{barrier()}\;
-    }
+%         \emph{Barrier synchronization}\;
+%         \textbf{barrier()}\;
+%     }
     
-    \Return{elimination ordering}\;
+%     \Return{elimination ordering}\;
     
-    \caption{Parallel AMD Algorithm}
-    \label{alg:parallel_amd}
-\end{algorithm}
+%     \caption{Parallel AMD Algorithm}
+%     \label{alg:parallel_amd}
+% \end{algorithm}
 
-The ParAMD algorithm employs concurrent connection updates by pre-allocating 1.5x the original graph storage to avoid dynamic memory allocation. Each thread claims space atomically after collecting all updates, eliminating garbage collection synchronization bottlenecks.
+% The ParAMD algorithm employs concurrent connection updates by pre-allocating 1.5x the original graph storage to avoid dynamic memory allocation. Each thread claims space atomically after collecting all updates, eliminating garbage collection synchronization bottlenecks.
 
-For degree management, each thread maintains its own degree lists instead of sharing a global structure. The algorithm uses an affinity array to track which thread has the most current information for each variable, with lazy cleanup of stale entries during traversal.
+% For degree management, each thread maintains its own degree lists instead of sharing a global structure. The algorithm uses an affinity array to track which thread has the most current information for each variable, with lazy cleanup of stale entries during traversal.
 
 \section{New Coarsening approaches in Nested Dissection}
 
+The standard METIS coarsening approach uses heavy edge matching (SHEM) to create progressively smaller graphs while preserving structural properties. This work introduces a separator-aware heavy edge matching (SAHEM) algorithm that modifies the coarsening phase to better preserve separator structure during the multilevel nested dissection process.
+
+The SAHEM algorithm extends the standard heavy edge matching by incorporating separator likelihood scores for each vertex. These scores are computed using two local structural features: normalized degree centrality and local clustering coefficient. High-degree vertices with low clustering coefficients are more likely to be separators in the graph, as they connect different regions without being part of densely connected communities.
+
+For each vertex, the algorithm computes a separator score as:
+\[
+\text{sep\_score}(v) = \frac{\text{degree}(v)}{n} \times (1 - \text{clustering}(v))
+\]
+
+The local clustering coefficient measures the fraction of possible edges that exist between a vertex's neighbors. Vertices with many neighbors but few connections among those neighbors typically serve as bridges between different graph regions.
+
+During edge matching, SAHEM evaluates potential matches using an edge score that combines the edge weight with a penalty based on separator likelihood. For each candidate edge $(u,v)$, the algorithm computes:
+\[
+\text{score}(u,v) = w(u,v) - \alpha \times \text{penalty}(u,v)
+\]
+
+The penalty term considers three factors: degree difference between the vertices, neighborhood overlap, and the separator scores of both vertices. The degree difference penalty prevents matching vertices with very different connectivity patterns. The overlap penalty measures how many common neighbors the vertices share relative to their total neighborhoods. The separator penalty directly uses the precomputed separator scores.
+
+This approach aims to avoid matching vertices that are likely to be separators with vertices in the interior of partitions. By preserving separator vertices during coarsening, the algorithm maintains clearer boundaries between different regions of the graph, which can lead to better quality separators when the graph is partitioned at the coarsest level and refined during projection.
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{ComputeSeparatorScores}{ComputeSeparatorScores}
+    \SetKwFunction{ComputePenalty}{ComputePenalty}
+
+    \Input{Graph $G = (V, E)$ with edge weights}
+    \Output{Matching $M$ and coarser graph}
+    \BlankLine
+
+    \emph{Compute separator likelihood scores:}\;
+    \ForEach{vertex $v \in V$}{
+        $\text{degree\_centrality}[v] = \text{degree}(v) / |V|$\;
+        $\text{clustering}[v] = $ clustering coefficient of $v$\;
+        $\text{sep\_score}[v] = \text{degree\_centrality}[v] \times (1 - \text{clustering}[v])$\;
+    }
+    \BlankLine
+
+    \emph{Initialize matching:}\;
+    $M = \emptyset$\;
+    $\text{matched} = \{\}$\;
+    Sort vertices by degree (low to high)\;
+    \BlankLine
+
+    \emph{Compute separator-aware matching:}\;
+    \ForEach{vertex $u$ in sorted order}{
+        \If{$u \notin \text{matched}$}{
+            $\text{best\_score} = -\infty$\;
+            $\text{best\_match} = \text{null}$\;
+
+            \ForEach{neighbor $v$ of $u$}{
+                \If{$v \notin \text{matched}$ \textbf{and} weight constraints satisfied}{
+                    $\text{edge\_score} = w(u,v)$\;
+                    $\text{penalty} = \ComputePenalty(u, v, \text{sep\_score})$\;
+                    $\text{total\_score} = \text{edge\_score} - \alpha \times \text{penalty}$\;
+
+                    \If{$\text{total\_score} > \text{best\_score}$}{
+                        $\text{best\_score} = \text{total\_score}$\;
+                        $\text{best\_match} = v$\;
+                    }
+                }
+            }
+
+            \If{$\text{best\_match} \neq \text{null}$}{
+                $M = M \cup \{(u, \text{best\_match})\}$\;
+                $\text{matched} = \text{matched} \cup \{u, \text{best\_match}\}$\;
+            }
+        }
+    }
+
+    Create coarser graph by contracting matched edges\;
+    \Return{Coarser graph}\;
+
+    \caption{Separator-Aware Heavy Edge Matching (SAHEM)}
+    \label{alg:sahem}
+\end{algorithm}
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+    \Input{Vertices $u$, $v$, separator scores}
+    \Output{Penalty score}
+    \BlankLine
+
+    \emph{Degree difference penalty:}\;
+    $\text{deg\_diff} = |\text{degree}(u) - \text{degree}(v)| / \max(\text{degree}(u), \text{degree}(v))$\;
+    \BlankLine
+
+    \emph{Neighborhood overlap penalty:}\;
+    $\text{common} = |\text{neighbors}(u) \cap \text{neighbors}(v)|$\;
+    $\text{total} = |\text{neighbors}(u) \cup \text{neighbors}(v)|$\;
+    $\text{overlap\_penalty} = 1 - \text{common} / \text{total}$\;
+    \BlankLine
+
+    \emph{Separator penalty:}\;
+    $\text{sep\_penalty} = (\text{sep\_score}[u] + \text{sep\_score}[v]) / 2$\;
+    \BlankLine
+
+    \emph{Combine penalties:}\;
+    $\text{penalty} = 0.4 \times \text{deg\_diff} + 0.4 \times \text{overlap\_penalty} + 0.2 \times \text{sep\_penalty}$\;
+
+    \Return{penalty}\;
+
+    \caption{Edge Cut Score Penalty Computation}
+    \label{alg:edge_penalty}
+\end{algorithm}
+
 \section{Hypergraph Based Ordering}
+
+This implementation is heavily inspired by the work of \cite{catalyurek_hypergraph_2011} and \cite{selvitopi_effect_2020}. The latter describes a work to convert a symmetric matrix into a Doubly-Bordered Block-Diagonal Form (DB) using hypergraph partitioning. We use this similar base approach with efficient method to find edge-clique cover and further ordering within the blocks. 
+
+The algorithm begins by constructing a standard graph representation of the symmetric matrix, where vertices correspond to matrix rows/columns and edges represent nonzero entries. From this graph, the algorithm computes an edge-clique cover, which identifies a set of cliques that collectively cover all edges in the graph. Each clique represents a group of vertices that are mutually connected.
+
+The clique-node hypergraph transformation inverts the roles of vertices and cliques. Each clique becomes a node in the hypergraph, and each original graph vertex becomes a hyperedge connecting all cliques that contain it. This transformation enables the use of hypergraph partitioning tools to minimize the number of vertices that span multiple partitions, which naturally produces a vertex separator.
+
+The hypergraph is partitioned using KaHyPar (Karlsruhe Hypergraph Partitioner) into $k$ parts with a small allowed imbalance. The partitioning objective minimizes the connectivity metric, which counts hyperedges that connect nodes from different partitions. Each such hyperedge corresponds to a vertex in the original graph that belongs to multiple cliques assigned to different partitions.
+
+After partitioning the clique-node hypergraph, the algorithm constructs the vertex separator by examining each original graph vertex. A vertex is assigned to partition $i$ if all cliques containing it are assigned to partition $i$ in the hypergraph partition. If a vertex belongs to cliques from multiple partitions, it becomes part of the separator. This produces $k$ internal regions and one separator region.
+
+To reduce fill-in during factorization, the algorithm applies an ordering method to each diagonal block. The implementation supports AMD, METIS, or nested dissection through the CHOLMOD library. Each diagonal block is extracted as a submatrix, and the chosen ordering algorithm reorders the vertices within that block to minimize fill-in during Cholesky factorization.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=1.2cm and 0.5cm,
+    box/.style={rectangle, draw, minimum width=3cm, minimum height=1cm, align=center},
+    arrow/.style={->, >=stealth, thick}
+]
+
+% First row (left to right)
+\node[box] (matrix) {Symmetric\\Matrix $A$};
+\node[box, right=of matrix] (graph) {Graph $G=(V,E)$\\Vertices = rows/cols\\Edges = nonzeros};
+\node[box, right=of graph] (cliques) {Edge-Clique\\Cover};
+\node[box, right=of cliques] (cnh) {Clique-Node\\Hypergraph};
+
+% Second row (right to left, below the first row)
+\node[box, below=of cnh] (partition) {Partition with\\KaHyPar into $k$};
+\node[box, left=of partition] (separator) {Extract\\Separator};
+\node[box, left=of separator] (amd) {Apply AMD to\\each block};
+\node[box, left=of amd] (permute) {Final\\Permutation};
+
+% Arrows for first row
+\draw[arrow] (matrix) -- (graph);
+\draw[arrow] (graph) -- (cliques);
+\draw[arrow] (cliques) -- (cnh);
+
+% Arrow going down
+\draw[arrow] (cnh) -- (partition);
+
+% Arrows for second row
+\draw[arrow] (partition) -- (separator);
+\draw[arrow] (separator) -- (amd);
+\draw[arrow] (amd) -- (permute);
+
+\end{tikzpicture}
+\caption{Flowchart of the hypergraph-based symmetric DB form algorithm}
+\label{fig:hypergraph_flowchart}
+\end{figure}
+
+The final permutation places all vertices from diagonal block 1, followed by diagonal block 2 through $k$, with separator vertices at the end. This produces a matrix in symmetric doubly-bordered block-diagonal form, where the diagonal blocks have been optimized for sparse factorization while the off-diagonal structure is confined to the border rows and columns corresponding to the separator.
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{FindEdgeCliqueCover}{FindEdgeCliqueCover}
+    \SetKwFunction{BuildCNH}{BuildCliqueNodeHypergraph}
+    \SetKwFunction{PartitionHypergraph}{PartitionHypergraph}
+    \SetKwFunction{ExtractSeparator}{ExtractSeparator}
+    \SetKwFunction{ApplyAMD}{ApplyAMD}
+
+    \Input{Symmetric matrix $A$ ($n \times n$), number of blocks $k$}
+    \Output{Permutation $P$ producing symmetric DB form}
+    \BlankLine
+
+    \emph{Step 1: Create graph representation:}\;
+    $G = (V, E)$ where $V = \{1, \ldots, n\}$ and $(i,j) \in E$ if $A_{ij} \neq 0$\;
+    \BlankLine
+
+    \emph{Step 2: Find edge-clique cover:}\;
+    $\text{Cliques} = \FindEdgeCliqueCover(G)$\;
+    Build mapping: $\text{vertex\_to\_cliques}[v] = \{c : v \in c, c \in \text{Cliques}\}$\;
+    \BlankLine
+
+    \emph{Step 3: Build clique-node hypergraph:}\;
+    \tcp{Each clique becomes a hypergraph node}
+    \tcp{Each vertex becomes a hyperedge connecting its cliques}
+    $H = (N, E_H)$ where $|N| = |\text{Cliques}|$\;
+    \ForEach{vertex $v \in V$}{
+        Create hyperedge $e_v$ connecting nodes in $\text{vertex\_to\_cliques}[v]$\;
+        $E_H = E_H \cup \{e_v\}$\;
+    }
+    \BlankLine
+
+    \emph{Step 4: Partition hypergraph:}\;
+    $\text{clique\_partition} = \PartitionHypergraph(H, k)$ using KaHyPar\;
+    \BlankLine
+
+    \emph{Step 5: Extract vertex separator:}\;
+    Initialize $\text{Parts}[1..k] = \emptyset$, $\text{Separator} = \emptyset$\;
+    \ForEach{vertex $v \in V$}{
+        $\text{partitions} = \{\text{clique\_partition}[c] : c \in \text{vertex\_to\_cliques}[v]\}$\;
+        \If{$|\text{partitions}| = 1$}{
+            $p = $ the single partition in $\text{partitions}$\;
+            $\text{Parts}[p] = \text{Parts}[p] \cup \{v\}$\;
+        }
+        \Else{
+            $\text{Separator} = \text{Separator} \cup \{v\}$\;
+        }
+    }
+    \BlankLine
+
+    \emph{Step 6: Apply AMD to each diagonal block:}\;
+    \ForEach{part $i = 1$ to $k$}{
+        $A_i = A[\text{Parts}[i], \text{Parts}[i]]$ \tcp{Extract diagonal block}
+        $\text{perm}_i = \ApplyAMD(A_i)$ \tcp{Order using AMD/METIS/etc.}
+        Reorder $\text{Parts}[i]$ according to $\text{perm}_i$\;
+    }
+    \BlankLine
+
+    \emph{Step 7: Build final permutation:}\;
+    $P = [\text{Parts}[1], \text{Parts}[2], \ldots, \text{Parts}[k], \text{Separator}]$\;
+
+    \Return{$P$}\;
+
+    \caption{Hypergraph-Based Symmetric DB Form}
+    \label{alg:hypergraph_db}
+\end{algorithm}
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+    \Input{Graph $G = (V, E)$}
+    \Output{Set of cliques covering all edges}
+    \BlankLine
+
+    $\text{Cliques} = \emptyset$\;
+    $\text{covered\_edges} = \emptyset$\;
+    \BlankLine
+
+    \emph{Find maximal cliques:}\;
+    $\text{maximal\_cliques} = $ all maximal cliques in $G$\;
+    \BlankLine
+
+    \emph{Add cliques that cover new edges:}\;
+    \ForEach{clique $C$ in $\text{maximal\_cliques}$}{
+        $\text{clique\_edges} = \{(u,v) : u, v \in C, u < v, (u,v) \in E\}$\;
+        $\text{new\_edges} = \text{clique\_edges} \setminus \text{covered\_edges}$\;
+
+        \If{$\text{new\_edges} \neq \emptyset$}{
+            $\text{Cliques} = \text{Cliques} \cup \{C\}$\;
+            $\text{covered\_edges} = \text{covered\_edges} \cup \text{clique\_edges}$\;
+        }
+    }
+    \BlankLine
+
+    \emph{Cover remaining edges with 2-cliques:}\;
+    $\text{remaining} = E \setminus \text{covered\_edges}$\;
+    \ForEach{edge $(u,v) \in \text{remaining}$}{
+        $\text{Cliques} = \text{Cliques} \cup \{\{u, v\}\}$\;
+    }
+
+    \Return{Cliques}\;
+
+    \caption{Edge-Clique Cover (Greedy Heuristic)}
+    \label{alg:edge_clique_cover}
+\end{algorithm}
 
 \section{GPU Implementation of RCM}
 

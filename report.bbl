@@ -45,9 +45,9 @@ U.~V. \c{C}ataly\"urek, C.~Aykanat, and E.~Kayaaslan, ``Hypergraph {Partitioning
 A.~Dasgupta and P.~Kumar, ``Alpha {Elimination}: {Using} {Deep} {Reinforcement} {Learning} to {Reduce} {Fill}-{In} {During} {Sparse} {Matrix} {Decomposition},'' in \emph{Machine {Learning} and {Knowledge} {Discovery} in {Databases}: {Research} {Track}: {European} {Conference}, {ECML} {PKDD} 2023, {Turin}, {Italy}, {September} 18–22, 2023, {Proceedings}, {Part} {IV}}.\hskip 1em plus 0.5em minus 0.4em\relax Berlin, Heidelberg: Springer-Verlag, Sep. 2023, pp. 472--488. [Online]. Available: \url{https://doi.org/10.1007/978-3-031-43421-1_28}
 \BIBentrySTDinterwordspacing
 
-\bibitem{chang2025parallelizingapproximateminimumdegree}
+\bibitem{selvitopi_effect_2020}
 \BIBentryALTinterwordspacing
-Y.-H. Chang, A.~Buluç, and J.~Demmel, ``Parallelizing the approximate minimum degree ordering algorithm: Strategies and evaluation,'' 2025. [Online]. Available: \url{https://arxiv.org/abs/2504.17097}
+O.~Selvitopi, S.~Acer, M.~Manguoğlu, and C.~Aykanat, ``\BIBforeignlanguage{en}{The {Effect} of {Various} {Sparsity} {Structures} on {Parallelism} and {Algorithms} to {Reveal} {Those} {Structures}},'' in \emph{\BIBforeignlanguage{en}{Parallel {Algorithms} in {Computational} {Science} and {Engineering}}}, A.~Grama and A.~H. Sameh, Eds.\hskip 1em plus 0.5em minus 0.4em\relax Cham: Springer International Publishing, 2020, pp. 35--62. [Online]. Available: \url{https://doi.org/10.1007/978-3-030-43736-7_2}
 \BIBentrySTDinterwordspacing
 
 \bibitem{merrill_scalable_nodate}
@@ -91,6 +91,11 @@ Xilinx. (2011, Nov.) {Virtex-6 FPGA Configuration User Guide}. UG360 (v3.4). [On
 \bibitem{WIKI:Newton}
 \BIBentryALTinterwordspacing
 Wikipedia, ``{Isaac Newton},'' accessed October 1, 2012. [Online]. Available: \url{http://en.wikipedia.org/w/index.php?title=Isaac_Newton&oldid=514997436}
+\BIBentrySTDinterwordspacing
+
+\bibitem{chang2025parallelizingapproximateminimumdegree}
+\BIBentryALTinterwordspacing
+Y.-H. Chang, A.~Buluç, and J.~Demmel, ``Parallelizing the approximate minimum degree ordering algorithm: Strategies and evaluation,'' 2025. [Online]. Available: \url{https://arxiv.org/abs/2504.17097}
 \BIBentrySTDinterwordspacing
 
 \bibitem{Knuth84}

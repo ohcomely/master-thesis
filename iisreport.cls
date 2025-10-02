@@ -111,6 +111,10 @@
 \RequirePackage{placeins}
 \RequirePackage{pdflscape}
 \RequirePackage{rotating}
+\RequirePackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta}
+
 
 % Theorems, lemmas, corollaries, proofs, and definitions
 \RequirePackage{amsthm}

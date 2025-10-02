@@ -27,10 +27,10 @@ Suppose the Cholesky factorization of \(A\) is given by \(LL^T\), where \(L\) is
 \subsubsection{Sparse Matrix Factorization Context}
 Consider a sparse symmetric positive definite matrix $A \in \mathbb{R}^{n \times n}$. The Cholesky factorization decomposes $A$ into the form $A = LL^T$, where $L$ is a lower triangular matrix. While $A$ may contain relatively few nonzero entries, the factor $L$ typically exhibits significantly more nonzeros due to a phenomenon known as fill-in. This fill-in occurs because the elimination process creates new nonzero entries at positions that were originally zero in $A$.
 
-The sparsity pattern of $A$ is defined as the set $\text{pattern}(A) = \{(i,j) : A_{ij} \neq 0\}$. Similarly, $\text{pattern}(L)$ denotes the sparsity pattern of the Cholesky factor. The fundamental observation is that $\text{pattern}(L)$ can be completely determined from $\text{pattern}(A)$ using purely structural analysis, without requiring any numerical computation. This structural predictability forms the theoretical foundation for elimination trees and symbolic factorization.
+The sparsity pattern of $A$ is defined as the set $\text{pattern}(A) = \{(i,j) : A\sb{ij} \neq 0\}$. Similarly, $\text{pattern}(L)$ denotes the sparsity pattern of the Cholesky factor. The fundamental observation is that $\text{pattern}(L)$ can be completely determined from $\text{pattern}(A)$ using purely structural analysis, without requiring any numerical computation. This structural predictability forms the theoretical foundation for elimination trees and symbolic factorization.
 
 \subsubsection{Graph-Theoretic Representation of Sparse Matrices}
-Every sparse symmetric matrix $A$ can be naturally represented as an undirected graph $G(A) = (V, E)$, where the vertex set $V = \{1, 2, \ldots, n\}$ corresponds to the rows and columns of $A$, and the edge set $E$ contains an edge $(i,j)$ if and only if $A_{ij} \neq 0$ for $i \neq j$. This graph representation transforms matrix operations into graph-theoretic problems, enabling the application of powerful combinatorial methods to numerical linear algebra.
+Every sparse symmetric matrix $A$ can be naturally represented as an undirected graph $G(A) = (V, E)$, where the vertex set $V = \{1, 2, \ldots, n\}$ corresponds to the rows and columns of $A$, and the edge set $E$ contains an edge $(i,j)$ if and only if $A\sb{ij} \neq 0$ for $i \neq j$. This graph representation transforms matrix operations into graph-theoretic problems, enabling the application of powerful combinatorial methods to numerical linear algebra.
 
 The elimination process on matrix $A$ corresponds to a sequence of vertex eliminations on graph $G(A)$. When vertex $k$ is eliminated, all pairs of neighbors of $k$ become connected by edges if they were not already connected. This edge addition process continues throughout the elimination sequence, producing what is known as the filled graph $G^+(A)$. The filled graph contains all edges that exist at any point during the elimination process, and its structure completely determines the sparsity pattern of the Cholesky factor $L$.
 
@@ -38,11 +38,11 @@ The elimination process on matrix $A$ corresponds to a sequence of vertex elimin
 The elimination tree provides a compact representation of the structural relationships inherent in sparse matrix factorization. This tree structure captures the essential dependencies between different stages of the elimination process.
 
 \begin{definition}[Elimination Tree]
-Let $A$ be a symmetric positive definite matrix with Cholesky factorization $A = LL^T$. The elimination tree $T(A) = (V, E_T)$ is a directed tree defined by the parent function $\text{parent}: V \to V \cup \{\emptyset\}$, where:
+Let $A$ be a symmetric positive definite matrix with Cholesky factorization $A = LL^T$. The elimination tree $T(A) = (V, E\sb{T})$ is a directed tree defined by the parent function $\text{parent}: V \to V \cup \{\emptyset\}$, where:
 \begin{equation}
-    \text{parent}(j) = \min\{i > j : L_{ij} \neq 0\}
+    \text{parent}(j) = \min\{i > j : L\sb{ij} \neq 0\}
 \end{equation}
-If no such index $i$ exists, then $\text{parent}(j) = \emptyset$ and $j$ is a root of the tree. The directed edges of the tree are given by $E_T = \{(j, \text{parent}(j)) : \text{parent}(j) \neq \emptyset\}$.
+If no such index $i$ exists, then $\text{parent}(j) = \emptyset$ and $j$ is a root of the tree. The directed edges of the tree are given by $E\sb{T} = \{(j, \text{parent}(j)) : \text{parent}(j) \neq \emptyset\}$.
 \end{definition}
 
 This definition establishes a precise correspondence between the numerical structure of the Cholesky factor and the combinatorial structure of a directed tree. Each node $j$ in the tree corresponds to column $j$ of the matrix, and the parent relationship encodes which column will first modify column $j$ during the factorization process.
@@ -54,7 +54,7 @@ In the elimination tree $T(A)$, node $i$ is an ancestor of node $j$ (denoted $i 
 The ancestor relationship in the elimination tree has a profound connection to the structure of the Cholesky factor, as formalized in the following fundamental theorem.
 
 \begin{theorem}[Fundamental Characterization Theorem]
-Let $T(A)$ be the elimination tree of symmetric positive definite matrix $A$ with Cholesky factor $L$. Then for any indices $i > j$: $L_{ij} \neq 0$ if and only if $i \succ j$ in $T(A)$.
+Let $T(A)$ be the elimination tree of symmetric positive definite matrix $A$ with Cholesky factor $L$. Then for any indices $i > j$: $L\sb{ij} \neq 0$ if and only if $i \succ j$ in $T(A)$.
 \end{theorem}
 
 This theorem establishes that the elimination tree completely characterizes the sparsity pattern of the Cholesky factor. The nonzero entries in column $j$ of $L$ correspond exactly to the ancestors of node $j$ in the elimination tree. This remarkable result shows that purely combinatorial information (tree ancestry) determines numerical structural properties (matrix sparsity patterns).
@@ -65,7 +65,7 @@ This theorem establishes that the elimination tree completely characterizes the 
 Understanding when fill-in occurs during elimination requires analyzing connectivity patterns in the original matrix graph. The concept of fill paths provides a precise characterization of this phenomenon.
 
 \begin{definition}[Fill Path]
-Let $G(A) = (V, E)$ be the graph of matrix $A$. A fill path from vertex $i$ to vertex $j$ (where $i < j$) is a path $P = (i = v_0, v_1, v_2, \ldots, v_k = j)$ in $G(A)$ such that all intermediate vertices satisfy $v_l < \min(i,j)$ for $1 \leq l \leq k-1$.
+Let $G(A) = (V, E)$ be the graph of matrix $A$. A fill path from vertex $i$ to vertex $j$ (where $i < j$) is a path $P = (i = v\sb{0}, v\sb{1}, v\sb{2}, \ldots, v\sb{k} = j)$ in $G(A)$ such that all intermediate vertices satisfy $v\sb{l} < \min(i,j)$ for $1 \leq l \leq k-1$.
 \end{definition}
 
 The fill path condition ensures that all intermediate vertices on the path are eliminated before either endpoint, which is precisely the condition under which the elimination process will create a direct connection between $i$ and $j$.
@@ -185,7 +185,7 @@ When performing Cholesky factorization on a sparse symmetric matrix, we want to 
 
 The key insight connecting linear algebra to graph theory is that chordal graphs are essential in proving this. A graph is chordal if every cycle of length $\geq 4$ has a chord (an edge connecting non-consecutive vertices). The fundamental theorem states that a graph has perfect elimination (zero fill-in) if and only if it is chordal, and any elimination process on any graph produces a chordal result. Therefore, the minimum fill-in problem becomes: What is the smallest number of edges we must add to make our graph chordal?
 
-The proof uses a three-step reduction to prove NP-completeness. First, we consider bipartite graphs and their special case, chain graphs. A bipartite graph has vertices split into two independent sets $P$ and $Q$, and it is a chain graph when neighborhoods form a nested sequence: $\Gamma(v_1) \subseteq \Gamma(v_2) \subseteq \ldots \subseteq \Gamma(v_k)$. The key property is that a bipartite graph is a chain graph if and only if it contains no pair of independent edges.
+The proof uses a three-step reduction to prove NP-completeness. First, we consider bipartite graphs and their special case, chain graphs. A bipartite graph has vertices split into two independent sets $P$ and $Q$, and it is a chain graph when neighborhoods form a nested sequence: $\Gamma(v\sb{1}) \subseteq \Gamma(v\sb{2}) \subseteq \ldots \subseteq \Gamma(v\sb{k})$. The key property is that a bipartite graph is a chain graph if and only if it contains no pair of independent edges.
 
 Second, for any bipartite graph $G = (P, Q, E)$, we construct $C(G)$ by making $P$ into a complete clique (all vertices in $P$ connected), making $Q$ into a complete clique (all vertices in $Q$ connected), and keeping original edges between $P$ and $Q$. The crucial lemma states that $C(G)$ is chordal if and only if $G$ is a chain graph. This works because if $G$ has independent edges, they create a 4-cycle in $C(G)$ with no chord. Conversely, if $G$ is a chain graph, $C(G)$ has a perfect elimination order.
 

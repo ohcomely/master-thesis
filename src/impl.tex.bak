@@ -1,0 +1,596 @@
+\chapter{Implementation and Optimizations}
+\label{ch:implementation_and_optimizations}
+
+This chapter describes both the existing state-of-the-art implementations that form the baseline for comparison (Sections~\ref{sec:suitesparse} and~\ref{sec:metis_scotch}), as well as the new algorithms and implementations developed in this thesis (Sections~\ref{sec:new_coarsening}, \ref{sec:hypergraph_ordering}, and~\ref{sec:gpu_rcm}).
+
+\section{SuiteSparse implementation of RCM and Minimum Degree}
+\label{sec:suitesparse}
+
+The Reverse Cuthill-McKee (RCM) algorithm in SuiteSparse provides bandwidth reduction for symmetric sparse matrices through a breadth-first search strategy combined with degree-based ordering heuristics. The implementation processes disconnected components separately and employs pseudo-peripheral vertex selection to minimize profile and bandwidth.
+
+\begin{algorithm}
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{RCMOrder}{RCM\_ORDER}
+    \SetKwFunction{FindPseudoPeripheral}{FindPseudoPeripheral}
+    \SetKwFunction{BFS}{BFS}
+    
+    \Input{Symmetric matrix $A$ ($n \times n$)}
+    \Output{Permutation $P$ for bandwidth reduction}
+    \BlankLine
+    
+    \emph{Initialize:}\;
+    Compute $\text{degree}[i] = |\text{adj}(i)|$ for all vertices $i$\;
+    Find connected components $R_1, R_2, \ldots, R_k$ using DFS\;
+    Initialize $\text{visited}[i] = \text{false}$ for all $i$\;
+    Set $\text{perm\_index} = 0$\;
+    \BlankLine
+    
+    \emph{Process each component:}\;
+    \ForEach{connected component $R_j$}{
+        \emph{Find pseudo-peripheral start vertex:}\;
+        $\text{start} = \FindPseudoPeripheral(R_j)$\;
+        \tcp{Select vertex with minimum degree among maximum-distance vertices}
+        
+        \emph{Cuthill-McKee BFS traversal:}\;
+        Initialize queue $Q = \{\text{start}\}$\;
+        Set $\text{visited}[\text{start}] = \text{true}$\;
+        Initialize $\text{CM\_order} = [\text{start}]$\;
+        
+        \While{$Q \neq \emptyset$}{
+            $u = \text{dequeue}(Q)$\;
+            $\text{neighbors} = \text{sort}(\text{unvisited\_adj}(u), \text{by\_degree\_ascending})$\;
+            \ForEach{$v \in \text{neighbors}$}{
+                \If{$\neg \text{visited}[v]$}{
+                    Set $\text{visited}[v] = \text{true}$\;
+                    $\text{enqueue}(Q, v)$\;
+                    Append $v$ to $\text{CM\_order}$\;
+                }
+            }
+        }
+        
+        \emph{Apply reverse ordering (RCM):}\;
+        \For{$i = 0$ \KwTo $|\text{CM\_order}| - 1$}{
+            $P[\text{perm\_index} + i] = \text{CM\_order}[|\text{CM\_order}| - 1 - i]$\;
+        }
+        $\text{perm\_index} \gets \text{perm\_index} + |\text{CM\_order}|$\;
+    }
+    
+    \Return{$P$}\;
+    
+    \caption{SuiteSparse RCM Algorithm}
+    \label{alg:rcm}
+\end{algorithm}
+
+The SuiteSparse RCM implementation incorporates several refinements over the basic algorithm. The pseudo-peripheral vertex selection uses multiple BFS traversals to identify vertices that are approximately diametrically opposite, which typically results in better bandwidth reduction than arbitrary starting points. The degree-based sorting of neighbors during BFS traversal helps create a more systematic ordering that tends to group low-degree vertices together, further improving the resulting bandwidth.
+
+The algorithm's effectiveness stems from its ability to produce orderings where vertices with similar connectivity patterns are placed close together in the permutation. This locality property translates directly into reduced bandwidth and improved cache performance during matrix operations, making RCM particularly valuable for iterative solvers and direct factorization methods that benefit from band structure preservation.
+
+\subsection{AMD Algorithm Overview}
+
+The Approximate Minimum Degree (AMD) algorithm implemented in SuiteSparse follows a refined elimination-based approach that balances computational efficiency with fill-in minimization. The algorithm operates on a quotient graph representation and incorporates several key optimizations including aggressive absorption, approximate degree updates, and dense row detection.
+
+\begin{algorithm}
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{AMDOrder}{AMD\_ORDER}
+    \SetKwFunction{FindCompress}{FindCompress}
+    
+    \Input{Symmetric matrix $A$ ($n \times n$), Control parameters}
+    \Output{Permutation $P$, Info statistics}
+    \BlankLine
+    
+    \emph{Initialize:}\;
+    Convert $A$ to $A + A^T$ pattern if unsymmetric\;
+    Build quotient graph $G = (V, E)$ from $A$\;
+    Initialize degree lists $\text{Head}[d]$ for $d = 0$ to $n$\;
+    Set $\text{degree}[v] = |\text{adj}(v)|$ for all vertices $v$\;
+    Place each vertex in appropriate degree list\;
+    \BlankLine
+    
+    \emph{Main elimination loop:}\;
+    \For{$k = 1$ \KwTo $n$}{
+        \emph{Select pivot:}\;
+        Find minimum degree $d$ with non-empty $\text{Head}[d]$\;
+        Select pivot $p$ from $\text{Head}[d]$\;
+        Remove $p$ from degree list\;
+        
+        Set $P[k] = p$ (add to elimination ordering)\;
+        
+        \emph{Element absorption:}\;
+        \ForEach{element $e$ adjacent to $p$}{
+            \If{$|L_e \cap L_p| = |L_e|$}{
+                Absorb $e$ into $p$ (aggressive absorption)\;
+            }
+        }
+        
+        \emph{Form new element $e_p$:}\;
+        $L_{e_p} = \text{adj}(p) \setminus \{\text{absorbed elements}\}$\;
+        Mark $e_p$ as new element\;
+        
+        \emph{Update degrees (approximate):}\;
+        \ForEach{uneliminated vertex $v \in L_{e_p}$}{
+            $\text{external\_degree}[v] = |\text{adj}(v) \cap \text{uneliminated}|$\;
+            $\text{bound} = |L_{e_p}| - |L_{e_p} \cap \text{adj}(v)|$\;
+            $\text{degree}[v] \approx \text{external\_degree}[v] + \text{bound}$\;
+            Move $v$ to new degree list\;
+        }
+        
+        \emph{Dense row detection:}\;
+        \If{$|L_{e_p}| > \max(\alpha\sqrt{n}, 16)$}{
+            Mark $e_p$ as dense element\;
+            Move dense variables to end of ordering\;
+        }
+    }
+    
+    \emph{Post-processing:}\;
+    Apply elimination tree post-ordering\;
+    Compute final permutation statistics\;
+    \Return{$P$ and Info}\;
+    
+    \caption{SuiteSparse AMD Algorithm}
+    \label{alg:amd}
+\end{algorithm}
+
+The key innovation in SuiteSparse's AMD implementation lies in its aggressive absorption strategy and approximate degree computation. The aggressive absorption phase identifies elements that can be completely absorbed into the current pivot, reducing the size of the quotient graph and improving cache locality. The approximate degree updates provide a computationally efficient method to maintain ordering decisions without exact degree computation, which becomes prohibitively expensive as elimination progresses.
+
+The dense row detection mechanism addresses a common pathology in minimum degree algorithms where elimination of high-degree vertices can lead to excessive fill-in. When the algorithm detects that a newly formed element exceeds a threshold based on the matrix size, it defers elimination of the associated variables, effectively implementing a hybrid strategy that combines minimum degree with nested dissection principles.
+
+\section{Nested Dissection using METIS and SCOTCH}
+\label{sec:metis_scotch}
+
+Nested dissection represents a divide-and-conquer approach to matrix ordering that recursively partitions the graph using small vertex separators, ordering the separated components before the separator vertices. METIS and SCOTCH implement sophisticated multilevel nested dissection algorithms that combine graph coarsening, separator finding, and refinement techniques to produce high-quality orderings for large sparse matrices.
+
+The multilevel nested dissection approach in METIS provides superior ordering quality compared to single-level methods by operating at multiple scales. The coarsening phase creates a hierarchy of increasingly smaller graphs while preserving essential structural properties through heavy edge matching. This matching strategy prioritizes edges with large weights, which in the context of matrix ordering typically correspond to strong structural connections that should be preserved during coarsening.
+
+The separator computation on the coarsest level benefits from reduced problem size while maintaining global structural awareness. The refinement phase during projection ensures that separators remain high-quality as they are mapped back to finer graph levels. The recursive application of this process creates a natural hierarchy where large components are isolated first, followed by progressively smaller substructures, resulting in elimination orderings with excellent fill-in characteristics for sparse direct solvers.
+
+% \begin{algorithm}
+%     \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+%     \SetKwFunction{NestedDissection}{NestedDissection}
+%     \SetKwFunction{ComputeSeparator}{ComputeSeparator}
+%     \SetKwFunction{MinimumDegree}{MinimumDegree}
+    
+%     \Input{Graph $G = (V, E)$ from sparse matrix structure}
+%     \Output{Permutation $P$ minimizing fill-in}
+%     \BlankLine
+    
+%     \If{$|V| \leq$ threshold}{
+%         \Return{\MinimumDegree{$(G)$}}\;
+%     }
+    
+%     Apply multilevel coarsening to create graph hierarchy\;
+%     $S = \ComputeSeparator(\text{coarsest graph})$\;
+%     Project and refine $S$ through all graph levels\;
+    
+%     Partition $G$ into components $A$, $B$ using separator $S$\;
+%     $P_A = \NestedDissection(A)$\;
+%     $P_B = \NestedDissection(B)$\;
+    
+%     \Return{Concatenate($P_A$, $P_B$, $S$)}\;
+    
+%     \caption{METIS Nested Dissection}
+%     \label{alg:metis_nested_dissection}
+% \end{algorithm}
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{HeavyEdgeMatching}{HeavyEdgeMatching}
+    \SetKwFunction{ContractEdges}{ContractEdges}
+    \SetKwFunction{SortByWeight}{SortByWeight}
+    
+    \Input{Graph $G = (V, E)$}
+    \Output{Hierarchy of progressively coarser graphs}
+    \BlankLine
+    
+    $\text{Hierarchy} = [G]$ \tcp{Start with original graph}
+    $\text{CurrentGraph} = G$\;
+    \BlankLine
+    
+    \While{$|V(\text{CurrentGraph})| > \text{COARSENING\_THRESHOLD}$}{
+        \emph{Find heavy edge matching to preserve graph structure}\;
+        $\text{Matching} = \HeavyEdgeMatching(\text{CurrentGraph})$\;
+        
+        \emph{Contract matched edges to create coarser graph}\;
+        $\text{CoarserGraph} = \ContractEdges(\text{CurrentGraph}, \text{Matching})$\;
+        
+        \emph{Add to hierarchy}\;
+        $\text{Hierarchy.append}(\text{CoarserGraph})$\;
+        $\text{CurrentGraph} = \text{CoarserGraph}$\;
+    }
+    
+    \Return{$\text{Hierarchy}$}\;
+    
+    \caption{Multilevel Graph Coarsening}
+    \label{alg:multilevel_coarsening}
+\end{algorithm}
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    
+    \Input{Graph $G$ with edge weights}
+    \Output{Maximal matching favoring heavy edges}
+    \BlankLine
+    
+    $\text{Matching} = \{\}$\;
+    $\text{Matched} = \{\}$ \tcp{Track matched vertices}
+    \BlankLine
+    
+    \emph{Sort edges by weight, centralness and degree for better matching quality}\;
+    $\text{SortedEdges} = \SortByWeight(E(G), \text{descending} = \text{true})$\;
+    \BlankLine
+    
+    \ForEach{edge $(u,v)$ in $\text{SortedEdges}$}{
+        \If{$u \notin \text{Matched}$ \textbf{and} $v \notin \text{Matched}$}{
+            $\text{Matching.add}((u,v))$\;
+            $\text{Matched.add}(u)$\;
+            $\text{Matched.add}(v)$\;
+        }
+    }
+    
+    \Return{$\text{Matching}$}\;
+    
+    \caption{Heavy Edge Matching Algorithm}
+    \label{alg:heavy_edge_matching}
+\end{algorithm}
+
+
+
+% \newpage
+% \section{Parallel-Nested Dissection}
+
+% \newpage
+% \section{Parallelizing minimum degree}
+
+% There haven't been many attempts to parallelize the minimum degree algorithm due to its inherently sequential nature. The only known approximate parallel implementation of the minimum degree algorithm is the ParAMD algorithm proposed by Chang et al. in \cite{chang2025parallelizingapproximateminimumdegree}. 
+
+% The sequential AMD algorithm has inherent bottlenecks that make parallelization difficult. Each elimination step requires selecting a pivot with minimum approximate degree, after which the degrees of neighboring variables must be updated. These steps are inherently sequential since you cannot select the next pivot until all updates from the previous elimination are complete.
+
+% Instead of eliminating one pivot at a time, the algorithm selects multiple pivots simultaneously using "distance-2 independent sets" - pivots that are at least 2 steps apart in the graph. This ensures no overlap in pivot neighborhoods, eliminating contention between parallel threads.
+
+% The algorithm allows selection of pivots whose degrees are within a multiplicative factor (\texttt{mult}) of the minimum degree. This relaxation increases the pool of available pivots for parallel processing while balancing against ordering quality - too much relaxation degrades the solution.
+
+
+
+
+% \begin{algorithm}
+%     \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+%     \SetKwFunction{ParallelAMD}{PARALLEL\_AMD}
+%     \SetKwFunction{InitializeQuotientGraph}{initialize\_quotient\_graph}
+%     \SetKwFunction{InitializeDegreeList}{initialize\_degree\_list}
+%     \SetKwFunction{FindGlobalMinDegree}{find\_global\_minimum\_degree}
+%     \SetKwFunction{DistanceTwoIndepSet}{distance\_2\_independent\_set}
+%     \SetKwFunction{EliminatePivot}{eliminate\_pivot}
+%     \SetKwFunction{GetThreadId}{get\_thread\_id}
+    
+%     \Input{Matrix $A$ ($n \times n$), parameters $\text{mult}$, $\text{lim}$}
+%     \Output{Elimination ordering}
+%     \BlankLine
+    
+%     \emph{Preprocessing:}\;
+%     $G \gets \InitializeQuotientGraph(A + A^T)$ \tcp{Compute symmetric pattern}
+%     \BlankLine
+    
+%     \emph{Initialize degree lists for each thread:}\;
+%     \lForAll{$\text{tid} = 0$ \KwTo $\text{num\_threads} - 1$ \textbf{in parallel}}{
+%         $\InitializeDegreeList(\text{tid})$
+%     }
+%     \BlankLine
+    
+%     \emph{Main elimination loop:}\;
+%     \While{$|V| > 0$}{
+%         \emph{Find minimum approximate degree across all threads:}\;
+%         $\text{amd} \gets \FindGlobalMinDegree()$\;
+%         \BlankLine
+        
+%         \emph{Select distance-2 independent set of pivots:}\;
+%         $D \gets \DistanceTwoIndepSet(\text{amd}, \text{mult}, \text{lim})$\;
+%         \BlankLine
+        
+%         \If{$|D| = 0$}{
+%             \textbf{break} \tcp{No more valid pivots}
+%         }
+%         \BlankLine
+        
+%         \emph{Eliminate pivots in parallel:}\;
+%         \lForAll{pivot $p \in D$ \textbf{in parallel}}{
+%             $\text{tid} \gets \GetThreadId()$\;
+%             $\EliminatePivot(\text{tid}, p)$\;
+%         }
+%         \BlankLine
+        
+%         \emph{Barrier synchronization}\;
+%         \textbf{barrier()}\;
+%     }
+    
+%     \Return{elimination ordering}\;
+    
+%     \caption{Parallel AMD Algorithm}
+%     \label{alg:parallel_amd}
+% \end{algorithm}
+
+% The ParAMD algorithm employs concurrent connection updates by pre-allocating 1.5x the original graph storage to avoid dynamic memory allocation. Each thread claims space atomically after collecting all updates, eliminating garbage collection synchronization bottlenecks.
+
+% For degree management, each thread maintains its own degree lists instead of sharing a global structure. The algorithm uses an affinity array to track which thread has the most current information for each variable, with lazy cleanup of stale entries during traversal.
+
+\section{New Coarsening Approaches in Nested Dissection}
+\label{sec:new_coarsening}
+
+This section presents a new coarsening algorithm developed in this thesis that improves upon the standard METIS approach.
+
+The standard METIS coarsening approach uses heavy edge matching (SHEM) to create progressively smaller graphs while preserving structural properties. This work introduces a separator-aware heavy edge matching (SAHEM) algorithm that modifies the coarsening phase to better preserve separator structure during the multilevel nested dissection process.
+
+The SAHEM algorithm extends the standard heavy edge matching by incorporating separator likelihood scores for each vertex. These scores are computed using two local structural features: normalized degree centrality and local clustering coefficient. High-degree vertices with low clustering coefficients are more likely to be separators in the graph, as they connect different regions without being part of densely connected communities.
+
+For each vertex, the algorithm computes a separator score as:
+\[
+\text{sep\_score}(v) = \frac{\text{degree}(v)}{n} \times (1 - \text{clustering}(v))
+\]
+
+The local clustering coefficient measures the fraction of possible edges that exist between a vertex's neighbors. Vertices with many neighbors but few connections among those neighbors typically serve as bridges between different graph regions.
+
+During edge matching, SAHEM evaluates potential matches using an edge score that combines the edge weight with a penalty based on separator likelihood. For each candidate edge $(u,v)$, the algorithm computes:
+\[
+\text{score}(u,v) = w(u,v) - \alpha \times \text{penalty}(u,v)
+\]
+
+The penalty term considers three factors: degree difference between the vertices, neighborhood overlap, and the separator scores of both vertices. The degree difference penalty prevents matching vertices with very different connectivity patterns. The overlap penalty measures how many common neighbors the vertices share relative to their total neighborhoods. The separator penalty directly uses the precomputed separator scores.
+
+This approach aims to avoid matching vertices that are likely to be separators with vertices in the interior of partitions. By preserving separator vertices during coarsening, the algorithm maintains clearer boundaries between different regions of the graph, which can lead to better quality separators when the graph is partitioned at the coarsest level and refined during projection.
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{ComputeSeparatorScores}{ComputeSeparatorScores}
+    \SetKwFunction{ComputePenalty}{ComputePenalty}
+
+    \Input{Graph $G = (V, E)$ with edge weights}
+    \Output{Matching $M$ and coarser graph}
+    \BlankLine
+
+    \emph{Compute separator likelihood scores:}\;
+    \ForEach{vertex $v \in V$}{
+        $\text{degree\_centrality}[v] = \text{degree}(v) / |V|$\;
+        $\text{clustering}[v] = $ clustering coefficient of $v$\;
+        $\text{sep\_score}[v] = \text{degree\_centrality}[v] \times (1 - \text{clustering}[v])$\;
+    }
+    \BlankLine
+
+    \emph{Initialize matching:}\;
+    $M = \emptyset$\;
+    $\text{matched} = \{\}$\;
+    Sort vertices by degree (low to high)\;
+    \BlankLine
+
+    \emph{Compute separator-aware matching:}\;
+    \ForEach{vertex $u$ in sorted order}{
+        \If{$u \notin \text{matched}$}{
+            $\text{best\_score} = -\infty$\;
+            $\text{best\_match} = \text{null}$\;
+
+            \ForEach{neighbor $v$ of $u$}{
+                \If{$v \notin \text{matched}$ \textbf{and} weight constraints satisfied}{
+                    $\text{edge\_score} = w(u,v)$\;
+                    $\text{penalty} = \ComputePenalty(u, v, \text{sep\_score})$\;
+                    $\text{total\_score} = \text{edge\_score} - \alpha \times \text{penalty}$\;
+
+                    \If{$\text{total\_score} > \text{best\_score}$}{
+                        $\text{best\_score} = \text{total\_score}$\;
+                        $\text{best\_match} = v$\;
+                    }
+                }
+            }
+
+            \If{$\text{best\_match} \neq \text{null}$}{
+                $M = M \cup \{(u, \text{best\_match})\}$\;
+                $\text{matched} = \text{matched} \cup \{u, \text{best\_match}\}$\;
+            }
+        }
+    }
+
+    Create coarser graph by contracting matched edges\;
+    \Return{Coarser graph}\;
+
+    \caption{Separator-Aware Heavy Edge Matching (SAHEM)}
+    \label{alg:sahem}
+\end{algorithm}
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+    \Input{Vertices $u$, $v$, separator scores}
+    \Output{Penalty score}
+    \BlankLine
+
+    \emph{Degree difference penalty:}\;
+    $\text{deg\_diff} = |\text{degree}(u) - \text{degree}(v)| / \max(\text{degree}(u), \text{degree}(v))$\;
+    \BlankLine
+
+    \emph{Neighborhood overlap penalty:}\;
+    $\text{common} = |\text{neighbors}(u) \cap \text{neighbors}(v)|$\;
+    $\text{total} = |\text{neighbors}(u) \cup \text{neighbors}(v)|$\;
+    $\text{overlap\_penalty} = 1 - \text{common} / \text{total}$\;
+    \BlankLine
+
+    \emph{Separator penalty:}\;
+    $\text{sep\_penalty} = (\text{sep\_score}[u] + \text{sep\_score}[v]) / 2$\;
+    \BlankLine
+
+    \emph{Combine penalties:}\;
+    $\text{penalty} = 0.4 \times \text{deg\_diff} + 0.4 \times \text{overlap\_penalty} + 0.2 \times \text{sep\_penalty}$\;
+
+    \Return{penalty}\;
+
+    \caption{Edge Cut Score Penalty Computation}
+    \label{alg:edge_penalty}
+\end{algorithm}
+
+\section{Hypergraph Based Ordering}
+\label{sec:hypergraph_ordering}
+
+This section presents a hypergraph-based ordering implementation developed in this thesis. The approach is inspired by the work of \cite{catalyurek_hypergraph_2011} and \cite{selvitopi_effect_2020}, which describe converting a symmetric matrix into Doubly-Bordered Block-Diagonal Form (DB) using hypergraph partitioning. This implementation extends their approach with an efficient method to find edge-clique cover and applies further ordering within the diagonal blocks. 
+
+The algorithm begins by constructing a standard graph representation of the symmetric matrix, where vertices correspond to matrix rows/columns and edges represent nonzero entries. From this graph, the algorithm computes an edge-clique cover, which identifies a set of cliques that collectively cover all edges in the graph. Each clique represents a group of vertices that are mutually connected.
+
+The clique-node hypergraph transformation inverts the roles of vertices and cliques. Each clique becomes a node in the hypergraph, and each original graph vertex becomes a hyperedge connecting all cliques that contain it. This transformation enables the use of hypergraph partitioning tools to minimize the number of vertices that span multiple partitions, which naturally produces a vertex separator.
+
+The hypergraph is partitioned using KaHyPar (Karlsruhe Hypergraph Partitioner) into $k$ parts with a small allowed imbalance. The partitioning objective minimizes the connectivity metric, which counts hyperedges that connect nodes from different partitions. Each such hyperedge corresponds to a vertex in the original graph that belongs to multiple cliques assigned to different partitions.
+
+After partitioning the clique-node hypergraph, the algorithm constructs the vertex separator by examining each original graph vertex. A vertex is assigned to partition $i$ if all cliques containing it are assigned to partition $i$ in the hypergraph partition. If a vertex belongs to cliques from multiple partitions, it becomes part of the separator. This produces $k$ internal regions and one separator region.
+
+To reduce fill-in during factorization, the algorithm applies an ordering method to each diagonal block. The implementation supports AMD, METIS, or nested dissection through the CHOLMOD library. Each diagonal block is extracted as a submatrix, and the chosen ordering algorithm reorders the vertices within that block to minimize fill-in during Cholesky factorization.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=1.2cm and 0.5cm,
+    box/.style={rectangle, draw, minimum width=3cm, minimum height=1cm, align=center},
+    arrow/.style={->, >=stealth, thick}
+]
+
+% First row (left to right)
+\node[box] (matrix) {Symmetric\\Matrix $A$};
+\node[box, right=of matrix] (graph) {Graph $G=(V,E)$\\Vertices = rows/cols\\Edges = nonzeros};
+\node[box, right=of graph] (cliques) {Edge-Clique\\Cover};
+\node[box, right=of cliques] (cnh) {Clique-Node\\Hypergraph};
+
+% Second row (right to left, below the first row)
+\node[box, below=of cnh] (partition) {Partition with\\KaHyPar into $k$};
+\node[box, left=of partition] (separator) {Extract\\Separator};
+\node[box, left=of separator] (amd) {Apply AMD to\\each block};
+\node[box, left=of amd] (permute) {Final\\Permutation};
+
+% Arrows for first row
+\draw[arrow] (matrix) -- (graph);
+\draw[arrow] (graph) -- (cliques);
+\draw[arrow] (cliques) -- (cnh);
+
+% Arrow going down
+\draw[arrow] (cnh) -- (partition);
+
+% Arrows for second row
+\draw[arrow] (partition) -- (separator);
+\draw[arrow] (separator) -- (amd);
+\draw[arrow] (amd) -- (permute);
+
+\end{tikzpicture}
+\caption{Flowchart of the hypergraph-based symmetric DB form algorithm}
+\label{fig:hypergraph_flowchart}
+\end{figure}
+
+The final permutation places all vertices from diagonal block 1, followed by diagonal block 2 through $k$, with separator vertices at the end. This produces a matrix in symmetric doubly-bordered block-diagonal form, where the diagonal blocks have been optimized for sparse factorization while the off-diagonal structure is confined to the border rows and columns corresponding to the separator.
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{FindEdgeCliqueCover}{FindEdgeCliqueCover}
+    \SetKwFunction{BuildCNH}{BuildCliqueNodeHypergraph}
+    \SetKwFunction{PartitionHypergraph}{PartitionHypergraph}
+    \SetKwFunction{ExtractSeparator}{ExtractSeparator}
+    \SetKwFunction{ApplyAMD}{ApplyAMD}
+
+    \Input{Symmetric matrix $A$ ($n \times n$), number of blocks $k$}
+    \Output{Permutation $P$ producing symmetric DB form}
+    \BlankLine
+
+    \emph{Step 1: Create graph representation:}\;
+    $G = (V, E)$ where $V = \{1, \ldots, n\}$ and $(i,j) \in E$ if $A_{ij} \neq 0$\;
+    \BlankLine
+
+    \emph{Step 2: Find edge-clique cover:}\;
+    $\text{Cliques} = \FindEdgeCliqueCover(G)$\;
+    Build mapping: $\text{vertex\_to\_cliques}[v] = \{c : v \in c, c \in \text{Cliques}\}$\;
+    \BlankLine
+
+    \emph{Step 3: Build clique-node hypergraph:}\;
+    \tcp{Each clique becomes a hypergraph node}
+    \tcp{Each vertex becomes a hyperedge connecting its cliques}
+    $H = (N, E_H)$ where $|N| = |\text{Cliques}|$\;
+    \ForEach{vertex $v \in V$}{
+        Create hyperedge $e_v$ connecting nodes in $\text{vertex\_to\_cliques}[v]$\;
+        $E_H = E_H \cup \{e_v\}$\;
+    }
+    \BlankLine
+
+    \emph{Step 4: Partition hypergraph:}\;
+    $\text{clique\_partition} = \PartitionHypergraph(H, k)$ using KaHyPar\;
+    \BlankLine
+
+    \emph{Step 5: Extract vertex separator:}\;
+    Initialize $\text{Parts}[1..k] = \emptyset$, $\text{Separator} = \emptyset$\;
+    \ForEach{vertex $v \in V$}{
+        $\text{partitions} = \{\text{clique\_partition}[c] : c \in \text{vertex\_to\_cliques}[v]\}$\;
+        \If{$|\text{partitions}| = 1$}{
+            $p = $ the single partition in $\text{partitions}$\;
+            $\text{Parts}[p] = \text{Parts}[p] \cup \{v\}$\;
+        }
+        \Else{
+            $\text{Separator} = \text{Separator} \cup \{v\}$\;
+        }
+    }
+    \BlankLine
+
+    \emph{Step 6: Apply AMD to each diagonal block:}\;
+    \ForEach{part $i = 1$ to $k$}{
+        $A_i = A[\text{Parts}[i], \text{Parts}[i]]$ \tcp{Extract diagonal block}
+        $\text{perm}_i = \ApplyAMD(A_i)$ \tcp{Order using AMD/METIS/etc.}
+        Reorder $\text{Parts}[i]$ according to $\text{perm}_i$\;
+    }
+    \BlankLine
+
+    \emph{Step 7: Build final permutation:}\;
+    $P = [\text{Parts}[1], \text{Parts}[2], \ldots, \text{Parts}[k], \text{Separator}]$\;
+
+    \Return{$P$}\;
+
+    \caption{Hypergraph-Based Symmetric DB Form}
+    \label{alg:hypergraph_db}
+\end{algorithm}
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+    \Input{Graph $G = (V, E)$}
+    \Output{Set of cliques covering all edges}
+    \BlankLine
+
+    $\text{Cliques} = \emptyset$\;
+    $\text{covered\_edges} = \emptyset$\;
+    \BlankLine
+
+    \emph{Find maximal cliques:}\;
+    $\text{maximal\_cliques} = $ all maximal cliques in $G$\;
+    \BlankLine
+
+    \emph{Add cliques that cover new edges:}\;
+    \ForEach{clique $C$ in $\text{maximal\_cliques}$}{
+        $\text{clique\_edges} = \{(u,v) : u, v \in C, u < v, (u,v) \in E\}$\;
+        $\text{new\_edges} = \text{clique\_edges} \setminus \text{covered\_edges}$\;
+
+        \If{$\text{new\_edges} \neq \emptyset$}{
+            $\text{Cliques} = \text{Cliques} \cup \{C\}$\;
+            $\text{covered\_edges} = \text{covered\_edges} \cup \text{clique\_edges}$\;
+        }
+    }
+    \BlankLine
+
+    \emph{Cover remaining edges with 2-cliques:}\;
+    $\text{remaining} = E \setminus \text{covered\_edges}$\;
+    \ForEach{edge $(u,v) \in \text{remaining}$}{
+        $\text{Cliques} = \text{Cliques} \cup \{\{u, v\}\}$\;
+    }
+
+    \Return{Cliques}\;
+
+    \caption{Edge-Clique Cover (Greedy Heuristic)}
+    \label{alg:edge_clique_cover}
+\end{algorithm}
+
+\section{GPU Implementation of RCM}
+\label{sec:gpu_rcm}
+
+This section describes the GPU implementation of RCM developed in this thesis. The implementation adapts parallel breadth-first search (BFS) techniques for the RCM algorithm, building upon the NVIDIA work on GPU-accelerated BFS described in \cite{merrill_scalable_nodate}.
+
+This GPU breadth-first search implementation uses a level-synchronous algorithm that processes the graph one depth level at a time, maintaining two key data structures: a vertex frontier (vertices to be explored in the current iteration) and an edge frontier (all neighbors of vertices in the current frontier). The algorithm begins with a single source vertex and alternates between two fundamental operations across BFS levels.
+
+Each BFS iteration follows a two-phase process. In the expansion phase, the algorithm takes the current vertex frontier and performs parallel neighbor gathering to create the edge frontier. Multiple threads cooperatively read the adjacency lists of frontier vertices from the compressed sparse row (CSR) representation, collecting all outgoing edges. In the contraction phase, the algorithm filters this edge frontier by checking each neighbor's visitation status, removing already-visited vertices and duplicates to produce the vertex frontier for the next iteration. This process continues until the vertex frontier becomes empty, indicating the traversal is complete.
+
+The expansion phase uses a multi-granularity approach to handle the irregular degree distributions common in real graphs. For vertices with small adjacency lists, the algorithm employs scan-based gathering where threads use prefix sum to compute scatter offsets, creating a perfectly packed array of neighbors that allows all threads to participate in memory reads without SIMD lane waste. For medium-sized adjacency lists, warp-based gathering assigns entire 32-thread warps to cooperatively process single vertices, with threads strip-mining through the adjacency list in parallel. For very large adjacency lists, CTA-based gathering enlists entire thread blocks (hundreds of threads) to process individual high-degree vertices. This hybrid strategy automatically adapts to the workload characteristics and ensures efficient GPU utilization regardless of degree distribution.
+
+I took an already existing implementation of the parallel BFS algorithm from the NVIDIA CUDA SDK \cite{kaleta_kaletapbfs-cuda-gpu_2025} and adapted it for reordering the graph using RCM.

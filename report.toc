@@ -35,11 +35,10 @@
 \contentsline {chapter}{\numberline {5}Other Approaches}{37}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{37}{section.5.1}%
 \contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{38}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{39}{chapter.6}%
-\contentsline {chapter}{\numberline {A}Experimental Results}{41}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Task Description}{47}{appendix.B}%
-\contentsline {chapter}{List of Acronyms}{48}{section*.36}%
-\contentsline {chapter}{\nonumberline List of Figures}{49}{section*.36}%
-\contentsline {chapter}{\nonumberline List of Tables}{51}{section*.36}%
-\contentsline {chapter}{\nonumberline Bibliography}{52}{chapter*.37}%
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{40}{chapter.6}%
+\contentsline {chapter}{\numberline {A}Experimental Results}{42}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Task Description}{48}{appendix.B}%
+\contentsline {chapter}{\nonumberline List of Figures}{49}{appendix.B}%
+\contentsline {chapter}{\nonumberline List of Tables}{51}{appendix.B}%
+\contentsline {chapter}{\nonumberline Bibliography}{52}{chapter*.36}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -112,9 +112,8 @@
 \RequirePackage{pdflscape}
 \RequirePackage{rotating}
 \RequirePackage{tikz}
-\usetikzlibrary{positioning}
-\usetikzlibrary{arrows.meta}
-
+\usetikzlibrary{fit,shapes.misc}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, shadows}
 
 % Theorems, lemmas, corollaries, proofs, and definitions
 \RequirePackage{amsthm}

@@ -20,15 +20,15 @@ The Reverse Cuthill-McKee (RCM) algorithm in SuiteSparse provides bandwidth redu
     
     \emph{Initialize:}\;
     Compute $\text{degree}[i] = |\text{adj}(i)|$ for all vertices $i$\;
-    Find connected components $R_1, R_2, \ldots, R_k$ using DFS\;
+    Find connected components $R\sb{1}, R\sb{2}, \ldots, R\sb{k}$ using DFS\;
     Initialize $\text{visited}[i] = \text{false}$ for all $i$\;
     Set $\text{perm\_index} = 0$\;
     \BlankLine
     
     \emph{Process each component:}\;
-    \ForEach{connected component $R_j$}{
+    \ForEach{connected component $R\sb{j}$}{
         \emph{Find pseudo-peripheral start vertex:}\;
-        $\text{start} = \FindPseudoPeripheral(R_j)$\;
+        $\text{start} = \FindPseudoPeripheral(R\sb{j})$\;
         \tcp{Select vertex with minimum degree among maximum-distance vertices}
         
         \emph{Cuthill-McKee BFS traversal:}\;
@@ -97,26 +97,26 @@ The Approximate Minimum Degree (AMD) algorithm implemented in SuiteSparse follow
         
         \emph{Element absorption:}\;
         \ForEach{element $e$ adjacent to $p$}{
-            \If{$|L_e \cap L_p| = |L_e|$}{
+            \If{$|L\sb{e} \cap L\sb{p}| = |L\sb{e}|$}{
                 Absorb $e$ into $p$ (aggressive absorption)\;
             }
         }
         
-        \emph{Form new element $e_p$:}\;
-        $L_{e_p} = \text{adj}(p) \setminus \{\text{absorbed elements}\}$\;
-        Mark $e_p$ as new element\;
+        \emph{Form new element $e\sb{p}$:}\;
+        $L\sb{e\sb{p}} = \text{adj}(p) \setminus \{\text{absorbed elements}\}$\;
+        Mark $e\sb{p}$ as new element\;
         
         \emph{Update degrees (approximate):}\;
-        \ForEach{uneliminated vertex $v \in L_{e_p}$}{
+        \ForEach{uneliminated vertex $v \in L\sb{e\sb{p}}$}{
             $\text{external\_degree}[v] = |\text{adj}(v) \cap \text{uneliminated}|$\;
-            $\text{bound} = |L_{e_p}| - |L_{e_p} \cap \text{adj}(v)|$\;
+            $\text{bound} = |L\sb{e\sb{p}}| - |L\sb{e\sb{p}} \cap \text{adj}(v)|$\;
             $\text{degree}[v] \approx \text{external\_degree}[v] + \text{bound}$\;
             Move $v$ to new degree list\;
         }
         
         \emph{Dense row detection:}\;
-        \If{$|L_{e_p}| > \max(\alpha\sqrt{n}, 16)$}{
-            Mark $e_p$ as dense element\;
+        \If{$|L\sb{e\sb{p}}| > \max(\alpha\sqrt{n}, 16)$}{
+            Mark $e\sb{p}$ as dense element\;
             Move dense variables to end of ordering\;
         }
     }
@@ -162,10 +162,10 @@ The separator computation on the coarsest level benefits from reduced problem si
 %     Project and refine $S$ through all graph levels\;
     
 %     Partition $G$ into components $A$, $B$ using separator $S$\;
-%     $P_A = \NestedDissection(A)$\;
-%     $P_B = \NestedDissection(B)$\;
+%     $P\sb{A} = \NestedDissection(A)$\;
+%     $P\sb{B} = \NestedDissection(B)$\;
     
-%     \Return{Concatenate($P_A$, $P_B$, $S$)}\;
+%     \Return{Concatenate($P\sb{A}$, $P\sb{B}$, $S$)}\;
     
 %     \caption{METIS Nested Dissection}
 %     \label{alg:metis_nested_dissection}
@@ -490,7 +490,7 @@ The final permutation places all vertices from diagonal block 1, followed by dia
     \BlankLine
 
     \emph{Step 1: Create graph representation:}\;
-    $G = (V, E)$ where $V = \{1, \ldots, n\}$ and $(i,j) \in E$ if $A_{ij} \neq 0$\;
+    $G = (V, E)$ where $V = \{1, \ldots, n\}$ and $(i,j) \in E$ if $A\sb{ij} \neq 0$\;
     \BlankLine
 
     \emph{Step 2: Find edge-clique cover:}\;
@@ -501,10 +501,10 @@ The final permutation places all vertices from diagonal block 1, followed by dia
     \emph{Step 3: Build clique-node hypergraph:}\;
     \tcp{Each clique becomes a hypergraph node}
     \tcp{Each vertex becomes a hyperedge connecting its cliques}
-    $H = (N, E_H)$ where $|N| = |\text{Cliques}|$\;
+    $H = (N, E\sb{H})$ where $|N| = |\text{Cliques}|$\;
     \ForEach{vertex $v \in V$}{
-        Create hyperedge $e_v$ connecting nodes in $\text{vertex\_to\_cliques}[v]$\;
-        $E_H = E_H \cup \{e_v\}$\;
+        Create hyperedge $e\sb{v}$ connecting nodes in $\text{vertex\_to\_cliques}[v]$\;
+        $E\sb{H} = E\sb{H} \cup \{e\sb{v}\}$\;
     }
     \BlankLine
 
@@ -528,9 +528,9 @@ The final permutation places all vertices from diagonal block 1, followed by dia
 
     \emph{Step 6: Apply AMD to each diagonal block:}\;
     \ForEach{part $i = 1$ to $k$}{
-        $A_i = A[\text{Parts}[i], \text{Parts}[i]]$ \tcp{Extract diagonal block}
-        $\text{perm}_i = \ApplyAMD(A_i)$ \tcp{Order using AMD/METIS/etc.}
-        Reorder $\text{Parts}[i]$ according to $\text{perm}_i$\;
+        $A\sb{i} = A[\text{Parts}[i], \text{Parts}[i]]$ \tcp{Extract diagonal block}
+        $\text{perm}\sb{i} = \ApplyAMD(A\sb{i})$ \tcp{Order using AMD/METIS/etc.}
+        Reorder $\text{Parts}[i]$ according to $\text{perm}\sb{i}$\;
     }
     \BlankLine
 

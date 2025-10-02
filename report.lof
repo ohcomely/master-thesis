@@ -15,7 +15,8 @@
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse).}}{35}{figure.caption.26}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 10K nodes).}}{36}{figure.caption.28}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Recursive calls in nested dissection}}{38}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Reinforcement Learning Framework for Sparse Matrix Reordering using GNNs}}{38}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Recursive calls}}{39}{figure.caption.30}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -13,29 +13,24 @@ GNNs, however, can propagate information across multiple hops in the graph, enab
 
 The message-passing architecture of GNNs naturally models the fill-in process during matrix factorization. When a node is eliminated, it creates new connections between its neighbors, which GNNs can represent through their aggregation and update mechanisms. The network can learn to predict these fill-in patterns and make elimination choices that minimize overall structural complexity.
 
-\begin{table}[htbp]
-    \centering
-    \begin{tabular}{lcc}
-        \toprule
-        \textbf{Matrix} & \textbf{vs RCM (\%)} & \textbf{vs MinDeg (\%)} \\
-        \midrule
-        ash85 & 9.8 & 81.4 \\
-        bcsstk22 & 28.4 & 51.0 \\
-        \bottomrule
-    \end{tabular}
-    \caption{GNN-based method performance comparison with RCM and MinDegree}
-    \label{tab:graphrl_small}
-\end{table}
+The graph neural network, as shown in Figure \ref{fig:rl_method}, processes the sparse matrix represented as a graph, computing embeddings for each node based on features such as degree, clustering coefficient, and centrality measures. The actor network uses these embeddings to select which node to eliminate next, while the critic network estimates the value of the current state. The agent receives rewards based on the fill-in generated at each step, with penalties for creating new edges and bonuses for efficient elimination patterns.
 
-The model shows promising results on small matrices, as shown in Table \ref{tab:graphrl_small}, but struggles to scale to larger matrices due to the computational complexity of training GNNs on large graphs. Future work can explore scaling or coarser representations of the graph to make it feasible for larger matrices.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{fig/other/diagram.pdf}
+    \caption{Reinforcement Learning Framework for Sparse Matrix Reordering using GNNs}
+    \label{fig:rl_method}
+\end{figure}
+
+The model shows good results on small matrices, achieving 9.8\% improvement over RCM and 81.4\% improvement over MinDegree on the ash85 matrix, and 28.4\% and 51.0\% improvements respectively on the bcsstk22 matrix. Furthermore, experiments on synthetic graphs with a few hundred nodes demonstrated good results, suggesting the approach can handle moderately sized problems. However, the method struggles to scale to very large matrices due to the computational complexity of training GNNs on large graphs. Future work can explore scaling techniques such as graph coarsening, hierarchical approaches, or coarser representations of the graph to make it feasible for larger matrices.
 
 \section{GPU Accelerated Nested Dissection}
 
-There is very limited work on GPU-accelerated reordering algorithms. I had presented earlier in this thesis, a GPU implementation of the RCM algorithm. Another promising approach is to implement the nested dissection algorithm on GPUs. One such approach is presented by \cite{yuan_fast_nodate}, which leverages a GPU-based geometry processing library to perform fast graph partitioning, a key step in nested dissection. The method achieves significant speedups over the traditional CPU-based METIS library but the quality of the ordering is around 3 to 8 times worse than METIS, in their experiments.
+There is very limited work on GPU-accelerated reordering algorithms. I had presented earlier in this thesis, a GPU implementation of the RCM algorithm. Another promising approach is to implement the nested dissection algorithm on GPUs. One such approach is presented by \cite{yuan_fast_nodate}, which leverages a GPU-based geometry processing library to perform fast graph partitioning, a key step in nested dissetion. The method achieves sigificant speedups over the tradition4al CPU-based METIS library but the quality of the ordering is around 3 to 8 times worse than METIS, in their experiments.
 
-\begin{wrapfigure}{l}{0.25\textwidth}
+\begin{wrapfigure}{l}{0.4\textwidth}
 \includegraphics[width=0.9\linewidth]{fig/background/nested_dissection.png} 
-\caption{Recursive calls in nested dissection}
+\caption{Recursive calls}
 \label{fig:nd_res}
 \end{wrapfigure}
 

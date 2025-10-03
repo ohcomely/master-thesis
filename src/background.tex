@@ -8,7 +8,13 @@
 % As this and the following chapters are likely longer than a few pages, consider structuring them into sections (but avoid fragmentation by overly fine-grained sectioning).
 % Use the \verb|\..section{}| command family as illustrated below:
 
-Before we look into the algorithms and theory behind reordering techniques, we first take a dive into the factorization process that produces further non-zeroes, which in this and the entire thesis's context, are called fill-in. Fill-in depends only on the structure of the matrix, i.e., the positions where the initial non-zero entries are placed. It may be trivial but important to note, that if some numerical arithmetic results in a zero in the factored matrix, it is usually still considered as a fill-in. 
+Before we look into the algorithms and theory behind reordering techniques, we first take a dive into the factorization process that produces further non-zeroes, which in this and the entire thesis's context, are called fill-in. Fillmatrix with positive diagonal entries. Observe that
+this can be rewritten as .A =̂ LD̂ L T , where .̂L is a unit lower triangular matrix and
+D is a diagonal matrix with positive diagonal entries. This is called the square
+root-free Cholesky factorization. If the context is clear, we will simplify the
+notation and use L (rather than .̂L) for the square root-free Cholesky factor.
+• For symmetric indeﬁnite A, the LDLT factorization .A = LDL T , where L is a
+unit lower triangular matrix and D is a b-in depends only on the structure of the matrix, i.e., the positions where the initial non-zero entries are placed. It may be trivial but important to note, that if some numerical arithmetic results in a zero in the factored matrix, it is usually still considered as a fill-in. 
 
 Suppose the set of set of \textit{n} equations that are to be solved are
 \begin{equation}

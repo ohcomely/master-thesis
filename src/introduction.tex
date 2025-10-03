@@ -9,40 +9,50 @@
 % - In this work, we focus solely on the permutation problem. We explore existing methods for sparse symmetric matrix reordering. We explore any possible optimizations and parallelization strategies. We look for single thread, multi-thread and distributed memory implementations.
 % - We thoroughly evaluate the performance of the different reordering methods and compare them in various qualities for a lot of different matrices.
 
-Sparse linear systems of the form $Ax = b$, where $A \in \mathbb{R}^{n \times n}$ is sparse and symmetric positive definite, are ubiquitous in modern scientific computing. These systems arise naturally across virtually every domain of computational science and engineering, including quantum chemistry, computer graphics, computational fluid dynamics, power networks, machine learning, and optimization. Mathematically, a matrix $A$ is considered sparse when the number of nonzero entries $\text{nnz}(A)$ satisfies $\text{nnz}(A) = O(n)$ rather than $O(n^2)$ as in dense matrices.
+Sparse linear systems of the form $Ax = b$, where $A \in \mathbb{R}^{n \times n}$ is sparse and symmetric positive definite, are ubiquitous in modern scientific computing. These systems arise naturally across virtually every domain of computational science and engineering, including quantum chemistry, computer graphics, computational fluid dynamics, power networks, machine learning, and optimization. Formally, one may state matrix $A$ is considered sparse when the number of nonzero entries $\text{nnz}(A)$ satisfies $\text{nnz}(A) = O(n)$ rather than $O(n^2)$ as in dense matrices, although a better practical definition is a matrix is sparse if it is advantageous to exploit its zero entries \cite{scott_introduction_2023}.
+
 % The prevalence of sparse matrices stems from a fundamental mathematical property that many physical phenomena exhibit: local interactions—adjacent elements in a discretized domain interact strongly, while distant elements have minimal or no direct coupling.
 
+% \begin{figure}[!h]
+%     \centering
+%     \begin{subfigure}[b]{0.44\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{fig/intro/bcsstk32.png}
+%         \caption{Sparsity pattern of the bcsstk32 matrix}
+%         \label{fig:bcsstk32-matrix}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.44\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{fig/intro/bcsstk32_graph.png}
+%         \caption{Graph representation}
+%         \label{fig:bcsstk32-graph}
+%     \end{subfigure}
+%     \caption{The bcsstk32 matrix from automotive chassis analysis. This 28,924 × 28,924 symmetric matrix represents an automobile chassis structure analyzed using finite element modeling.}
+%     \label{fig:bcsstk32-example}
+% \end{figure}
+
+
+
+
+
+ This sparsity typically arises from the discretization of partial differential equations (PDEs)\cite{schaeffer_sparse_2013} using finite difference, finite element, or finite volume methods. When continuous problems described by partial differential equations are discretized using methods such as finite differences, finite elements, or finite volumes, the resulting algebraic equations connect only neighboring (or some specific) grid points or elements. Conceptually, sparsity corresponds to systems with few pairwise interactions. For instance, in a three-dimensional finite element mesh, each node typically connects to only a small neighborhood of adjacent nodes, regardless of the total problem size, resulting in matrices where the number of non-zero elements is roughly equal to the number of rows or columns rather than being proportional to $n^2$. 
+
+% \begin{figure}[!h]
+%     \centering
+%     \includegraphics[width=0.65\textwidth]{fig/intro/matrix.png}
+%     \caption{Sparse matrix structure from a quantum transport device. The block-tridiagonal pattern reflects local physical interactions between neighboring spatial layers.}
+%     \label{fig:sparse-matrix-example}
+% \end{figure}
+
 \begin{figure}[!h]
     \centering
-    \begin{subfigure}[b]{0.44\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{fig/intro/bcsstk32.png}
-        \caption{Sparsity pattern of the bcsstk32 matrix}
-        \label{fig:bcsstk32-matrix}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.44\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{fig/intro/bcsstk32_graph.png}
-        \caption{Graph representation}
-        \label{fig:bcsstk32-graph}
-    \end{subfigure}
-    \caption{The bcsstk32 matrix from automotive chassis analysis. This 28,924 × 28,924 symmetric matrix represents an automobile chassis structure analyzed using finite element modeling.}
-    \label{fig:bcsstk32-example}
-\end{figure}
-
-
- This sparsity typically arises from the discretization of partial differential equations (PDEs) using finite difference, finite element, or finite volume methods. When continuous problems described by partial differential equations are discretized using methods such as finite differences, finite elements, or finite volumes, the resulting algebraic equations connect only neighboring (or some specific) grid points or elements. Conceptually, sparsity corresponds to systems with few pairwise interactions. For instance, in a three-dimensional finite element mesh, each node typically connects to only a small neighborhood of adjacent nodes, regardless of the total problem size, resulting in matrices where the number of non-zero elements is roughly equal to the number of rows or columns rather than being proportional to $n^2$. This is shown in an example in \cref{fig:bcsstk32-example}, which illustrates the sparsity pattern of a large matrix arising from automotive chassis analysis, or \cref{fig:sparse-matrix-example} which shows a quantum transport device.
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=0.65\textwidth]{fig/intro/matrix.png}
-    \caption{Sparse matrix structure from a quantum transport device. The block-tridiagonal pattern reflects local physical interactions between neighboring spatial layers.}
+    \includegraphics[width=0.9\textwidth]{fig/intro/sparsity_pattern.png}
+    \caption{Sparsity pattern of a matrix from structural engineering \texttt{bcsstk32} (left) and \texttt{L + L} (right) where \texttt{L} is the Cholesky factor of \texttt{bcsstk32}.}
     \label{fig:sparse-matrix-example}
 \end{figure}
 
-
-Matrix permutations serve as a preprocessing step that can dramatically improve both computational efficiency and memory requirements for sparse linear system solution. The basic principle involves reordering the rows and columns of the matrix $A$ to obtain a permuted system $PAP^T \hat{x} = Pb$, where $P$ is a permutation matrix, such that the reordered matrix exhibits superior properties for factorization. The primary motivation for permutation is fill-in reduction during matrix factorization. Fill-in occurs when zeros in the original matrix become non-zero during factorization, effectively destroying the sparse structure.
+As we see in \cref{fig:sparse-matrix-example}, the Cholesky factorization of a sparse matrix often results in a denser matrix due to fill-in, where zero entries in the original matrix become non-zero in the factorized form. This fill-in can significantly increase both memory usage and computational time for solving the system. The amount of fill-in depends on the order in which variables are eliminated during factorization, which is determined by the ordering, or permutation, of the matrix rows and columns. The permutations serve as a preprocessing step that can reduce fill-in largely. The basic principle involves reordering the rows and columns of the matrix $A$ to obtain a permuted system $PAP^T \hat{x} = Pb$, where $P$ is a permutation matrix, such that the reordered matrix exhibits superior properties for factorization. 
 
 In this thesis, we focus exclusively on the permutation problem for sparse symmetric matrices. We explore existing methods for sparse symmetric matrix reordering, investigate potential optimizations and parallelization strategies, and evaluate the performance of different reordering methods across a variety of matrices, assessing their effectiveness in terms of fill-in reduction, memory usage and parallelism. In chapter \ref{ch:background}, we provide the necessary theoretical background on sparse matrix factorization and graph representations. Chapter \ref{ch:implementation_and_optimizations} details the implementation of various reordering algorithms, while chapter \ref{ch:results} presents an overview of our experimental evaluation. For full performance results, please refer to the appendix \ref{app:experimental_results}.
 

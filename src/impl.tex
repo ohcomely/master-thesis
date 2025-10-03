@@ -585,12 +585,47 @@ The final permutation places all vertices from diagonal block 1, followed by dia
 \section{GPU Implementation of RCM}
 \label{sec:gpu_rcm}
 
-This section describes the GPU implementation of RCM developed in this thesis. The implementation adapts parallel breadth-first search (BFS) techniques for the RCM algorithm, building upon the NVIDIA work on GPU-accelerated BFS described in \cite{merrill_scalable_nodate}.
+Reverse Cuthill-McKee (RCM) can be thought of slightly differently and implemented given an efficient breadth-first search (BFS) function. The RCM algorithm is simply BFS with two modifications: (1) neighbors are visited in degree-sorted order, and (2) the final ordering is reversed. This structure allows us to wrap an existing GPU BFS implementation with preprocessing and postprocessing steps.
 
-This GPU breadth-first search implementation uses a level-synchronous algorithm that processes the graph one depth level at a time, maintaining two key data structures: a vertex frontier (vertices to be explored in the current iteration) and an edge frontier (all neighbors of vertices in the current frontier). The algorithm begins with a single source vertex and alternates between two fundamental operations across BFS levels.
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+    \SetKwFunction{SortNeighborsByDegree}{SortNeighborsByDegree}
+    \SetKwFunction{GPUBFS}{GPU\_BFS}
+    \SetKwFunction{Reverse}{Reverse}
 
-Each BFS iteration follows a two-phase process. In the expansion phase, the algorithm takes the current vertex frontier and performs parallel neighbor gathering to create the edge frontier. Multiple threads cooperatively read the adjacency lists of frontier vertices from the compressed sparse row (CSR) representation, collecting all outgoing edges. In the contraction phase, the algorithm filters this edge frontier by checking each neighbor's visitation status, removing already-visited vertices and duplicates to produce the vertex frontier for the next iteration. This process continues until the vertex frontier becomes empty, indicating the traversal is complete.
+    \Input{Graph $G = (V, E)$ in CSR format}
+    \Output{RCM permutation $P$}
+    \BlankLine
 
-The expansion phase uses a multi-granularity approach to handle the irregular degree distributions common in real graphs. For vertices with small adjacency lists, the algorithm employs scan-based gathering where threads use prefix sum to compute scatter offsets, creating a perfectly packed array of neighbors that allows all threads to participate in memory reads without SIMD lane waste. For medium-sized adjacency lists, warp-based gathering assigns entire 32-thread warps to cooperatively process single vertices, with threads strip-mining through the adjacency list in parallel. For very large adjacency lists, CTA-based gathering enlists entire thread blocks (hundreds of threads) to process individual high-degree vertices. This hybrid strategy automatically adapts to the workload characteristics and ensures efficient GPU utilization regardless of degree distribution.
+    \emph{Preprocessing: Sort adjacency lists}\;
+    \ForEach{vertex $u \in V$ \textbf{in parallel on GPU}}{
+        $\SortNeighborsByDegree(u)$ \tcp{Parallely sort neighbors}
+    }
+    \BlankLine
 
-I took an already existing implementation of the parallel BFS algorithm from the NVIDIA CUDA SDK \cite{kaleta_kaletapbfs-cuda-gpu_2025} and adapted it for reordering the graph using RCM.
+    \emph{Core traversal: Run BFS with sorted neighbors}\;
+    $\text{order} = [\,]$\;
+    $\text{visited} = \{\}$\;
+    \BlankLine
+
+    \ForEach{component start vertex $s$ (by increasing degree)}{
+        \If{$s \notin \text{visited}$}{
+            $\text{comp\_order} = \GPUBFS(G, s)$ \tcp{BFS from source $s$}
+            $\text{visited} = \text{visited} \cup \text{comp\_order}$\;
+            $\text{order} = \text{order} + \text{comp\_order}$\;
+        }
+    }
+    \BlankLine
+
+    \emph{Postprocessing: Reverse the ordering}\;
+    $P = \Reverse(\text{order})$\;
+
+    \Return{$P$}\;
+
+    \caption{GPU RCM Implementation}
+    \label{alg:gpu_rcm}
+\end{algorithm}
+
+The GPU BFS was originally developed by NVIDIA in \cite{merrill_scalable_nodate}. We work with one of the latest implementations of GPU BFS in \cite{kaleta_kaletapbfs-cuda-gpu_2025}. The GPU BFS uses a level-synchronous approach that processes the graph one level at a time. Starting from a source vertex, the algorithm maintains a frontier of vertices to explore at the current level. Each iteration consists of two phases: expansion and contraction. In the expansion phase, all neighbors of frontier vertices are gathered in parallel by reading adjacency lists from CSR format. Since the adjacency lists were presorted by degree, neighbors are naturally visited in the correct RCM order. Multiple threads cooperatively read adjacency lists, with different parallelization strategies used based on vertex degree—single threads for low-degree vertices, entire warps (32 threads) for medium-degree vertices, and full thread blocks for high-degree vertices. In the contraction phase, the algorithm filters the gathered neighbors to remove duplicates and already-visited vertices using atomic compare-and-swap operations, producing the next level's frontier. This process repeats until the frontier becomes empty, at which point the BFS traversal is complete.
+
+This GPU RCM implementation adapts the parallel BFS from the NVIDIA CUDA SDK \cite{kaleta_kaletapbfs-cuda-gpu_2025}. The modifications are just by having a preprocessing step before BFS and reversing the result after BFS.

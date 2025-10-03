@@ -20,6 +20,16 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{scott_introduction_2023}
+\BIBentryALTinterwordspacing
+J.~Scott and M.~Tůma, ``\BIBforeignlanguage{en}{An {Introduction} to {Sparse} {Matrices}},'' in \emph{\BIBforeignlanguage{en}{Algorithms for {Sparse} {Linear} {Systems}}}, J.~Scott and M.~Tůma, Eds.\hskip 1em plus 0.5em minus 0.4em\relax Cham: Springer International Publishing, 2023, pp. 1--5. [Online]. Available: \url{https://doi.org/10.1007/978-3-031-25820-6_1}
+\BIBentrySTDinterwordspacing
+
+\bibitem{schaeffer_sparse_2013}
+\BIBentryALTinterwordspacing
+H.~Schaeffer, R.~Caflisch, C.~D. Hauck, and S.~Osher, ``Sparse dynamics for partial differential equations,'' \emph{Proceedings of the National Academy of Sciences}, vol. 110, no.~17, pp. 6634--6639, Apr. 2013, publisher: Proceedings of the National Academy of Sciences. [Online]. Available: \url{https://www.pnas.org/doi/10.1073/pnas.1302752110}
+\BIBentrySTDinterwordspacing
+
 \bibitem{yannakakis_computing_1981}
 \BIBentryALTinterwordspacing
 M.~Yannakakis, ``Computing the {Minimum} {Fill}-{In} is {NP}-{Complete},'' \emph{SIAM Journal on Algebraic Discrete Methods}, vol.~2, no.~1, pp. 77--79, Mar. 1981, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/0602010}

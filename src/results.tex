@@ -136,31 +136,31 @@ sinw\_w90 & 7488 & 5310160 & DFT Hamiltonian of Silicon Nanowire \\
 
 For our evaluation, we systematically assessed the performance of eleven different reordering algorithms across all matrices listed in Tables~\ref{tab:matrix-dataset} and~\ref{tab:qt-matrix-dataset}. The evaluated algorithms encompass both sequential and parallel approaches, ranging from classical degree-based methods to graph partitioning and hypergraph-based techniques:
 
-\begin{description}
-   \item[\textbf{Classical Methods:}] \mbox{}\\
-   \begin{itemize}
-      \item \textbf{AMD} -- Approximate Minimum Degree
-      \item \textbf{COLAMD} -- Column Approximate Minimum Degree  
-      \item \textbf{RCM} -- Reverse Cuthill-McKee
-      \item \textbf{Natural} -- Original matrix ordering (baseline)
+\begin{enumerate}
+   \item \textbf{Classical Methods:}
+   \begin{itemize}[noitemsep,topsep=0pt]
+      \item AMD (Approximate Minimum Degree)
+      \item COLAMD (Column Approximate Minimum Degree)  
+      \item RCM (Reverse Cuthill-McKee)
+      \item Natural (Original matrix ordering - baseline)
    \end{itemize}
    
-   \item[\textbf{Graph Partitioning Methods:}] \mbox{}\\
-   \begin{itemize}
-      \item \textbf{METIS} -- Sequential graph partitioning-based reordering
-      \item \textbf{METIS+IC} -- METIS with improved coarsening integration
-      \item \textbf{SCOTCH} -- Sequential graph partitioning
-      \item \textbf{PT-SCOTCH} -- Parallel graph partitioning
-      \item \textbf{ParMETIS} -- Parallel graph partitioning
+   \item \textbf{Graph Partitioning Methods:}
+   \begin{itemize}[noitemsep,topsep=0pt]
+      \item METIS (Sequential graph partitioning-based reordering)
+      \item \colorbox{yellow!60}{METIS+IC} (METIS with custom coarsening integration)
+      \item SCOTCH (Sequential graph partitioning)
+      \item PT-SCOTCH (Parallel graph partitioning)
+      \item ParMETIS (Parallel graph partitioning)
    \end{itemize}
    
-   \item[\textbf{Hypergraph-based Methods:}] \mbox{}\\
-   \begin{itemize}
-      \item \textbf{HG-2, HG-4, HG-8, HG-16} -- Hypergraph-based reordering with block partition sizes of 2, 4, 8, and 16 vertices respectively
+   \item \textbf{Hypergraph-based Methods:}
+   \begin{itemize}[noitemsep,topsep=0pt]
+      \item \colorbox{yellow!60}{HG-2}, \colorbox{yellow!60}{HG-4}, \colorbox{yellow!60}{HG-8}, \colorbox{yellow!60}{HG-16} (Hypergraph-based reordering with block partition sizes of 2, 4, 8, and 16 vertices respectively)
    \end{itemize}
-\end{description}
+\end{enumerate}
 
-The hypergraph-based methods (HG-2, HG-4, HG-8, HG-16) employ different block partition sizes to explore the trade-off between computational complexity and reordering/parallelization quality. All these algorithms are described in detail in Chapter~\ref{ch:background}.
+The hypergraph-based methods (HG-2, HG-4, HG-8, HG-16) employ different block partition sizes to explore the trade-off between computational complexity and reordering/parallelization quality. All these algorithms are described in detail in Chapter~\ref{ch:implementation_and_optimizations}. The \colorbox{yellow!60}{highlighted methods} indicate our own implementations.
 
 \subsection{Performance Metrics and Measurement Protocol}
 
@@ -168,8 +168,6 @@ Our comprehensive evaluation measures five key performance indicators to assess 
 
 \begin{description}
    \item[\textbf{Fill-in Reduction:}] We measure the number of non-zero entries introduced during symbolic Cholesky factorization using the \texttt{cmpfillin} binary provided by the METIS library. This tool performs symbolic factorization (as described in Chapter~\ref{ch:background}) to count the additional non-zero entries without executing the actual numerical computation. 
-      
-      \item[\textbf{Computational Complexity:}] We track the total floating-point operation count required for factorization, providing insight into the computational efficiency gains achieved by different reordering strategies.
       
       \item[\textbf{Reordering Time:}] The wall-clock time required to compute the reordering itself is measured using Python's \texttt{time.perf\_counter()} with microsecond precision. This overhead cost is crucial for understanding the practical applicability of each method.
       

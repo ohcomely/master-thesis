@@ -30,10 +30,30 @@ J.~Scott and M.~Tůma, ``\BIBforeignlanguage{en}{An {Introduction} to {Sparse} {
 H.~Schaeffer, R.~Caflisch, C.~D. Hauck, and S.~Osher, ``Sparse dynamics for partial differential equations,'' \emph{Proceedings of the National Academy of Sciences}, vol. 110, no.~17, pp. 6634--6639, Apr. 2013, publisher: Proceedings of the National Academy of Sciences. [Online]. Available: \url{https://www.pnas.org/doi/10.1073/pnas.1302752110}
 \BIBentrySTDinterwordspacing
 
+\bibitem{gilbert_analysis_1986}
+\BIBentryALTinterwordspacing
+J.~R. Gilbert and R.~E. Tarjan, ``\BIBforeignlanguage{en}{The analysis of a nested dissection algorithm},'' \emph{\BIBforeignlanguage{en}{Numerische Mathematik}}, vol.~50, no.~4, pp. 377--404, Jul. 1986. [Online]. Available: \url{https://doi.org/10.1007/BF01396660}
+\BIBentrySTDinterwordspacing
+
 \bibitem{yannakakis_computing_1981}
 \BIBentryALTinterwordspacing
 M.~Yannakakis, ``Computing the {Minimum} {Fill}-{In} is {NP}-{Complete},'' \emph{SIAM Journal on Algebraic Discrete Methods}, vol.~2, no.~1, pp. 77--79, Mar. 1981, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/0602010}
 \BIBentrySTDinterwordspacing
+
+\bibitem{cuthill_reducing_1969}
+E.~Cuthill and J.~McKee, ``Reducing the bandwidth of sparse symmetric matrices,'' in \emph{Proceedings of the 1969 24th National Conference}, ser. ACM '69.\hskip 1em plus 0.5em minus 0.4em\relax New York, NY, USA: ACM, 1969, pp. 157--172.
+
+\bibitem{george_computer_1981}
+A.~George and J.~W.~H. Liu, ``Computer solution of large sparse positive definite systems,'' \emph{Prentice-Hall Series in Computational Mathematics}, 1981.
+
+\bibitem{tinney_direct_1967}
+W.~F. Tinney and J.~W. Walker, ``Direct solutions of sparse network equations by optimally ordered triangular factorization,'' \emph{Proceedings of the IEEE}, vol.~55, no.~11, pp. 1801--1809, 1967.
+
+\bibitem{liu_modification_1985}
+J.~W.~H. Liu, ``Modification of the minimum-degree algorithm by multiple elimination,'' \emph{ACM Transactions on Mathematical Software}, vol.~11, no.~2, pp. 141--153, 1985.
+
+\bibitem{amestoy_approximate_1996}
+P.~R. Amestoy, T.~A. Davis, and I.~S. Duff, ``An approximate minimum degree ordering algorithm,'' \emph{SIAM Journal on Matrix Analysis and Applications}, vol.~17, no.~4, pp. 886--905, 1996.
 
 \bibitem{lipton_generalized_1979}
 \BIBentryALTinterwordspacing
@@ -107,5 +127,8 @@ Wikipedia, ``{Isaac Newton},'' accessed October 1, 2012. [Online]. Available: \u
 \BIBentryALTinterwordspacing
 Y.-H. Chang, A.~Buluç, and J.~Demmel, ``Parallelizing the approximate minimum degree ordering algorithm: Strategies and evaluation,'' 2025. [Online]. Available: \url{https://arxiv.org/abs/2504.17097}
 \BIBentrySTDinterwordspacing
+
+\bibitem{amestoy_algorithm_2004}
+P.~R. Amestoy, T.~A. Davis, and I.~S. Duff, ``Algorithm 837: {AMD}, an approximate minimum degree ordering algorithm,'' \emph{ACM Transactions on Mathematical Software}, vol.~30, no.~3, pp. 381--388, Sep. 2004.
 
 \end{thebibliography}

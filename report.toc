@@ -3,18 +3,14 @@
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Elimination Trees and Symbolic Factorization}{3}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Mathematical Foundations and Problem Formulation}{3}{subsection.2.1.1}%
-\contentsline {subsubsection}{\nonumberline Sparse Matrix Factorization Context}{3}{subsubsection*.3}%
-\contentsline {subsubsection}{\nonumberline Graph-Theoretic Representation of Sparse Matrices}{4}{subsubsection*.5}%
-\contentsline {subsubsection}{\nonumberline Formal Definition of Elimination Trees}{4}{subsubsection*.7}%
 \contentsline {subsection}{\numberline {2.1.2}Structural Properties and Theoretical Characterizations}{5}{subsection.2.1.2}%
-\contentsline {subsubsection}{\nonumberline Fill-in Characterization Through Path Analysis}{5}{subsubsection*.9}%
-\contentsline {subsubsection}{\nonumberline Postorder Properties and Structural Invariants}{5}{subsubsection*.11}%
-\contentsline {subsection}{\numberline {2.1.3}Algorithmic Construction of Elimination Trees}{6}{subsection.2.1.3}%
+\contentsline {subsubsection}{\nonumberline Fill-in Characterization Through Path Analysis}{5}{subsubsection*.3}%
+\contentsline {subsection}{\numberline {2.1.3}Algorithmic Construction of Elimination Trees}{5}{subsection.2.1.3}%
 \contentsline {subsection}{\numberline {2.1.4}Symbolic Factorization}{6}{subsection.2.1.4}%
 \contentsline {section}{\numberline {2.2}Minimum fill-in and NP-completeness}{8}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Heuristics classification}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Heuristics classification}{8}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Bandwidth Minimization}{9}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Minimum Degree}{10}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.2}Minimum Degree}{9}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}Nested Dissection}{10}{subsection.2.3.3}%
 \contentsline {subsection}{\numberline {2.3.4}Hypergraph partitioning and other methods}{11}{subsection.2.3.4}%
 \contentsline {chapter}{\numberline {3}Implementation and Optimizations}{12}{chapter.3}%
@@ -29,16 +25,17 @@
 \contentsline {subsection}{\numberline {4.1.1}Hardware Infrastructure}{24}{subsection.4.1.1}%
 \contentsline {section}{\numberline {4.2}Matrices dataset}{25}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Methodology}{26}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Performance Metrics and Measurement Protocol}{27}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.1}Performance Metrics}{27}{subsection.4.3.1}%
 \contentsline {section}{\numberline {4.4}Evaluation}{28}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Current limitations}{36}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Other Approaches}{37}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{37}{section.5.1}%
-\contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{38}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{40}{chapter.6}%
-\contentsline {chapter}{\numberline {A}Experimental Results}{42}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Task Description}{48}{appendix.B}%
-\contentsline {chapter}{\nonumberline List of Figures}{49}{appendix.B}%
-\contentsline {chapter}{\nonumberline List of Tables}{51}{appendix.B}%
-\contentsline {chapter}{\nonumberline Bibliography}{53}{chapter*.35}%
+\contentsline {subsection}{\numberline {4.4.1}GPU-accelerated RCM}{36}{subsection.4.4.1}%
+\contentsline {section}{\numberline {4.5}Current limitations}{37}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Other Approaches}{38}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{38}{section.5.1}%
+\contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{39}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{41}{chapter.6}%
+\contentsline {chapter}{\numberline {A}Experimental Results}{43}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Task Description}{49}{appendix.B}%
+\contentsline {chapter}{\nonumberline List of Figures}{50}{appendix.B}%
+\contentsline {chapter}{\nonumberline List of Tables}{52}{appendix.B}%
+\contentsline {chapter}{\nonumberline Bibliography}{54}{chapter*.26}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -441,21 +441,24 @@ To reduce fill-in during factorization, the algorithm applies an ordering method
 \centering
 \begin{tikzpicture}[
     node distance=1.2cm and 0.5cm,
-    box/.style={rectangle, draw, minimum width=3cm, minimum height=1cm, align=center},
+    box/.style={rectangle, draw, minimum width=3cm, minimum height=1cm, align=center, fill=blue!10},
+    process/.style={box, fill=green!15},
+    transform/.style={box, fill=orange!15},
+    result/.style={box, fill=purple!15},
     arrow/.style={->, >=stealth, thick}
 ]
 
 % First row (left to right)
 \node[box] (matrix) {Symmetric\\Matrix $A$};
-\node[box, right=of matrix] (graph) {Graph $G=(V,E)$\\Vertices = rows/cols\\Edges = nonzeros};
-\node[box, right=of graph] (cliques) {Edge-Clique\\Cover};
-\node[box, right=of cliques] (cnh) {Clique-Node\\Hypergraph};
+\node[transform, right=of matrix] (graph) {Graph $G=(V,E)$\\Vertices = rows/cols\\Edges = nonzeros};
+\node[process, right=of graph] (cliques) {Edge-Clique\\Cover};
+\node[transform, right=of cliques] (cnh) {Clique-Node\\Hypergraph};
 
 % Second row (right to left, below the first row)
-\node[box, below=of cnh] (partition) {Partition with\\KaHyPar into $k$};
-\node[box, left=of partition] (separator) {Extract\\Separator};
-\node[box, left=of separator] (amd) {Apply AMD to\\each block};
-\node[box, left=of amd] (permute) {Final\\Permutation};
+\node[process, below=of cnh] (partition) {Partition with\\KaHyPar into $k$};
+\node[process, left=of partition] (separator) {Extract\\Separator};
+\node[process, left=of separator] (amd) {Apply AMD to\\each block};
+\node[result, left=of amd] (permute) {Final\\Permutation};
 
 % Arrows for first row
 \draw[arrow] (matrix) -- (graph);

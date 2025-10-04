@@ -52,9 +52,7 @@ The login nodes fritz[1-4] are equipped with 2 × Intel Xeon Platinum 8360Y (Ice
 
 \section{Matrices dataset}
 
-We selected a diverse set of sparse matrices from the SuiteSparse Matrix Collection and our custom dataset of matrices encountered in Quantum Transport to evaluate our implementations. The SuiteSparse matrices chosen are usually which were commonly used in the literature for \textit{METIS} and \textit{SCOTCH} own evaluations. 
-[TODO about Quantum transport matrices]
-
+We selected a diverse set of sparse matrices from the SuiteSparse Matrix Collection and our custom dataset of matrices encountered in Quantum Transport to evaluate our implementations. The SuiteSparse matrices are chosen to cover a variety of application domains, including computational fluid dynamics (CFD), chemistry, circuit simulation, graph analysis, optimization, and structural engineering. We have listed the matrices alongside their respective groups, number of vertices, and number of edges in Table~\ref{tab:matrix-dataset}. The Quantum Transport matrices are listed in Table~\ref{tab:qt-matrix-dataset}.
 
 \begin{longtable}{|l|l|r|r|}
 \hline
@@ -162,7 +160,7 @@ For our evaluation, we systematically assessed the performance of eleven differe
 
 The hypergraph-based methods (HG-2, HG-4, HG-8, HG-16) employ different block partition sizes to explore the trade-off between computational complexity and reordering/parallelization quality. All these algorithms are described in detail in Chapter~\ref{ch:implementation_and_optimizations}. The \colorbox{yellow!60}{highlighted methods} indicate our own implementations.
 
-\subsection{Performance Metrics and Measurement Protocol}
+\subsection{Performance Metrics}
 
 Our comprehensive evaluation measures five key performance indicators to assess the effectiveness of each reordering algorithm:
 
@@ -250,16 +248,19 @@ The hypergraph partitioning methods (DB variants) show variable performance for 
 
 \FloatBarrier
 
-\subsection*{GPU-accelerated RCM}
+\subsection{GPU-accelerated RCM}
 
-In this section, we present the performance of our GPU-accelerated implementation of the Reverse Cuthill-McKee (RCM) algorithm compared to a traditional CPU-based implementation. We measure only the runtime of the RCM algorithm and not the fill-in, as the quality of the ordering produced by both implementations is identical.
+In this section, we present the performance of our GPU-accelerated implementation of the Reverse Cuthill-McKee (RCM) algorithm compared to a traditional CPU-based implementation. We measure only the runtime of the RCM algorithm and not the fill-in, as the quality of the ordering produced by both implementations is identical. We test these implementations of a different hardware setup, as the Fritz cluster does not have suitable GPU nodes. Instead, we used the "alex" cluster, which provides GPU acceleration capabilities. The alex cluster consists of 44 nodes equipped with 2 × AMD EPYC 7713 "Milan" processors running at 2.0 GHz, featuring 8 × NVIDIA A100 GPUs (with 40 GB or 80 GB HBM2 memory), 1024 GB or 2048 GB system memory, 14TB local NVMe SSD storage, and HDR200 Infiniband networking. Additionally, 38 nodes contain the same processors with 8 × NVIDIA A40 GPUs (48 GB DDR6 memory), 512 GB system memory, and 7 TB local NVMe SSD storage.
+
 
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.9\textwidth]{fig/res/gpu_rcm_speedups_clean.png}
-   \caption{Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 10K nodes).}
+   \caption{Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 100K nodes).}
    \label{fig:gpu-rcm-speedups}
 \end{figure}
+
+For small matrices, the overhead of data transfer to and from the GPU negates any performance benefits, resulting in slower execution times compared to the CPU implementation. However, as matrix sizes increase, the GPU-accelerated RCM demonstrates significant performance improvements. In our experiments, we observe speedups ranging from 1.6x to 14.6x for matrices larger than 100,000 nodes. Some irregular matrices, such as \texttt{c-70} and \texttt{gupta3}, exhibit particularly high speedups of 19.7x and 15.6x respectively, even though they are smaller than 100,000 nodes. Profiling indicated that the majority time of the GPU implementation for these matrices was spent in the pre-processing phases, suggesting that structures of the matrices can influence performance.
 
 \section{Current limitations}
 

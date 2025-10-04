@@ -8,39 +8,30 @@
 % As this and the following chapters are likely longer than a few pages, consider structuring them into sections (but avoid fragmentation by overly fine-grained sectioning).
 % Use the \verb|\..section{}| command family as illustrated below:
 
-Before we look into the algorithms and theory behind reordering techniques, we first take a dive into the factorization process that produces further non-zeroes, which in this and the entire thesis's context, are called fill-in. Fillmatrix with positive diagonal entries. Observe that
-this can be rewritten as .A =̂ LD̂ L T , where .̂L is a unit lower triangular matrix and
-D is a diagonal matrix with positive diagonal entries. This is called the square
-root-free Cholesky factorization. If the context is clear, we will simplify the
-notation and use L (rather than .̂L) for the square root-free Cholesky factor.
-• For symmetric indeﬁnite A, the LDLT factorization .A = LDL T , where L is a
-unit lower triangular matrix and D is a b-in depends only on the structure of the matrix, i.e., the positions where the initial non-zero entries are placed. It may be trivial but important to note, that if some numerical arithmetic results in a zero in the factored matrix, it is usually still considered as a fill-in. 
+Before we look into the algorithms and theory behind reordering techniques, we first take a dive into the factorization process that produces further non-zeroes, which in this and the entire thesis's context, are called fill-in. It may be trivial but important to note, that if some numerical arithmetic results in a zero in the factored matrix, it is usually still considered as a fill-in. 
 
 Suppose the set of set of \textit{n} equations that are to be solved are
 \begin{equation}
     Ax = b
 \end{equation}
 where \(A\) is a sparse matrix, \(x\) is the vector of unknowns. The sparsity, or the number of non-zero entries in \(A\) determines the fill-in of it's Cholesky factor when it is employed to solve the aforementioned set of equations. 
-Suppose the Cholesky factorization of \(A\) is given by \(LL^T\), where \(L\) is a lower triangular matrix (with a positive diagonal) and \(L^T\) is the transpose of \(L\). The efficiency of solving this set of equations is dependent on the number of non-zero entries in \(L\). It has been shown (George and Liu) that we can factor and solve the set of equations in space proportional to  \(\sum_j d_j\) and time complexity \(\sum_j {d_j}^2\), where \(d_j\) is the number of non-zeroes in the \(j\)th column of \(L\).
-%TODO how to do sum?
+Suppose the Cholesky factorization of \(A\) is given by \(LL^T\), where \(L\) is a lower triangular matrix (with a positive diagonal) and \(L^T\) is the transpose of \(L\). The efficiency of solving this set of equations is dependent on the number of non-zero entries in \(L\). It has been shown that we can factor and solve the set of equations in space proportional to  \(\sum\sb{j} d{j}\) and time complexity \(\sum\sb{j} {d\sb{j}}^2\), where \(d\sb{j}\) is the number of non-zeroes in the \(j\)th column of \(L\) \cite{gilbert_analysis_1986}.
+%TODO how to do sum? summation symbol still not over
 
-
+    
 \section{Elimination Trees and Symbolic Factorization}
 \label{sec:elim_tree}
 
 \subsection{Mathematical Foundations and Problem Formulation}
 
-\subsubsection{Sparse Matrix Factorization Context}
 Consider a sparse symmetric positive definite matrix $A \in \mathbb{R}^{n \times n}$. The Cholesky factorization decomposes $A$ into the form $A = LL^T$, where $L$ is a lower triangular matrix. While $A$ may contain relatively few nonzero entries, the factor $L$ typically exhibits significantly more nonzeros due to a phenomenon known as fill-in. This fill-in occurs because the elimination process creates new nonzero entries at positions that were originally zero in $A$.
 
 The sparsity pattern of $A$ is defined as the set $\text{pattern}(A) = \{(i,j) : A\sb{ij} \neq 0\}$. Similarly, $\text{pattern}(L)$ denotes the sparsity pattern of the Cholesky factor. The fundamental observation is that $\text{pattern}(L)$ can be completely determined from $\text{pattern}(A)$ using purely structural analysis, without requiring any numerical computation. This structural predictability forms the theoretical foundation for elimination trees and symbolic factorization.
 
-\subsubsection{Graph-Theoretic Representation of Sparse Matrices}
 Every sparse symmetric matrix $A$ can be naturally represented as an undirected graph $G(A) = (V, E)$, where the vertex set $V = \{1, 2, \ldots, n\}$ corresponds to the rows and columns of $A$, and the edge set $E$ contains an edge $(i,j)$ if and only if $A\sb{ij} \neq 0$ for $i \neq j$. This graph representation transforms matrix operations into graph-theoretic problems, enabling the application of powerful combinatorial methods to numerical linear algebra.
 
 The elimination process on matrix $A$ corresponds to a sequence of vertex eliminations on graph $G(A)$. When vertex $k$ is eliminated, all pairs of neighbors of $k$ become connected by edges if they were not already connected. This edge addition process continues throughout the elimination sequence, producing what is known as the filled graph $G^+(A)$. The filled graph contains all edges that exist at any point during the elimination process, and its structure completely determines the sparsity pattern of the Cholesky factor $L$.
 
-\subsubsection{Formal Definition of Elimination Trees}
 The elimination tree provides a compact representation of the structural relationships inherent in sparse matrix factorization. This tree structure captures the essential dependencies between different stages of the elimination process.
 
 \begin{definition}[Elimination Tree]
@@ -82,7 +73,6 @@ An edge $(i,j)$ with $i < j$ belongs to the filled graph $G^+(A)$ if and only if
 
 This theorem provides the theoretical foundation for predicting fill-in patterns. It shows that structural properties of the original graph completely determine which new edges will be created during elimination, independent of the specific numerical values in the matrix.
 
-\subsubsection{Postorder Properties and Structural Invariants}
 The elimination tree possesses several important structural properties that make it amenable to efficient algorithmic manipulation.
 
 \begin{theorem}[Postorder Property]
@@ -116,7 +106,7 @@ Initialize $\text{parent}[1 \ldots n] \leftarrow 0$ \tcp*{0 represents null pare
 
 This algorithm requires $O(|A|)$ time, where $|A|$ denotes the number of nonzero entries in matrix $A$. The space complexity is $O(n)$ for storing the parent array. While simple to understand and implement, this direct approach does not exploit the structural properties of elimination trees for potential efficiency improvements.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
@@ -178,12 +168,6 @@ Initialize $\text{column\_structure}[1 \ldots n]$ as empty sets\;
 
 The postorder traversal ensures that each column is processed only after all its descendants in the elimination tree have been completed, respecting the computational dependencies inherent in the factorization process.
 
-\begin{theorem}[Correctness of Symbolic Factorization]
-Algorithm~\ref{alg:symbolic_factorization} correctly computes the sparsity pattern of the Cholesky factor $L$ in $O(|L|)$ time, where $|L|$ denotes the number of nonzero entries in $L$.
-\end{theorem}
-
-\newpage
-
 
 \section{Minimum fill-in and NP-completeness}
 
@@ -211,7 +195,7 @@ There are several heuristics that have been proposed to reduce the fill-in devel
 
 Bandwidth minimization refers to the problem of permuting the rows and columns of a matrix such that the non-zero entries are as close to the diagonal as possible.  Gaussian elimination can be performed in $O(nb^2)$ time on matrices of dimension $n$ and bandwidth $b$, which is faster than the forward $O(n^3)$ algorithm when $b$ is smaller than $n$ (Lim A. et al., 2006a).  Additionally, this problem is NP-complete, but several heuristics have been developed to approximate the optimal solution.
 
-The Cuthill-McKee algorithm employs breadth-first search to reduce matrix bandwidth by generating level structures. However, it has computational limitations and may not achieve optimal bandwidth reduction. The Reverse Cuthill-McKee algorithm addresses these issues by reversing the ordering, while the GPS algorithm by Gibbs et al. provides an alternative level structure approach.
+The Cuthill-McKee algorithm \cite{cuthill_reducing_1969} employs breadth-first search to reduce matrix bandwidth by generating level structures. However, it has computational limitations and may not achieve optimal bandwidth reduction. The Reverse Cuthill-McKee algorithm \cite{george_computer_1981} addresses these issues by reversing the ordering, while the GPS algorithm by Gibbs et al. provides an alternative level structure approach.
 
 We take a look at the reverse Cuthill-McKee algorithm, which is still widely used in practice. 
 
@@ -219,20 +203,18 @@ We take a look at the reverse Cuthill-McKee algorithm, which is still widely use
 
 \subsection{Minimum Degree}
 
-The minimum degree algorithm determines the order in which to eliminate variables (or pivot) during Gaussian elimination to minimize fill-in (creation of new non-zero entries) in sparse matrices. At each step, it chooses the node with the minimum degree (fewest connections) for elimination.
+The minimum degree algorithm \cite{tinney_direct_1967} determines the order in which to eliminate variables (or pivot) during Gaussian elimination to minimize fill-in (creation of new non-zero entries) in sparse matrices. At each step, it chooses the node with the minimum degree (fewest connections) for elimination.
 
 The minimum degree algorithm operates on the adjacency graph of the sparse matrix. It begins by initializing the graph, where each vertex represents a variable. At each iteration, the algorithm selects the vertex with the smallest degree (i.e., the fewest neighbors), which corresponds to the variable whose elimination is expected to introduce the least fill-in. Upon elimination, the chosen vertex is removed from the graph, and all its neighbors are connected to each other, forming a clique to preserve the matrix structure. The degrees of the affected vertices are then updated to reflect the new connections. This process is repeated until all vertices have been eliminated. The resulting elimination order directly determines the pivot sequence used during matrix factorization.
-
-(placeholder for general algorithm) \\
 
 Variants of the minimum degree algorithm include:
 
 \begin{enumerate}
-    \item Multiple Minimum Degree (MMD)
+    \item Multiple Minimum Degree (MMD) \cite{liu_modification_1985}
 
     When multiple nodes have the same minimum degree, uses additional tie-breaking rules. Often selects based on secondary criteria like external degree or node numbering.
 
-    \item Approximate Minimum Degree (AMD)
+    \item Approximate Minimum Degree (AMD) \cite{amestoy_approximate_1996}
 
     Uses approximations to avoid expensive exact degree calculations. Employs concepts like "supervariables" and "element absorption". Much faster than exact minimum degree while maintaining similar fill-in quality.
 

@@ -1,21 +1,21 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Sparsity pattern of a matrix from structural engineering \texttt {bcsstk32} (left) and \texttt {L + L} (right) where \texttt {L} is the Cholesky factor of \texttt {bcsstk32}.}}{2}{figure.caption.1}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Sparsity pattern of a matrix from structural engineering \texttt {bcsstk32} (left) and \(L+L^T\) (right) where \(L\) is the Cholesky factor of \texttt {bcsstk32}.}}{2}{figure.caption.1}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Illustration of elimination tree construction for the given sparse symmetric matrix. The sparsity is denoted by filled black circles and the fill-in induced is denoted by hollow red circles.}}{7}{figure.caption.13}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}}{11}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Illustration of elimination tree construction for the given sparse symmetric matrix. The sparsity is denoted by filled black circles and the fill-in induced is denoted by hollow red circles.}}{6}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Separator identification process. The separator vertices divide the graph into approximately equal subgraphs}}{10}{figure.caption.7}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Flowchart of the hypergraph-based symmetric DB form algorithm}}{20}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Flowchart of the hypergraph-based symmetric DB form algorithm}}{20}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Fill-in ratio (fill-in/original nnz) comparison across different matrix categories}}{29}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Reordering time scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and computational time for various reordering methods.}}{31}{figure.caption.22}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{33}{figure.caption.23}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{34}{figure.caption.24}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse).}}{35}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 10K nodes).}}{36}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Fill-in ratio (fill-in/original nnz) comparison across different matrix categories}}{29}{figure.caption.13}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Reordering time scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and computational time for various reordering methods.}}{31}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{33}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{34}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse).}}{35}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 100K nodes).}}{36}{figure.caption.18}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Reinforcement Learning Framework for Sparse Matrix Reordering using GNNs}}{38}{figure.caption.28}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Recursive calls}}{39}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Reinforcement Learning Framework for Sparse Matrix Reordering using GNNs}}{39}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Recursive calls}}{40}{figure.caption.20}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

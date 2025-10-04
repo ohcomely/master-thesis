@@ -6,7 +6,7 @@ This chapter describes both the existing state-of-the-art implementations that f
 \section{SuiteSparse implementation of RCM and Minimum Degree}
 \label{sec:suitesparse}
 
-The Reverse Cuthill-McKee (RCM) algorithm in SuiteSparse provides bandwidth reduction for symmetric sparse matrices through a breadth-first search strategy combined with degree-based ordering heuristics. The implementation processes disconnected components separately and employs pseudo-peripheral vertex selection to minimize profile and bandwidth.
+The Reverse Cuthill-McKee (RCM) algorithm in SuiteSparse \cite{davis_drtimothyaldendavissuitesparse_2025, noauthor_aldenmath_nodate} provides bandwidth reduction for symmetric sparse matrices through a breadth-first search strategy combined with degree-based ordering heuristics. The implementation processes disconnected components separately and employs pseudo-peripheral vertex selection to minimize profile and bandwidth.
 
 \begin{algorithm}
     \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
@@ -67,7 +67,7 @@ The algorithm's effectiveness stems from its ability to produce orderings where 
 
 \subsection{AMD Algorithm Overview}
 
-The Approximate Minimum Degree (AMD) algorithm implemented in SuiteSparse follows a refined elimination-based approach that balances computational efficiency with fill-in minimization. The algorithm operates on a quotient graph representation and incorporates several key optimizations including aggressive absorption, approximate degree updates, and dense row detection.
+The Approximate Minimum Degree (AMD) algorithm implemented in SuiteSparse  \cite{davis_drtimothyaldendavissuitesparse_2025, noauthor_aldenmath_nodate, amestoy_algorithm_2004} follows a refined elimination-based approach that balances computational efficiency with fill-in minimization. The algorithm operates on a quotient graph representation and incorporates several key optimizations including aggressive absorption, approximate degree updates, and dense row detection.
 
 \begin{algorithm}
     \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
@@ -130,7 +130,7 @@ The Approximate Minimum Degree (AMD) algorithm implemented in SuiteSparse follow
     \label{alg:amd}
 \end{algorithm}
 
-The key innovation in SuiteSparse's AMD implementation lies in its aggressive absorption strategy and approximate degree computation. The aggressive absorption phase identifies elements that can be completely absorbed into the current pivot, reducing the size of the quotient graph and improving cache locality. The approximate degree updates provide a computationally efficient method to maintain ordering decisions without exact degree computation, which becomes prohibitively expensive as elimination progresses.
+The main efficiency gain in SuiteSparse's AMD implementation lies in its aggressive absorption strategy and approximate degree computation. The aggressive absorption phase identifies elements that can be completely absorbed into the current pivot, reducing the size of the quotient graph and improving cache locality. The approximate degree updates provide a computationally efficient method to maintain ordering decisions without exact degree computation, which becomes prohibitively expensive as elimination progresses.
 
 The dense row detection mechanism addresses a common pathology in minimum degree algorithms where elimination of high-degree vertices can lead to excessive fill-in. When the algorithm detects that a newly formed element exceeds a threshold based on the matrix size, it defers elimination of the associated variables, effectively implementing a hybrid strategy that combines minimum degree with nested dissection principles.
 

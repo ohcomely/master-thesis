@@ -17,45 +17,45 @@ Warning--empty journal in yuan_fast_nodate
 Warning--empty year in yuan_fast_nodate
 
 Done.
-You've used 28 entries,
+You've used 30 entries,
             4087 wiz_defined-function locations,
-            1005 strings with 12783 characters,
-and the built_in function-call counts, 20784 in all, are:
-= -- 1750
-> -- 407
+            1014 strings with 13063 characters,
+and the built_in function-call counts, 21478 in all, are:
+= -- 1802
+> -- 412
 < -- 175
-+ -- 224
-- -- 63
-* -- 1054
-:= -- 3261
-add.period$ -- 62
-call.type$ -- 28
-change.case$ -- 39
++ -- 227
+- -- 64
+* -- 1084
+:= -- 3385
+add.period$ -- 66
+call.type$ -- 30
+change.case$ -- 42
 chr.to.int$ -- 408
-cite$ -- 32
-duplicate$ -- 1461
-empty$ -- 1626
-format.name$ -- 82
-if$ -- 4768
+cite$ -- 34
+duplicate$ -- 1522
+empty$ -- 1697
+format.name$ -- 83
+if$ -- 4919
 int.to.chr$ -- 0
-int.to.str$ -- 28
-missing$ -- 252
-newline$ -- 137
-num.names$ -- 32
-pop$ -- 548
+int.to.str$ -- 30
+missing$ -- 266
+newline$ -- 147
+num.names$ -- 33
+pop$ -- 593
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1579
+skip$ -- 1629
 stack$ -- 0
-substring$ -- 995
-swap$ -- 1234
+substring$ -- 999
+swap$ -- 1268
 text.length$ -- 39
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 28
+type$ -- 30
 warning$ -- 4
-while$ -- 98
-width$ -- 30
-write$ -- 332
+while$ -- 99
+width$ -- 32
+write$ -- 351
 (There were 4 warnings)

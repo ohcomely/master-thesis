@@ -88,6 +88,14 @@ D.~Merrill, ``\BIBforeignlanguage{en}{Scalable {GPU} {Graph} {Traversal}}.''
 P.~Kaleta, ``kaletap/bfs-cuda-gpu,'' May 2025, original-date: 2019-11-14T12:55:50Z. [Online]. Available: \url{https://github.com/kaletap/bfs-cuda-gpu}
 \BIBentrySTDinterwordspacing
 
+\bibitem{chang2025parallelizingapproximateminimumdegree}
+\BIBentryALTinterwordspacing
+Y.-H. Chang, A.~Buluç, and J.~Demmel, ``Parallelizing the approximate minimum degree ordering algorithm: Strategies and evaluation,'' 2025. [Online]. Available: \url{https://arxiv.org/abs/2504.17097}
+\BIBentrySTDinterwordspacing
+
+\bibitem{mtmetis2013ipdps}
+D.~LaSalle and G.~Karypis, ``Multi-threaded graph partitioning,'' in \emph{Parallel \& Distributed Processing (IPDPS), 2013 IEEE 27th International Symposium on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2013, pp. 225--236.
+
 \bibitem{yuan_fast_nodate}
 C.~Yuan, ``\BIBforeignlanguage{en}{Fast {Sparse} {Matrix} {Reordering} on {GPU} for {Cholesky} {Based} {Solvers}}.''
 
@@ -121,11 +129,6 @@ Xilinx. (2011, Nov.) {Virtex-6 FPGA Configuration User Guide}. UG360 (v3.4). [On
 \bibitem{WIKI:Newton}
 \BIBentryALTinterwordspacing
 Wikipedia, ``{Isaac Newton},'' accessed October 1, 2012. [Online]. Available: \url{http://en.wikipedia.org/w/index.php?title=Isaac_Newton&oldid=514997436}
-\BIBentrySTDinterwordspacing
-
-\bibitem{chang2025parallelizingapproximateminimumdegree}
-\BIBentryALTinterwordspacing
-Y.-H. Chang, A.~Buluç, and J.~Demmel, ``Parallelizing the approximate minimum degree ordering algorithm: Strategies and evaluation,'' 2025. [Online]. Available: \url{https://arxiv.org/abs/2504.17097}
 \BIBentrySTDinterwordspacing
 
 \bibitem{amestoy_algorithm_2004}

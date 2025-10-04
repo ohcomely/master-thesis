@@ -9,11 +9,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Fill-in (number of nonzeros after factorization) for each matrix and reordering algorithm.}}{44}{table.caption.21}%
-\contentsline {table}{\numberline {A.2}{\ignorespaces Reordering time (seconds) for each matrix and reordering algorithm.}}{45}{table.caption.22}%
-\contentsline {table}{\numberline {A.3}{\ignorespaces Maximum memory usage (KB) during reordering for each matrix and algorithm.}}{46}{table.caption.23}%
-\contentsline {table}{\numberline {A.4}{\ignorespaces Average memory usage (KB) during reordering for each matrix and algorithm.}}{47}{table.caption.24}%
-\contentsline {table}{\numberline {A.5}{\ignorespaces Elimination tree depth for each matrix and reordering algorithm.}}{48}{table.caption.25}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Fill-in (number of nonzeros after factorization) for each matrix and reordering algorithm.}}{46}{table.caption.22}%
+\contentsline {table}{\numberline {A.2}{\ignorespaces Reordering time (seconds) for each matrix and reordering algorithm.}}{47}{table.caption.23}%
+\contentsline {table}{\numberline {A.3}{\ignorespaces Maximum memory usage (KB) during reordering for each matrix and algorithm.}}{48}{table.caption.24}%
+\contentsline {table}{\numberline {A.4}{\ignorespaces Average memory usage (KB) during reordering for each matrix and algorithm.}}{49}{table.caption.25}%
+\contentsline {table}{\numberline {A.5}{\ignorespaces Elimination tree depth for each matrix and reordering algorithm.}}{50}{table.caption.26}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

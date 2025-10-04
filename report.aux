@@ -203,4 +203,150 @@
 \@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Quantum Transport matrix dataset used for evaluation}}{26}{table.caption.12}\protected@file@percent }
 \newlabel{tab:qt-matrix-dataset}{{4.3}{26}{Quantum Transport matrix dataset used for evaluation}{table.caption.12}{}}
 \newlabel{tab:qt-matrix-dataset@cref}{{[table][3][4]4.3}{[1][26][]26}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Methodology}{26}{section
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Methodology}{26}{section.4.3}\protected@file@percent }
+\BKM@entry{id=26,dest={73756273656374696F6E2E342E332E31},srcline={165}}{5C3337365C3337375C303030505C303030655C303030725C303030665C3030306F5C303030725C3030306D5C303030615C3030306E5C303030635C303030655C3030305C3034305C3030304D5C303030655C303030745C303030725C303030695C303030635C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Performance Metrics}{27}{subsection.4.3.1}\protected@file@percent }
+\BKM@entry{id=27,dest={73656374696F6E2E342E34},srcline={187}}{5C3337365C3337375C303030455C303030765C303030615C3030306C5C303030755C303030615C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Evaluation}{28}{section.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Fill-in ratio (fill-in/original nnz) comparison across different matrix categories}}{29}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:fillin-categories}{{4.1}{29}{Fill-in ratio (fill-in/original nnz) comparison across different matrix categories}{figure.caption.13}{}}
+\newlabel{fig:fillin-categories@cref}{{[figure][1][4]4.1}{[1][28][]29}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Reordering time scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and computational time for various reordering methods.}}{31}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:reorder-time-scaling}{{4.2}{31}{Reordering time scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and computational time for various reordering methods}{figure.caption.14}{}}
+\newlabel{fig:reorder-time-scaling@cref}{{[figure][2][4]4.2}{[1][30][]31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Memory usage scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and memory consumption for various reordering methods.}}{33}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:memory-scaling}{{4.3}{33}{Memory usage scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and memory consumption for various reordering methods}{figure.caption.15}{}}
+\newlabel{fig:memory-scaling@cref}{{[figure][3][4]4.3}{[1][32][]33}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse).}}{35}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:elimination-tree-depth}{{4.4}{35}{Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse)}{figure.caption.16}{}}
+\newlabel{fig:elimination-tree-depth@cref}{{[figure][4][4]4.4}{[1][34][]35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{36}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:144-sparsity-patterns}{{4.5}{36}{Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures}{figure.caption.17}{}}
+\newlabel{fig:144-sparsity-patterns@cref}{{[figure][5][4]4.5}{[1][34][]36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{37}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:copter2-sparsity-patterns}{{4.6}{37}{Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied}{figure.caption.18}{}}
+\newlabel{fig:copter2-sparsity-patterns@cref}{{[figure][6][4]4.6}{[1][34][]37}}
+\BKM@entry{id=28,dest={73756273656374696F6E2E342E342E31},srcline={266}}{5C3337365C3337375C303030475C303030505C303030555C3030302D5C303030615C303030635C303030635C303030655C3030306C5C303030655C303030725C303030615C303030745C303030655C303030645C3030305C3034305C303030525C303030435C3030304D}
+\BKM@entry{id=29,dest={73656374696F6E2E342E35},srcline={280}}{5C3337365C3337375C303030435C303030755C303030725C303030725C303030655C3030306E5C303030745C3030305C3034305C3030306C5C303030695C3030306D5C303030695C303030745C303030615C303030745C303030695C3030306F5C3030306E5C30303073}
+\citation{chang2025parallelizingapproximateminimumdegree}
+\citation{mtmetis2013ipdps}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}GPU-accelerated RCM}{38}{subsection.4.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 100K nodes).}}{38}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:gpu-rcm-speedups}{{4.7}{38}{Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 100K nodes)}{figure.caption.19}{}}
+\newlabel{fig:gpu-rcm-speedups@cref}{{[figure][7][4]4.7}{[1][38][]38}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Current limitations}{39}{section.4.5}\protected@file@percent }
+\BKM@entry{id=30,dest={636861707465722E35},srcline={1}}{5C3337365C3337375C3030304F5C303030745C303030685C303030655C303030725C3030305C3034305C303030415C303030705C303030705C303030725C3030306F5C303030615C303030635C303030685C303030655C30303073}
+\BKM@entry{id=31,dest={73656374696F6E2E352E31},srcline={6}}{5C3337365C3337375C303030475C303030725C303030615C303030705C303030685C3030305C3034305C303030525C303030655C303030695C3030306E5C303030665C3030306F5C303030725C303030635C303030655C3030306D5C303030655C3030306E5C303030745C3030305C3034305C3030304C5C303030655C303030615C303030725C3030306E5C303030695C3030306E5C303030675C3030305C3034305C303030665C3030306F5C303030725C3030305C3034305C303030525C303030655C3030306F5C303030725C303030645C303030655C303030725C303030695C3030306E5C30303067}
+\citation{dasgupta_alpha_2023}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Other Approaches}{40}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
+\newlabel{ch:other_approaches}{{5}{40}{Other Approaches}{chapter.5}{}}
+\newlabel{ch:other_approaches@cref}{{[chapter][5][]5}{[1][40][]40}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Graph Reinforcement Learning for Reordering}{40}{section.5.1}\protected@file@percent }
+\BKM@entry{id=32,dest={73656374696F6E2E352E32},srcline={27}}{5C3337365C3337375C303030475C303030505C303030555C3030305C3034305C303030415C303030635C303030635C303030655C3030306C5C303030655C303030725C303030615C303030745C303030655C303030645C3030305C3034305C3030304E5C303030655C303030735C303030745C303030655C303030645C3030305C3034305C303030445C303030695C303030735C303030735C303030655C303030635C303030745C303030695C3030306F5C3030306E}
+\citation{yuan_fast_nodate}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Reinforcement Learning Framework for Sparse Matrix Reordering using GNNs}}{41}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:rl_method}{{5.1}{41}{Reinforcement Learning Framework for Sparse Matrix Reordering using GNNs}{figure.caption.20}{}}
+\newlabel{fig:rl_method@cref}{{[figure][1][5]5.1}{[1][41][]41}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}GPU Accelerated Nested Dissection}{41}{section.5.2}\protected@file@percent }
+\citation{gilbert_jet_2024}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Recursive calls}}{42}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:nd_res}{{5.2}{42}{Recursive calls}{figure.caption.21}{}}
+\newlabel{fig:nd_res@cref}{{[figure][2][5]5.2}{[1][41][]42}}
+\BKM@entry{id=33,dest={636861707465722E36},srcline={1}}{5C3337365C3337375C303030435C3030306F5C3030306E5C303030635C3030306C5C303030755C303030735C303030695C3030306F5C3030306E5C3030305C3034305C303030615C3030306E5C303030645C3030305C3034305C303030465C303030755C303030745C303030755C303030725C303030655C3030305C3034305C303030575C3030306F5C303030725C3030306B}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{43}{chapter.6}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
+\newlabel{ch:conclusion}{{6}{43}{Conclusion and Future Work}{chapter.6}{}}
+\newlabel{ch:conclusion@cref}{{[chapter][6][]6}{[1][43][]43}}
+\BKM@entry{id=34,dest={617070656E6469782E41},srcline={1}}{5C3337365C3337375C303030455C303030785C303030705C303030655C303030725C303030695C3030306D5C303030655C3030306E5C303030745C303030615C3030306C5C3030305C3034305C303030525C303030655C303030735C303030755C3030306C5C303030745C30303073}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Experimental Results}{45}{appendix.A}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
+\newlabel{app:experimental_results}{{A}{45}{Experimental Results}{appendix.A}{}}
+\newlabel{app:experimental_results@cref}{{[appendix][1][2147483647]A}{[1][45][]45}}
+\newlabel{RF1}{46}
+\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces Fill-in (number of nonzeros after factorization) for each matrix and reordering algorithm.}}{46}{table.caption.22}\protected@file@percent }
+\newlabel{tbl:fillin_results}{{A.1}{46}{Fill-in (number of nonzeros after factorization) for each matrix and reordering algorithm}{table.caption.22}{}}
+\newlabel{tbl:fillin_results@cref}{{[table][1][2147483647,1]A.1}{[1][45][]46}}
+\newlabel{RF2}{47}
+\@writefile{lot}{\contentsline {table}{\numberline {A.2}{\ignorespaces Reordering time (seconds) for each matrix and reordering algorithm.}}{47}{table.caption.23}\protected@file@percent }
+\newlabel{tbl:reorder_time_results}{{A.2}{47}{Reordering time (seconds) for each matrix and reordering algorithm}{table.caption.23}{}}
+\newlabel{tbl:reorder_time_results@cref}{{[table][2][2147483647,1]A.2}{[1][47][]47}}
+\newlabel{RF3}{48}
+\@writefile{lot}{\contentsline {table}{\numberline {A.3}{\ignorespaces Maximum memory usage (KB) during reordering for each matrix and algorithm.}}{48}{table.caption.24}\protected@file@percent }
+\newlabel{tbl:reorder_max_memory_results}{{A.3}{48}{Maximum memory usage (KB) during reordering for each matrix and algorithm}{table.caption.24}{}}
+\newlabel{tbl:reorder_max_memory_results@cref}{{[table][3][2147483647,1]A.3}{[1][48][]48}}
+\newlabel{RF4}{49}
+\@writefile{lot}{\contentsline {table}{\numberline {A.4}{\ignorespaces Average memory usage (KB) during reordering for each matrix and algorithm.}}{49}{table.caption.25}\protected@file@percent }
+\newlabel{tbl:reorder_avg_memory_results}{{A.4}{49}{Average memory usage (KB) during reordering for each matrix and algorithm}{table.caption.25}{}}
+\newlabel{tbl:reorder_avg_memory_results@cref}{{[table][4][2147483647,1]A.4}{[1][49][]49}}
+\newlabel{RF5}{50}
+\@writefile{lot}{\contentsline {table}{\numberline {A.5}{\ignorespaces Elimination tree depth for each matrix and reordering algorithm.}}{50}{table.caption.26}\protected@file@percent }
+\newlabel{tbl:elimination_tree_depth_results}{{A.5}{50}{Elimination tree depth for each matrix and reordering algorithm}{table.caption.26}{}}
+\newlabel{tbl:elimination_tree_depth_results@cref}{{[table][5][2147483647,1]A.5}{[1][50][]50}}
+\BKM@entry{id=35,dest={617070656E6469782E42},srcline={1}}{5C3337365C3337375C303030545C303030615C303030735C3030306B5C3030305C3034305C303030445C303030655C303030735C303030635C303030725C303030695C303030705C303030745C303030695C3030306F5C3030306E}
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}Task Description}{51}{appendix.B}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
+\BKM@entry{id=36,dest={617070656E6469782E42},srcline={50}}{5C3337365C3337375C3030304C5C303030695C303030735C303030745C3030305C3034305C3030306F5C303030665C3030305C3034305C303030465C303030695C303030675C303030755C303030725C303030655C30303073}
+\@writefile{toc}{\contentsline {chapter}{\nonumberline List of Figures}{52}{appendix.B}\protected@file@percent }
+\BKM@entry{id=37,dest={617070656E6469782E42},srcline={51}}{5C3337365C3337375C3030304C5C303030695C303030735C303030745C3030305C3034305C3030306F5C303030665C3030305C3034305C303030545C303030615C303030625C3030306C5C303030655C30303073}
+\@writefile{toc}{\contentsline {chapter}{\nonumberline List of Tables}{54}{appendix.B}\protected@file@percent }
+\bibdata{./bib/main}
+\BKM@entry{id=38,dest={636861707465722A2E3237},srcline={2}}{5C3337365C3337375C303030425C303030695C303030625C3030306C5C303030695C3030306F5C303030675C303030725C303030615C303030705C303030685C30303079}
+\bibcite{scott_introduction_2023}{1}
+\bibcite{schaeffer_sparse_2013}{2}
+\bibcite{gilbert_analysis_1986}{3}
+\bibcite{yannakakis_computing_1981}{4}
+\bibcite{cuthill_reducing_1969}{5}
+\bibcite{george_computer_1981}{6}
+\bibcite{tinney_direct_1967}{7}
+\bibcite{liu_modification_1985}{8}
+\bibcite{amestoy_approximate_1996}{9}
+\bibcite{lipton_generalized_1979}{10}
+\@writefile{toc}{\contentsline {chapter}{\nonumberline Bibliography}{56}{chapter*.27}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
+\bibcite{george_nested_1973}{11}
+\bibcite{catalyurek_hypergraph_2011}{12}
+\bibcite{dasgupta_alpha_2023}{13}
+\bibcite{davis_drtimothyaldendavissuitesparse_2025}{14}
+\bibcite{noauthor_aldenmath_nodate}{15}
+\bibcite{amestoy_algorithm_2004}{16}
+\bibcite{selvitopi_effect_2020}{17}
+\bibcite{merrill_scalable_nodate}{18}
+\bibcite{kaleta_kaletapbfs-cuda-gpu_2025}{19}
+\bibcite{chang2025parallelizingapproximateminimumdegree}{20}
+\bibcite{mtmetis2013ipdps}{21}
+\bibcite{yuan_fast_nodate}{22}
+\bibcite{gilbert_jet_2024}{23}
+\bibcite{Kaeslin08}{24}
+\bibcite{HVM04}{25}
+\bibcite{FIPS197}{26}
+\bibcite{RBBK01}{27}
+\bibcite{Virtex6UG1111}{28}
+\bibcite{XilinxBib:Series7UG1110}{29}
+\bibcite{WIKI:Newton}{30}
+\citation{*}
+\global\csname @altsecnumformattrue\endcsname
+\global\@namedef{scr@dte@chapter@lastmaxnumwidth}{15.6364pt}
+\global\@namedef{scr@dte@section@lastmaxnumwidth}{20.80489pt}
+\global\@namedef{scr@dte@subsection@lastmaxnumwidth}{29.01736pt}
+\global\@namedef{scr@dte@table@lastmaxnumwidth}{23.84888pt}
+\global\@namedef{scr@dte@figure@lastmaxnumwidth}{20.80489pt}
+\@writefile{toc}{\providecommand\tocbasic@end@toc@file{}\tocbasic@end@toc@file}
+\@writefile{lof}{\providecommand\tocbasic@end@toc@file{}\tocbasic@end@toc@file}
+\@writefile{lot}{\providecommand\tocbasic@end@toc@file{}\tocbasic@end@toc@file}
+\gdef \@abspage@last{64}

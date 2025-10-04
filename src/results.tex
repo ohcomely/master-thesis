@@ -135,18 +135,19 @@ sinw\_w90 & 7488 & 5310160 & DFT Hamiltonian of Silicon Nanowire \\
 For our evaluation, we systematically assessed the performance of eleven different reordering algorithms across all matrices listed in Tables~\ref{tab:matrix-dataset} and~\ref{tab:qt-matrix-dataset}. The evaluated algorithms encompass both sequential and parallel approaches, ranging from classical degree-based methods to graph partitioning and hypergraph-based techniques:
 
 \begin{enumerate}
+
+   \item Natural (Original matrix ordering - baseline)
+   
    \item \textbf{Classical Methods:}
    \begin{itemize}[noitemsep,topsep=0pt]
       \item AMD (Approximate Minimum Degree)
-      \item COLAMD (Column Approximate Minimum Degree)  
       \item RCM (Reverse Cuthill-McKee)
-      \item Natural (Original matrix ordering - baseline)
    \end{itemize}
    
    \item \textbf{Graph Partitioning Methods:}
    \begin{itemize}[noitemsep,topsep=0pt]
       \item METIS (Sequential graph partitioning-based reordering)
-      \item \colorbox{yellow!60}{METIS+IC} (METIS with custom coarsening integration)
+      \item \colorbox{yellow!60}{METIS+IC} (METIS with custom coarsening integration; in some places we refer to this as NDCUSTOM.)
       \item SCOTCH (Sequential graph partitioning)
       \item PT-SCOTCH (Parallel graph partitioning)
       \item ParMETIS (Parallel graph partitioning)
@@ -154,11 +155,12 @@ For our evaluation, we systematically assessed the performance of eleven differe
    
    \item \textbf{Hypergraph-based Methods:}
    \begin{itemize}[noitemsep,topsep=0pt]
-      \item \colorbox{yellow!60}{HG-2}, \colorbox{yellow!60}{HG-4}, \colorbox{yellow!60}{HG-8}, \colorbox{yellow!60}{HG-16} (Hypergraph-based reordering with block partition sizes of 2, 4, 8, and 16 vertices respectively)
+      \item \colorbox{yellow!60}{HG-2}, \colorbox{yellow!60}{HG-4}, \colorbox{yellow!60}{HG-8}, \colorbox{yellow!60}{HG-16} (Hypergraph-based reordering with block partition sizes of 2, 4, 8, and 16 vertices respectively. In some places we refer to these as DB-2, DB-4, DB-8, and DB-16 respectively.) 
    \end{itemize}
+
 \end{enumerate}
 
-The hypergraph-based methods (HG-2, HG-4, HG-8, HG-16) employ different block partition sizes to explore the trade-off between computational complexity and reordering/parallelization quality. All these algorithms are described in detail in Chapter~\ref{ch:implementation_and_optimizations}. The \colorbox{yellow!60}{highlighted methods} indicate our own implementations.
+The hypergraph-based methods (HG-2, HG-4, HG-8, HG-16) employ different block partition sizes to explore the trade-off between computational complexity and reordering/parallelization quality. All these algorithms are described in detail in Chapter~\ref{ch:implementation_and_optimizations}. The \colorbox{yellow!60}{highlighted methods} indicate our own implementations. 
 
 \subsection{Performance Metrics}
 
@@ -186,7 +188,7 @@ All experiments are executed on the Fritz cluster to ensure consistent hardware 
 
 For each matrix in our dataset with different reordering algorithms applied, we have collected all the aforementioned metrics, and these can be found in our appendix/supplementary material \ref{app:experimental_results}. Here, we present results and visualizations for our underlying metrics for some of them.
 
-Figure~\ref{fig:fillin-categories} presents a comparative analysis of fill-in reduction across different matrix categories, showing the ratio of fill-in to original non-zeros for representative matrices from each domain. This visualization demonstrates how reordering effectiveness varies significantly across different problem types and matrix structures.
+Figure~\ref{fig:fillin-categories} presents a comparative analysis of \textbf{fill-in reduction} across different matrix categories, showing the ratio of fill-in to original non-zeros for representative matrices from each domain. This visualization demonstrates how reordering effectiveness varies significantly across different problem types and matrix structures.
 
 \begin{figure}[H]
 \centering
@@ -197,24 +199,53 @@ Figure~\ref{fig:fillin-categories} presents a comparative analysis of fill-in re
 
 Our experimental results reveal distinct performance patterns across different matrix domains and algorithm categories. The hypergraph-based methods, METIS, and our custom METIS implementation with improved coarsening (METIS+IC) show strong performance with lower fill-in reduction compared to classical methods. These methods achieve 30-60\% lower fill-in values than traditional approaches like AMD and COLAMD across most domains. Among the hypergraph methods, smaller partition sizes (HG-2 and HG-4) typically produce optimal results, while larger partitions are ineffective. Our custom METIS+IC implementation demonstrates that enhanced coarsening strategies can achieve performance comparable to hypergraph methods. SCOTCH and PT-SCOTCH show moderate improvements over classical methods but do not match the quality of METIS-based approaches.
 
-Domain-specific analysis reveals that hypergraph methods, METIS, and METIS+IC perform well in circuit and graph problems, where they achieve 35-50\% fill-in reduction compared to AMD. For CFD matrices, these advanced methods show modest but consistent improvements (10-30\%), while chemistry matrices present scalability challenges where many classical methods fail on the largest instances, leaving primarily METIS-based or classical methods viable. The optimization and structural domains show variable performance depending on problem structure, with hypergraph methods and METIS variants providing 10-25\% improvements in most cases.
+Domain-specific analysis reveals that hypergraph methods, METIS, and METIS+IC perform well in circuit and graph problems, where they achieve 35-50\% fill-in reduction compared to AMD. For CFD matrices, these methods show modest but consistent improvements (10-30\%), while chemistry matrices present scalability challenges where many classical methods fail on the largest instances, leaving primarily METIS-based or classical methods viable. The optimization and structural domains show variable performance depending on problem structure, with hypergraph methods and METIS variants providing 10-25\% improvements in most cases.
 
 Figure~\ref{fig:reorder-time-scaling} presents the scaling behavior of reordering algorithms with respect to the number of non-zero entries. This graph shows the time required for each algorithm to complete and how it scales with increasing non-zero counts. 
 
-The reordering time results show notable performance differences across methods. RCM and AMD are the fastest options, with RCM typically completing in under one second (0.006-0.76s) across all matrix sizes and AMD performing well for small-to-medium matrices (0.046-2.09s). SCOTCH and METIS generally complete within reasonable timeframes (under 50 seconds), while parallel methods like ParMETIS and PT-SCOTCH have higher overhead that may be justified for larger problems. The hypergraph partitioning methods (HG variants) require considerably more time, with some executions taking over 270 seconds.
+The \textbf{reordering time} results show notable performance differences across methods. RCM and AMD are the fastest options, with RCM typically completing in under one second (0.006-0.76s) across all matrix sizes and AMD performing well for small-to-medium matrices (0.046-2.09s). SCOTCH and METIS generally complete within reasonable timeframes (under 50 seconds), while parallel methods like ParMETIS and PT-SCOTCH have higher overhead that may be justified for larger problems. The hypergraph partitioning methods (HG variants) require considerably more time, with some executions taking over 270 seconds.
 
-Regarding scalability with increasing NNZ, the methods exhibit different growth patterns. AMD shows sublinear scaling (slope 0.52), which becomes more favorable as matrix size increases, while RCM maintains near-linear scaling (slope 0.72) with consistent performance characteristics. SCOTCH demonstrates reasonable scaling (slope 0.65), and the ParMETIS variants maintain moderate complexity (slopes 0.64-0.68) despite their higher base execution times. METIS+IC shows superlinear scaling (slope 1.14) due to its modified coarsening approach, which becomes problematic for very large matrices, while METIS approaches linear scaling (slope 0.81). The HG hypergraph methods show scaling slopes between 0.71-0.76, though their high absolute execution times remain a concern.
-
-The results indicate that simpler methods like AMD and RCM provide favorable execution times compared to more complex approaches for large-scale sparse matrix reordering. While parallel methods may become advantageous for extremely large problems, the hypergraph partitioning approaches have higher computational costs relative to their fill-in benefits in typical sparse matrix applications.
-
-
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{fig/res/reorder_time_scaling.png}
 \caption{Reordering time scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and computational time for various reordering methods.}
 \label{fig:reorder-time-scaling}
 \end{figure}
 
+Regarding scalability with increasing NNZ, the methods exhibit different growth patterns. AMD shows sublinear scaling (slope 0.52), which becomes more favorable as matrix size increases, while RCM maintains near-linear scaling (slope 0.72) with consistent performance characteristics. SCOTCH demonstrates reasonable scaling (slope 0.65), and the ParMETIS variants maintain moderate complexity (slopes 0.64-0.68) despite their higher base execution times. METIS+IC shows superlinear scaling (slope 1.14) due to its modified coarsening approach, which becomes problematic for very large matrices, while METIS approaches linear scaling (slope 0.81). The HG hypergraph methods show scaling slopes between 0.71-0.76, though their high absolute execution times remain a concern.
+
+The results indicate that simpler methods like AMD and RCM provide favorable execution times compared to more complex approaches for large-scale sparse matrix reordering. While parallel methods may become advantageous for extremely large problems, the hypergraph partitioning approaches have higher computational costs relative to their fill-in benefits in typical sparse matrix applications.
+
+Furthermore, we look at the \textbf{memory usage} of different reordering algorithms. Similar to reordering time, we plot memory scaling with respect to the number of non-zeros in Figure~\ref{fig:memory-scaling}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{fig/res/reorder_memory_scaling.png}
+\caption{Memory usage scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and memory consumption for various reordering methods.}
+\label{fig:memory-scaling}
+\end{figure}
+
+The memory scaling analysis reveals distinct patterns across different reordering methods. Sequential methods like AMD and RCM demonstrate consistent scaling behavior with $R^2$ scores above 0.91. AMD exhibits near-linear memory scaling with a slope of 1.09, while RCM shows slightly super-linear scaling at 1.29.
+
+The parallel and graph partitioning-based methods show steeper memory scaling. SCOTCH and PT-SCOTCH exhibit slopes around 1.8, while METIS demonstrates a slope of 1.56. The introduction of custom coarsening in METIS+IC increases the scaling exponent to 1.98 compared to standard METIS. ParMETIS variants (2 and 4 processes) show similar scaling behavior with slopes around 1.75, suggesting that the parallelization strategy introduces additional memory overhead that scales super-linearly with problem size.
+
+The hypergraph-based HG methods present limited data, with only 4--7 valid monotonically increasing data points for maximum memory after filtering. The available data shows slopes ranging from 1.22 to 1.90, though the small sample sizes and lower $R^2$ scores (particularly HG-16 at 0.79) suggest these methods may exhibit less predictable memory behavior across the matrix suite tested. The filtered points indicate that these methods may not consistently scale memory usage with matrix size in the expected monotonic fashion.
+
+We then now look at the elimination tree depth as a measure of parallelism. Similar to fill-in, we sample randomly two matrices from different domains to show the elimination tree depth for different reordering algorithms.
+
+The \textbf{elimination tree depth} results provide insight into the parallelization potential of different reordering methods, as shallower trees enable more parallel execution during factorization. The parallel methods show advantages in reducing tree depth compared to sequential approaches. ParMETIS variants produce shallow elimination trees, with ParMETIS-2 and ParMETIS-4 achieving depths in the range of 14-42 across various matrices, while ParMETIS-8 and ParMETIS-16 maintain depths between 25-50. METIS also performs well for parallelization potential, producing trees with depths around 22-160, which represents a significant improvement over many sequential methods.
+
+Sequential methods show mixed results for parallelization potential. AMD typically produces tree depths ranging from very shallow (4-20) for some matrices to quite deep (250-830) for others, making its parallelization benefits matrix-dependent. NDCUSTOM, being METIS with modified coarsening, generally produces similar tree depths to METIS, typically ranging from 24-171, though it can produce deeper trees (up to 839) for some matrices, suggesting that the coarsening modification does not improve parallelization potential across all cases. RCM produces the deepest trees among the methods tested, with depths exceeding 300-400 and reaching over 700 for some matrices, which limits parallel factorization opportunities. SCOTCH performs moderately, with tree depths generally ranging from 23-290, while PT-SCOTCH shows improved parallelization potential with depths typically between 54-328, though it can produce very deep trees exceeding 700.
+
+The hypergraph partitioning methods (DB variants) show variable performance for parallelization, with tree depths ranging from 19-301 depending on the number of partitions used. DB-2 often produces deeper trees (49-603), while DB-16 tends toward moderate depths (66-830), though the relationship between partition count and tree depth is not always consistent. Natural ordering predictably produces very deep trees (often 200-800+), confirming the necessity of reordering for parallel factorization. The results indicate that while parallel reordering methods require more computational time, they provide substantial benefits for subsequent parallel factorization phases through significantly reduced elimination tree depths.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{fig/res/elimination_tree_depth_all_categories.png}
+\caption{Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse).}
+\label{fig:elimination-tree-depth}
+\end{figure}
 
 \begin{figure}[h]
 \centering
@@ -228,22 +259,6 @@ The results indicate that simpler methods like AMD and RCM provide favorable exe
 \includegraphics[width=\textwidth]{fig/res/copter2_sparsity_patterns.png}
 \caption{Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}
 \label{fig:copter2-sparsity-patterns}
-\end{figure}
-
-We then now look at the elimination tree depth as a measure of parallelism. Similar to fill-in, we sample randomly two matrices from different domains to show the elimination tree depth for different reordering algorithms.
-
-The elimination tree depth results provide insight into the parallelization potential of different reordering methods, as shallower trees enable more parallel execution during factorization. The parallel methods show advantages in reducing tree depth compared to sequential approaches. ParMETIS variants produce shallow elimination trees, with ParMETIS-2 and ParMETIS-4 achieving depths in the range of 14-42 across various matrices, while ParMETIS-8 and ParMETIS-16 maintain depths between 25-50. METIS also performs well for parallelization potential, producing trees with depths around 22-160, which represents a significant improvement over many sequential methods.
-
-Sequential methods show mixed results for parallelization potential. AMD typically produces tree depths ranging from very shallow (4-20) for some matrices to quite deep (250-830) for others, making its parallelization benefits matrix-dependent. NDCUSTOM, being METIS with modified coarsening, generally produces similar tree depths to METIS, typically ranging from 24-171, though it can produce deeper trees (up to 839) for some matrices, suggesting that the coarsening modification does not improve parallelization potential across all cases. RCM produces the deepest trees among the methods tested, with depths exceeding 300-400 and reaching over 700 for some matrices, which limits parallel factorization opportunities. SCOTCH performs moderately, with tree depths generally ranging from 23-290, while PT-SCOTCH shows improved parallelization potential with depths typically between 54-328, though it can produce very deep trees exceeding 700.
-
-The hypergraph partitioning methods (DB variants) show variable performance for parallelization, with tree depths ranging from 19-301 depending on the number of partitions used. DB-2 often produces deeper trees (49-603), while DB-16 tends toward moderate depths (66-830), though the relationship between partition count and tree depth is not always consistent. Natural ordering predictably produces very deep trees (often 200-800+), confirming the necessity of reordering for parallel factorization. The results indicate that while parallel reordering methods require more computational time, they provide substantial benefits for subsequent parallel factorization phases through significantly reduced elimination tree depths.
-
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1\textwidth]{fig/res/elimination_tree_depth_all_categories.png}
-\caption{Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse).}
-\label{fig:elimination-tree-depth}
 \end{figure}
 
 \FloatBarrier

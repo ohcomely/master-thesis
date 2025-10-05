@@ -28,7 +28,7 @@ Consider a sparse symmetric positive definite matrix $A \in \mathbb{R}^{n \times
 
 The sparsity pattern of $A$ is defined as the set $\text{pattern}(A) = \{(i,j) : A\sb{ij} \neq 0\}$. Similarly, $\text{pattern}(L)$ denotes the sparsity pattern of the Cholesky factor. The fundamental observation is that $\text{pattern}(L)$ can be completely determined from $\text{pattern}(A)$ using purely structural analysis, without requiring any numerical computation. This structural predictability forms the theoretical foundation for elimination trees and symbolic factorization.
 
-Every sparse symmetric matrix $A$ can be naturally represented as an undirected graph $G(A) = (V, E)$, where the vertex set $V = \{1, 2, \ldots, n\}$ corresponds to the rows and columns of $A$, and the edge set $E$ contains an edge $(i,j)$ if and only if $A\sb{ij} \neq 0$ for $i \neq j$. This graph representation transforms matrix operations into graph-theoretic problems, enabling the application of powerful combinatorial methods to numerical linear algebra.
+Every sparse symmetric matrix $A$ can be naturally represented as an undirected graph $G(A) = (V, E)$, where the vertex set $V = \{1, 2, \ldots, n\}$ corresponds to the rows and columns of $A$, and the edge set $E$ contains an edge $(i,j)$ if and only if $A\sb{ij} \neq 0$ for $i \neq j$. This graph representation transforms matrix operations into graph-theoretic problems, helping us to reformulate a lot of the concepts in terms of graph properties.
 
 The elimination process on matrix $A$ corresponds to a sequence of vertex eliminations on graph $G(A)$. When vertex $k$ is eliminated, all pairs of neighbors of $k$ become connected by edges if they were not already connected. This edge addition process continues throughout the elimination sequence, producing what is known as the filled graph $G^+(A)$. The filled graph contains all edges that exist at any point during the elimination process, and its structure completely determines the sparsity pattern of the Cholesky factor $L$.
 
@@ -48,15 +48,15 @@ This definition establishes a precise correspondence between the numerical struc
 In the elimination tree $T(A)$, node $i$ is an ancestor of node $j$ (denoted $i \succ j$) if there exists a directed path from $j$ to $i$ in the tree. Node $i$ is a proper ancestor if $i \succ j$ and $i \neq j$.
 \end{definition}
 
-The ancestor relationship in the elimination tree has a profound connection to the structure of the Cholesky factor, as formalized in the following fundamental theorem.
+The ancestor relationship in the elimination tree is closely tied to the structure of the Cholesky factor, as formalized in the following theorem.
 
-\begin{theorem}[Fundamental Characterization Theorem]
+\begin{theorem}[Characterization Theorem]
 Let $T(A)$ be the elimination tree of symmetric positive definite matrix $A$ with Cholesky factor $L$. Then for any indices $i > j$: $L\sb{ij} \neq 0$ if and only if $i \succ j$ in $T(A)$.
 \end{theorem}
 
 This theorem establishes that the elimination tree completely characterizes the sparsity pattern of the Cholesky factor. The nonzero entries in column $j$ of $L$ correspond exactly to the ancestors of node $j$ in the elimination tree. This remarkable result shows that purely combinatorial information (tree ancestry) determines numerical structural properties (matrix sparsity patterns).
 
-\subsection{Structural Properties and Theoretical Characterizations}
+\subsection{Structural Properties}
 
 \subsubsection{Fill-in Characterization Through Path Analysis}
 Understanding when fill-in occurs during elimination requires analyzing connectivity patterns in the original matrix graph. The concept of fill paths provides a precise characterization of this phenomenon.
@@ -193,13 +193,10 @@ There are several heuristics that have been proposed to reduce the fill-in devel
 
 \subsection{Bandwidth Minimization}
 
-Bandwidth minimization refers to the problem of permuting the rows and columns of a matrix such that the non-zero entries are as close to the diagonal as possible.  Gaussian elimination can be performed in $O(nb^2)$ time on matrices of dimension $n$ and bandwidth $b$, which is faster than the forward $O(n^3)$ algorithm when $b$ is smaller than $n$ (Lim A. et al., 2006a).  Additionally, this problem is NP-complete, but several heuristics have been developed to approximate the optimal solution.
+Bandwidth minimization refers to the problem of permuting the rows and columns of a matrix such that the non-zero entries are as close to the diagonal as possible.  Gaussian elimination can be performed in $O(nb^2)$ time on matrices of dimension $n$ and bandwidth $b$, which is faster than the forward $O(n^3)$ algorithm when $b$ is smaller than $n$ \cite{lim_heuristics_2006}.  Additionally, this problem is NP-complete \cite{papadimitriou_np-completeness_1976}, but several heuristics have been developed to approximate the optimal solution.
 
 The Cuthill-McKee algorithm \cite{cuthill_reducing_1969} employs breadth-first search to reduce matrix bandwidth by generating level structures. However, it has computational limitations and may not achieve optimal bandwidth reduction. The Reverse Cuthill-McKee algorithm \cite{george_computer_1981} addresses these issues by reversing the ordering, while the GPS algorithm by Gibbs et al. provides an alternative level structure approach.
 
-We take a look at the reverse Cuthill-McKee algorithm, which is still widely used in practice. 
-
-[write the pseudocode here]
 
 \subsection{Minimum Degree}
 

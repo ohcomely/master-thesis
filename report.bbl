@@ -40,6 +40,14 @@ J.~R. Gilbert and R.~E. Tarjan, ``\BIBforeignlanguage{en}{The analysis of a nest
 M.~Yannakakis, ``Computing the {Minimum} {Fill}-{In} is {NP}-{Complete},'' \emph{SIAM Journal on Algebraic Discrete Methods}, vol.~2, no.~1, pp. 77--79, Mar. 1981, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/0602010}
 \BIBentrySTDinterwordspacing
 
+\bibitem{lim_heuristics_2006}
+A.~Lim, B.~Rodrigues, and F.~Xiao, ``Heuristics for matrix bandwidth reduction,'' \emph{European Journal of Operational Research}, vol. 174, no.~1, pp. 69--91, 2006.
+
+\bibitem{papadimitriou_np-completeness_1976}
+\BIBentryALTinterwordspacing
+C.~H. Papadimitriou, ``\BIBforeignlanguage{en}{The {NP}-{Completeness} of the bandwidth minimization problem},'' \emph{\BIBforeignlanguage{en}{Computing}}, vol.~16, no.~3, pp. 263--270, Sep. 1976. [Online]. Available: \url{https://doi.org/10.1007/BF02280884}
+\BIBentrySTDinterwordspacing
+
 \bibitem{cuthill_reducing_1969}
 E.~Cuthill and J.~McKee, ``Reducing the bandwidth of sparse symmetric matrices,'' in \emph{Proceedings of the 1969 24th National Conference}, ser. ACM '69.\hskip 1em plus 0.5em minus 0.4em\relax New York, NY, USA: ACM, 1969, pp. 157--172.
 

@@ -6,6 +6,7 @@ This chapter describes both the existing state-of-the-art implementations that f
 \section{SuiteSparse implementation of RCM and Minimum Degree}
 \label{sec:suitesparse}
 
+\subsection{RCM Algorithm Overview}
 The Reverse Cuthill-McKee (RCM) algorithm in SuiteSparse \cite{davis_drtimothyaldendavissuitesparse_2025, noauthor_aldenmath_nodate} provides bandwidth reduction for symmetric sparse matrices through a breadth-first search strategy combined with degree-based ordering heuristics. The implementation processes disconnected components separately and employs pseudo-peripheral vertex selection to minimize profile and bandwidth.
 
 \begin{algorithm}

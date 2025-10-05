@@ -16,7 +16,7 @@
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 100K nodes).}}{38}{figure.caption.19}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Reinforcement Learning Framework for Sparse Matrix Reordering using GNNs}}{41}{figure.caption.20}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Recursive calls}}{42}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Recursive calls}}{41}{figure.caption.21}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

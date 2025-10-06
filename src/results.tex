@@ -52,7 +52,7 @@ The login nodes fritz[1-4] are equipped with 2 × Intel Xeon Platinum 8360Y (Ice
 
 \section{Matrices dataset}
 
-We selected a diverse set of sparse matrices from the SuiteSparse Matrix Collection and our custom dataset of matrices encountered in field-specific domains, developed in Nano-TCAD, to evaluate our implementations. The SuiteSparse matrices are chosen to cover a variety of application domains, including computational fluid dynamics (CFD), chemistry, circuit simulation, graph analysis, optimization, and structural engineering. We have listed the matrices alongside their respective groups, number of vertices, and number of edges in Table~\ref{tab:matrix-dataset}. The Quantum Transport matrices are listed in Table~\ref{tab:qt-matrix-dataset}.
+We selected a diverse set of sparse matrices from the SuiteSparse Matrix Collection and our custom dataset of matrices encountered in field-specific domains, developed in our lab (Nano-TCAD), to evaluate our implementations. The SuiteSparse matrices are chosen to cover a variety of application domains, including computational fluid dynamics (CFD), chemistry, circuit simulation, graph analysis, optimization, and structural engineering. We have listed the matrices alongside their respective groups, number of vertices, and number of edges in Table~\ref{tab:matrix-dataset}. Our custom matrices are listed in Table~\ref{tab:qt-matrix-dataset}.
 
 \begin{longtable}{|l|l|r|r|}
 \hline
@@ -110,7 +110,7 @@ nasasrb & Structural & 54870 & 1366097 \\
 
 \begin{table}[h]
 \centering
-\caption{Quantum Transport matrix dataset used for evaluation}
+\caption{Custom matrix dataset used for evaluation}
 \label{tab:qt-matrix-dataset}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|l|r|r|l|}

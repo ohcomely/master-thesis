@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.7.8)  5 OCT 2025 22:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.7.8)  6 OCT 2025 15:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1886,7 +1886,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
 
 ] [25] [26]
-LaTeX Font Info:    Trying to load font information for T1+cmss on input line 170.
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 169.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -1897,43 +1897,43 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 
 LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/bx/n' instead on input line 170.
+(Font)              using `T1/cmss/bx/n' instead on input line 169.
 
 
 LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/bx/n' instead on input line 172.
+(Font)              using `T1/cmss/bx/n' instead on input line 171.
 
 
 LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/bx/n' instead on input line 174.
+(Font)              using `T1/cmss/bx/n' instead on input line 173.
 
 
 LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/bx/n' instead on input line 176.
+(Font)              using `T1/cmss/bx/n' instead on input line 175.
 
 [27{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-<fig/res/fillin_all_categories.png, id=685, 1127.1711pt x 1495.989pt>
+<fig/res/fillin_all_categories.png, id=685, 1127.8938pt x 1495.989pt>
 File: fig/res/fillin_all_categories.png Graphic file (type png)
 <use fig/res/fillin_all_categories.png>
-Package pdftex.def Info: fig/res/fillin_all_categories.png  used on input line 195.
-(pdftex.def)             Requested size: 376.42744pt x 499.59007pt.
+Package pdftex.def Info: fig/res/fillin_all_categories.png  used on input line 194.
+(pdftex.def)             Requested size: 418.25555pt x 554.76274pt.
  [28] [29 <./fig/res/fillin_all_categories.png>]
 <fig/res/reorder_time_scaling.png, id=697, 1078.0275pt x 1152.7065pt>
 File: fig/res/reorder_time_scaling.png Graphic file (type png)
 <use fig/res/reorder_time_scaling.png>
-Package pdftex.def Info: fig/res/reorder_time_scaling.png  used on input line 210.
+Package pdftex.def Info: fig/res/reorder_time_scaling.png  used on input line 209.
 (pdftex.def)             Requested size: 418.25555pt x 447.232pt.
  [30] [31 <./fig/res/reorder_time_scaling.png>]
 <fig/res/reorder_memory_scaling.png, id=710, 1078.0275pt x 1148.6112pt>
 File: fig/res/reorder_memory_scaling.png Graphic file (type png)
 <use fig/res/reorder_memory_scaling.png>
-Package pdftex.def Info: fig/res/reorder_memory_scaling.png  used on input line 223.
+Package pdftex.def Info: fig/res/reorder_memory_scaling.png  used on input line 222.
 (pdftex.def)             Requested size: 418.25555pt x 445.6431pt.
  [32] [33 <./fig/res/reorder_memory_scaling.png>]
 <fig/res/elimination_tree_depth_all_categories.png, id=721, 1006.4802pt x 863.8674pt>
 File: fig/res/elimination_tree_depth_all_categories.png Graphic file (type png)
 <use fig/res/elimination_tree_depth_all_categories.png>
-Package pdftex.def Info: fig/res/elimination_tree_depth_all_categories.png  used on input line 245.
+Package pdftex.def Info: fig/res/elimination_tree_depth_all_categories.png  used on input line 244.
 (pdftex.def)             Requested size: 355.51976pt x 305.13942pt.
 
 
@@ -1943,7 +1943,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <fig/res/144_sparsity_patterns.png, id=727, 1065.9825pt x 1333.3815pt>
 File: fig/res/144_sparsity_patterns.png Graphic file (type png)
 <use fig/res/144_sparsity_patterns.png>
-Package pdftex.def Info: fig/res/144_sparsity_patterns.png  used on input line 254.
+Package pdftex.def Info: fig/res/144_sparsity_patterns.png  used on input line 253.
 (pdftex.def)             Requested size: 418.25555pt x 523.17029pt.
 
 
@@ -1953,7 +1953,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <fig/res/gpu_rcm_speedups_clean.png, id=740, 714.0276pt x 426.1521pt>
 File: fig/res/gpu_rcm_speedups_clean.png Graphic file (type png)
 <use fig/res/gpu_rcm_speedups_clean.png>
-Package pdftex.def Info: fig/res/gpu_rcm_speedups_clean.png  used on input line 268.
+Package pdftex.def Info: fig/res/gpu_rcm_speedups_clean.png  used on input line 267.
 (pdftex.def)             Requested size: 376.42744pt x 224.66956pt.
  [37
 
@@ -1982,9 +1982,9 @@ Package pdftex.def Info: fig/other/diagram.pdf  used on input line 20.
 <fig/background/nested_dissection.png, id=765, 1115.16624pt x 654.445pt>
 File: fig/background/nested_dissection.png Graphic file (type png)
 <use fig/background/nested_dissection.png>
-Package pdftex.def Info: fig/background/nested_dissection.png  used on input line 32.
-(pdftex.def)             Requested size: 150.56866pt x 88.35625pt.
- [40 <./fig/other/diagram.pdf>]) (./src/conclusion.tex [41 <./fig/background/nested_dissection.png>]
+Package pdftex.def Info: fig/background/nested_dissection.png  used on input line 33.
+(pdftex.def)             Requested size: 125.47794pt x 73.63686pt.
+) (./src/conclusion.tex [40 <./fig/other/diagram.pdf>] [41 <./fig/background/nested_dissection.png>]
 chapter 6.
 
 Class scrbook Warning: Redefinition of \@makechapterhead detected.
@@ -1997,10 +1997,10 @@ Class scrbook Warning: Redefinition of \@makechapterhead detected.
 (scrbook)              KOMA-Script and will not work with a coming version,
 (scrbook)              that will remove this deprecated code.
 
-) [42
+[42
 
 
-] (./src/appendices/experimental_results.tex [43]
+]) (./src/appendices/experimental_results.tex [43]
 chapter A.
 
 Class scrbook Warning: Redefinition of \@makechapterhead detected.
@@ -2117,15 +2117,15 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 49863 strings out of 474222
- 991273 string characters out of 5748734
+ 49860 strings out of 474222
+ 991187 string characters out of 5748734
  2010975 words of memory out of 5000000
- 70451 multiletter control sequences out of 15000+600000
+ 70448 multiletter control sequences out of 15000+600000
  631807 words of font info for 378 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  122i,25n,121p,10955b,1225s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpsyc.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on report.pdf (62 pages, 8282365 bytes).
+Output written on report.pdf (62 pages, 8274178 bytes).
 PDF statistics:
  1209 PDF objects out of 1440 (max. 8388607)
  1039 compressed objects within 11 object streams

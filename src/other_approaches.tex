@@ -7,7 +7,7 @@ In this chapter, we present two methods for sparse matrix reordering that seemed
 
 As we know that sparse symmetric matrices can be represented as undirected graphs, it seems promising that this representation allows GNNs to naturally capture the local neighborhood relationships that classical ordering heuristics rely on, such as node degree and clustering patterns.
 
-Traditional heuristics like minimum degree ordering make greedy decisions based on limited local information. There has been a few approaches for using machine learning to learn better heuristics, such as the work by \cite{dasgupta_alpha_2023}, which uses CNN and they tackle large matrices by partitioning the graph. 
+Traditional heuristics like minimum degree ordering make greedy decisions based on limited local information. There has been a few approaches for using machine learning to learn better heuristics, such as the work by \cite{dasgupta_alpha_2023}, which uses CNN and tackle large matrices by partitioning the graph. 
 
 GNNs, however, can propagate information across multiple hops in the graph, enabling each node to consider not just its immediate neighbors but also the broader structural context. It also allows us to have variable sized graphs. This multi-hop reasoning capability allows the network to anticipate how eliminating one node will affect distant parts of the matrix, potentially leading to more effective ordering decisions.
 
@@ -26,7 +26,7 @@ The model shows good and promising results on small matrices, achieving 9.8\% im
 
 \section{GPU Accelerated Nested Dissection}
 
-There is very limited work on GPU-accelerated reordering algorithms. I had presented earlier in this thesis, a GPU implementation of the RCM algorithm. Another promising approach is to implement the nested dissection algorithm on GPUs. One such approach is presented by \cite{yuan_fast_nodate}, which leverages a GPU-based geometry processing library to perform fast graph partitioning, a key step in nested dissetion. The method achieves sigificant speedups over the tradition4al CPU-based METIS library but the quality of the ordering is around 3 to 8 times worse than METIS, in their experiments.
+There is very limited work on GPU-accelerated reordering algorithms. I had presented, earlier in this thesis, a GPU implementation of the RCM algorithm. Another promising approach is to implement the nested dissection algorithm on GPUs. One such approach is presented by \cite{yuan_fast_nodate}, which leverages a GPU-based geometry processing library to perform fast graph partitioning, a key step in nested dissection. The method achieves significant speedups over the traditional CPU-based METIS library, but the quality of the ordering is around 3 to 8 times worse than METIS, in their experiments.
 
 \begin{wrapfigure}{l}{0.4\textwidth}
 \includegraphics[width=0.9\linewidth]{fig/background/nested_dissection.png} 

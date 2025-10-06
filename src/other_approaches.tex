@@ -1,13 +1,13 @@
 \chapter{Other Approaches}
 \label{ch:other_approaches}
 
-In this chapter, we present two methods for sparse matrix reordering that seemed to hold promise. These methods were found by myself to be either computationally difficult to scale for large matrices or were found to have some bottlenecks, but nevertheless represent interesting directions for future work. We also discuss an overview of the results obtained from these methods.
+In this chapter, we present two methods for sparse matrix reordering that seemed to hold promise. These methods were found to be either computationally difficult to scale for large matrices or were found to have some bottlenecks, but nevertheless represent interesting directions for future work. We also discuss an overview of the results obtained from these methods.
 
 \section{Graph Reinforcement Learning for Reordering}
 
 As we know that sparse symmetric matrices can be represented as undirected graphs, it seems promising that this representation allows GNNs to naturally capture the local neighborhood relationships that classical ordering heuristics rely on, such as node degree and clustering patterns.
 
-Traditional heuristics like minimum degree ordering make greedy decisions based on limited local information. There has been a few approaches for using machine learning to learn better heuristics, such as the work in \cite{dasgupta_alpha_2023}, which uses CNN and they tackle large matrices by partitioning the graph. 
+Traditional heuristics like minimum degree ordering make greedy decisions based on limited local information. There has been a few approaches for using machine learning to learn better heuristics, such as the work in \cite{dasgupta_alpha_2023}, which uses CNN and tackle large matrices by partitioning the graph. 
 
 GNNs, however, can propagate information across multiple hops in the graph, enabling each node to consider not just its immediate neighbors but also the broader structural context. It also allows us to have variable sized graphs. This multi-hop reasoning capability allows the network to anticipate how eliminating one node will affect distant parts of the matrix, potentially leading to more effective ordering decisions.
 
@@ -26,13 +26,14 @@ The model shows good and promising results on small matrices, achieving 9.8\% im
 
 \section{GPU Accelerated Nested Dissection}
 
-There is very limited work on GPU-accelerated reordering algorithms. I had presented earlier in this thesis, a GPU implementation of the RCM algorithm. Another promising approach is to implement the nested dissection algorithm on GPUs. One such approach is presented in \cite{yuan_fast_nodate}, which leverages a GPU-based geometry processing library to perform fast graph partitioning, a key step in nested dissetion. The method achieves sigificant speedups over the traditional CPU-based METIS library but the quality of the ordering is around 3 to 8 times worse than METIS, in their experiments.
+There is very limited work on GPU-accelerated reordering algorithms. I had presented earlier in this thesis, a GPU implementation of the RCM algorithm. Another promising approach is to implement the nested dissection algorithm on GPUs. One such approach is presented in \cite{yuan_fast_nodate}, which leverages a GPU-based geometry processing library to perform fast graph partitioning, a key step in nested dissection. The method achieves significant speedups over the traditional CPU-based METIS library but the quality of the ordering is around 3 to 8 times higher than METIS, in their experiments.
 
-\begin{wrapfigure}{l}{0.4\textwidth}
-\includegraphics[width=0.9\linewidth]{fig/background/nested_dissection.png} 
+\begin{figure}
+\centering
+\includegraphics[width=0.3\linewidth]{fig/background/nested_dissection.png} 
 \caption{Recursive calls}
 \label{fig:nd_res}
-\end{wrapfigure}
+\end{figure}
 
 The primary bottleneck in running nested dissection on GPUs is the recursive nature of the algorithm. Each level of recursion requires partitioning the graph and identifying separators. We leveraged a graph processing library, Jet, which is a multilevel graph partitioning library designed for GPU \cite{gilbert_jet_2024}. The library comes with an efficient implementation of k-way partitioning done using a parallel multilevel approach. One can do a 2-way partitioning by setting k=2, but unsurprisingly, it performs worse in run-time as each call/partition (circle in Figure \ref{fig:nd_res}) is done sequentially. Another approach was to use k = $2^d$, where $d$ is the depth of recursion such each subgraph reaches the threshold size after $d$ levels of recursion. This approach is similar to the approach done using Hypergraph partitioning as mentioned in Chapter \ref{ch:implementation_and_optimizations}, in the way that the partition
 divides the graph into smaller subgraphs and the cumulative separators found are placed at the end, producing sparsity-pattern similar to hypergraph based methods in Chapter \ref{ch:implementation_and_optimizations}. This method, which is questionable to call it Nested Dissection, however produces orderings faster than METIS for large graphs but the quality of the ordering is still not comparable to METIS expectedly as you get better separators when you do recursive bisection than a single k-way partitioning. Such an approach produces orderings that are around 2 to 3 times worse than METIS in my experiments on large matrices (\texttt{parabolic_fem.graph} and \texttt{auto.graph}) but the speedups are significant around 5 to 6 times tested on the same environment as mentioned in Chapter \ref{ch:results}.

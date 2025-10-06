@@ -52,7 +52,7 @@ The login nodes fritz[1-4] are equipped with 2 × Intel Xeon Platinum 8360Y (Ice
 
 \section{Matrices dataset}
 
-We selected a diverse set of sparse matrices from the SuiteSparse Matrix Collection and our custom dataset of matrices encountered in Quantum Transport to evaluate our implementations. The SuiteSparse matrices are chosen to cover a variety of application domains, including computational fluid dynamics (CFD), chemistry, circuit simulation, graph analysis, optimization, and structural engineering. We have listed the matrices alongside their respective groups, number of vertices, and number of edges in Table~\ref{tab:matrix-dataset}. The Quantum Transport matrices are listed in Table~\ref{tab:qt-matrix-dataset}.
+We selected a diverse set of sparse matrices from the SuiteSparse Matrix Collection and our custom dataset of matrices encountered in field-specific domains, developed in Nano-TCAD, to evaluate our implementations. The SuiteSparse matrices are chosen to cover a variety of application domains, including computational fluid dynamics (CFD), chemistry, circuit simulation, graph analysis, optimization, and structural engineering. We have listed the matrices alongside their respective groups, number of vertices, and number of edges in Table~\ref{tab:matrix-dataset}. The Quantum Transport matrices are listed in Table~\ref{tab:qt-matrix-dataset}.
 
 \begin{longtable}{|l|l|r|r|}
 \hline
@@ -136,7 +136,7 @@ For our evaluation, we systematically assessed the performance of eleven differe
 
 \begin{enumerate}
 
-   \item Natural (Original matrix ordering - baseline)
+   \item \textbf{Natural} (Original matrix ordering - baseline)
    
    \item \textbf{Classical Methods:}
    \begin{itemize}[noitemsep,topsep=0pt]
@@ -160,10 +160,9 @@ For our evaluation, we systematically assessed the performance of eleven differe
 
 \end{enumerate}
 
-The hypergraph-based methods (HG-2, HG-4, HG-8, HG-16) employ different block partition sizes to explore the trade-off between computational complexity and reordering/parallelization quality. All these algorithms are described in detail in Chapter~\ref{ch:implementation_and_optimizations}. The \colorbox{yellow!60}{highlighted methods} indicate our own implementations. 
+The hypergraph-based methods (HG-2, HG-4, HG-8, HG-16) employ different block partition sizes to explore the trade-off between computational complexity and reordering/parallelization quality. All these algorithms are described in detail in Chapter~\ref{ch:implementation_and_optimizations}. The \colorbox{yellow!60}{highlighted methods} indicate our own developments. 
 
 \subsection{Performance Metrics}
-
 Our comprehensive evaluation measures five key performance indicators to assess the effectiveness of each reordering algorithm:
 
 \begin{description}
@@ -192,12 +191,12 @@ Figure~\ref{fig:fillin-categories} presents a comparative analysis of \textbf{fi
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{fig/res/fillin_all_categories.png}
+\includegraphics[width=\textwidth]{fig/res/fillin_all_categories.png}
 \caption{Fill-in ratio (fill-in/original nnz) comparison across different matrix categories}
 \label{fig:fillin-categories}
 \end{figure}
 
-Our experimental results reveal distinct performance patterns across different matrix domains and algorithm categories. The hypergraph-based methods, METIS, and our custom METIS implementation with improved coarsening (METIS+IC) show strong performance with lower fill-in reduction compared to classical methods. These methods achieve 30-60\% lower fill-in values than traditional approaches like AMD and COLAMD across most domains. Among the hypergraph methods, smaller partition sizes (HG-2 and HG-4) typically produce optimal results, while larger partitions are ineffective. Our custom METIS+IC implementation demonstrates that enhanced coarsening strategies can achieve performance comparable to hypergraph methods. SCOTCH and PT-SCOTCH show moderate improvements over classical methods but do not match the quality of METIS-based approaches.
+Our experimental results reveal distinct performance patterns across different matrix domains and algorithm categories. The hypergraph-based methods, METIS, and our custom METIS implementation with improved coarsening (METIS+IC) show strong performance with lower fill-in reduction compared to classical methods. These methods achieve 30-60\% lower fill-in values than traditional approaches like AMD and COLAMD across most domains. Among the hypergraph methods, smaller partition sizes (HG-2 and HG-4) typically produce best results, while larger partitions are ineffective. Our custom METIS+IC implementation demonstrates that enhanced coarsening strategies can achieve performance comparable to hypergraph methods. SCOTCH and PT-SCOTCH show moderate improvements over classical methods but do not match the quality of METIS-based approaches.
 
 Domain-specific analysis reveals that hypergraph methods, METIS, and METIS+IC perform well in circuit and graph problems, where they achieve 35-50\% fill-in reduction compared to AMD. For CFD matrices, these methods show modest but consistent improvements (10-30\%), while chemistry matrices present scalability challenges where many classical methods fail on the largest instances, leaving primarily METIS-based or classical methods viable. The optimization and structural domains show variable performance depending on problem structure, with hypergraph methods and METIS variants providing 10-25\% improvements in most cases.
 

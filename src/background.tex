@@ -16,7 +16,7 @@ Suppose the set of set of \textit{n} equations that are to be solved are
 \end{equation}
 where \(A\) is a sparse matrix, \(x\) is the vector of unknowns. The sparsity, or the number of non-zero entries in \(A\) determines the fill-in of it's Cholesky factor when it is employed to solve the aforementioned set of equations. 
 Suppose the Cholesky factorization of \(A\) is given by \(LL^T\), where \(L\) is a lower triangular matrix (with a positive diagonal) and \(L^T\) is the transpose of \(L\). The efficiency of solving this set of equations is dependent on the number of non-zero entries in \(L\). It has been shown that we can factor and solve the set of equations in space proportional to  \(\sum\sb{j} d{j}\) and time complexity is  \(\sum\sb{j} {d\sb{j}}^2\), where \(d\sb{j}\) is the number of non-zeroes in the \(j\)th column of \(L\) \cite{gilbert_analysis_1986}.
-%TODO how to do sum? summation symbol still not over
+
 
     
 \section{Elimination Trees and Symbolic Factorization}

@@ -432,7 +432,7 @@ The algorithm begins by constructing a standard graph representation of the symm
 
 The clique-node hypergraph transformation inverts the roles of vertices and cliques. Each clique becomes a node in the hypergraph, and each original graph vertex becomes a hyperedge connecting all cliques that contain it. This transformation enables the use of hypergraph partitioning tools to minimize the number of vertices that span multiple partitions, which naturally produces a vertex separator.
 
-The hypergraph is partitioned using KaHyPar (Karlsruhe Hypergraph Partitioner) into $k$ parts with a small allowed imbalance. The partitioning objective minimizes the connectivity metric, which counts hyperedges that connect nodes from different partitions. Each such hyperedge corresponds to a vertex in the original graph that belongs to multiple cliques assigned to different partitions.
+The hypergraph is partitioned using KaHyPar (Karlsruhe Hypergraph Partitioner) \cite{DBLP:phd/dnb/Schlag20, 10.1145/3529090, ahss2017alenex} into $k$ parts with a small allowed imbalance. The partitioning objective minimizes the connectivity metric, which counts hyperedges that connect nodes from different partitions. Each such hyperedge corresponds to a vertex in the original graph that belongs to multiple cliques assigned to different partitions.
 
 After partitioning the clique-node hypergraph, the algorithm constructs the vertex separator by examining each original graph vertex. A vertex is assigned to partition $i$ if all cliques containing it are assigned to partition $i$ in the hypergraph partition. If a vertex belongs to cliques from multiple partitions, it becomes part of the separator. This produces $k$ internal regions and one separator region.
 

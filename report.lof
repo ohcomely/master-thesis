@@ -12,12 +12,10 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Memory usage scaling with matrix size (number of non-zeros) for different algorithms. Each subplot shows the relationship between matrix size and memory consumption for various reordering methods.}}{33}{figure.caption.15}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse).}}{35}{figure.caption.16}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}}{36}{figure.caption.17}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}}{37}{figure.caption.18}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 100K nodes).}}{38}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Speedup of GPU-accelerated RCM compared to CPU-based RCM on large matrices (over 100K nodes).}}{37}{figure.caption.18}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Reinforcement Learning Framework for Sparse Matrix Reordering using GNNs}}{41}{figure.caption.20}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Recursive calls}}{41}{figure.caption.21}%
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Reinforcement Learning Framework for Sparse Matrix Reordering using GNNs}}{40}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Recursive calls}}{41}{figure.caption.20}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -155,7 +155,7 @@ For our evaluation, we systematically assessed the performance of eleven differe
    
    \item \textbf{Hypergraph-based Methods:}
    \begin{itemize}[noitemsep,topsep=0pt]
-      \item \colorbox{yellow!60}{HG-2}, \colorbox{yellow!60}{HG-4}, \colorbox{yellow!60}{HG-8}, \colorbox{yellow!60}{HG-16} (Hypergraph-based reordering with block partition sizes of 2, 4, 8, and 16 vertices respectively. In some places we refer to these as DB-2, DB-4, DB-8, and DB-16 respectively.) 
+      \item \colorbox{yellow!60}{HG-2}, \colorbox{yellow!60}{HG-4}, \colorbox{yellow!60}{HG-8}, \colorbox{yellow!60}{HG-16} (Hypergraph-based reordering with block partition sizes of 2, 4, 8, and 16 vertices respectively; in some places we refer to these as DB-2, DB-4, DB-8, and DB-16 respectively.) 
    \end{itemize}
 
 \end{enumerate}
@@ -242,23 +242,18 @@ The hypergraph partitioning methods (DB variants) show variable performance for 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1\textwidth]{fig/res/elimination_tree_depth_all_categories.png}
+\includegraphics[width=0.85\textwidth]{fig/res/elimination_tree_depth_all_categories.png}
 \caption{Elimination tree depth comparison across different matrix categories for various reordering algorithms. Lower depth indicates better parallelization potential. Blue indicates lower depth (better), while pink indicates higher depth (worse).}
 \label{fig:elimination-tree-depth}
 \end{figure}
+
+We also visualize the \textbf{sparsity patterns} of matrices before and after applying different reordering algorithms. Figure~\ref{fig:144-sparsity-patterns} shows the sparsity patterns of matrix 144 from the SuiteSparse collection with various reorderings applied. As expected, the RCM algorithm produces a banded structure, while AMD produced a vague doubly arrowhead sparsity pattern. The METIS-based methods and hypergraph methods yield defined arrowhead patterns because of their algorithmic approach of finding separators and ordering them last (recursively in Nested Dissection and cumulatively in hypergraph methods).
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{fig/res/144_sparsity_patterns.png}
 \caption{Sparsity patterns of matrix 144 with different reordering algorithms applied. The natural ordering (top-left) shows a scattered pattern leading to high fill-in, while optimized reorderings (other panels) demonstrate more defined structures.}
 \label{fig:144-sparsity-patterns}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{fig/res/copter2_sparsity_patterns.png}
-\caption{Similarly, sparsity patterns of matrix copter2 with different reordering algorithms applied.}
-\label{fig:copter2-sparsity-patterns}
 \end{figure}
 
 \FloatBarrier

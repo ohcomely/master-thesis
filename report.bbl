@@ -101,6 +101,17 @@ P.~R. Amestoy, T.~A. Davis, and I.~S. Duff, ``Algorithm 837: {AMD}, an approxima
 O.~Selvitopi, S.~Acer, M.~Manguoğlu, and C.~Aykanat, ``\BIBforeignlanguage{en}{The {Effect} of {Various} {Sparsity} {Structures} on {Parallelism} and {Algorithms} to {Reveal} {Those} {Structures}},'' in \emph{\BIBforeignlanguage{en}{Parallel {Algorithms} in {Computational} {Science} and {Engineering}}}, A.~Grama and A.~H. Sameh, Eds.\hskip 1em plus 0.5em minus 0.4em\relax Cham: Springer International Publishing, 2020, pp. 35--62. [Online]. Available: \url{https://doi.org/10.1007/978-3-030-43736-7_2}
 \BIBentrySTDinterwordspacing
 
+\bibitem{DBLP:phd/dnb/Schlag20}
+S.~Schlag, ``High-quality hypergraph partitioning,'' Ph.D. dissertation, Karlsruhe Institute of Technology, Germany, 2020.
+
+\bibitem{10.1145/3529090}
+\BIBentryALTinterwordspacing
+S.~Schlag, T.~Heuer, L.~Gottesb\"{u}ren, Y.~Akhremtsev, C.~Schulz, and P.~Sanders, ``High-quality hypergraph partitioning,'' \emph{ACM J. Exp. Algorithmics}, mar 2022. [Online]. Available: \url{https://doi.org/10.1145/3529090}
+\BIBentrySTDinterwordspacing
+
+\bibitem{ahss2017alenex}
+Y.~Akhremtsev, T.~Heuer, P.~Sanders, and S.~Schlag, ``Engineering a direct \emph{k}-way hypergraph partitioning algorithm,'' in \emph{19th Workshop on Algorithm Engineering and Experiments, (ALENEX 2017)}, 2017, pp. 28--42.
+
 \bibitem{merrill_scalable_nodate}
 D.~Merrill, ``\BIBforeignlanguage{en}{Scalable {GPU} {Graph} {Traversal}}.''
 
@@ -123,33 +134,6 @@ C.~Yuan, ``\BIBforeignlanguage{en}{Fast {Sparse} {Matrix} {Reordering} on {GPU} 
 \bibitem{gilbert_jet_2024}
 \BIBentryALTinterwordspacing
 M.~S. Gilbert, K.~Madduri, E.~G. Boman, and S.~Rajamanickam, ``Jet: {Multilevel} {Graph} {Partitioning} on {Graphics} {Processing} {Units},'' \emph{SIAM Journal on Scientific Computing}, vol.~46, no.~5, pp. B700--B724, Oct. 2024, publisher: Society for Industrial and Applied Mathematics. [Online]. Available: \url{https://epubs.siam.org/doi/10.1137/23M1559129}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Kaeslin08}
-H.~Kaeslin, \emph{Digital Integrated Circuit Design: From VLSI Architectures to CMOS Fabrication}.\hskip 1em plus 0.5em minus 0.4em\relax Cambridge University Press, Apr. 2008.
-
-\bibitem{HVM04}
-D.~Hankerson, S.~Vanstone, and A.~Menezes, \emph{Guide to Elliptic Curve Cryptography}, ser. Springer Professional Computing.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2004.
-
-\bibitem{FIPS197}
-NIST, \emph{Advanced Encryption Standard (AES) (FIPS PUB 197)}, National Institute of Standards and Technology, Nov. 2001.
-
-\bibitem{RBBK01}
-P.~Rogaway, M.~Bellare, J.~Black, and T.~Krovetz, ``{OCB}: A block-cipher mode of operation for efficient authenticated encryption,'' in \emph{ACM Conference on Computer and Communications Security}, 2001, pp. 196--205.
-
-\bibitem{Virtex6UG1111}
-\BIBentryALTinterwordspacing
-Xilinx. (2011, Nov.) {Virtex-6 FPGA Configuration User Guide}. UG360 (v3.4). [Online]. Available: \url{http://www.xilinx.com/support/documentation/user_guides/ug360.pdf}
-\BIBentrySTDinterwordspacing
-
-\bibitem{XilinxBib:Series7UG1110}
-\BIBentryALTinterwordspacing
-------. (2011, Oct.) {7 Series FPGAs Configuration User Guide}. UG470 (v1.2). [Online]. Available: \url{http://www.xilinx.com/support/documentation/user_guides/ug470_7Series_Config.pdf}
-\BIBentrySTDinterwordspacing
-
-\bibitem{WIKI:Newton}
-\BIBentryALTinterwordspacing
-Wikipedia, ``{Isaac Newton},'' accessed October 1, 2012. [Online]. Available: \url{http://en.wikipedia.org/w/index.php?title=Isaac_Newton&oldid=514997436}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}

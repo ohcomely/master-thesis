@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.7.8)  5 OCT 2025 18:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.7.8)  5 OCT 2025 22:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1774,17 +1774,17 @@ LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 1
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 )
-<fig/intro/sparsity_pattern.png, id=195, 880.4895pt x 407.3619pt>
+<fig/intro/sparsity_pattern.png, id=194, 880.4895pt x 407.3619pt>
 File: fig/intro/sparsity_pattern.png Graphic file (type png)
 <use fig/intro/sparsity_pattern.png>
-Package pdftex.def Info: fig/intro/sparsity_pattern.png  used on input line 50.
+Package pdftex.def Info: fig/intro/sparsity_pattern.png  used on input line 41.
 (pdftex.def)             Requested size: 376.42744pt x 174.15523pt.
-LaTeX Font Info:    Trying to load font information for T1+fvm on input line 51.
+LaTeX Font Info:    Trying to load font information for T1+fvm on input line 42.
  (/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd
 File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
 )
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 9.30756pt on input line 51.
+(Font)              scaled to size 9.30756pt on input line 42.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `fvm' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1797,7 +1797,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.58 
+l.47 
       [1
 
 
@@ -1819,12 +1819,12 @@ Class scrbook Warning: Redefinition of \@makechapterhead detected.
 
 
 ] [4]
-<fig/background/etree-1.png, id=237, 578.16pt x 578.16pt>
+<fig/background/etree-1.png, id=238, 578.16pt x 578.16pt>
 File: fig/background/etree-1.png Graphic file (type png)
 <use fig/background/etree-1.png>
 Package pdftex.def Info: fig/background/etree-1.png  used on input line 113.
 (pdftex.def)             Requested size: 188.21371pt x 188.20854pt.
-<fig/background/etree-2.png, id=238, 719.68875pt x 719.68875pt>
+<fig/background/etree-2.png, id=239, 719.68875pt x 719.68875pt>
 File: fig/background/etree-2.png Graphic file (type png)
 <use fig/background/etree-2.png>
 Package pdftex.def Info: fig/background/etree-2.png  used on input line 121.
@@ -1834,12 +1834,12 @@ LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 13
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 ) [7] [8] [9]
-<fig/background/nd-1.png, id=316, 719.68875pt x 719.68875pt>
+<fig/background/nd-1.png, id=317, 719.68875pt x 719.68875pt>
 File: fig/background/nd-1.png Graphic file (type png)
 <use fig/background/nd-1.png>
 Package pdftex.def Info: fig/background/nd-1.png  used on input line 232.
 (pdftex.def)             Requested size: 188.21371pt x 188.21281pt.
-<fig/background/nd-2.png, id=317, 719.68875pt x 719.68875pt>
+<fig/background/nd-2.png, id=318, 719.68875pt x 719.68875pt>
 File: fig/background/nd-2.png Graphic file (type png)
 <use fig/background/nd-2.png>
 Package pdftex.def Info: fig/background/nd-2.png  used on input line 239.
@@ -1912,25 +1912,223 @@ LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
 (Font)              using `T1/cmss/bx/n' instead on input line 176.
 
 [27{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-<fig/res/fillin_all_categories.png, id=678, 1127.1711pt x 1495.989pt>
+<fig/res/fillin_all_categories.png, id=685, 1127.1711pt x 1495.989pt>
 File: fig/res/fillin_all_categories.png Graphic file (type png)
 <use fig/res/fillin_all_categories.png>
 Package pdftex.def Info: fig/res/fillin_all_categories.png  used on input line 195.
 (pdftex.def)             Requested size: 376.42744pt x 499.59007pt.
  [28] [29 <./fig/res/fillin_all_categories.png>]
-<fig/res/reorder_time_scaling.png, id=690, 1078.0275pt x 1152.7065pt>
+<fig/res/reorder_time_scaling.png, id=697, 1078.0275pt x 1152.7065pt>
 File: fig/res/reorder_time_scaling.png Graphic file (type png)
 <use fig/res/reorder_time_scaling.png>
 Package pdftex.def Info: fig/res/reorder_time_scaling.png  used on input line 210.
 (pdftex.def)             Requested size: 418.25555pt x 447.232pt.
  [30] [31 <./fig/res/reorder_time_scaling.png>]
-<fig/res/reorder_memory_scaling.png, id=703, 1078.0275pt x 1148.6112pt>
+<fig/res/reorder_memory_scaling.png, id=710, 1078.0275pt x 1148.6112pt>
 File: fig/res/reorder_memory_scaling.png Graphic file (type png)
 <use fig/res/reorder_memory_scaling.png>
 Package pdftex.def Info: fig/res/reorder_memory_scaling.png  used on input line 223.
 (pdftex.def)             Requested size: 418.25555pt x 445.6431pt.
  [32] [33 <./fig/res/reorder_memory_scaling.png>]
-<fig/res/elimination_tree_depth_all_categories.png, id=714, 1006.4802pt x 863.8674pt>
+<fig/res/elimination_tree_depth_all_categories.png, id=721, 1006.4802pt x 863.8674pt>
 File: fig/res/elimination_tree_depth_all_categories.png Graphic file (type png)
 <use fig/res/elimination_tree_depth_all_categories.png>
-Package pdfte
+Package pdftex.def Info: fig/res/elimination_tree_depth_all_categories.png  used on input line 245.
+(pdftex.def)             Requested size: 355.51976pt x 305.13942pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[34]
+<fig/res/144_sparsity_patterns.png, id=727, 1065.9825pt x 1333.3815pt>
+File: fig/res/144_sparsity_patterns.png Graphic file (type png)
+<use fig/res/144_sparsity_patterns.png>
+Package pdftex.def Info: fig/res/144_sparsity_patterns.png  used on input line 254.
+(pdftex.def)             Requested size: 418.25555pt x 523.17029pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[35 <./fig/res/elimination_tree_depth_all_categories.png>] [36 <./fig/res/144_sparsity_patterns.png>]
+<fig/res/gpu_rcm_speedups_clean.png, id=740, 714.0276pt x 426.1521pt>
+File: fig/res/gpu_rcm_speedups_clean.png Graphic file (type png)
+<use fig/res/gpu_rcm_speedups_clean.png>
+Package pdftex.def Info: fig/res/gpu_rcm_speedups_clean.png  used on input line 268.
+(pdftex.def)             Requested size: 376.42744pt x 224.66956pt.
+ [37
+
+ <./fig/res/gpu_rcm_speedups_clean.png>]) (./src/other_approaches.tex [38]
+chapter 5.
+
+Class scrbook Warning: Redefinition of \@makechapterhead detected.
+(scrbook)              Note: KOMA-Script does use styles for commands like
+(scrbook)              \chapter. Currently it internally still provides and
+(scrbook)              uses \@makechapterhead, but a completely different
+(scrbook)              definition compared to the standard classes.
+(scrbook)              So redefining or using internal \@makechapterhead
+(scrbook)              by users or package authors may already break
+(scrbook)              KOMA-Script and will not work with a coming version,
+(scrbook)              that will remove this deprecated code.
+
+[39
+
+
+]
+<fig/other/diagram.pdf, id=763, 481.1365pt x 208.98778pt>
+File: fig/other/diagram.pdf Graphic file (type pdf)
+<use fig/other/diagram.pdf>
+Package pdftex.def Info: fig/other/diagram.pdf  used on input line 20.
+(pdftex.def)             Requested size: 418.25555pt x 181.67757pt.
+<fig/background/nested_dissection.png, id=765, 1115.16624pt x 654.445pt>
+File: fig/background/nested_dissection.png Graphic file (type png)
+<use fig/background/nested_dissection.png>
+Package pdftex.def Info: fig/background/nested_dissection.png  used on input line 32.
+(pdftex.def)             Requested size: 150.56866pt x 88.35625pt.
+ [40 <./fig/other/diagram.pdf>]) (./src/conclusion.tex [41 <./fig/background/nested_dissection.png>]
+chapter 6.
+
+Class scrbook Warning: Redefinition of \@makechapterhead detected.
+(scrbook)              Note: KOMA-Script does use styles for commands like
+(scrbook)              \chapter. Currently it internally still provides and
+(scrbook)              uses \@makechapterhead, but a completely different
+(scrbook)              definition compared to the standard classes.
+(scrbook)              So redefining or using internal \@makechapterhead
+(scrbook)              by users or package authors may already break
+(scrbook)              KOMA-Script and will not work with a coming version,
+(scrbook)              that will remove this deprecated code.
+
+) [42
+
+
+] (./src/appendices/experimental_results.tex [43]
+chapter A.
+
+Class scrbook Warning: Redefinition of \@makechapterhead detected.
+(scrbook)              Note: KOMA-Script does use styles for commands like
+(scrbook)              \chapter. Currently it internally still provides and
+(scrbook)              uses \@makechapterhead, but a completely different
+(scrbook)              definition compared to the standard classes.
+(scrbook)              So redefining or using internal \@makechapterhead
+(scrbook)              by users or package authors may already break
+(scrbook)              KOMA-Script and will not work with a coming version,
+(scrbook)              that will remove this deprecated code.
+
+[44
+
+
+] [45] [46] [47] [48]) [49] (./acr/main.tex
+\@gls@deffile=\write9
+\openout9 = `report.glsdefs'.
+
+) (./acr/latex_and_writing.tex)
+Package tocbasic Info: character protrusion at lof deactivated on input line 50.
+ (./report.lof)
+\tf@lof=\write10
+\openout10 = `report.lof'.
+
+ [50
+
+
+
+
+
+
+
+
+] [51]
+Package tocbasic Info: character protrusion at lot deactivated on input line 51.
+ (./report.lot)
+\tf@lot=\write11
+\openout11 = `report.lot'.
+
+ [52
+
+
+] (./report.loa)
+\tf@loa=\write12
+\openout12 = `report.loa'.
+
+ (./report.bbl [53
+
+
+]
+chapter without number
+
+Class scrbook Warning: Redefinition of \@makechapterhead detected.
+(scrbook)              Note: KOMA-Script does use styles for commands like
+(scrbook)              \chapter. Currently it internally still provides and
+(scrbook)              uses \@makechapterhead, but a completely different
+(scrbook)              definition compared to the standard classes.
+(scrbook)              So redefining or using internal \@makechapterhead
+(scrbook)              by users or package authors may already break
+(scrbook)              KOMA-Script and will not work with a coming version,
+(scrbook)              that will remove this deprecated code.
+
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+[54
+
+
+]
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en-US'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+[55]
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `en'. Using the pattern for
+** the default language instead.
+)
+
+Package glossaries Warning: No \printglossary or \printglossaries found. 
+(Remove \makeglossaries if you don't want any glossaries.) 
+This document will not have a glossary.
+
+[56] (./report.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2020/03/25>
+ ***********
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 49863 strings out of 474222
+ 991273 string characters out of 5748734
+ 2010975 words of memory out of 5000000
+ 70451 multiletter control sequences out of 15000+600000
+ 631807 words of font info for 378 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 122i,25n,121p,10955b,1225s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpsyc.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on report.pdf (62 pages, 8282365 bytes).
+PDF statistics:
+ 1209 PDF objects out of 1440 (max. 8388607)
+ 1039 compressed objects within 11 object streams
+ 420 named destinations out of 1000 (max. 500000)
+ 91644 words of extra memory for PDF output out of 106986 (max. 10000000)
+
